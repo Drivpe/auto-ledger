@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         网中网会计综合实习平台 · 凭证登T型账自动化
 // @namespace    voucher2t
-// @version      3.0.0
-// @description  抓取平台记账凭证（教师答案 / 学生答案），按一级科目归集后逐笔登记进 T 型账。四按钮面板 + 本地答案缓存 + 三重锁校验。
+// @version      3.1.0
+// @description  抓取平台记账凭证（教师答案 / 学生答案），按一级科目归集后逐笔登记进 T 型账。面板 + 只读并发 + 科目级并发写入 + 写前冲突普查 + 本地答案缓存 + 三重锁校验。
 // @author       voucher2T
 // @match        http://10.11.4.69:8090/netinnet_zhsx_v63/*
 // @match        https://webvpn.shufe-zj.edu.cn/*/netinnet_zhsx_v63/*
@@ -44,8 +44,10 @@
  * 关于缓存：②③ 抓过一次之后，凭证就永久留在本地，之后再点直接用本地数据、不再联网抓取
  *    （一轮 103 张凭证要几分钟）。命中缓存时日志不会特别提示。要重新抓取必须先点 ④。
  *
- * 关于写入：平台已有行的科目，与计划不匹配就跳过不写并在日志报出；匹配则静默跳过。
- *    写入前不弹确认框。要覆盖重写，先点 ① 清空。
+ * 关于写入：写入之前会先普查平台全部总账科目，报出「冲突科目」（平台有行、但与本轮计划
+ *    不匹配）。冲突科目不再自动跳过 —— 面板会停下来问：清掉它们再写，还是跳过它们。
+ *    平台已有行且与计划逐行一致的科目，静默跳过（幂等）。
+ *    拿不到平台状态的科目一律不写（「未知」不等于「平台是空的」）。
  *
  * ⚠ 年月默认值是 2020 年 1 月（实训任务绝大多数就是 2020 年 1 月）。
  *    只有实训任务确实是 2020 年 1 月时才能不动；否则必须在面板上手动改年、月，
@@ -53,6 +55,9 @@
  *
  * ⚠ 本版没有「只读预览」这一档：点写入按钮就直接改平台数据，平台无事务、无回滚。
  *    写入前日志会列出科目数与行数，随时可以点「停止」。要撤回只能先点 ① 清空。
+ *
+ * 提速与并发：只读 GET 最多 4 路并发，写入与删除按科目最多 3 路并发；
+ *    同一科目内部严格串行（原因见 poolMap 注释）。点「停止」是在途请求收完、不再发新的。
  *
  * 配置项在下方 CONFIG，改完保存即可。
  * =================================================================
@@ -68,8 +73,19 @@
     year: '2020',
     month: '1',
 
-    // 每写一行后的间隔（毫秒）。太小可能被平台拒绝。
-    throttleMs: 300,
+    // 每写一行后的间隔（毫秒）。
+    // 取 120 的依据：这是 round5 真机试写实跑过的档位（真机抓包 251 条请求全 200、无 429/5xx，
+    // 没有任何限速实测证据）。压到 0 没有真机数据支撑，所以不取 0。
+    throttleMs: 120,
+
+    // 只读 GET 的并发路数（凭证列表翻页、凭证详情、写前普查、清空逐科目前置查询）。
+    // 4 是拍定值：平台是单台 Tomcat 上的老式 jQuery 应用，从未做过压力测试，
+    // 「没有限速证据」不等于「不会限速」，所以不为提速把路数往上抬。
+    readConcurrency: 4,
+
+    // 科目级写入与删除的并发路数。比只读更保守，因为写请求有副作用。
+    // 见 poolMap 注释：并发粒度是「科目」，同一科目内部仍严格串行。
+    writeConcurrency: 3,
   };
   // ===================================================
 
@@ -407,6 +423,91 @@
     });
   }
 
+  /**
+   * 限流并发池：最多 limit 个 worker 同时在途，共享一个递增游标取任务，
+   * 结果数组按【输入顺序】返回。
+   *
+   * 为什么必须按输入顺序返回，而不是按完成顺序：抓答案侧凭证时，凭证字号是按列表序号
+   * 生成的（fetchVoucherBodies 的 `记${i+1}`）。若结果按完成先后排列，序号会与实际凭证错位，
+   * 凭证号就会写错 —— 而错号写进平台之后没有回滚。
+   *
+   * 为什么并发粒度只能到「科目 / 凭证」，不能到「行」：
+   *   `insert` 的请求体自带「当前已存全部行的 pzh_bz/debit/lend/TEMPid」，而 TEMPid 由
+   *   服务端逐次生成。下一行必须看到上一行的落库结果（载体就是 fillAccount 里的局部 `state`），
+   *   所以同一科目内部必须严格串行；而科目之间没有共享的可变写入态 —— `state` 是局部变量，
+   *   请求体每次显式携带 sxid/accountID/yyyy/mm/entityid，平台不靠会话游标记住「当前科目」，
+   *   因此科目之间可以并行。
+   *
+   * 停止语义（「在途请求收完，不再发新的」）：每个任务【开始前】查一次 shouldStop()，
+   * 已发出的请求允许跑完。为什么不用 abort：GM_xmlhttpRequest 中止后无法区分
+   * 「被取消」与「请求失败」，会把 insert 的重试逻辑带偏。
+   *
+   * ⚠ 由这条语义推出一个必读的后果：lane 在循环顶部就 `return`，所以【worker 内部的
+   *   `shouldStop()` 分支永远不会被走到】。worker 首行那句 `if (shouldStop()) return null;`
+   *   只在「停止发生在任务取号之后、worker 首行之前」这个极窄窗口里才有意义，实际基本不可达。
+   *   因此调用方不能靠 worker 里的计数来判「是否被中断」，必须直接读 `shouldStop()`。
+   *
+   * ⚠ 某个 worker 抛异常时不冒泡，而是在该位置放 `{__error: e}`：抛出去等于让调用方
+   *   丢掉全部已完成的结果（写入阶段真会这样 —— 已写盘的科目连同日志缓冲一起蒸发，
+   *   汇总还会报 0）。调用方用 `collectPool(out)` 取结果并单独看失败项。
+   *
+   * @param {Array} items
+   * @param {number} limit   并发路数
+   * @param {(item:any, index:number)=>Promise<any>} worker  建议自行 try/catch
+   * @param {()=>boolean} shouldStop
+   * @returns {Promise<Array>} 与 items 等长、按输入顺序；
+   *          被停止而未开始的位置是稀疏洞（`i in out === false`），未开工也可能是 null，
+   *          失败位置是 `{__error}`。一律用 collectPool() 读，别用 filter(Boolean)。
+   */
+  async function poolMap(items, limit, worker, shouldStop) {
+    const out = new Array(items.length);
+    let cursor = 0;        // 共享游标：取号与自增之间不会被await打断，无需加锁
+    const lane = async () => {
+      for (;;) {
+        if (shouldStop?.()) return;
+        const i = cursor;
+        cursor += 1;
+        if (i >= items.length) return;
+        try {
+          out[i] = await worker(items[i], i);
+        } catch (e) {
+          // 单个任务抛错不再冒泡：抛出去就等于让调用方丢掉全部已完成的结果
+          // （写入阶段真会这样 —— 已写盘的科目、连同它们的日志缓冲一起蒸发，
+          // 汇总还会报 0，把「写了 7 个科目」显示成「什么都没写」）。
+          // 改为在该位置上放一个带错误标记的对象，让调用方按「这一个任务失败」处理。
+          out[i] = { __error: e };
+        }
+      }
+    };
+    // 路数取 min(limit, 任务数)：任务比路数少时不必空转 lane
+    const lanes = Math.max(1, Math.min(limit, items.length));
+    await Promise.all(Array.from({ length: lanes }, lane));
+    return out;
+  }
+
+  /**
+   * 取出 poolMap 结果数组里的真实结果，跳过「未开工」的位置。
+   *
+   * 为什么不能直接 `out.filter(Boolean)`：被停止时没轮到的位置是稀疏洞（`i in out === false`），
+   * 而 `Array.prototype.filter` 会跳过稀疏洞、`Array.prototype.forEach` 也是 ——
+   * 用它们过滤后会得到「洞被当成不存在」，但用 `filter(r => r === null)` 又会得到 0
+   * （洞不是字面 null）。两种写法都错，只有显式 `i in out` 判据才准。
+   *
+   * @returns {{items: any[], failed: Array<{index:number, error:Error}>}}
+   */
+  function collectPool(out) {
+    const items = [];
+    const failed = [];
+    for (let i = 0; i < out.length; i++) {
+      if (!(i in out)) continue;                       // 未开工（稀疏洞）
+      const v = out[i];
+      if (v === null) continue;                        // 显式未开工
+      if (v && v.__error) { failed.push({ index: i, error: v.__error }); continue; }
+      items.push(v);
+    }
+    return { items, failed };
+  }
+
   // ======================= 第一步：抓取凭证 =======================
 
   /**
@@ -659,28 +760,66 @@
    */
   async function fetchVoucherEntries(listAction, sxid, entityID, onProgress, auditSink) {
     const base = appBase();
-    const entries = [];
-    for (let page = 1; page <= 60; page++) {
-      const url = `${base}do?page=${page}&start=jzpz_list&action=${listAction}`
-        + `&SXID=${sxid}&QueryOnly=1&readyOnly=1&entityID=${entityID}`;
-      let html;
-      try { html = await httpGet(url); } catch (e) {
-        onProgress?.(`列表第 ${page} 页取回失败：${e.message}`);
-        break;
-      }
+    const pageUrl = (page) => `${base}do?page=${page}&start=jzpz_list&action=${listAction}`
+      + `&SXID=${sxid}&QueryOnly=1&readyOnly=1&entityID=${entityID}`;
+
+    // 取回并解析一页。解析出 0 条 = 列表到底了。
+    const grab = async (page) => {
+      const html = await httpGet(pageUrl(page));
       const pageEntries = parseVoucherLinks(html);
-      onProgress?.(`列表第 ${page} 页：${pageEntries.length} 张`);
       if (auditSink) {
         // 审核状态只在列表页有（详情页的「审核:」是签章栏），顺带在翻页时收齐
         for (const [k, v] of parseAuditStatus(html)) auditSink.set(k, v);
       }
-      if (!pageEntries.length) break;
-      entries.push(...pageEntries);
-
       const pm = html.replace(/&nbsp;/g, ' ').match(/第\s*(\d+)\s*页\s*\/\s*共\s*(\d+)\s*页/);
-      // 拿它判终止（实测答案侧为「第1页/共7页 共103行/每页15行」，故必须翻页累计，
-      // 单页只有 15 条，永远看不到 103）
-      if (pm && Number(pm[1]) >= Number(pm[2])) break;
+      return { page, pageEntries, totalPages: pm ? Number(pm[2]) : null, error: null };
+    };
+    // 单页失败不拖垮整轮：失败页按「空页」处理，由下面的顺序扫描决定是否截断。
+    const grabSafe = async (page) => {
+      try { return await grab(page); } catch (e) {
+        return { page, pageEntries: [], totalPages: null, error: e };
+      }
+    };
+
+    // 第 1 页必须先单独取：它就是「共几页」这个终止条件的来源，并行无从谈起。
+    let first;
+    try { first = await grab(1); } catch (e) {
+      onProgress?.(`列表第 1 页取回失败：${e.message}`);
+      return [];
+    }
+
+    // 其余页并行取（readConcurrency 路）。终止判据仍是列表页自己声明的
+    // 「第 N 页 / 共 M 页」与「本页 0 条」—— 页面比串行时更早取回不影响判据本身，
+    // 只影响日志出现的时刻，故下面统一按页号顺序回放日志与截断。
+    const results = [first];
+    if (first.pageEntries.length) {
+      const limit = first.totalPages != null ? Math.min(60, first.totalPages) : 60;
+      // 分块推进而不一次性发满：没有分页指针时上限 60 页，一次性发出去等于凭空多几十个请求，
+      // 而串行版在第一个空页就停了。按 readConcurrency 一档一档走，最多多取 readConcurrency-1 页。
+      for (let p = 2; p <= limit; p += CONFIG.readConcurrency) {
+        const chunk = [];
+        for (let q = p; q <= Math.min(limit, p + CONFIG.readConcurrency - 1); q++) chunk.push(q);
+        const got = await poolMap(chunk, CONFIG.readConcurrency, grabSafe, shouldStop);
+        let stopAfter = false;
+        for (const g of got) {
+          if (!g) { stopAfter = true; break; }   // 被停止：这一页没发出去，收工
+          results.push(g);
+          if (g.error || !g.pageEntries.length) stopAfter = true;
+        }
+        if (stopAfter) break;
+      }
+    }
+
+    // 按页号顺序回放：日志与截断行为与串行版逐页一致；跳号（停止）即到此为止。
+    const entries = [];
+    let expected = 1;
+    for (const g of results) {
+      if (g.page !== expected) break;
+      expected += 1;
+      if (g.error) { onProgress?.(`列表第 ${g.page} 页取回失败：${g.error.message}`); break; }
+      onProgress?.(`列表第 ${g.page} 页：${g.pageEntries.length} 张`);
+      if (!g.pageEntries.length) break;
+      entries.push(...g.pageEntries);
     }
 
     // 去重（按 accountrecordid）
@@ -705,10 +844,12 @@
    */
   async function fetchVoucherBodies(entries, detailAction, onProgress, shouldStop, renumberAsAnswer = true) {
     const base = appBase();
-    const vouchers = [];
-    for (let i = 0; i < entries.length; i++) {
-      if (shouldStop?.()) { onProgress?.('已收到停止请求，中断抓取'); break; }
-      const item = entries[i];
+    let done = 0;
+    // 每张凭证内部严格串行：详情跨页（current_page）是同一凭证的续页，必须按页序拼行，
+    // 且 first.pageCount 决定后面还有几页 —— 下一页要先知道上一页的读数。
+    // 凭证之间没有共享状态（各自只要自己那份 HTML），所以凭证级可以并行。
+    // 结果按 entries 顺序返回，凭证字号 `记${i+1}` 才不会错位。
+    const vouchers = await poolMap(entries, CONFIG.readConcurrency, async (item, i) => {
       // 详情 action 按来源改写（答案 zhsx_common_jzpz / 学生 zhsx_common）
       const detailUrl = item.url.replace(/action=[^&]*/, `action=${detailAction}`);
       let first;
@@ -716,9 +857,9 @@
         first = parseVoucherHtml(await httpGet(new URL(toInnerUrl(detailUrl), base).href));
       } catch (e) {
         log(`跳过 ${item.label}：${e.message}`);
-        continue;
+        return null;
       }
-      if (!first) { log(`跳过 ${item.label}：解析为空`); continue; }
+      if (!first) { log(`跳过 ${item.label}：解析为空`); return null; }
 
       const allLines = [...first.lines];
       for (let pg = 2; pg <= first.pageCount; pg++) {
@@ -733,10 +874,16 @@
       // 学生凭证缺号（缺 62，记63 起后移）会污染「凭证号列」，而该列必须填答案口径的字号。
       // 学生侧：保留真实 label，锁三才能报出「编号与答案序号存在错位」。
       const label = renumberAsAnswer ? `记${i + 1}` : item.label;
-      vouchers.push({ label, listLabel: item.label, ...first, lines: allLines });
-      onProgress?.(`凭证 ${i + 1}/${entries.length}`);
-    }
-    return vouchers;
+      done += 1;
+      onProgress?.(`凭证 ${done}/${entries.length}`);
+      return { label, listLabel: item.label, ...first, lines: allLines };
+    }, shouldStop);
+
+    // 用 collectPool 读：未开工位置是稀疏洞、解析失败位置是 null、lane 层异常是 {__error}，
+    // 三种都不该混进凭证数组（否则会得到一个没有 lines 的假凭证，aggregate 直接崩）。
+    const collected = collectPool(vouchers);
+    for (const f of collected.failed) log(`凭证抓取异常：${f.error.message}`);
+    return collected.items;
   }
 
   /**
@@ -1201,8 +1348,8 @@
 
     const q = await queryTState(ctx, acc.code, year, month);
     if (!q.state) {
-      // 旧实现这里是 `{action:'no-page'}` 静默略过，且不进面板汇总统计 ⇒
-      // 可能被误读成「全部成功」。改为显式失败并计入汇总（§六 的未定性项之一）。
+      // 旧实现此处静默略过，且不进面板汇总统计 ⇒ 可能被误读成「全部成功」。
+      // 改为显式失败并计入汇总。
       logFn(`❌ ${acc.code} ${acc.name}：GET 后无法解析出 T 型账表单（显式失败，不再静默跳过）`, 'bad');
       return { code: acc.code, name: acc.name, action: 'error', reason: '表单解析失败' };
     }
@@ -1226,16 +1373,18 @@
     // 三分支：① 平台无行 → 写入；② 与计划逐行匹配 → 真幂等跳过；③ 有行但不匹配 → 不写只告警。
     // 为什么 ③ 不自动覆盖：平台无事务、无回滚。
     //
-    // ⚠ 「先清空该科目再重写」这一档已按 ADR-0004 取消：要重写就先点面板上的「清空 T 型账」。
-    //   因此本函数不再有任何清空动作，只剩「无行则写 / 匹配则跳 / 不匹配则 stale」三分支。
+    // ⚠ 正常情况下 ③ 在本函数里已经不该发生：正式的冲突裁决在写入【之前】的写前普查里做
+    //   （surveyAccounts + askConflictChoice），用户选「清掉」时冲突科目已被清成 0 行。
+    //   保留这一分支是为了兜住「普查之后、本科目写入之前平台状态又变了」的窗口 ——
+    //   此时宁可少写一个科目，也不能往不一致的存量数据上叠写。
     if (state.rows.length > 0) {
       const ident = state.rows.length === plan.length && state.rows.every((r, i) => rowMatchesPlan(r, plan[i]));
       if (ident) {
         logFn(`⏭ ${acc.code} ${acc.name}：平台已有 ${state.rows.length} 行且与计划逐行一致（D3 宽容口径：比凭证号前缀+金额+方向），跳过`);
         return { code: acc.code, name: acc.name, action: 'skipped', existing: state.rows.length };
       }
-      logFn(`⚠ ${acc.code} ${acc.name}：平台有 ${state.rows.length} 行，但与计划（${plan.length} 行）不匹配。`
-        + '本轮跳过该科目以免写坏；请先点「清空 T 型账」再重跑。', 'warn');
+      logFn(`⚠ ${acc.code} ${acc.name}：平台有 ${state.rows.length} 行，但与计划（${plan.length} 行）不匹配`
+        + '（普查之后平台状态又变了）。本轮跳过该科目以免写坏。', 'warn');
       return { code: acc.code, name: acc.name, action: 'stale', existing: state.rows.length, planned: plan.length };
     }
 
@@ -1318,6 +1467,150 @@
   }
 
   /**
+   * 写前普查：把平台现状与「本轮计划」逐科目对账，产出四分类 + 计划外科目清单。
+   *
+   * 为什么必须在正式写入【之前】做（ADR-0006）：旧流程是「写到哪个科目才发现哪个科目冲突」，
+   * 停在一个写了一半的状态上，而平台无事务、无回滚。普查把全部冲突提前摊开，让人一次裁决。
+   *
+   * 为什么 `unknown` 绝不并入 `none`：「拿不到平台状态」与「平台是空的」是两回事 ——
+   * 后者会直接往存量数据上叠写。故 GET 失败一律不进写入名单。
+   *
+   * 为什么对全部 155 个科目都发一次只读 GET（而不是只查计划的 45 个）：
+   * 计划外科目（不在 45 个内、但平台有行）只报不删，若不一并查就根本不知道它们存在 ——
+   * 而这正是「别的实习批次留下的数据」最可能藏身的地方。
+   *
+   * @param {object} ctx
+   * @param {Array}  plans   本轮计划（aggregate 的输出，含 code/name/entries）
+   * @param {Function} shouldStop
+   * @param {Function} onProgress  进度回调，用于原地刷新「已查 N/155」
+   * @returns {Promise<{none:Array,ident:Array,conflict:Array,unknown:Array,foreign:Array,total:number}>}
+   */
+  async function surveyAccounts(ctx, plans, year, month, shouldStop, onProgress) {
+    let accounts;
+    try {
+      accounts = await fetchAccountList(ctx, year, month);
+    } catch (e) {
+      // 连科目清单都取不到 ⇒ 全部科目状态未知，而不是「平台是空的」。返回空名单，
+      // 由调用方按 unknown 口径中止写入。
+      return { none: [], ident: [], conflict: [], unknown: plans.map((p) => ({ code: p.code, name: p.name })), foreign: [], total: 0 };
+    }
+    if (!accounts || !accounts.length) {
+      return { none: [], ident: [], conflict: [], unknown: plans.map((p) => ({ code: p.code, name: p.name })), foreign: [], total: 0 };
+    }
+
+    const planByCode = new Map(plans.map((p) => [p.code, p]));
+    let scanned = 0;
+    // 只读 GET 之间无共享状态、无副作用，故 4 路并行（readConcurrency）。
+    // 逐科目的行数判据在 worker 内部完成，互不影响。
+    const got = await poolMap(accounts, CONFIG.readConcurrency, async (acc) => {
+      if (shouldStop()) return null;
+      const plan = planByCode.get(acc.code) || null;
+      const planRows = plan
+        ? plan.entries.map((e) => ({
+          pzh: e.voucherLabel,
+          debit: e.debit ? e.debit.toFixed(2) : '',
+          lend: e.lend ? e.lend.toFixed(2) : '',
+        }))
+        : null;
+      let st = null;
+      try {
+        const q = await queryTState(ctx, acc.code, year, month);
+        // 科目没切过去与解析失败一样，都不能当成 0 行
+        st = q.state && q.state.accountID === acc.code ? q.state : null;
+      } catch { st = null; }
+      scanned += 1;
+      onProgress?.(scanned, accounts.length);
+      return { acc, plan, planRows, st };
+    }, shouldStop);
+
+    const out = { none: [], ident: [], conflict: [], unknown: [], foreign: [], total: accounts.length };
+    for (const g of got) {
+      if (!g) continue;
+      const { acc, plan, planRows, st } = g;
+      if (!st) {
+        // 只对计划内科目报 unknown；计划外的取不到就算了，不必用噪音淹没日志
+        if (plan) out.unknown.push({ code: acc.code, name: acc.name });
+        continue;
+      }
+      const n = st.rows.length;
+      if (!plan) {
+        // 计划外科目：只记不删（可能是别的实习批次留下的数据，脚本不做超出用户意图的删除）
+        if (n > 0) out.foreign.push({ code: acc.code, name: acc.name, rows: n });
+        continue;
+      }
+      if (n === 0) { out.none.push({ code: acc.code, name: acc.name, plan }); continue; }
+      // 幂等判据沿用 rowMatchesPlan 的宽容口径（比凭证号前缀 + 金额 + 方向，不比摘要）
+      const ident = n === planRows.length && st.rows.every((r, i) => rowMatchesPlan(r, planRows[i]));
+      if (ident) out.ident.push({ code: acc.code, name: acc.name, rows: n });
+      else out.conflict.push({ code: acc.code, name: acc.name, rows: n, planned: planRows.length, plan });
+    }
+    return out;
+  }
+
+  /**
+   * 冲突裁决闸门：在日志区列清单、启用两个按钮，然后挂起等用户点。
+   *
+   * 返回 'clear'（清掉冲突科目再写）/ 'skip'（只写 none 的科目）/ 'stopped'。
+   *
+   * 为什么不用 `confirm()`：面板日志走 textContent、markdown 不渲染，清单要能在日志区
+   * 逐行看；而 confirm 只给一个弹窗、没有「看到清单再决定」的余地，也无法体现「计划外科目」
+   * 这类只报不动的内容。
+   *
+   * 为什么等待期间把其余按钮禁掉、只放这两个：此刻处于「已归集、已过锁、尚未写平台」
+   * 的悬空态，此时让用户再点一个入口（比如再点一次写入）会重入整轮流程。
+   */
+  function askConflictChoice(panel, conflicts, foreign, unknown) {
+    const logEl = panel.querySelector('#v2t-log');
+    const line = (s, cls) => {
+      const d = document.createElement('div');
+      if (cls) d.className = cls;
+      d.textContent = s;
+      logEl.appendChild(d);
+    };
+
+    // 清单只列科目与行数，不列平台行的具体内容（用户明确选择「只列科目与行数」）。
+    line(`⚠ 发现 ${conflicts.length} 个冲突科目（平台已有行，但与本轮计划不匹配）：`, 'warn');
+    for (const c of conflicts) line(`   ${c.code} ${c.name} ｜ 平台 ${c.rows} 行 / 计划 ${c.planned} 行`, 'warn');
+    if (foreign.length) {
+      const totalRows = foreign.reduce((s, f) => s + f.rows, 0);
+      line(`ℹ 另有 ${foreign.length} 个计划外科目平台已有数据（共 ${totalRows} 行），本轮不动它们：`, 'warn');
+      for (const f of foreign) line(`   ${f.code} ${f.name} ｜ 平台 ${f.rows} 行`, 'warn');
+    }
+    if (unknown.length) {
+      line(`⚠ ${unknown.length} 个科目状态未知（GET 失败或科目未切换），本轮跳过不写：`
+        + unknown.map((u) => u.code).join(', '), 'bad');
+    }
+    line('请选择：清掉这些冲突科目并继续写入，还是跳过它们？', 'warn');
+    logEl.scrollTop = logEl.scrollHeight;
+
+    const btnClear = panel.querySelector('#v2t-conflict-clear');
+    const btnSkip = panel.querySelector('#v2t-conflict-skip');
+    panel.querySelector('#v2t-conflict-bar').style.display = 'flex';
+    btnClear.disabled = false;
+    btnSkip.disabled = false;
+
+    return new Promise((resolve) => {
+      let settled = false;
+      let timer = null;
+      const done = (v) => {
+        if (settled) return;
+        settled = true;
+        if (timer) clearInterval(timer);
+        btnClear.disabled = true;
+        btnSkip.disabled = true;
+        btnClear.onclick = null;
+        btnSkip.onclick = null;
+        panel.querySelector('#v2t-conflict-bar').style.display = 'none';
+        resolve(v);
+      };
+      // 等待期间点「停止」= 跳过（不删任何东西），并让主流程在下一个检查点收工
+      timer = setInterval(() => { if (!settled && stopRequested) done('stopped'); }, 200);
+      btnClear.onclick = () => done('clear');
+      btnSkip.onclick = () => done('skip');
+    });
+  }
+
+  /**
    * 「清空 T 型账」：扫平台的全部总账科目，凡已有行的都清空。
    *
    * 为什么作用域是全部总账科目（实测 155 个）而不是归集出的 45 个：
@@ -1331,11 +1624,12 @@
    * @param {string}   year
    * @param {string}   month
    * @param {Function} logFn
-   * @param {Function} shouldStop  每轮开头查一次；置位则中断并报出已清数量
+   * @param {Function} shouldStop  每个科目开工前查一次；置位则不再派发新科目
+   * @param {Function} [onProgress] 进度回调 `(已清数, 总数)`，供面板原地刷新一行
    * @returns {Promise<Array<{code:string, name:string, action:string, before?:number, after?:number}>>}
    *          逐科目结果数组；取不到科目清单时返回空数组（调用方据空数组报错）
    */
-  async function clearAllAccounts(ctx, year, month, logFn, shouldStop) {
+  async function clearAllAccounts(ctx, year, month, logFn, shouldStop, onProgress) {
     let accounts;
     try {
       accounts = await fetchAccountList(ctx, year, month);
@@ -1349,34 +1643,57 @@
     }
     logFn(`清空范围：平台全部总账科目 ${accounts.length} 个（不依赖凭证）`);
 
-    const res = [];
-    for (let i = 0; i < accounts.length; i++) {
-      if (shouldStop()) {
-        logFn(`⏹ 已停止：已处理 ${i} / ${accounts.length} 个科目，其余未清。`, 'warn');
-        break;
-      }
-      const acc = accounts[i];
-      logFn(`[${i + 1}/${accounts.length}] ${acc.code} ${acc.name}…`);
+    let scanned = 0;
+    // 科目之间无共享可变写入态（请求体每次显式携带 sxid/accountID/yyyy/mm/entityid），
+    // 故科目级可以并行；每个科目内部仍是「前置 GET → delete_loop → 复核 GET」的严格串行。
+    // 这里不让子日志直接打面板：并发下会交错。每个科目先把本轮日志缓冲成一段，
+    // 预扫描结束后按原顺序整段输出（scan 段内部的 progress 行除外，它本来就要原地刷新）。
+    const res = await poolMap(accounts, CONFIG.readConcurrency, async (acc, i) => {
+      scanned += 1;
+      onProgress?.(scanned, accounts.length);
+      const buf = [`[${i + 1}/${accounts.length}] ${acc.code} ${acc.name}…`];
+      const sub = (s, cls) => buf.push({ s: '   ' + s, cls: cls || '' });
       try {
-        res.push({
-          ...(await clearAccount(ctx, acc, year, month, (s, cls) => logFn('   ' + s, cls || ''))),
+        return {
+          ...(await clearAccount(ctx, acc, year, month, sub)),
           name: acc.name,
-        });
+          __buf: buf,
+        };
       } catch (e) {
-        logFn(`❌ ${acc.code} 清空异常：${e.message}`, 'bad');
-        res.push({ code: acc.code, name: acc.name, action: 'error' });
+        buf.push({ s: `❌ ${acc.code} 清空异常：${e.message}`, cls: 'bad' });
+        return { code: acc.code, name: acc.name, action: 'error', __buf: buf };
       }
+    }, shouldStop);
+
+    // 整段回放：顺序与串行版逐科目一致，缩进与分类色保留。
+    // 用 collectPool 读：未开工位置是稀疏洞，直接遍历会把洞当空值。
+    const collected = collectPool(res);
+    const done = [];
+    for (const r of collected.items) {
+      for (const b of r.__buf) {
+        if (typeof b === 'string') logFn(b); else logFn(b.s, b.cls);
+      }
+      const { __buf: _drop, ...rest } = r;
+      done.push(rest);
+    }
+    for (const f of collected.failed) {
+      logFn(`❌ ${accounts[f.index]?.code} 清空异常：${f.error.message}`, 'bad');
+      done.push({ code: accounts[f.index]?.code, action: 'error' });
+    }
+    // 中断判据以停止标志本身为准（worker 内那句 shouldStop 分支几乎不可达，见 poolMap 注释）
+    if (shouldStop()) {
+      logFn(`⏹ 已停止：${done.length} / ${accounts.length} 个科目已处理，其余未清。`, 'warn');
     }
 
     // 口径必须区分「本次清掉的」与「本来就是 0 行的」——把两者合并成一个数会让人
     // 以为清掉了 155 个科目（而其中 115 个原本就没有行）。外层 runClearEntry 已分开报，
     // 这里对齐同一口径。
-    const cleared = res.filter((r) => r.action === 'cleared' && r.after === 0).length;
-    const wasZero = res.filter((r) => r.action === 'skipped').length;
-    const bad = res.filter((r) => r.action === 'error').length;
+    const cleared = done.filter((r) => r.action === 'cleared' && r.after === 0).length;
+    const wasZero = done.filter((r) => r.action === 'skipped').length;
+    const bad = done.filter((r) => r.action === 'error').length;
     logFn(`✅ 清空结束：本次清掉 ${cleared} 个科目，原本已是 0 行 ${wasZero} 个，失败 ${bad} 个`
       + `（共扫描 ${accounts.length} 个）`, bad ? 'warn' : 'ok');
-    return res;
+    return done;
   }
 
   // ======================= 界面 =======================
@@ -1422,6 +1739,10 @@
           <button id="v2t-del-cache">删除本地存储答案</button>
           <button id="v2t-stop" class="ghost" disabled>停止</button>
         </div>
+        <div id="v2t-conflict-bar" style="margin:8px 0; display:none; gap:6px">
+          <button id="v2t-conflict-clear" disabled>清掉这些科目并继续</button>
+          <button id="v2t-conflict-skip" class="ghost" disabled>跳过它们</button>
+        </div>
         <div id="v2t-log">就绪。请先进入实训企业。操作顺序：① 清空 T 型账 → ② 获取教师答案并写入 → ③ 获取学生答案并写入（② ③ 抓过一次后会留在本地复用）；④ 删除本地存储答案只清本地缓存，不碰平台。</div>
       </div>`;
     document.body.appendChild(panel);
@@ -1442,6 +1763,29 @@
     line.textContent = msg;
     el.appendChild(line);
     el.scrollTop = el.scrollHeight;
+  }
+
+  /**
+   * 长跑进度行：在日志区【原地刷新一行】，不每次新增一行。
+   *
+   * 为什么要复用同一个元素：普查 155 个科目、清空 155 个科目、抓 103 张凭证这三段
+   * 各会刷新上百次，每次新增一行会把日志区冲走，前面真正要看的内容（冲突清单、三锁结果）
+   * 会被顶出可视区。
+   * 返回一个 `{ update, close }`：update 覆写该行文本，close 把它从「原地刷新」摘出来
+   * （改完这一行之后，后续日志就正常往下追加）。
+   */
+  function uiprog(panel, msg, cls = '') {
+    const el = panel.querySelector('#v2t-log');
+    const line = document.createElement('div');
+    if (cls) line.className = cls;
+    line.textContent = msg;
+    el.appendChild(line);
+    let touched = false;
+    return {
+      update: (s) => { touched = true; line.textContent = s; el.scrollTop = el.scrollHeight; },
+      // 一次都没刷新过（缓存命中、0 个科目等）说明这行只是个占位，摘掉，别在日志里留噪音
+      close: () => { if (!touched && line.parentNode) line.parentNode.removeChild(line); },
+    };
   }
 
   // ======================= 主流程 =======================
@@ -1505,6 +1849,11 @@
     stopRequested = false;
     for (const id of ENTRY_BUTTONS) panel.querySelector(id).disabled = true;
     panel.querySelector('#v2t-stop').disabled = false;
+    // 冲突裁决按钮不随忙碌态启用（它们只在普查结束后、由 askConflictChoice 打开）——
+    // 这里只保证上一轮若异常退出，它们不会残留成可点状态。
+    panel.querySelector('#v2t-conflict-clear').disabled = true;
+    panel.querySelector('#v2t-conflict-skip').disabled = true;
+    panel.querySelector('#v2t-conflict-bar').style.display = 'none';
     panel.querySelector('#v2t-log').innerHTML = '';
 
     const logFn = (msg, cls = '') => uilog(panel, msg, cls);
@@ -1520,7 +1869,7 @@
 
       const year = panel.querySelector('#v2t-year').value || CONFIG.year;
       const month = panel.querySelector('#v2t-month').value || CONFIG.month;
-      await entry({ ctx, year, month, logFn });
+      await entry({ ctx, year, month, logFn, panel });
     } catch (e) {
       if (e && e.__stopped) logFn('⏹ 已停止。', 'warn');
       else { logFn(`❌ 出错：${e.message}`, 'bad'); log(e); }
@@ -1529,6 +1878,9 @@
       stopRequested = false;
       for (const id of ENTRY_BUTTONS) panel.querySelector(id).disabled = false;
       panel.querySelector('#v2t-stop').disabled = true;
+      panel.querySelector('#v2t-conflict-clear').disabled = true;
+      panel.querySelector('#v2t-conflict-skip').disabled = true;
+      panel.querySelector('#v2t-conflict-bar').style.display = 'none';
     }
   }
 
@@ -1541,14 +1893,18 @@
    *   - 不依赖凭证、不过三锁闸门：清空是重置动作，凭证取不到、或凭证本身是错的时候，
    *     也要能用它把平台清干净。整条路径不读取、不校验任何凭证与归集结果。
    */
-  async function runClearEntry(ctx, year, month, logFn) {
+  async function runClearEntry(ctx, year, month, logFn, panel) {
     // ⚠ 确认弹窗必须在任何扫描 / 网络请求之前，且文案里不得出现科目数量。
     const ok = confirm(`⚠ 即将清空 T 型账：${year} 年 ${month} 月，范围是平台全部总账科目的已登记行。\n\n`
       + '平台无事务、无回滚，此操作不可恢复。\n确认继续？');
     if (!ok) { logFn('已取消：未碰平台。', 'warn'); return; }
 
     logFn(`清空 T 型账（${year} 年 ${month} 月）…`);
-    const res = await clearAllAccounts(ctx, year, month, logFn, shouldStop);
+    // 清空要扫 155 个科目，属长跑；进度「原地刷新一行」，不每次新增行
+    const prog = panel ? uiprog(panel, '已清空 0/…') : null;
+    const res = await clearAllAccounts(ctx, year, month, logFn, shouldStop,
+      (n, total) => prog?.update(`已清空 ${n}/${total}`));
+    prog?.close();
     if (!res.length) return;
     const cleared = res.filter((r) => r.action === 'cleared' && r.after === 0).length;
     const wasZero = res.filter((r) => r.action === 'skipped').length;
@@ -1587,13 +1943,13 @@
   }
 
   /** ② 获取教师答案并写入 T 型账。 */
-  async function runTeacherEntry(ctx, year, month, logFn) {
-    return runWriteEntry(ctx, year, month, logFn, 'teacher');
+  async function runTeacherEntry(ctx, year, month, logFn, panel) {
+    return runWriteEntry(ctx, year, month, logFn, 'teacher', panel);
   }
 
   /** ③ 获取学生答案并写入 T 型账。 */
-  async function runStudentEntry(ctx, year, month, logFn) {
-    return runWriteEntry(ctx, year, month, logFn, 'student');
+  async function runStudentEntry(ctx, year, month, logFn, panel) {
+    return runWriteEntry(ctx, year, month, logFn, 'student', panel);
   }
 
   /**
@@ -1606,7 +1962,7 @@
    *     就比一次，没有就标「未执行」，不阻断；写学生答案时对称地拿已有教师答案数据比对。
    *   - 审核状态不构成闸门：抓取完成后报出未审核凭证，不阻止写入。
    */
-  async function runWriteEntry(ctx, year, month, logFn, kind) {
+  async function runWriteEntry(ctx, year, month, logFn, kind, panel) {
     const kindName = kind === 'teacher' ? '教师答案' : '学生答案';
     const auditSink = new Map();
     // cfg 只剩 throttleMs：三个旧开关（只读预览 / 先清空再重写 / 只清空不重写）已按 ADR-0004 删除
@@ -1614,7 +1970,11 @@
 
     logFn(`① 获取${kindName}凭证…`);
     throwIfStopped();
-    const vouchers = await fetchForEntry(ctx, kind, logFn, (s) => logFn('   ' + s), auditSink);
+    // 抓 103 张凭证是长跑（列表翻页 + 逐张详情），进度原地刷新一行
+    const fetchProg = panel ? uiprog(panel, '抓取中…') : null;
+    const vouchers = await fetchForEntry(ctx, kind, logFn,
+      (s) => { if (fetchProg) fetchProg.update(s); else logFn('   ' + s); }, auditSink);
+    fetchProg?.close();
     if (!isUsableVouchers(vouchers)) {
       logFn(`❌ 没抓到${kindName}凭证。`, 'bad');
       return;
@@ -1668,28 +2028,139 @@
       logFn('⚠ 锁三提示不一致，按决策继续执行（仅提示，不阻断）。', 'warn');
     }
 
-    // 4. 回填（写入前不弹确认；只把科目数与行数列进日志 —— 这是取消「只读预览」档后的代价缓解）
+    // 4. 回填（HTTP 化：不导航任何 DOM）
     const taccounts = allAccounts;
-    logFn(`④ 写入 T 型账（HTTP 化：不导航任何 DOM）｜期间 ${year} 年 ${month} 月`);
-    logFn(`   本轮计划：${taccounts.length} 个科目、${taccounts.reduce((s, a) => s + a.entryCount, 0)} 行`
-      + `（贷/借合计 ${lock.totalDebit.toFixed(2)}）`);
 
-    const results = [];
-    let aborted = false;
+    // ---------- 写前普查 + 冲突裁决（ADR-0006）----------
+    // 位置很关键：归集完成、三锁通过【之后】，正式写入【之前】。此处若发现冲突，
+    // 平台一行都还没动过，用户可以干净地重新决定。
+    throwIfStopped();
+    logFn('③b 写前普查：查平台全部总账科目的当前行数（写入前的最后一道核对）…');
+    const surveyProg = panel ? uiprog(panel, '已查 0/…') : null;
+    const survey = await surveyAccounts(ctx, taccounts, year, month, shouldStop,
+      (n, total) => surveyProg?.update(`已查 ${n}/${total}`));
+    surveyProg?.close();
+    if (!survey.total) {
+      // 连平台科目清单都没取到 ⇒ 所有科目状态都未知。此时写入等于盲写，一律不写。
+      logFn('❌ 普查未能取到平台科目清单（GET 异常或下拉为空），全部科目状态未知，本轮不写。', 'bad');
+      return;
+    }
+    logFn(`   平台总账科目 ${survey.total} 个：待写 ${survey.none.length}，`
+      + `幂等跳过 ${survey.ident.length}，冲突 ${survey.conflict.length}，`
+      + `状态未知 ${survey.unknown.length}，计划外有数据 ${survey.foreign.length}`,
+      survey.conflict.length || survey.unknown.length ? 'warn' : 'ok');
+
+    // 本轮到底要写哪些科目：默认是「平台 0 行」的那批；用户选「清掉」后再把冲突科目加回来
+    // （它们此时已被清成 0 行）。
+    const writeSet = new Set(survey.none.map((n) => n.code));
+
+    if (survey.conflict.length) {
+      if (!panel) {
+        // 没有面板就没有人可以裁决（理论不可达：写入入口都从面板进）。保守取「跳过」。
+        logFn('⚠ 无面板可交互，冲突科目一律跳过。', 'warn');
+      } else {
+        const choice = await askConflictChoice(panel, survey.conflict, survey.foreign, survey.unknown);
+        if (choice === 'clear') {
+          // 先把冲突科目并行清空，再统一进入写入 —— 删除是预清理，不是写路径的一个分支。
+          // 这样 fillAccount 维持单一形态（平台无行 → 写），不新增「有行变无行」的入口。
+          logFn(`   清理 ${survey.conflict.length} 个冲突科目（并发 ${CONFIG.writeConcurrency} 路）…`);
+          const clearProg = uiprog(panel, `已清理 0/${survey.conflict.length}`);
+          let cleared = 0;
+          // 与写入段同理：并发 lane 不能直接往面板打日志（会交错），先缓冲、后整段回放
+          const clrBuf = await poolMap(survey.conflict, CONFIG.writeConcurrency, async (c) => {
+            if (shouldStop()) return null;
+            const acc = taccounts.find((a) => a.code === c.code) || c;
+            const buf = [];
+            const r = await clearAccount(ctx, acc, year, month, (s, cls) => buf.push({ s: '      ' + s, cls: cls || '' }));
+            cleared += 1;
+            clearProg.update(`已清理 ${cleared}/${survey.conflict.length}`);
+            return { r, buf };
+          }, shouldStop);
+          clearProg.close();
+          for (const g of clrBuf) {
+            if (!g) continue;
+            for (const b of g.buf) logFn(b.s, b.cls);
+          }
+          for (const c of survey.conflict) writeSet.add(c.code);
+        } else {
+          logFn(choice === 'stopped'
+            ? '   已停止：冲突科目与其余科目本轮都不写。'
+            : '   已选择跳过冲突科目，只写「平台 0 行」的科目。', 'warn');
+          if (choice === 'stopped') return;
+        }
+      }
+    }
+    if (survey.foreign.length) {
+      logFn(`ℹ 计划外科目 ${survey.foreign.length} 个平台已有行，本轮不动：`
+        + survey.foreign.map((f) => `${f.code}(${f.rows})`).join(', '), 'warn');
+    }
+    if (survey.unknown.length) {
+      logFn(`⚠ 状态未知 ${survey.unknown.length} 个科目本轮跳过（「未知」不等于「平台是空的」）：`
+        + survey.unknown.map((u) => u.code).join(', '), 'bad');
+    }
+
+    // 按计划顺序列出写入名单。这一趟是纯本地筛选、不发请求，但它逐科目确认一次「停止」——
+    // 让用户在最长的并发段开始【之前】还有一个生效点。
+    const writable = [];
     for (let i = 0; i < taccounts.length; i++) {
-      // 「停止」按钮的生效点之一：主循环每轮开头查一次。
       if (shouldStop()) {
-        logFn(`⏹ 已停止：处理完 ${i} / ${taccounts.length} 个科目，第 ${i + 1} 个未开始。`, 'warn');
-        aborted = true;
-        break;
+        logFn(`⏹ 已停止：写入名单尚未开始构建（0 / ${taccounts.length} 个科目），本轮未碰平台。`, 'warn');
+        return;
       }
       const acc = taccounts[i];
-      const name = `${acc.code} ${acc.name}`;
-      logFn(`   [${i + 1}/${taccounts.length}] ${name}…`);
-      const r = await fillAccount(ctx, acc, year, month, cfg, (s, cls) => logFn('      ' + s, cls), shouldStop);
-      results.push({ ...r, name: acc.name || name });
-      if (r.action === 'stopped') { aborted = true; break; }
+      if (writeSet.has(acc.code)) writable.push(acc);
     }
+    throwIfStopped();
+
+    logFn(`④ 写入 T 型账（HTTP 化：不导航任何 DOM）｜期间 ${year} 年 ${month} 月`);
+    logFn(`   本轮计划：${taccounts.length} 个科目、${taccounts.reduce((s, a) => s + a.entryCount, 0)} 行`
+      + `；实际写入 ${writable.length} 个科目`
+      + `（贷/借合计 ${lock.totalDebit.toFixed(2)}）`);
+
+    // 科目级并发（writeConcurrency 路）；同一科目内部仍严格串行 —— 依据见 poolMap 注释
+    // （insert 的 body 自带当前全部已存行与 TEMPid，下一行必须看到上一行的落库结果）。
+    // 并发下日志会交错，所以每个科目先把本轮日志缓冲成一段，科目结束后整段一次性打给面板。
+    const buffered = await poolMap(writable, CONFIG.writeConcurrency, async (acc, idx) => {
+      const name = `${acc.code} ${acc.name}`;
+      const buf = [`   [${idx + 1}/${writable.length}] ${name}…`];
+      const sub = (s, cls) => buf.push({ s: '      ' + s, cls: cls || '' });
+      try {
+        // 子日志带缩进与分类色（与串行版同形），只是先落进 buf 不直接打面板
+        const r = await fillAccount(ctx, acc, year, month, cfg, sub, shouldStop);
+        return { ...r, name: acc.name || name, __buf: buf };
+      } catch (e) {
+        // 单科目异常不再冒泡：冒泡就等于把其他已写盘科目的结果与日志一起丢掉。
+        // 这里就地转成一条 error 结果，日志缓冲同时保留。
+        if (e && e.__stopped) buf.push({ s: '⏹ 停止：该科目未写完', cls: 'warn' });
+        else buf.push({ s: `❌ ${acc.code} 异常：${e.message}`, cls: 'bad' });
+        return { code: acc.code, name: acc.name, action: 'error', reason: e.message, __buf: buf };
+      }
+    }, shouldStop);
+
+    // 整段回放：同科目内的行序不变，科目之间的顺序按计划顺序输出（不再是完成顺序）。
+    // 用 collectPool 读结果 —— 未开工位置是稀疏洞，filter(Boolean) 会跳过它们、
+    // filter(r => r === null) 又数不到它们，两种写法都会把统计做错。
+    const collected = collectPool(buffered);
+    const results = [];
+    for (const r of collected.items) {
+      if (r.__buf) {
+        for (const b of r.__buf) {
+          if (typeof b === 'string') logFn(b); else logFn(b.s, b.cls);
+        }
+      }
+      const { __buf: _drop, ...rest } = r;
+      results.push(rest);
+    }
+    for (const f of collected.failed) {
+      // 走到这里说明是 poolMap 层面捕获的异常（写入侧已在 worker 内就地转成 error 结果）
+      logFn(`❌ 第 ${f.index + 1} 个科目异常：${f.error.message}`, 'bad');
+      results.push({ code: writable[f.index]?.code, action: 'error', reason: f.error.message });
+    }
+    // 是否被中断以停止标志本身为准：停止可能落在「lane 已取号、在途请求正在收尾」的窗口里，
+    // 此时没有任何 worker 提前返回，靠 worker 计数会漏判（worker 内那句 shouldStop 分支
+    // 因为 lane 在循环顶部就 return 而几乎不可达 —— 见 poolMap 注释）。
+    const aborted = shouldStop();
+    const notStarted = writable.length - results.length;
 
     const written = results.filter((r) => r.action === 'written');
     const matched = written.filter((r) => r.match);
@@ -1697,7 +2168,9 @@
     const errored = results.filter((r) => r.action === 'error');
     const partial = results.filter((r) => r.action === 'partial');
     if (aborted) {
-      logFn(`⏹ 已中断：写入 ${written.length} 个科目（未完成全部 ${taccounts.length} 个）。`, 'warn');
+      logFn(`⏹ 已中断：写入 ${written.length} 个科目；未开工 ${notStarted} 个`
+        + `（本轮写入名单 ${writable.length} 个，计划科目共 ${taccounts.length} 个）。`
+        + '在途请求已收完，不再发新的。', 'warn');
     } else {
       logFn(`✅ 完成：写入 ${written.length} 个科目，对账一致 ${matched.length}`, 'ok');
     }
@@ -1710,8 +2183,8 @@
     if (stale.length) {
       logFn(`⚠ ${stale.length} 个科目平台上已有数据但与计划不匹配，本轮未动：`
         + `${stale.map((s) => s.code).join(', ')}`, 'warn');
-      logFn('   行数与计划不符（多半是上次写入中断留下的）。'
-        + '请先点①「清空 T 型账」，再重跑本按钮。', 'warn');
+      logFn('   这些是「普查之后平台状态又变了」的科目（普查阶段本会列进冲突清单让人裁决）。'
+        + '再点一次本按钮即可重新普查。', 'warn');
     }
     const bad = written.filter((r) => !r.match);
     if (bad.length) {
@@ -1736,9 +2209,9 @@
     } catch { /* 跨域：放弃去重，退化为各自挂载 */ }
 
     const panel = buildUI();
-    panel.querySelector('#v2t-clear-all').onclick = () => withEntry(panel, (e) => runClearEntry(e.ctx, e.year, e.month, e.logFn));
-    panel.querySelector('#v2t-run-teacher').onclick = () => withEntry(panel, (e) => runTeacherEntry(e.ctx, e.year, e.month, e.logFn));
-    panel.querySelector('#v2t-run-student').onclick = () => withEntry(panel, (e) => runStudentEntry(e.ctx, e.year, e.month, e.logFn));
+    panel.querySelector('#v2t-clear-all').onclick = () => withEntry(panel, (e) => runClearEntry(e.ctx, e.year, e.month, e.logFn, panel));
+    panel.querySelector('#v2t-run-teacher').onclick = () => withEntry(panel, (e) => runTeacherEntry(e.ctx, e.year, e.month, e.logFn, panel));
+    panel.querySelector('#v2t-run-student').onclick = () => withEntry(panel, (e) => runStudentEntry(e.ctx, e.year, e.month, e.logFn, panel));
     panel.querySelector('#v2t-del-cache').onclick = () => withEntry(panel, (e) => runDelCacheEntry(e.logFn));
     panel.querySelector('#v2t-stop').onclick = () => {
       // 置位后主循环与内部长循环都会读它，真正中断；
@@ -1748,6 +2221,10 @@
     };
     log('面板已注入 v3', window.top === window.self ? '(顶层文档)' : `(框架 ${window.name})`);
   }
+
+  // 没有 document 就没有「面板宿主」这回事（例如把本文件当模块装配进离线验收台时）。
+  // 加这道守卫是为了让脚本本身能被无 DOM 环境装载，从而能对 poolMap 这类纯逻辑单元做离线断言。
+  if (typeof document === 'undefined') return;
 
   if (document.readyState === 'complete' || document.readyState === 'interactive') {
     setTimeout(boot, 800);
