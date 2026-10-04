@@ -1,0 +1,24 @@
+# 依赖与产物
+node_modules/
+out/
+*.log
+
+# 本地配置（含账号密码，绝不入库）
+config/config.local.json
+config/*.local.json
+
+# 浏览器 profile 与取证产物
+# 注意：probe/ 下的探针脚本与 HTML dump 含硬编码学号/姓名/会话 ID，一律不入库。
+.profile/
+probe/shot*.png
+probe/*.json
+probe/*.html
+probe/*.mjs
+
+# 工单与对齐记录（含未脱敏的学号/姓名/会话 ID，不入库）
+.scratch/
+
+# 编辑器/系统
+.DS_Store
+*.swp
+*.deb

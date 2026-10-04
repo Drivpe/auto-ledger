@@ -1,0 +1,38 @@
+{
+  "$comment": "复制本文件为 config.local.json 后填写。config.local.json 已被 .gitignore 忽略，不会进版本库。",
+  "baseUrl": "http://10.11.4.69:8090/netinnet_zhsx_v63/",
+  "login": {
+    "userid": "<在此填写学生账号>",
+    "password": "<在此填写密码>",
+    "role": "student"
+  },
+  "platform": {
+    "$comment": "实训上下文。sxid 是会话级标识，属敏感实值，因此源码内不再内联，一律从这里读（或 --sxid= / 环境变量 V2T_SXID）。取法：登录进入实训企业后，地址栏 URL 里的 SXID 参数。",
+    "sxid": "<在此填写你的 SXID>",
+    "entityID": "110",
+    "year": "2020",
+    "month": "1",
+    "entryName": "<可选：e_entity 入口的显示名，URL 编码后的形态>"
+  },
+  "task": {
+    "$comment": "实训任务名/标识。登录后平台会列出可进入的任务，填其名称或下方留空由脚本运行时选择。",
+    "name": "",
+    "selectMode": "auto-first"
+  },
+  "run": {
+    "$comment": "dryRun=true 只抓取与计算、不写平台。首次务必保持 true：看清将要写入的内容后，再把这里改成 false，并显式给 fill 脚本传 --commit（两个条件同时满足才会真写）。",
+    "dryRun": true,
+    "confirmBeforeSubmit": true,
+    "headful": true,
+    "slowMoMs": 0,
+    "throttleMs": 200,
+    "captureDialogs": true
+  },
+  "paths": {
+    "outDir": "./out",
+    "vouchersFile": "./out/vouchers.json",
+    "vouchersStudentFile": "./out/vouchers-student.json",
+    "taccountsFile": "./out/taccounts.json",
+    "reportFile": "./out/report.md"
+  }
+}
