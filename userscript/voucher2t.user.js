@@ -502,7 +502,12 @@
       if (!(i in out)) continue;                       // 未开工（稀疏洞）
       const v = out[i];
       if (v === null) continue;                        // 显式未开工
-      if (v && v.__error) { failed.push({ index: i, error: v.__error }); continue; }
+      // 用 `in` 而不是 `v && v.__error`：`throw 0` / `throw ''` / `throw null` 这类 falsy
+      // 抛出值会绕过真值判断泄漏进 items，被当成一条正常结果用（round9 复核 N2）。
+      if (typeof v === 'object' && v !== null && '__error' in v) {
+        failed.push({ index: i, error: v.__error });
+        continue;
+      }
       items.push(v);
     }
     return { items, failed };
@@ -801,8 +806,19 @@
         for (let q = p; q <= Math.min(limit, p + CONFIG.readConcurrency - 1); q++) chunk.push(q);
         const got = await poolMap(chunk, CONFIG.readConcurrency, grabSafe, shouldStop);
         let stopAfter = false;
-        for (const g of got) {
-          if (!g) { stopAfter = true; break; }   // 被停止：这一页没发出去，收工
+        // 按索引读，不用 collectPool：这个循环要靠「洞」本身判是否被停止
+        // （洞 = 该页没派发出去），而 collectPool 会把洞滤掉、正好丢掉这个信号。
+        // `grabSafe` 自带 catch，所以 `{__error}` 在当前实现下不可达；仍显式处理，
+        // 免得日后有人去掉那层保护就静默退化。
+        for (let gi = 0; gi < got.length; gi++) {
+          if (!(gi in got)) { stopAfter = true; break; }        // 未开工（被停止），收工
+          const g = got[gi];
+          if (g === null) { stopAfter = true; break; }
+          if (g && g.__error) {
+            results.push({ page: chunk[gi], pageEntries: [], totalPages: null, error: g.__error });
+            stopAfter = true;
+            break;
+          }
           results.push(g);
           if (g.error || !g.pageEntries.length) stopAfter = true;
         }
@@ -1524,7 +1540,14 @@
     }, shouldStop);
 
     const out = { none: [], ident: [], conflict: [], unknown: [], foreign: [], total: accounts.length };
-    for (const g of got) {
+    // 用 collectPool 读：未开工位置是稀疏洞。worker 自带 try/catch ⇒ `{__error}` 当前
+    // 不可达，但统一走 collectPool 才不会在日后去掉那层保护时静默退化。
+    const gotItems = collectPool(got);
+    for (const f of gotItems.failed) {
+      const p = plans.find((x) => x.code === accounts[f.index]?.code) || null;
+      if (p) out.unknown.push({ code: p.code, name: p.name });
+    }
+    for (const g of gotItems.items) {
       if (!g) continue;
       const { acc, plan, planRows, st } = g;
       if (!st) {
@@ -1681,7 +1704,8 @@
       done.push({ code: accounts[f.index]?.code, action: 'error' });
     }
     // 中断判据以停止标志本身为准（worker 内那句 shouldStop 分支几乎不可达，见 poolMap 注释）
-    if (shouldStop()) {
+    const stoppedEarly = shouldStop();
+    if (stoppedEarly) {
       logFn(`⏹ 已停止：${done.length} / ${accounts.length} 个科目已处理，其余未清。`, 'warn');
     }
 
@@ -1691,8 +1715,15 @@
     const cleared = done.filter((r) => r.action === 'cleared' && r.after === 0).length;
     const wasZero = done.filter((r) => r.action === 'skipped').length;
     const bad = done.filter((r) => r.action === 'error').length;
-    logFn(`✅ 清空结束：本次清掉 ${cleared} 个科目，原本已是 0 行 ${wasZero} 个，失败 ${bad} 个`
-      + `（共扫描 ${accounts.length} 个）`, bad ? 'warn' : 'ok');
+    if (stoppedEarly) {
+      // 被中断时**不得**印「✅ 清空结束 …（共扫描 N 个）」——「开跑即停止」那一档
+      // 一个科目都没派发，却报「共扫描 155 个」且用成功色，与全部清完同形（round9 复核 M4 残余）。
+      logFn(`⏹ 清空被中断：本次清掉 ${cleared} 个科目，原本已是 0 行 ${wasZero} 个，失败 ${bad} 个`
+        + `（已处理 ${done.length} / ${accounts.length} 个，其余未清）`, 'warn');
+    } else {
+      logFn(`✅ 清空结束：本次清掉 ${cleared} 个科目，原本已是 0 行 ${wasZero} 个，失败 ${bad} 个`
+        + `（共扫描 ${accounts.length} 个）`, bad ? 'warn' : 'ok');
+    }
     return done;
   }
 
@@ -2077,9 +2108,17 @@
             return { r, buf };
           }, shouldStop);
           clearProg.close();
-          for (const g of clrBuf) {
-            if (!g) continue;
+          // 用 collectPool 读 —— 与写入段同理：未开工位置是稀疏洞，且并发下 clearAccount
+          // 的 HTTP 失败会以 `{__error}` 落在槽位上。旧的 `for (const g of clrBuf) { if (!g) continue;
+          // for (const b of g.buf) … }` 读法在 `{__error}` 上会抛 `TypeError: g.buf is not iterable`，
+          // 把**已清空科目的日志连同异常一起蒸发**，还让其后的整个写入被跳过。
+          const clrGot = collectPool(clrBuf);
+          for (const g of clrGot.items) {
             for (const b of g.buf) logFn(b.s, b.cls);
+          }
+          for (const f of clrGot.failed) {
+            const c = survey.conflict[f.index];
+            logFn(`❌ ${c ? c.code : '?'} 清理异常：${f.error.message}`, 'bad');
           }
           for (const c of survey.conflict) writeSet.add(c.code);
         } else {
@@ -2130,9 +2169,13 @@
         return { ...r, name: acc.name || name, __buf: buf };
       } catch (e) {
         // 单科目异常不再冒泡：冒泡就等于把其他已写盘科目的结果与日志一起丢掉。
-        // 这里就地转成一条 error 结果，日志缓冲同时保留。
-        if (e && e.__stopped) buf.push({ s: '⏹ 停止：该科目未写完', cls: 'warn' });
-        else buf.push({ s: `❌ ${acc.code} 异常：${e.message}`, cls: 'bad' });
+        // 「被停止」与「真失败」必须分成两种 action —— 都记成 error 的话，汇总会把
+        // 用户主动点停止报成「❌ 失败 N 个科目」，与真的写坏数据长得一样。
+        if (e && e.__stopped) {
+          buf.push({ s: '⏹ 停止：该科目未写完', cls: 'warn' });
+          return { code: acc.code, name: acc.name, action: 'stopped', __buf: buf };
+        }
+        buf.push({ s: `❌ ${acc.code} 异常：${e.message}`, cls: 'bad' });
         return { code: acc.code, name: acc.name, action: 'error', reason: e.message, __buf: buf };
       }
     }, shouldStop);
@@ -2160,13 +2203,17 @@
     // 此时没有任何 worker 提前返回，靠 worker 计数会漏判（worker 内那句 shouldStop 分支
     // 因为 lane 在循环顶部就 return 而几乎不可达 —— 见 poolMap 注释）。
     const aborted = shouldStop();
-    const notStarted = writable.length - results.length;
+    // 未开工数按「写入名单减去真正有结果的科目」算，不按 collection 长度差 ——
+    // 后者会把 failed 折进来的位置重复计入（round9 复核 N2）。
+    const accounted = new Set(results.map((r) => r.code));
+    const notStarted = writable.filter((a) => !accounted.has(a.code)).length;
 
     const written = results.filter((r) => r.action === 'written');
     const matched = written.filter((r) => r.match);
     const stale = results.filter((r) => r.action === 'stale');
     const errored = results.filter((r) => r.action === 'error');
     const partial = results.filter((r) => r.action === 'partial');
+    const stoppedAcc = results.filter((r) => r.action === 'stopped');
     if (aborted) {
       logFn(`⏹ 已中断：写入 ${written.length} 个科目；未开工 ${notStarted} 个`
         + `（本轮写入名单 ${writable.length} 个，计划科目共 ${taccounts.length} 个）。`
@@ -2174,8 +2221,12 @@
     } else {
       logFn(`✅ 完成：写入 ${written.length} 个科目，对账一致 ${matched.length}`, 'ok');
     }
+    if (stoppedAcc.length) {
+      logFn(`⏹ ${stoppedAcc.length} 个科目在写的过程中被停止：${stoppedAcc.map((s) => s.code).join(', ')}`
+        + '（已写入的行留在平台上，未写完的部分没有补）', 'warn');
+    }
     // 汇总口径：旧实现只统计 written/matched/stale/bad，error 与 partial 不在口径里 ⇒
-    // 「有科目被略过」在汇总里不可见。
+    // 「有科目被略过」在汇总里不可见。被停止（stopped）单列，不算失败。
     if (errored.length || partial.length) {
       logFn(`❌ 失败 ${errored.length + partial.length} 个科目：`
         + `${[...errored, ...partial].map((s) => s.code + (s.reason ? `(${s.reason})` : '')).join(', ')}`, 'bad');
