@@ -1,0 +1,262 @@
+/* ============================================================
+ * PROTOTYPE — MD3 Design Tokens（共享层）
+ * 只放 token：颜色角色 / 高程 / 形状 / 字阶 / 动效时长。
+ * 不含布局、不含组件。三个变体各写各的结构。
+ * ============================================================ */
+
+:root {
+  /* ---- 字阶（MD3 type scale，取常用档）---- */
+  --md-font: "Google Sans Text", "Google Sans", -apple-system, "Segoe UI",
+             "PingFang SC", "Microsoft YaHei", sans-serif;
+  --md-mono: "Roboto Mono", ui-monospace, "SF Mono", Consolas, monospace;
+
+  --md-title-lg: 22px;   --md-title-lg-lh: 28px;
+  --md-title-md: 16px;   --md-title-md-lh: 24px;
+  --md-title-sm: 14px;   --md-title-sm-lh: 20px;
+  --md-body-lg: 16px;    --md-body-lg-lh: 24px;
+  --md-body-md: 14px;    --md-body-md-lh: 20px;
+  --md-body-sm: 12px;    --md-body-sm-lh: 16px;
+  --md-label-lg: 14px;   --md-label-md: 12px;  --md-label-sm: 11px;
+  --md-mono-sm: 11px;
+
+  --md-w-reg: 400;
+  --md-w-med: 500;
+  --md-w-bold: 600;
+
+  /* ---- 形状（MD3 shape scale）---- */
+  --md-sh-none: 0px;
+  --md-sh-xs: 4px;
+  --md-sh-sm: 8px;
+  --md-sh-md: 12px;
+  --md-sh-lg: 16px;
+  --md-sh-xl: 28px;
+  --md-sh-full: 999px;
+
+  /* ---- 间距（8dp 基准，加 4dp 半步）---- */
+  --md-s1: 4px;  --md-s2: 8px;  --md-s3: 12px; --md-s4: 16px;
+  --md-s5: 20px; --md-s6: 24px; --md-s8: 32px; --md-s10: 40px; --md-s12: 48px;
+
+  /* ---- 动效（MD3 motion）---- */
+  --md-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --md-ease-emphasized: cubic-bezier(0.2, 0, 0, 1);
+  --md-ease-decel: cubic-bezier(0.05, 0.7, 0.1, 1);
+  --md-ease-accel: cubic-bezier(0.3, 0, 0.8, 0.15);
+  --md-dur-short: 150ms;
+  --md-dur-med: 250ms;
+  --md-dur-long: 400ms;
+
+  --md-z-panel: 2147483000;
+  --md-z-scrim: 2147482990;
+}
+
+/* ============================================================
+ * 浅色主题（默认）
+ * ============================================================ */
+:root,
+[data-theme="light"] {
+  --md-primary: #1B6B4A;
+  --md-on-primary: #FFFFFF;
+  --md-primary-container: #A6F2C8;
+  --md-on-primary-container: #002113;
+  --md-primary-fixed-dim: #8BD5AC;
+
+  --md-secondary: #4C6357;
+  --md-on-secondary: #FFFFFF;
+  --md-secondary-container: #CFE9D9;
+  --md-on-secondary-container: #092016;
+
+  --md-tertiary: #3D6475;
+  --md-on-tertiary: #FFFFFF;
+  --md-tertiary-container: #C0E8FC;
+  --md-on-tertiary-container: #001F2A;
+
+  --md-error: #B3261E;
+  --md-on-error: #FFFFFF;
+  --md-error-container: #F9DEDC;
+  --md-on-error-container: #410E0B;
+
+  --md-warn: #8A6100;
+  --md-warn-container: #FFDF9E;
+  --md-on-warn-container: #2A1C00;
+
+  --md-surface: #FBFDF8;
+  --md-surface-dim: #DBDFDA;
+  --md-surface-bright: #FBFDF8;
+  --md-on-surface: #191C1A;
+  --md-on-surface-variant: #414942;
+  --md-surface-variant: #DDE5DC;
+  --md-surface-container-lowest: #FFFFFF;
+  --md-surface-container-low: #F5F8F2;
+  --md-surface-container: #EFF2ED;
+  --md-surface-container-high: #E9ECE7;
+  --md-surface-container-highest: #E3E6E1;
+  --md-inverse-surface: #2E312E;
+  --md-inverse-on-surface: #EFF2ED;
+  --md-scrim: #000000;
+  --md-shadow: #000000;
+
+  --md-outline: #717970;
+  --md-outline-variant: #C1C9C0;
+
+  --md-scrim-opacity: 0.32;
+  --md-shadow-1: 0 1px 2px rgba(0,0,0,.30), 0 1px 3px 1px rgba(0,0,0,.15);
+  --md-shadow-2: 0 1px 2px rgba(0,0,0,.30), 0 2px 6px 2px rgba(0,0,0,.15);
+  --md-shadow-3: 0 4px 8px 3px rgba(0,0,0,.15), 0 1px 3px rgba(0,0,0,.30);
+  --md-shadow-4: 0 6px 10px 4px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.30);
+  --md-shadow-5: 0 8px 12px 6px rgba(0,0,0,.15), 0 4px 4px rgba(0,0,0,.30);
+}
+
+/* ============================================================
+ * 深色主题
+ * ============================================================ */
+[data-theme="dark"] {
+  --md-primary: #8BD5AC;
+  --md-on-primary: #003823;
+  --md-primary-container: #005236;
+  --md-on-primary-container: #A6F2C8;
+  --md-primary-fixed-dim: #6FB994;
+
+  --md-secondary: #B3CCBE;
+  --md-on-secondary: #1F3529;
+  --md-secondary-container: #354B3F;
+  --md-on-secondary-container: #CFE9D9;
+
+  --md-tertiary: #A4CCE0;
+  --md-on-tertiary: #063543;
+  --md-tertiary-container: #244C5B;
+  --md-on-tertiary-container: #C0E8FC;
+
+  --md-error: #F2B8B5;
+  --md-on-error: #601410;
+  --md-error-container: #8C1D18;
+  --md-on-error-container: #F9DEDC;
+
+  --md-warn: #F0C048;
+  --md-warn-container: #5C4300;
+  --md-on-warn-container: #FFDF9E;
+
+  --md-surface: #101410;
+  --md-surface-dim: #101410;
+  --md-surface-bright: #363A36;
+  --md-on-surface: #E1E3DE;
+  --md-on-surface-variant: #C1C9C0;
+  --md-surface-variant: #414942;
+  --md-surface-container-lowest: #0B0F0B;
+  --md-surface-container-low: #191D19;
+  --md-surface-container: #1D211D;
+  --md-surface-container-high: #272B27;
+  --md-surface-container-highest: #323632;
+  --md-inverse-surface: #E1E3DE;
+  --md-inverse-on-surface: #2E312E;
+  --md-scrim: #000000;
+  --md-shadow: #000000;
+
+  --md-outline: #8B938A;
+  --md-outline-variant: #414942;
+
+  --md-scrim-opacity: 0.55;
+  --md-shadow-1: 0 1px 2px rgba(0,0,0,.50), 0 1px 3px 1px rgba(0,0,0,.30);
+  --md-shadow-2: 0 1px 2px rgba(0,0,0,.50), 0 2px 6px 2px rgba(0,0,0,.30);
+  --md-shadow-3: 0 4px 8px 3px rgba(0,0,0,.30), 0 1px 3px rgba(0,0,0,.50);
+  --md-shadow-4: 0 6px 10px 4px rgba(0,0,0,.30), 0 2px 3px rgba(0,0,0,.50);
+  --md-shadow-5: 0 8px 12px 6px rgba(0,0,0,.30), 0 4px 4px rgba(0,0,0,.50);
+}
+
+/* 跟随系统（未手动指定主题时） */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --md-primary: #8BD5AC;
+    --md-on-primary: #003823;
+    --md-primary-container: #005236;
+    --md-on-primary-container: #A6F2C8;
+    --md-secondary: #B3CCBE;
+    --md-on-secondary: #1F3529;
+    --md-secondary-container: #354B3F;
+    --md-on-secondary-container: #CFE9D9;
+    --md-tertiary: #A4CCE0;
+    --md-on-tertiary: #063543;
+    --md-tertiary-container: #244C5B;
+    --md-on-tertiary-container: #C0E8FC;
+    --md-error: #F2B8B5;
+    --md-on-error: #601410;
+    --md-error-container: #8C1D18;
+    --md-on-error-container: #F9DEDC;
+    --md-warn: #F0C048;
+    --md-warn-container: #5C4300;
+    --md-on-warn-container: #FFDF9E;
+    --md-surface: #101410;
+    --md-surface-dim: #101410;
+    --md-surface-bright: #363A36;
+    --md-on-surface: #E1E3DE;
+    --md-on-surface-variant: #C1C9C0;
+    --md-surface-variant: #414942;
+    --md-surface-container-lowest: #0B0F0B;
+    --md-surface-container-low: #191D19;
+    --md-surface-container: #1D211D;
+    --md-surface-container-high: #272B27;
+    --md-surface-container-highest: #323632;
+    --md-inverse-surface: #E1E3DE;
+    --md-inverse-on-surface: #2E312E;
+    --md-outline: #8B938A;
+    --md-outline-variant: #414942;
+    --md-scrim-opacity: 0.55;
+  }
+}
+
+/* ============================================================
+ * 面板公共底座 —— 只做「浮层容器」这一件事
+ * 变体各自决定内部结构，但都挂在这个容器里。
+ * ============================================================ */
+.vp-root {
+  position: fixed;
+  z-index: var(--md-z-panel);
+  font-family: var(--md-font);
+  font-size: var(--md-body-md);
+  line-height: var(--md-body-md-lh);
+  color: var(--md-on-surface);
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  /* 默认锚点：贴内容区右上角。变体可自行覆写 top/right/bottom/left/width/height
+     （变体 B 覆写为底部宽条、变体 C 的子元素全用 fixed 因而忽略本锚点）。 */
+  top: 12px;
+  right: 12px;
+}
+.vp-root *,
+.vp-root *::before,
+.vp-root *::after { box-sizing: border-box; }
+
+/* 焦点环：MD3 focus indicator */
+.vp-root :focus-visible {
+  outline: 3px solid var(--md-primary);
+  outline-offset: 2px;
+  border-radius: var(--md-sh-xs);
+}
+
+/* 滚动条：低调、跟随主题 */
+.vp-root .vp-scroll { scrollbar-width: thin; scrollbar-color: var(--md-outline-variant) transparent; }
+.vp-root .vp-scroll::-webkit-scrollbar { width: 8px; height: 8px; }
+.vp-root .vp-scroll::-webkit-scrollbar-track { background: transparent; }
+.vp-root .vp-scroll::-webkit-scrollbar-thumb {
+  background: var(--md-outline-variant);
+  border-radius: var(--md-sh-full);
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+.vp-root .vp-scroll::-webkit-scrollbar-thumb:hover { background-clip: content-box; background-color: var(--md-outline); }
+
+/* 图标（内联 SVG 统一尺寸与配色） */
+.vp-root .vp-ic { width: 18px; height: 18px; flex: 0 0 auto; fill: currentColor; display: block; }
+.vp-root .vp-ic-sm { width: 16px; height: 16px; }
+
+/* 视觉隐藏但可读屏 */
+.vp-root .vp-sr {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vp-root *, .vp-root *::before, .vp-root *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

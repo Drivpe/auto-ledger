@@ -22,3 +22,6 @@ probe/*.mjs
 .DS_Store
 *.swp
 *.deb
+
+# 代理跑验收时产生的一次性截图（可重新生成，不入库）
+prototype/panel/shots/_archive/

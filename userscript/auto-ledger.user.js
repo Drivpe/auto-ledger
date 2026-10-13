@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name         网中网会计综合实习平台 · 凭证登T型账自动化
-// @namespace    voucher2t
-// @version      3.1.0
-// @description  抓取平台记账凭证（教师答案 / 学生答案），按一级科目归集后逐笔登记进 T 型账。面板 + 只读并发 + 科目级并发写入 + 写前冲突普查 + 本地答案缓存 + 三重锁校验。
-// @author       voucher2T
+// @name         网中网会计综合实习平台 · 账簿自动登记
+// @namespace    auto-ledger
+// @version      3.3.1
+// @description  抓取平台记账凭证（教师答案 / 学生答案），按一级科目归集后逐笔登记进 T 型账。面板 + 凭证抓取并发 + T型账操作严格串行 + 写前冲突普查 + 读回校验科目归属 + 删后自愈重删 + 本地答案缓存 + 三重锁校验。
+// @author       auto-ledger
 // @match        http://10.11.4.69:8090/netinnet_zhsx_v63/*
 // @match        https://webvpn.shufe-zj.edu.cn/*/netinnet_zhsx_v63/*
 // @grant        GM_setValue
@@ -78,14 +78,32 @@
     // 没有任何限速实测证据）。压到 0 没有真机数据支撑，所以不取 0。
     throttleMs: 120,
 
-    // 只读 GET 的并发路数（凭证列表翻页、凭证详情、写前普查、清空逐科目前置查询）。
-    // 4 是拍定值：平台是单台 Tomcat 上的老式 jQuery 应用，从未做过压力测试，
-    // 「没有限速证据」不等于「不会限速」，所以不为提速把路数往上抬。
+    // 凭证抓取的并发路数（列表翻页、凭证详情）。这些请求走的是 `action=zhsx_common_jzpz`
+    // 等**别的** action，不触碰 T 型账表单，故可以并行。
     readConcurrency: 4,
 
-    // 科目级写入与删除的并发路数。比只读更保守，因为写请求有副作用。
-    // 见 poolMap 注释：并发粒度是「科目」，同一科目内部仍严格串行。
-    writeConcurrency: 3,
+    // ★ T 型账操作的并发路数。**必须为 1**（round10 定案，不要为了提速调大）。
+    //
+    // 依据分三层，强度不同，别混着当同一件事：
+    //
+    // ①【真机差分，最硬】旧版（commit 5b10a4b）全程串行，用户实测「没问题」；
+    //    改成科目级并发（b38f5e8）后出现「3 个科目 N → 1 行残留」「6411 科目未切换」。
+    //    ⇒ 故障与并发相关，这条是用户的一手观测。
+    // ②【离线 A/B，可复现】把旧脚本与新脚本分别喂进同一个离线 harness（服务端侧注入故障，
+    //    不改脚本本身）：旧脚本复现出「N → 1 行」；新脚本下**全部机制被证伪**
+    //    （新增的 TEMPid 非空断言 + 串行把每一种故障形态都挡掉了）。
+    //    ⇒ 修复有效，这条可自行复跑验证。
+    // ③【被证伪的说法，别再写进注释】曾经把根因写成「服务端会话持『当前科目』，并发时
+    //    某次 delete_loop 删了别的科目的行集」。离线 harness 的差分实验把这个模型
+    //    **证伪了**：它能复现「科目未切换」，但严格复现「N → 1」的命中率是 0/10
+    //    （若真按别的科目的行集删，残留数会随科目规模变化，而真机恒为 1）。
+    //    已坐实的机制是**并发下读侧响应行集残缺**（某行 TEMPid 丢失 ⇒ buildBody 带空
+    //    CHECK_CONFIRM ⇒ 服务端匹配不到那行 ⇒ 它删不掉），该机制在并发=1 下复现率降为 0。
+    //
+    // 结论：凡走 `action=ts_txz` 的操作一律串行（写前普查、清空扫描、冲突清理、逐行写入）。
+    // 另外 `clearAccount` 里还有一道**独立的**提交前断言（每行 TEMPid 必须非空）——
+    // 因为 TEMPid 缺失这类形态在串行下**也会**出现，光靠串行挡不住，两处都要留。
+    tAccountConcurrency: 1,
   };
   // ===================================================
 
@@ -435,8 +453,9 @@
    *   `insert` 的请求体自带「当前已存全部行的 pzh_bz/debit/lend/TEMPid」，而 TEMPid 由
    *   服务端逐次生成。下一行必须看到上一行的落库结果（载体就是 fillAccount 里的局部 `state`），
    *   所以同一科目内部必须严格串行；而科目之间没有共享的可变写入态 —— `state` 是局部变量，
-   *   请求体每次显式携带 sxid/accountID/yyyy/mm/entityid，平台不靠会话游标记住「当前科目」，
-   *   因此科目之间可以并行。
+   *   请求体每次显式携带 sxid/accountID/yyyy/mm/entityid，但**这不足以推出「科目级可以并行」**：
+   *   并发下读侧响应行集残缺（round10 真机差分 + 离线 harness 复现），故 T 型账路径一律串行
+   *   （见 CONFIG.tAccountConcurrency）。
    *
    * 停止语义（「在途请求收完，不再发新的」）：每个任务【开始前】查一次 shouldStop()，
    * 已发出的请求允许跑完。为什么不用 abort：GM_xmlhttpRequest 中止后无法区分
@@ -1277,8 +1296,23 @@
     // 该请求只读、无副作用；响应里带着完整 155 项下拉，正是我们需要的。
     const url = `${base}do?action=${P.tAccount}&start=query&accountID=1001`
       + `&yyyy=${year}&mm=${month}&sxid=${ctx.sxid}&entityid=${ctx.entityID}`;
-    const html = await httpGet(url);
-    return parseAccountList(html);
+    // ★ 重试（round10 新发现）：平台会偶发返回一种「降级页」——同一 URL、同一科目，
+    // 有时是 155 个 option 的正常页，有时是科目下拉为空（0 个 option）、
+    // 连 onchange 都是空函数的页面（真机 fixture 实测：7597 字节 vs 17257 字节）。
+    // 吃到降级页时 parseAccountList 返回 []，会让整轮清空/写入直接中止（一个字都不动）。
+    // 这类降级多半是瞬时的，故重试 1 次即可；仍为空则如实报错，不猜。
+    let list = [];
+    let lastLen = 0;
+    for (let attempt = 1; attempt <= 2; attempt++) {
+      const html = await httpGet(url);
+      list = parseAccountList(html);
+      if (list.length) return list;
+      lastLen = html.length;
+      if (attempt < 2) await new Promise((r) => setTimeout(r, 800));
+    }
+    // 把响应长度一起带回，供调用方区分「平台真没科目」与「拿到降级页」
+    list.failedResponseLen = lastLen;
+    return list;
   }
 
   /** GET 一个科目的 T 型账查询页并解析成状态。不导航任何 DOM。 */
@@ -1309,6 +1343,80 @@
   };
 
   /**
+   * T 型账响应完整性判定（D-15）。
+   *
+   * 为什么必须有它：`parseTState` 对**残缺页**与**合法空态页**返回同样的 `rows = []`，
+   * 而 `clearAccount` 只能看到行数 ⇒ 把残缺当「平台 0 行，无需清空」⇒ **一行都没删**
+   * 却打印得一切正常（假成功）。某科目原本只有 1 行、响应在最后一个 `pzh_bz` 之前
+   * 被截断，就是这条路径。
+   *
+   * ★ 判据按「行集是否已解析出内容」分两区，两区的严格度不同 —— 这个分野是真机日志逼出来的：
+   *
+   * 【危险区：rows = 0】无法从行集本身区分「真 0 行」与「截断成 0 行」，故必须用旁证：
+   *   a. 必须有 `_i` 三连模板行（真机 49/49 恒有，空态也有）。
+   *   b. 必须有「本期发生额」合计行 —— 没有它就无法证明这是空账，宁可疑。
+   *   c. 合计两边都必须为空（真机空态页的合计 td 就是空的）。
+   *   任一不满足 ⇒ 判残缺 ⇒ 重取，而不是当成「0 行，无需清空」。
+   *
+   * 【安全区：rows > 0】行集本身已经解析出行了 —— 有行就能删，不存在「假成功」。
+   *   此时合计只用来**发现丢行**，故单边容忍：
+   *   a. 合计哪一边非空，就拿那一边与行金额和比对；不符 ⇒ 判残缺（丢行）。
+   *   b. 合计两边都为空 ⇒ **容忍**，不报错。
+   *   ⚠ 为什么必须容忍（真机抓包实测，形态以抓包为准）：真机 8 科目（1101/1231/1701/1702/
+   *     2201/2203/2801/6401）的「本期发生额」是**单边空** —— 1231/1701/2203 只有借方有值
+   *     （11700.00 / 145000.00 / 10000.00，贷方 td 为空）、2801 只有贷方（69592.00，借方为空），
+   *     且非空那一边与行金额和**完全相符**。独立复算：44 份真机 query 夹具中 7 份是这种单边形态
+   *     （两个方向都有）。
+   *     早先版本写成「任一边为空即残缺」，把这些正常科目全拦成失败、一行没删 —— 误报。
+   *
+   * ⚠ 已知盲区（诚实记录，不掩盖）：若某科目**合计本来就为空**，而响应又恰好被截断成
+   *   0 行，则本条判据无法与「真空账」区分。缓解：`_i` 模板行与 `</html>` 两条锚点仍在，
+   *   且这类科目在真机上通常行数很少、损失可察。
+   *
+   * 离线复跑：`.scratch/voucher2t-taccount/verify/round10/d15/false-success-loop.mjs`
+   * 真机样本误报率复算：`.../d15/verify-completeness-on-live.mjs`
+   *
+   * @returns {{ok: boolean, reasons: string[]}}
+   */
+  function tStateIntegrity(state, html) {
+    const reasons = [];
+    const raw = String(html ?? '');
+    if (!/<\/html>\s*$/i.test(raw)) reasons.push('响应未以 </html> 结尾');
+    if (!state) {
+      reasons.push('未能解析出 T 型账表单');
+      return { ok: false, reasons };
+    }
+    const td = normAmt(state.total.debit);
+    const tl = normAmt(state.total.lend);
+
+    if (state.rows.length === 0) {
+      // 危险区：只能靠旁证证明「这确实是一张空账」
+      if (!/name=["'](?:pzh_bz_i|debit_i|lend_i)["']/.test(raw)) reasons.push('缺少 _i 模板行');
+      if (!raw.includes('本期发生额')) reasons.push('缺少「本期发生额」合计行（无法证明是空账）');
+      // ★ 平台偶发返回「降级页」：同一 URL、连科目下拉都是空的（真机实测 7743 字节、
+      //   0 个 <option>，正常页 157 个）。这种页**不是**该科目的真实状态 ——
+      //   它的 rows=0 不能当作「平台 0 行」。没有这条判据，降级页会被读成合法空账 ⇒
+      //   打印「无需清空」而一行不删，即 D-15 的另一种假成功形态（独立 review 的 S2）。
+      if (!/<option\b/i.test(raw)) reasons.push('缺少总账科目下拉项（平台降级页，不是该科目的真实状态）');
+      if (td !== '' || tl !== '') {
+        reasons.push(`解析出 0 行，但合计非空（借 ${state.total.debit || '-'} / 贷 ${state.total.lend || '-'}）`
+          + ' ⇒ 页面残缺被误认成空账');
+      }
+    } else if (td !== '' || tl !== '') {
+      // 安全区：行集已解析出来，合计仅用于发现丢行 —— 哪边有值比哪边（单边容忍）
+      const sd = state.rows.reduce((s, r) => s + (Number(normAmt(r.debit)) || 0), 0);
+      const sl = state.rows.reduce((s, r) => s + (Number(normAmt(r.lend)) || 0), 0);
+      if (td !== '' && Math.abs(sd - Number(td)) > 0.005) {
+        reasons.push(`${state.rows.length} 行借方金额和 ${sd.toFixed(2)} 与合计 ${state.total.debit} 不符 ⇒ 响应丢行`);
+      }
+      if (tl !== '' && Math.abs(sl - Number(tl)) > 0.005) {
+        reasons.push(`${state.rows.length} 行贷方金额和 ${sl.toFixed(2)} 与合计 ${state.total.lend} 不符 ⇒ 响应丢行`);
+      }
+    }
+    return { ok: reasons.length === 0, reasons };
+  }
+
+  /**
    * 等 T 型账已保存行数达到 target —— 等待判据仍是「行数增长」（README 排除项之一，
    * 原实现读 DOM 行数；HTTP 化后改为反复 GET 并由响应解析出行数，判据语义不变）。
    *
@@ -1319,7 +1427,11 @@
     const t0 = Date.now();
     while (Date.now() - t0 <= timeoutMs) {
       try {
-        const q = await queryTState(ctx, code, year, month);
+        // ★ 必须走 queryTStateChecked：这里同样要确认读到的就是目标科目。
+        // 并发下读侧可能落到别的科目（真机 6411 实测「科目未切换」），读到别的科目会让
+        // 「行数增长」这个判据被别的科目的行数满足（round10 定案；机制是「并发下读侧响应
+        // 行集残缺」，不是「服务端会话持当前科目」——后者已被离线 harness 证伪，命中 0/10）。
+        const q = await queryTStateChecked(ctx, code, year, month);
         const st = q.state;
         if (st && st.rows.length === target) return st;
       } catch { /* 单次失败不算判据失败，继续轮询 */ }
@@ -1362,17 +1474,16 @@
   async function fillAccount(ctx, acc, year, month, cfg, logFn, shouldStop) {
     if (shouldStop?.()) return { code: acc.code, action: 'stopped' };
 
-    const q = await queryTState(ctx, acc.code, year, month);
+    // ★ 走 queryTStateChecked：这里同样必须确认读到的就是目标科目。
+    const q = await queryTStateChecked(ctx, acc.code, year, month);
     if (!q.state) {
       // 旧实现此处静默略过，且不进面板汇总统计 ⇒ 可能被误读成「全部成功」。
       // 改为显式失败并计入汇总。
-      logFn(`❌ ${acc.code} ${acc.name}：GET 后无法解析出 T 型账表单（显式失败，不再静默跳过）`, 'bad');
-      return { code: acc.code, name: acc.name, action: 'error', reason: '表单解析失败' };
-    }
-    if (q.state.accountID !== acc.code) {
-      logFn(`❌ ${acc.code} ${acc.name}：服务端返回的 accountID=${q.state.accountID}，`
-        + '未切到目标科目 —— 显式失败，不写（旧实现此处静默跳过）', 'bad');
-      return { code: acc.code, name: acc.name, action: 'error', reason: '科目未切换' };
+      logFn(`❌ ${acc.code} ${acc.name}：GET 后拿不到本科目状态`
+        + (q.mismatch ? `（读到 accountID=${q.mismatch}，未切到目标科目）` : '（无法解析出 T 型账表单）')
+        + (q.incomplete ? `（响应残缺：${q.incomplete.join('；')}）` : '')
+        + ' —— 显式失败，不写（旧实现此处静默跳过）', 'bad');
+      return { code: acc.code, name: acc.name, action: 'error', reason: q.mismatch ? '科目未切换' : '表单解析失败' };
     }
 
     let state = q.state;
@@ -1439,6 +1550,9 @@
         logFn(`❌ ${acc.code} 第 ${i + 1} 行写入失败，中止该科目`, 'bad');
         return { code: acc.code, name: acc.name, action: 'partial', written, planned: plan.length };
       }
+      // 写一条、展一条：面板上一行对应一次真正落库，用户能看着它推进（不再整批攒到最后）。
+      logFn(`   ✍ 第 ${written}/${plan.length} 行已落库：${p.pzh || '(无凭证号)'}`
+        + ` 借 ${p.debit || '0.00'} 贷 ${p.lend || '0.00'} → 本科目平台 ${state.rows.length} 行`);
       if (cfg.throttleMs) await new Promise((res) => setTimeout(res, cfg.throttleMs));
     }
 
@@ -1447,39 +1561,186 @@
     await submitForm(state, 'update_loop');
 
     // ---------- ④ 重新 GET 读回对账 ----------
-    const back = await queryTState(ctx, acc.code, year, month);
+    // ★ 必须用 queryTStateChecked：读到的必须是目标科目本身。读侧一旦落到别的科目，
+    // 这里就会把别的科目的行数与合计当成本科目的对账结果。
+    const back = await queryTStateChecked(ctx, acc.code, year, month);
     const after = back.state;
+    if (!after) {
+      // 读不到 / 读错科目 ⇒ 不能报「0 行」也不能报「对账一致」，只能报结果未知。
+      logFn(`❌ ${acc.code} ${acc.name}：写后复核读不到本科目`
+        + (back.mismatch ? `（读到 accountID=${back.mismatch}）` : '（表单解析失败）')
+        + (back.incomplete ? `（响应残缺：${back.incomplete.join('；')}）` : '')
+        + ' —— 结果未知，请人工确认', 'bad');
+      return { code: acc.code, name: acc.name, action: 'unread', reason: back.mismatch ? `accountID=${back.mismatch}` : '解析失败' };
+    }
     const num = (s) => Number(String(s || '0').replace(/[,\s]/g, '')) || 0;
-    const okRows = !!after && after.rows.length === plan.length;
-    const okAmt = !!after
-      && Math.abs(num(after.total.debit) - acc.debitTotal) < 0.01
+    const okRows = after.rows.length === plan.length;
+    const okAmt = Math.abs(num(after.total.debit) - acc.debitTotal) < 0.01
       && Math.abs(num(after.total.lend) - acc.lendTotal) < 0.01;
     const ok = okRows && okAmt;
-    logFn(`${ok ? '✅' : '❌'} ${acc.code} ${acc.name}：读回 ${after ? after.rows.length : '?'} 行，`
+    logFn(`${ok ? '✅' : '❌'} ${acc.code} ${acc.name}：读回 ${after.rows.length} 行，`
       + `${after?.total.debit || '-'}/${after?.total.lend || '-'}`, ok ? 'ok' : 'bad');
     return {
       code: acc.code, name: acc.name, action: 'written',
-      rows: after ? after.rows.length : 0,
+      rows: after.rows.length,
       localDebit: acc.debitTotal, localLend: acc.lendTotal,
-      platformDebit: num(after?.total.debit), platformLend: num(after?.total.lend),
+      platformDebit: num(after.total.debit), platformLend: num(after.total.lend),
       match: ok, rowsOk: okRows, amtOk: okAmt,
     };
   }
 
+  /**
+   * 复核 GET 一个科目，并**校验读到的确实是该科目**。
+   *
+   * 为什么必须有这个校验（round10 真机定案）：并发下读侧响应行集残缺，
+   * 复核 GET 有可能返回**别的科目**的页面（真机 6411 实测「科目未切换」）。原实现直接拿 `re.state.rows.length` 报
+   * 「N → X 行」，于是：
+   *   - 读到另一个恰好 0 行的科目 ⇒ 报「✅ 清掉 N → 0 行」，目标科目其实还有行（残留隐形）；
+   *   - 读到另一个恰好 1 行的科目 ⇒ 报「❌ 清掉 N → 1 行」，目标科目其实已清干净。
+   * 两种都会把「清空结果」这张成绩单变成噪声。串行化（tAccountConcurrency=1）后这种
+   * 错位已不该再发生，但**读路径的科目归属必须自己校验**，不能再依赖服务端行为。
+   *
+   * @returns {{state: object|null, mismatch: string|null, incomplete: string[]|null}}
+   *   mismatch 为读到的 accountID（不符时才非 null）；
+   *   incomplete 为响应完整性判据的失败原因（不可信时才非 null）。
+   */
+  /** 连续「读到不可信响应」的科目数；成功一次即复位。整轮开始时由调用方复位。 */
+  let consecutiveUnreadable = 0;
+  /** 熔断阈值：连续这么多个科目不可信，就认定是整轮性故障，不再逐科目重取。 */
+  const UNREADABLE_BREAKER = 5;
+
+  async function queryTStateChecked(ctx, code, year, month, opt = {}) {
+    // 为什么带重取（D-15）：残缺响应与合法空态页都会解析成 `rows = []`，
+    // 一旦把残缺当「平台 0 行」，就会打印「无需清空」而**一行都不删**（假成功）。
+    // 完整性判据失败时重取，而不是当成 0 行 —— 残缺多半是瞬时的（传输层截断）。
+    //
+    // ★ 熔断（陪跑优化）：连续若干科目都读到不可信响应 ⇒ 这不是单科目抖动，而是
+    //   平台/会话层面的整轮性故障（降级页、会话掉线）。此时逐科目重取毫无意义，
+    //   只会让整轮白等：155 科目 × 2 次重取 × 300ms ≈ +94 秒（独立复算实测）。
+    //   熔断后后续科目只取 1 次；**判据不变**（仍不把残缺当 0 行，仍如实报失败），
+    //   只是不再重试。正常路径完全不受影响（成功一次即复位）。
+    const tripped = consecutiveUnreadable >= UNREADABLE_BREAKER;
+    const tries = Math.max(1, opt.tries ?? (tripped ? 1 : 3));
+    let lastIncomplete = null;
+    let lastMismatch = null;
+    for (let k = 0; k < tries; k++) {
+      const r = await queryTState(ctx, code, year, month);
+      if (r.state && r.state.accountID !== code) {
+        // 科目归属错位（读到别的科目）：同样不可信，重取可能自愈
+        lastMismatch = r.state.accountID || '(空)';
+        lastIncomplete = null;
+      } else {
+        const integ = tStateIntegrity(r.state, r.html);
+        if (integ.ok) { consecutiveUnreadable = 0; return { state: r.state, mismatch: null, incomplete: null }; }
+        lastIncomplete = integ.reasons;
+        lastMismatch = null;
+      }
+      if (k + 1 < tries) await new Promise((res) => setTimeout(res, 300));
+    }
+    consecutiveUnreadable += 1;
+    return { state: null, mismatch: lastMismatch, incomplete: lastIncomplete };
+  }
+
   /** 只清空一个科目（不复写）。单科目版本，供全科目扫描（clearAllAccounts）复用。 */
   async function clearAccount(ctx, acc, year, month, logFn) {
-    const q = await queryTState(ctx, acc.code, year, month);
-    if (!q.state || q.state.accountID !== acc.code) {
-      logFn(`❌ ${acc.code} 清空前置 GET 失败或科目未切换`, 'bad');
+    const q = await queryTStateChecked(ctx, acc.code, year, month);
+    if (!q.state) {
+      logFn(`❌ ${acc.code} 清空前置 GET 失败或科目未切换`
+        + (q.mismatch ? `（读到的 accountID=${q.mismatch}）` : '（未能解析出 T 型账表单）')
+        + (q.incomplete ? `；响应完整性判据未过：${q.incomplete.join('；')}（重取后仍不可信，不当作 0 行）` : ''),
+      'bad');
       return { code: acc.code, action: 'error' };
     }
     const n = q.state.rows.length;
     if (n === 0) { logFn(`⏭ ${acc.code} 平台 0 行，无需清空`); return { code: acc.code, action: 'skipped' }; }
-    await submitForm(q.state, 'delete_loop');
-    const re = await queryTState(ctx, acc.code, year, month);
-    logFn(`${re.state && re.state.rows.length === 0 ? '✅' : '❌'} ${acc.code} 清空：${n} → ${re.state ? re.state.rows.length : '?'} 行`,
-      re.state && re.state.rows.length === 0 ? 'ok' : 'bad');
-    return { code: acc.code, action: 'cleared', before: n, after: re.state ? re.state.rows.length : -1 };
+
+    // ---------- 提交前断言：所有行的 TEMPid 必须非空 ----------
+    // 为什么必须自己断言（round10 B 线离线 harness 的结论）：
+    //   `buildBody` 对每一行 append `CHECK_CONFIRM=<TEMPid>`；若某行 TEMPid 为空，
+    //   服务端匹配不到该行 ⇒ 那一行**删不掉**，而日志里的 before 仍是真实的 N
+    //   ⇒ 表现为「N → 1 行」。这正是真机症状，且**串行下同样会复现**（harness 实测 100%），
+    //   所以 tAccountConcurrency=1 挡不住它 —— 必须在这里拦一次。
+    // 代价：只在真缺 TEMPid 时多一次只读 GET；正常页面每行都有 TEMPid，零额外开销。
+    let state = q.state;
+    for (let k = 0; k < 2; k++) {
+      const missing = state.rows.filter((r) => !r.tempid).length;
+      if (!missing) break;
+      logFn(`   ⚠ ${acc.code} 有 ${missing} 行缺 TEMPid（这样提交会漏删），重新取一次…`, 'warn');
+      const again = await queryTStateChecked(ctx, acc.code, year, month);
+      if (!again.state) { state = null; break; }
+      state = again.state;
+      if (state.rows.length === 0) {
+        logFn(`⏭ ${acc.code} 重取后平台已是 0 行，无需清空`);
+        return { code: acc.code, action: 'skipped' };
+      }
+    }
+    if (!state) {
+      logFn(`❌ ${acc.code} 缺 TEMPid 且重取失败，不提交删除（宁可少删，不可乱删）`, 'bad');
+      return { code: acc.code, action: 'error' };
+    }
+    const stillMissing = state.rows.filter((r) => !r.tempid).length;
+    if (stillMissing) {
+      // 重取两次仍有行缺 TEMPid ⇒ 这是页面形态问题，不是瞬时抖动。
+      // 不提交：提交也删不掉那几行，只会留下「删了但没删净」的假象。
+      logFn(`❌ ${acc.code} 重取后仍有 ${stillMissing} 行缺 TEMPid，本轮不提交删除`
+        + '（提交也删不掉它们，只会留下残留）', 'bad');
+      return { code: acc.code, action: 'residual', before: state.rows.length, after: state.rows.length };
+    }
+
+    // ---------- delete_loop + 复核 + 自愈重删 ----------
+    // 为什么要有重删（round10 真机）：平台上确实出现过「删了一半、恰好剩 1 行」，
+    // 且第二次运行时那一行**删一次就掉了** ⇒ 残留可自愈，不必让用户手动跑第二遍。
+    // 正常路径（一次删净）只多一次复核 GET；只有真残留时才走重删，代价可忽略。
+    // before 取「实际拿去提交的那个 state」的行数 —— 上面可能重取过，
+    // 用最初的 n 会让日志里的 before 与真正提交的行集不符。
+    let before = state.rows.length;
+    let after = -1;          // -1 = 复核没读到（不是「读到 0 行」，两者必须分开报）
+    let mismatch = null;
+    let incomplete = null;   // 响应完整性判据未过的原因（不可信 ≠ 读到 0 行）
+    let attempts = 0;
+    const MAX_ROUNDS = 3;    // 首删 + 最多 2 次重删
+
+    for (let round = 0; round < MAX_ROUNDS; round++) {
+      await submitForm(state, 'delete_loop');
+      attempts += 1;
+      const re = await queryTStateChecked(ctx, acc.code, year, month);
+      if (!re.state) {
+        mismatch = re.mismatch;
+        incomplete = re.incomplete;
+        after = -1;
+        break;               // 复核读不到/读错科目/响应残缺：**不重删**（宁可少删，不可乱删）
+      }
+      after = re.state.rows.length;
+      if (after === 0) break;
+      // 仍有残留：把刚读到的行集当作下一轮 delete_loop 的输入（TEMPid 是最新的）。
+      // ⚠ 只有确实还有下一轮时才印「再删」，否则会在最后一次印出一句做不到的承诺。
+      // 同样要断言 TEMPid 非空，否则下一轮仍会漏删同一行。
+      const miss = re.state.rows.filter((r) => !r.tempid).length;
+      if (miss) {
+        logFn(`   ⚠ ${acc.code} 残留行里有 ${miss} 行缺 TEMPid，无法继续删（跳过重删）`, 'warn');
+        break;
+      }
+      state = re.state;
+      if (round + 1 < MAX_ROUNDS) {
+        logFn(`   ⚠ ${acc.code} 第 ${attempts} 次删除后仍剩 ${after} 行，重新取最新行集再删…`, 'warn');
+      } else {
+        logFn(`   ⚠ ${acc.code} 第 ${attempts} 次删除后仍剩 ${after} 行，已达重删上限（${MAX_ROUNDS} 次）`,
+          'warn');
+      }
+    }
+
+    const ok = after === 0;
+    const shown = after < 0 ? '?' : after;
+    logFn(`${ok ? '✅' : '❌'} ${acc.code} 清空：${before} → ${shown} 行`
+      + (attempts > 1 ? `（重删 ${attempts - 1} 次后）` : '')
+      + (after < 0 ? `（复核未读到：${mismatch ? `accountID=${mismatch}`
+        : (incomplete ? `响应完整性判据未过 — ${incomplete.join('；')}` : '表单解析失败')}）` : ''),
+    ok ? 'ok' : 'bad');
+    // action 分三档，让汇总口径能闭合到 155（旧实现把「没清干净」返回成 cleared，
+    // 结果它在 cleared 与 bad 两个计数里都不算，被汇总静默吞掉）。
+    if (ok) return { code: acc.code, action: 'cleared', before, after: 0 };
+    if (after < 0) return { code: acc.code, action: 'unread', before, reason: mismatch ? `accountID=${mismatch}` : (incomplete ? `响应残缺：${incomplete.join('；')}` : '解析失败') };
+    return { code: acc.code, action: 'residual', before, after };
   }
 
   /**
@@ -1516,9 +1777,9 @@
 
     const planByCode = new Map(plans.map((p) => [p.code, p]));
     let scanned = 0;
-    // 只读 GET 之间无共享状态、无副作用，故 4 路并行（readConcurrency）。
-    // 逐科目的行数判据在 worker 内部完成，互不影响。
-    const got = await poolMap(accounts, CONFIG.readConcurrency, async (acc) => {
+    // ★ T 型账的只读 GET 也必须串行：并发下读侧响应行集残缺，
+    // 会把别的 lane 的科目状态带回来（真机「6411 科目未切换」即此）。
+    const got = await poolMap(accounts, CONFIG.tAccountConcurrency, async (acc) => {
       if (shouldStop()) return null;
       const plan = planByCode.get(acc.code) || null;
       const planRows = plan
@@ -1530,9 +1791,10 @@
         : null;
       let st = null;
       try {
-        const q = await queryTState(ctx, acc.code, year, month);
-        // 科目没切过去与解析失败一样，都不能当成 0 行
-        st = q.state && q.state.accountID === acc.code ? q.state : null;
+        // ★ 走 queryTStateChecked（等价于原来的内联 accountID 比对，统一到一个入口，
+        // 避免日后有人只改一处）。科目没切过去与解析失败一样，都不能当成 0 行。
+        const q = await queryTStateChecked(ctx, acc.code, year, month);
+        st = q.state;
       } catch { st = null; }
       scanned += 1;
       onProgress?.(scanned, accounts.length);
@@ -1653,6 +1915,7 @@
    *          逐科目结果数组；取不到科目清单时返回空数组（调用方据空数组报错）
    */
   async function clearAllAccounts(ctx, year, month, logFn, shouldStop, onProgress) {
+    consecutiveUnreadable = 0;   // 整轮开始，复位熔断计数
     let accounts;
     try {
       accounts = await fetchAccountList(ctx, year, month);
@@ -1661,17 +1924,22 @@
       return [];
     }
     if (!accounts || !accounts.length) {
-      logFn('❌ 未能从 T 型账页解析出科目清单（`select[name="accountID"]` 缺失或为空），已中止，未碰平台。', 'bad');
+      // 带上响应长度：平台有时会返回一种「科目下拉为空」的降级页（真机实测 7597 字节，
+      // 正常页 17257 字节）。有了长度，用户一眼能区分「平台真没科目」与「吃到降级页」。
+      const len = accounts && accounts.failedResponseLen;
+      logFn('❌ 未能从 T 型账页解析出科目清单（`select[name="accountID"]` 缺失或为空），已中止，未碰平台。'
+        + (len ? `（重试后仍为空，最后一次响应 ${len} 字节 —— 若明显偏小，多半是平台返回了降级页，隔一会儿重试）` : ''), 'bad');
       return [];
     }
     logFn(`清空范围：平台全部总账科目 ${accounts.length} 个（不依赖凭证）`);
 
     let scanned = 0;
-    // 科目之间无共享可变写入态（请求体每次显式携带 sxid/accountID/yyyy/mm/entityid），
-    // 故科目级可以并行；每个科目内部仍是「前置 GET → delete_loop → 复核 GET」的严格串行。
-    // 这里不让子日志直接打面板：并发下会交错。每个科目先把本轮日志缓冲成一段，
-    // 预扫描结束后按原顺序整段输出（scan 段内部的 progress 行除外，它本来就要原地刷新）。
-    const res = await poolMap(accounts, CONFIG.readConcurrency, async (acc, i) => {
+    // ★ 科目之间**不可**并行（round10 真机定案，见 CONFIG.tAccountConcurrency 注释）：
+    // 「请求体每次显式携带 sxid/accountID/yyyy/mm/entityid」这句话是对的，但它**不足以**
+    // 推出「科目级可以并行」—— 并发下读侧响应行集残缺（round10 真机差分 + 离线 harness 复现）。
+    // 每个科目内部仍是「前置 GET → delete_loop → 复核 GET」的严格串行。
+    // 日志仍先缓冲、后整段回放：保证面板输出顺序稳定、缩进与分类色与串行版一致。
+    const res = await poolMap(accounts, CONFIG.tAccountConcurrency, async (acc, i) => {
       scanned += 1;
       onProgress?.(scanned, accounts.length);
       const buf = [`[${i + 1}/${accounts.length}] ${acc.code} ${acc.name}…`];
@@ -1712,17 +1980,35 @@
     // 口径必须区分「本次清掉的」与「本来就是 0 行的」——把两者合并成一个数会让人
     // 以为清掉了 155 个科目（而其中 115 个原本就没有行）。外层 runClearEntry 已分开报，
     // 这里对齐同一口径。
-    const cleared = done.filter((r) => r.action === 'cleared' && r.after === 0).length;
+    //
+    // ⚠ round10 修：旧口径把「删了但没删净」的科目返回成 cleared，于是它在 cleared
+    //   与 bad 两个计数里**都不算** —— 汇总数字自身闭合不到 155（真机日志里出现过
+    //   42 + 109 + 1 = 152，缺的 3 个正是「N → 1 行」的科目），残留被静默吞掉。
+    //   现在按 action 分档：cleared / skipped / residual / unread / error，五档相加
+    //   必须等于已处理科目数；任何一档非零都要在日志里点名。
+    const cleared = done.filter((r) => r.action === 'cleared').length;
     const wasZero = done.filter((r) => r.action === 'skipped').length;
+    const residual = done.filter((r) => r.action === 'residual');
+    const unread = done.filter((r) => r.action === 'unread');
     const bad = done.filter((r) => r.action === 'error').length;
+    const problem = residual.length + unread.length + bad;
     if (stoppedEarly) {
       // 被中断时**不得**印「✅ 清空结束 …（共扫描 N 个）」——「开跑即停止」那一档
       // 一个科目都没派发，却报「共扫描 155 个」且用成功色，与全部清完同形（round9 复核 M4 残余）。
       logFn(`⏹ 清空被中断：本次清掉 ${cleared} 个科目，原本已是 0 行 ${wasZero} 个，失败 ${bad} 个`
         + `（已处理 ${done.length} / ${accounts.length} 个，其余未清）`, 'warn');
     } else {
-      logFn(`✅ 清空结束：本次清掉 ${cleared} 个科目，原本已是 0 行 ${wasZero} 个，失败 ${bad} 个`
-        + `（共扫描 ${accounts.length} 个）`, bad ? 'warn' : 'ok');
+      logFn(`${problem ? '⚠' : '✅'} 清空结束：本次清掉 ${cleared} 个科目，原本已是 0 行 ${wasZero} 个，`
+        + `未清干净 ${residual.length} 个，复核未读到 ${unread.length} 个，失败 ${bad} 个`
+        + `（共扫描 ${accounts.length} 个）`, problem ? 'warn' : 'ok');
+    }
+    if (residual.length) {
+      logFn(`⚠ 以下科目删除后仍有残留行（下次点「清空」会再删一次）：`
+        + residual.map((r) => `${r.code}(${r.after} 行)`).join(', '), 'warn');
+    }
+    if (unread.length) {
+      logFn(`⚠ 以下科目删除后复核读不到状态（结果未知，需人工确认，不要当成已清干净）：`
+        + unread.map((r) => `${r.code}${r.reason ? `(${r.reason})` : ''}`).join(', '), 'bad');
     }
     return done;
   }
@@ -1937,11 +2223,17 @@
       (n, total) => prog?.update(`已清空 ${n}/${total}`));
     prog?.close();
     if (!res.length) return;
-    const cleared = res.filter((r) => r.action === 'cleared' && r.after === 0).length;
+    // 口径与 clearAllAccounts 尾部一致（见那处注释）：五档相加闭合到处理数，
+    // 「未清干净」与「复核未读到」不再被并进「清掉」里。
+    const cleared = res.filter((r) => r.action === 'cleared').length;
     const wasZero = res.filter((r) => r.action === 'skipped').length;
+    const residual = res.filter((r) => r.action === 'residual').length;
+    const unread = res.filter((r) => r.action === 'unread').length;
     const bad = res.filter((r) => r.action === 'error').length;
-    logFn(`✅ 清空结果：清掉 ${cleared} 个科目，开始时已是 0 行 ${wasZero} 个，失败 ${bad} 个`
-      + `（共处理 ${res.length} 个）`, bad ? 'warn' : 'ok');
+    const problem = residual + unread + bad;
+    logFn(`${problem ? '⚠' : '✅'} 清空结果：清掉 ${cleared} 个科目，开始时已是 0 行 ${wasZero} 个，`
+      + `未清干净 ${residual} 个，复核未读到 ${unread} 个，失败 ${bad} 个`
+      + `（共处理 ${res.length} 个）`, problem ? 'warn' : 'ok');
   }
 
   /** ④ 删除本地存储答案：全删、不加二次确认、不碰平台。 */
@@ -2092,20 +2384,19 @@
       } else {
         const choice = await askConflictChoice(panel, survey.conflict, survey.foreign, survey.unknown);
         if (choice === 'clear') {
-          // 先把冲突科目并行清空，再统一进入写入 —— 删除是预清理，不是写路径的一个分支。
+          // 先把冲突科目**串行**清空，再统一进入写入 —— 删除是预清理，不是写路径的一个分支。
           // 这样 fillAccount 维持单一形态（平台无行 → 写），不新增「有行变无行」的入口。
-          logFn(`   清理 ${survey.conflict.length} 个冲突科目（并发 ${CONFIG.writeConcurrency} 路）…`);
+          logFn(`   清理 ${survey.conflict.length} 个冲突科目（串行，T 型账操作不可并发）…`);
           const clearProg = uiprog(panel, `已清理 0/${survey.conflict.length}`);
           let cleared = 0;
-          // 与写入段同理：并发 lane 不能直接往面板打日志（会交错），先缓冲、后整段回放
-          const clrBuf = await poolMap(survey.conflict, CONFIG.writeConcurrency, async (c) => {
+          // 与写入段同口径：日志**即时**写面板（科目串行 ⇒ 顺序天然稳定），不再段末整段回放。
+          const clrBuf = await poolMap(survey.conflict, CONFIG.tAccountConcurrency, async (c) => {
             if (shouldStop()) return null;
             const acc = taccounts.find((a) => a.code === c.code) || c;
-            const buf = [];
-            const r = await clearAccount(ctx, acc, year, month, (s, cls) => buf.push({ s: '      ' + s, cls: cls || '' }));
+            const r = await clearAccount(ctx, acc, year, month, (s, cls) => logFn('      ' + s, cls));
             cleared += 1;
             clearProg.update(`已清理 ${cleared}/${survey.conflict.length}`);
-            return { r, buf };
+            return r;
           }, shouldStop);
           clearProg.close();
           // 用 collectPool 读 —— 与写入段同理：未开工位置是稀疏洞，且并发下 clearAccount
@@ -2113,9 +2404,7 @@
           // for (const b of g.buf) … }` 读法在 `{__error}` 上会抛 `TypeError: g.buf is not iterable`，
           // 把**已清空科目的日志连同异常一起蒸发**，还让其后的整个写入被跳过。
           const clrGot = collectPool(clrBuf);
-          for (const g of clrGot.items) {
-            for (const b of g.buf) logFn(b.s, b.cls);
-          }
+          // 只取失败项：日志已在 clearAccount 内即时写面板（与写入段同口径），不再整段回放。
           for (const f of clrGot.failed) {
             const c = survey.conflict[f.index];
             logFn(`❌ ${c ? c.code : '?'} 清理异常：${f.error.message}`, 'bad');
@@ -2156,44 +2445,38 @@
       + `；实际写入 ${writable.length} 个科目`
       + `（贷/借合计 ${lock.totalDebit.toFixed(2)}）`);
 
-    // 科目级并发（writeConcurrency 路）；同一科目内部仍严格串行 —— 依据见 poolMap 注释
-    // （insert 的 body 自带当前全部已存行与 TEMPid，下一行必须看到上一行的落库结果）。
-    // 并发下日志会交错，所以每个科目先把本轮日志缓冲成一段，科目结束后整段一次性打给面板。
-    const buffered = await poolMap(writable, CONFIG.writeConcurrency, async (acc, idx) => {
+    // 科目间**串行**；同一科目内部本就严格串行（insert 的 body 自带当前全部已存行与 TEMPid，
+    // 下一行必须看到上一行的落库结果）。为什么科目间也不能并发：见 CONFIG.tAccountConcurrency
+    // 的注释 —— 并发下读侧响应行集残缺，科目级并发会让读回的科目错位。
+    // 日志**即时**直写面板（写一条、展一条）。科目之间串行（tAccountConcurrency=1）保证
+    // 输出顺序仍等于计划顺序，因此与「先缓冲、后回放」逐字等价，只是出现时机从段末提前到当下。
+    // ⚠ 若将来把 tAccountConcurrency 调成 >1，此处必须改回「先缓冲、后回放」，否则多路日志会交错。
+    consecutiveUnreadable = 0;   // 写路径开始，复位熔断计数（与普查阶段各自独立判断）
+    const buffered = await poolMap(writable, CONFIG.tAccountConcurrency, async (acc, idx) => {
       const name = `${acc.code} ${acc.name}`;
-      const buf = [`   [${idx + 1}/${writable.length}] ${name}…`];
-      const sub = (s, cls) => buf.push({ s: '      ' + s, cls: cls || '' });
+      logFn(`   [${idx + 1}/${writable.length}] ${name}…`);
+      const sub = (s, cls) => logFn('      ' + s, cls);
       try {
-        // 子日志带缩进与分类色（与串行版同形），只是先落进 buf 不直接打面板
         const r = await fillAccount(ctx, acc, year, month, cfg, sub, shouldStop);
-        return { ...r, name: acc.name || name, __buf: buf };
+        return { ...r, name: acc.name || name };
       } catch (e) {
         // 单科目异常不再冒泡：冒泡就等于把其他已写盘科目的结果与日志一起丢掉。
         // 「被停止」与「真失败」必须分成两种 action —— 都记成 error 的话，汇总会把
         // 用户主动点停止报成「❌ 失败 N 个科目」，与真的写坏数据长得一样。
         if (e && e.__stopped) {
-          buf.push({ s: '⏹ 停止：该科目未写完', cls: 'warn' });
-          return { code: acc.code, name: acc.name, action: 'stopped', __buf: buf };
+          logFn('⏹ 停止：该科目未写完', 'warn');
+          return { code: acc.code, name: acc.name, action: 'stopped' };
         }
-        buf.push({ s: `❌ ${acc.code} 异常：${e.message}`, cls: 'bad' });
-        return { code: acc.code, name: acc.name, action: 'error', reason: e.message, __buf: buf };
+        logFn(`❌ ${acc.code} 异常：${e.message}`, 'bad');
+        return { code: acc.code, name: acc.name, action: 'error', reason: e.message };
       }
     }, shouldStop);
 
-    // 整段回放：同科目内的行序不变，科目之间的顺序按计划顺序输出（不再是完成顺序）。
-    // 用 collectPool 读结果 —— 未开工位置是稀疏洞，filter(Boolean) 会跳过它们、
+    // 结果仍用 collectPool 读 —— 未开工位置是稀疏洞，filter(Boolean) 会跳过它们、
     // filter(r => r === null) 又数不到它们，两种写法都会把统计做错。
+    // 这里只收结果、不再回放日志：日志已在 worker 里即时打给面板（见上一段注释）。
     const collected = collectPool(buffered);
-    const results = [];
-    for (const r of collected.items) {
-      if (r.__buf) {
-        for (const b of r.__buf) {
-          if (typeof b === 'string') logFn(b); else logFn(b.s, b.cls);
-        }
-      }
-      const { __buf: _drop, ...rest } = r;
-      results.push(rest);
-    }
+    const results = collected.items;
     for (const f of collected.failed) {
       // 走到这里说明是 poolMap 层面捕获的异常（写入侧已在 worker 内就地转成 error 结果）
       logFn(`❌ 第 ${f.index + 1} 个科目异常：${f.error.message}`, 'bad');
@@ -2213,6 +2496,7 @@
     const stale = results.filter((r) => r.action === 'stale');
     const errored = results.filter((r) => r.action === 'error');
     const partial = results.filter((r) => r.action === 'partial');
+    const unread = results.filter((r) => r.action === 'unread');
     const stoppedAcc = results.filter((r) => r.action === 'stopped');
     if (aborted) {
       logFn(`⏹ 已中断：写入 ${written.length} 个科目；未开工 ${notStarted} 个`
@@ -2230,6 +2514,12 @@
     if (errored.length || partial.length) {
       logFn(`❌ 失败 ${errored.length + partial.length} 个科目：`
         + `${[...errored, ...partial].map((s) => s.code + (s.reason ? `(${s.reason})` : '')).join(', ')}`, 'bad');
+    }
+    // 「写后复核读不到本科目」单列一档：它的行**可能已经写进去了**，只是没读到，
+    // 既不能算成功也不能算失败，必须让人去看一眼（round10 定案：并发下读侧响应行集残缺）。
+    if (unread.length) {
+      logFn(`⚠ ${unread.length} 个科目写后复核读不到（结果未知，需人工确认）：`
+        + `${unread.map((s) => s.code + (s.reason ? `(${s.reason})` : '')).join(', ')}`, 'bad');
     }
     if (stale.length) {
       logFn(`⚠ ${stale.length} 个科目平台上已有数据但与计划不匹配，本轮未动：`

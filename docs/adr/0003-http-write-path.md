@@ -46,7 +46,7 @@
 
 ## 实现落地（2026-10-03，round5）
 
-写路径已按本决策实施。关键落点（`userscript/voucher2t.user.js`）：
+写路径已按本决策实施。关键落点（`userscript/auto-ledger.user.js`）：
 
 | 环节 | 实现 | 说明 |
 |---|---|---|

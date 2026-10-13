@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<!--
+  PROTOTYPE — 油猴面板 UI 原型宿主页。一次性代码，不是生产实现。
+
+  三个结构不同的变体挂在同一个 ?variant= 参数下切换：
+    A 左侧导航 · 工作台式 / B 横向标签 · 卡片流 / C 悬浮球 · 层级下钻
+  底部固定一条切换栏（不属于被评估的设计），左右方向键也可切换。
+  背景刻意画成「网中网会计综合实习平台 V6.3」的样子，让面板与真实上下文贴合。
+-->
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<title>原型 · 油猴面板 UI（auto-ledger）</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* ===== 宿主页自己的样式。不属于任何变体，只是给变体一个真实上下文。===== */
+  html, body { margin: 0; padding: 0; height: 100%; }
+  body {
+    font-family: "Segoe UI", "Microsoft YaHei", Tahoma, sans-serif;
+    font-size: 12px;
+    background: #dfe6e2;
+    color: #14261c;
+    overflow: hidden;
+  }
+
+  /* ---- 模拟平台：顶栏 ---- */
+  .pf-top {
+    height: 46px; background: linear-gradient(#2c6e52, #235b43);
+    display: flex; align-items: center; padding: 0 14px; color: #eaf7ef;
+    border-bottom: 1px solid #1b4735; position: relative; z-index: 2;
+  }
+  .pf-top .logo { font-size: 15px; font-weight: 600; letter-spacing: .5px; }
+  .pf-top .who { margin-left: auto; font-size: 11px; opacity: .85; }
+  .pf-top .who b { font-weight: 600; }
+
+  /* ---- 模拟平台：主体骨架 ---- */
+  .pf-body { display: flex; height: calc(100% - 46px - 26px); }
+
+  .pf-menu {
+    width: 128px; flex: 0 0 128px; background: #f3f7f4;
+    border-right: 1px solid #c8d6cd; padding: 6px 0; overflow: auto;
+  }
+  .pf-menu a {
+    display: block; padding: 5px 12px; font-size: 12px; color: #24503b;
+    text-decoration: none; border-left: 3px solid transparent;
+  }
+  .pf-menu a:hover { background: #e5efe8; }
+  .pf-menu a.on { background: #dcebe1; border-left-color: #2c8a5e; font-weight: 600; }
+  .pf-menu .grp {
+    padding: 8px 12px 3px; font-size: 10px; color: #7d9187;
+    letter-spacing: .6px; text-transform: uppercase;
+  }
+
+  .pf-main { flex: 1; overflow: auto; padding: 10px; background: #fff; }
+
+  /* ---- 模拟平台：T型账表格（作为变体 A/C 的被遮挡背景）---- */
+  .pf-hd {
+    background: #eef6f0; border: 1px solid #cfe0d5; padding: 6px 10px;
+    font-weight: 600; color: #1f4a34; margin-bottom: 8px;
+  }
+  table.pf-tbl { border-collapse: collapse; width: 100%; font-size: 12px; }
+  table.pf-tbl th, table.pf-tbl td {
+    border: 1px solid #cfe0d5; padding: 3px 6px; text-align: right;
+  }
+  table.pf-tbl th { background: #eef6f0; color: #1f4a34; text-align: center; font-weight: 600; }
+  table.pf-tbl td.l { text-align: left; }
+  table.pf-tbl tr:nth-child(even) td { background: #fafcfb; }
+
+  /* ---- 模拟平台：状态栏 ---- */
+  .pf-status {
+    height: 26px; background: #eef2ef; border-top: 1px solid #c8d6cd;
+    display: flex; align-items: center; padding: 0 12px; font-size: 11px; color: #4b6157;
+  }
+  .pf-status .r { margin-left: auto; }
+
+  /* ===== 底部原型切换栏（不属于被评估的设计）===== */
+  #vp-switch {
+    position: fixed; bottom: 14px; left: 50%; transform: translateX(-50%);
+    z-index: 2147483600;
+    display: flex; align-items: center; gap: 2px;
+    background: #111614; color: #eaf7ef;
+    border: 1px solid #3b4a42; border-radius: 999px;
+    padding: 4px 6px;
+    box-shadow: 0 8px 28px rgba(0,0,0,.45), 0 2px 6px rgba(0,0,0,.35);
+    font: 12px/1 -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif;
+    user-select: none;
+  }
+  #vp-switch button {
+    all: unset; cursor: pointer; padding: 5px 9px; border-radius: 999px;
+    font-size: 11px; letter-spacing: .3px; color: #cfe4d8; line-height: 1;
+  }
+  #vp-switch button:hover { background: #26332c; color: #fff; }
+  #vp-switch button:focus-visible { outline: 2px solid #8BD5AC; outline-offset: 1px; }
+  #vp-switch button.arrow { font-size: 13px; padding: 5px 8px; }
+  #vp-switch .lab {
+    min-width: 168px; text-align: center; padding: 0 8px;
+    font-size: 11.5px; color: #fff; white-space: nowrap;
+  }
+  #vp-switch .lab b { color: #8BD5AC; font-weight: 700; }
+  #vp-switch .sep { width: 1px; height: 16px; background: #3b4a42; margin: 0 4px; }
+  #vp-switch .mini {
+    font-size: 10px; padding: 5px 7px; color: #9fb3a8;
+  }
+  #vp-switch .mini.on { color: #8BD5AC; background: #1d2a23; }
+
+  /* 变体没加载成功时的提示 */
+  #vp-fail {
+    position: fixed; top: 60px; left: 50%; transform: translateX(-50%);
+    z-index: 2147483601; display: none;
+    background: #B3261E; color: #fff; padding: 10px 16px; border-radius: 8px;
+    font: 12px/1.5 -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif;
+    box-shadow: 0 6px 20px rgba(0,0,0,.35);
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ 模拟平台（只为给面板一个真实上下文） ============ -->
+<div class="pf-top">
+  <div class="logo">会计综合实习平台 V6.3</div>
+  <div class="who">学生(SAMPLE_STUDENT)(SAMPLE_ID) 企业(北京同声电子有限公司)(110)</div>
+</div>
+
+<div class="pf-body">
+  <div class="pf-menu">
+    <div class="grp">手工账</div>
+    <a href="#">经济业务</a>
+    <a href="#">期初余额表</a>
+    <a href="#">企业信息</a>
+    <a href="#">填制记账凭证</a>
+    <a href="#">审核记账凭证</a>
+    <a href="#" class="on">T型账</a>
+    <a href="#">科目汇总表</a>
+    <a href="#">明细账</a>
+    <a href="#">日记账</a>
+    <a href="#">总&nbsp;&nbsp;账</a>
+    <a href="#">会计报表</a>
+    <div class="grp">老师正确答案</div>
+    <a href="#">记账凭证正确答案</a>
+    <a href="#">明细账正确答案</a>
+    <a href="#">日记账正确答案</a>
+    <a href="#">科目汇总表正确答案</a>
+    <a href="#">总账正确答案</a>
+    <a href="#">会计报表正确答案</a>
+  </div>
+
+  <div class="pf-main">
+    <div class="pf-hd">库存现金（1001） · 2020年1月 · 共 9 行</div>
+    <table class="pf-tbl">
+      <thead><tr><th style="width:64px">凭证号</th><th style="width:96px">日期</th><th>摘要</th><th style="width:96px">借方</th><th style="width:96px">贷方</th><th style="width:40px">方向</th><th style="width:104px">余额</th></tr></thead>
+      <tbody>
+        <tr><td>记1</td><td class="l">2020-01-01</td><td class="l">核销预借差旅费</td><td>2.32</td><td></td><td>借</td><td>7,561.00</td></tr>
+        <tr><td>记3</td><td class="l">2020-01-01</td><td class="l">提取备用金</td><td>5,000.00</td><td></td><td>借</td><td>12,561.00</td></tr>
+        <tr><td>记5</td><td class="l">2020-01-02</td><td class="l">报销市内交通费和业务招待费</td><td></td><td>2,450.00</td><td>借</td><td>10,111.00</td></tr>
+        <tr><td>记8</td><td class="l">2020-01-03</td><td class="l">报销教育培训费</td><td></td><td>825.00</td><td>借</td><td>9,286.00</td></tr>
+        <tr><td>记30</td><td class="l">2020-01-15</td><td class="l">借支差旅费</td><td></td><td>2,000.00</td><td>借</td><td>7,286.00</td></tr>
+        <tr><td>记46</td><td class="l">2020-01-19</td><td class="l">提现</td><td>5,000.00</td><td></td><td>借</td><td>12,286.00</td></tr>
+        <tr><td>记56</td><td class="l">2020-01-23</td><td class="l">核销预借差旅费</td><td></td><td>403.00</td><td>借</td><td>11,883.00</td></tr>
+        <tr><td>记61</td><td class="l">2020-01-24</td><td class="l">报销差旅费</td><td></td><td>2,093.00</td><td>借</td><td>9,789.00</td></tr>
+        <tr><td>记62</td><td class="l">2020-01-24</td><td class="l">提现</td><td>5,000.00</td><td></td><td>借</td><td>14,789.00</td></tr>
+      </tbody>
+    </table>
+    <div style="margin-top:10px;color:#6b8076;font-size:11px">
+      这是原型背景，用来模拟平台真实页面密度。面板浮在它上面。
+    </div>
+  </div>
+</div>
+
+<div class="pf-status">
+  <span>当前角色：填制人</span>
+  <span class="r">SXID SAMPLE_SXID… · EntityID 110</span>
+</div>
+
+<!-- 变体挂载点：由宿主页脚本按 ?variant= 创建并交给 VP.register 的实现 -->
+<div id="vp-mount"></div>
+
+<div id="vp-fail">变体脚本未加载成功，检查 <code>variant-*.js</code> 是否存在或控制台报错。</div>
+
+<!-- ============ 原型切换栏 ============ -->
+<div id="vp-switch" role="toolbar" aria-label="原型变体切换（不属于被评估的设计）">
+  <button class="arrow" id="vp-prev" title="上一个变体（←）">‹</button>
+  <span class="lab" id="vp-lab">—</span>
+  <button class="arrow" id="vp-next" title="下一个变体（→）">›</button>
+  <span class="sep"></span>
+  <button class="mini" id="vp-theme" title="切换明暗主题">主题：浅</button>
+  <button class="mini" id="vp-collapse" title="触发当前变体的收起/展开">收起态</button>
+  <button class="mini" id="vp-log" title="向当前变体打一条演示日志">试日志</button>
+</div>
+
+<!-- 夹具 -->
+<script src="fixtures.js"></script>
+
+<!--
+  注册表必须在变体脚本之前定义：变体在自己文件顶层就调 VP.register(...)。
+  之前把它放在变体之后，导致三个变体全部报 "VP.register is not a function"。
+-->
+<script>
+  window.VP = window.VP || {};
+  window.VP._reg = window.VP._reg || {};
+  window.VP.register = function (key, label, impl) {
+    window.VP._reg[key] = { key: key, label: label, impl: impl };
+  };
+</script>
+
+<!-- 变体脚本（普通 script，非 module；加载顺序即注册顺序，与切换顺序无关） -->
+<script src="variant-a.js"></script>
+<script src="variant-b.js"></script>
+<script src="variant-c.js"></script>
+
+<script>
+(function () {
+  'use strict';
+
+  var ORDER = ['A', 'B', 'C'];
+
+  // ---- 状态 ----
+  var state = { variant: null, busy: false, mounted: null, hostEl: null };
+
+  function current() {
+    var v = new URLSearchParams(location.search).get('variant') || 'A';
+    return ORDER.indexOf(v) >= 0 ? v : 'A';
+  }
+
+  // ---- 宿主提供的 API（变体通过 ctx.api 使用）----
+  var api = {
+    /** 变体往宿主控制台/或自身日志打一条。原型里主要给「试日志」按钮与变体自测用。 */
+    log: function (msg, kind) {
+      console.log('[VP:' + state.variant + '][' + (kind || 'info') + ']', msg);
+      // 若变体实现了自己的日志接收器，转发给它（可选契约）
+      if (state.mounted && typeof state.mounted.log === 'function') {
+        try { state.mounted.log(msg, kind || 'info'); } catch (e) {}
+      }
+    },
+    setState: function (patch) {
+      Object.assign(state, patch || {});
+      document.getElementById('vp-collapse').classList.toggle('on', !!state.collapsed);
+    },
+    /** 变体可把自己的收起/展开能力挂到这里，切换栏的「收起态」按钮会调用。 */
+    onToggle: null
+  };
+
+  // ---- 挂载一个变体 ----
+  function mount(key) {
+    var host = document.getElementById('vp-mount');
+    // 清空上一个
+    if (state.mounted && typeof state.mounted.unmount === 'function') {
+      try { state.mounted.unmount(); } catch (e) {}
+    }
+    host.innerHTML = '';
+
+    var reg = window.VP._reg[key];
+    var fail = document.getElementById('vp-fail');
+
+    if (!reg) {
+      fail.style.display = 'block';
+      document.getElementById('vp-lab').innerHTML = '<b>' + key + '</b> — 未注册';
+      return;
+    }
+    fail.style.display = 'none';
+
+    // 变体容器：定位与主题由宿主负责，内部结构由变体负责
+    var el = document.createElement('div');
+    el.className = 'vp-root';
+    el.id = 'vp-root-' + key;
+    host.appendChild(el);
+
+    state.hostEl = el;
+    var ctx = { fx: window.FX, api: api };
+
+    try {
+      state.mounted = reg.impl.mount(el, ctx) || {};
+    } catch (e) {
+      console.error('[VP] 变体 ' + key + ' 挂载失败', e);
+      fail.style.display = 'block';
+      fail.textContent = '变体 ' + key + ' 挂载抛错：' + e.message;
+      state.mounted = null;
+      return;
+    }
+
+    // 把变体的收起能力接给切换栏（变体可用 mounted.toggle() 暴露）
+    api.onToggle = (state.mounted && typeof state.mounted.toggle === 'function')
+      ? function () { state.mounted.toggle(); syncCollapseBtn(); }
+      : null;
+
+    document.getElementById('vp-lab').innerHTML =
+      '<b>' + key + '</b> — ' + reg.label;
+    document.title = '原型 ' + key + ' · ' + reg.label;
+    syncCollapseBtn();
+  }
+
+  function syncCollapseBtn() {
+    var btn = document.getElementById('vp-collapse');
+    btn.style.display = api.onToggle ? '' : 'none';
+  }
+
+  // ---- 切换变体（写回 URL，便于分享与刷新保持）----
+  function go(key, push) {
+    if (ORDER.indexOf(key) < 0) return;
+    var url = new URL(location.href);
+    url.searchParams.set('variant', key);
+    history[push === false ? 'replaceState' : 'pushState']({}, '', url);
+    state.variant = key;
+    mount(key);
+  }
+
+  function step(delta) {
+    var i = ORDER.indexOf(current());
+    var n = (i + delta + ORDER.length) % ORDER.length;
+    go(ORDER[n]);
+  }
+
+  // ---- 切换栏交互 ----
+  document.getElementById('vp-prev').onclick = function () { step(-1); };
+  document.getElementById('vp-next').onclick = function () { step(1); };
+
+  var THEMES = ['light', 'dark', 'system'];
+  var THEME_LAB = { light: '浅', dark: '深', system: '跟随' };
+  function applyTheme(t) {
+    if (t === 'system') document.documentElement.removeAttribute('data-theme');
+    else document.documentElement.dataset.theme = t;
+    document.getElementById('vp-theme').textContent = '主题：' + THEME_LAB[t];
+  }
+  applyTheme('light');
+  document.getElementById('vp-theme').onclick = function () {
+    var cur = document.documentElement.dataset.theme || 'system';
+    var next = THEMES[(THEMES.indexOf(cur) + 1) % THEMES.length];
+    applyTheme(next);
+  };
+
+  document.getElementById('vp-collapse').onclick = function () {
+    if (api.onToggle) api.onToggle();
+    else console.log('[VP] 当前变体未暴露 toggle()');
+  };
+
+  document.getElementById('vp-log').onclick = function () {
+    var msgs = [
+      ['读取教师答案 · 明细账（173 个科目）', 'info'],
+      ['账簿 1002 已建，账页 100201 写入 53 行', 'ok'],
+      ['科目 100202 平台行数与计划不符，已跳过', 'warn'],
+      ['凭证 记62 打勾失败：行号未匹配', 'err'],
+      ['本月合计已生成，月结线已画', 'ok']
+    ];
+    var m = msgs[Math.floor(Math.random() * msgs.length)];
+    api.log(m[0], m[1]);
+  };
+
+  // ---- 键盘 ← → 切换（输入框内不拦截）----
+  document.addEventListener('keydown', function (e) {
+    var t = e.target;
+    if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
+    if (e.key === 'ArrowLeft') { step(-1); e.preventDefault(); }
+    else if (e.key === 'ArrowRight') { step(1); e.preventDefault(); }
+  });
+
+  window.addEventListener('popstate', function () { mount(current()); });
+
+  // ---- 启动 ----
+  state.variant = current();
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () { mount(state.variant); });
+  } else {
+    mount(state.variant);
+  }
+})();
+</script>
+</body>
+</html>
