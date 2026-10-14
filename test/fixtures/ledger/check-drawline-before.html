@@ -1,0 +1,1460 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><link href="netinnet/netinnet_css.css" rel="stylesheet" type="text/css">
+<link href="netinnet/tablestyle.css" rel="stylesheet" type="text/css">
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="style_v6/css/style.css" rel="stylesheet" type="text/css">
+<link href="style_v6/css/custom.css" rel="stylesheet" type="text/css">
+<link href="css/blue_text.css" rel="stylesheet" type="text/css">
+<link href="netinnet/netinnet_css.css" rel="stylesheet" type="text/css">
+<link href="css/softkf_common.css" rel="stylesheet" type="text/css">
+
+<script src="javascript/jquery.1.8.js" type="text/jscript"></script>
+<script src="javascript/bootstrap.min.js" type="text/jscript"></script>
+
+<script language="JavaScript" src="javascript/basic.js"></script>
+<script language="JavaScript" src="javascript/operation.js"></script>
+<script language="JavaScript" src="javascript/encoder.js"></script>
+<script language="JavaScript" src="javascript/checkForm.js"></script>
+<script type="text/javascript" src="javascript/multiTags.js"></script>
+<script type="text/javascript" src="javascript/workStatus.js"></script>
+<script language="JavaScript" src="js/softkf_common.js"></script>
+<script language="JavaScript" src="javascript/MyQuickSelect.js"></script>
+<script language="JavaScript" src="javascript/UrlManager.js"></script><script language="JavaScript" src="javascript/jquery.js"></script>
+<script language="JavaScript" src="javascript/loadmask/jquery.loadmask.js"></script>
+<link href="javascript/loadmask/jquery.loadmask.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" src="javascript/loadmask.js"></script>
+<script type="text/javascript" src="javascript/My97DatePicker/WdatePicker.js" defer="defer"></script>
+<script language="JavaScript" src="js/report_page_auto_width.js"></script>
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+<script language="JavaScript" src="javascript/wz_jsgraphics.js"></script>
+<title>明细账</title>
+<style>
+#CHBigFuncBar li a{
+	text-decoration: none;
+	color: #369;
+	border: 1px solid #369;
+} 
+/* 主导航条 */
+#CHBigNavBar1 {
+	height: 20px;
+	line-height: 20px;
+}
+#CHBigNavBar1 ul {
+	padding: 0;
+	margin: 3;
+	background-color: #FFF;
+	text-align: left;
+	width: 100%;
+}
+#CHBigNavBar1 li {
+	display: inline;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+#CHBigNavBar1 li a {
+	padding: 2px 7px;
+	background-color: #B0C4DE;
+	text-decoration: none;
+	color: #000;
+	border-left: 2px solid #FFF;
+	border-bottom: 1px solid #B0C4DE;
+}
+#CHBigNavBar1 li a:hover {
+	background-color: #369;
+	color: #FFF;
+	border-bottom: 1px solid #369;
+}
+.STYLE32 {
+    border-bottom: 1px solid #369;
+}
+#div_001 a{
+	font-size: 14px;
+}
+.td_15{
+  width:15px;
+}
+.title_div{
+  height:30px;
+  line-height:30px;
+  width:280px;
+  font-size:18px;
+  border-bottom: 2px solid #0069b2;
+}
+.km_input{
+  width:230px;
+  background-color:transparent;
+  border-bottom: 1px dashed #0069b2; 
+}
+.page_td input{
+  width:40px;
+  border:none;
+  background-color:transparent;
+  border-bottom: 1px dashed #0069b2; 
+}
+.je input,.je_name input{
+  width:154px;
+  background-color: transparent;
+  border:none;
+}
+.je_name input{
+  letter-spacing: 2px;
+}
+.je input{
+  text-align: right;
+  letter-spacing: 6px;
+}
+</style>
+
+
+
+
+<style type="text/css">
+   
+   .STYLE31 {color:#19711f;}
+	.je,.je_name{
+	   width:154px;
+	   background:url(images/teacher/zz1_5_bg.BMP) no-repeat;
+	}
+	.tab_head td,.je_name input{
+	  color:#19711f;
+	  text-align: center;
+	}
+	.entry_row td{
+	  height:28px;
+	}
+   .drb_hh1,.drb_hh2{
+	  border-bottom:1px solid #ff0000;
+	  border-right: 3px double #ff0000;
+	}
+	.drb_lh1,.drb_lh2{
+      border-bottom:1px solid #19711f;
+	  border-right: 3px double #ff0000;
+    }
+	.rb_hl{
+	  border-right:1px solid #ff0000;
+	  border-bottom:1px solid #19711f;
+	}
+	.rb_hh2{
+	  border-bottom:1px solid #ff0000;
+	  border-right: 1px solid #ff0000;
+	}
+	.rb_ll{
+	  border-right:1px solid #19711f;
+	  border-bottom:1px solid #19711f;
+	}
+	.rdb_ll{
+	  border-right:2px solid #19711f;
+	  border-bottom:1px solid #19711f;
+	}
+    
+    .b_l{
+	  border-bottom:1px solid #19711f;
+	}
+	.seperate{
+	  border-bottom:1px solid #19711f;
+	  border-right: 2px solid #ff0000;
+	}
+	.tab_list{
+      border-collapse:collapse;
+      border:1px solid #ff0000;
+	}
+	.wc_tab{
+	  border:1px solid #ff0000;
+	  border-spacing: 2px;
+	  
+	}
+	.top_td{
+	  border:1px solid #ff0000;
+	}
+	.title_div{
+	  border-bottom: 2px solid #19711f;
+	}
+	.km_input{
+	  border-bottom: 1px dashed #19711f;
+	}
+	.page_td input{
+	  border-bottom: 1px dashed #19711f; 
+	}
+	input{
+	  font-family:Verdana;
+	}
+</style><link href="http://10.11.4.69:8090/netinnet_zhsx_v63/javascript/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css"></head>
+
+
+
+
+
+<body class="scrollbody">
+<div class="center">
+	<div class="inside_list">
+		
+		<div class="table_tit">
+    		<h3 class="left" style="font-family: 微软雅黑">库存现金 之 库存现金
+    		
+    		
+    		</h3>
+    		<div class="table_btn right">
+    			
+    			<button type="button" class="blue_btn little_btn define_btn" onclick="window.location.href='do?action=ts_zb_zy&amp;start=ts_zy_list&amp;type_zb=1&amp;readyOnly=0&amp;zbid=45833&amp;entityID=110       &amp;SXID=SESSION_TOKEN_PLACEHOLDER&amp;isSimulate=false'">返回账本目录</button>
+    			
+    		</div>
+    	</div>		
+		
+<div id="div_for_drawLine_only"><div id="del_line16" rowclass="9" rowid="16" keyid="10000002545014" style="cursor:hand;position:relative;z-index:1002;left:5;top:468;background-color:transparent;"><div style="position: absolute; top: -11px; width: 881px; left: 4px; height: 5px; background-color: transparent;"></div></div><div id="line16" keyid="10000002545014" style="position:relative;z-index:1001;"><div style="position: absolute; background-color: red; width: 881px; height: 1px; overflow: hidden; top: 465px; left: 4px;"></div></div><div id="del_line15" rowclass="9" rowid="15" keyid="10000002545005" style="cursor:hand;position:relative;z-index:1002;left:5;top:468;background-color:transparent;"><div style="position: absolute; top: -11px; width: 881px; left: 4px; height: 5px; background-color: transparent;"></div></div><div id="line15" keyid="10000002545005" style="position:relative;z-index:1001;"><div style="position: absolute; background-color: red; width: 881px; height: 1px; overflow: hidden; top: 465px; left: 4px;"></div></div><div id="del_line13" rowclass="8" rowid="13" keyid="10000002545008" style="cursor:hand;position:relative;z-index:1002;left:5;top:440;background-color:transparent;"><div style="position: absolute; top: -11px; width: 881px; left: 4px; height: 5px; background-color: transparent;"></div></div><div id="line13" keyid="10000002545008" style="position:relative;z-index:1001;"><div style="position: absolute; background-color: red; width: 881px; height: 1px; overflow: hidden; top: 437px; left: 4px;"></div></div><div id="del_line12" rowclass="8" rowid="12" keyid="10000002545001" style="cursor:hand;position:relative;z-index:1002;left:5;top:440;background-color:transparent;"><div style="position: absolute; top: -11px; width: 881px; left: 4px; height: 5px; background-color: transparent;"></div></div><div id="line12" keyid="10000002545001" style="position:relative;z-index:1001;"><div style="position: absolute; background-color: red; width: 881px; height: 1px; overflow: hidden; top: 437px; left: 4px;"></div></div>
+</div><table border="0" cellpadding="0" cellspacing="0">
+<form name="v_dto6" action="do?action=ts_ledger" method="post"></form>
+
+<input type="hidden" name="start" value="query">
+<input type="hidden" name="zb_zy_id" value="1000245326">
+<input type="hidden" name="type_zb" value="1">
+<input type="hidden" name="zbid" value="45833">
+<input type="hidden" name="sxid" value="SESSION_TOKEN_PLACEHOLDER">
+<input type="hidden" name="entityID" value="110       ">
+<input type="hidden" name="isSimulate" value="false">
+<input type="hidden" name="yyyy" value="2020">
+<input type="hidden" name="accountID" value="1001                ">
+<input type="hidden" name="is_zz_i" value="0" maxlength="1">
+<tbody><tr><td>
+
+<table width="890" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+  <td>
+    <table width="890" class="wc_tab" align="center">
+    
+    <tbody><tr>
+      <td valign="top" class="top_td">
+         <table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+	          <!--DWLayoutTable-->
+	          <tbody><tr>
+	            <td width="200" height="50" valign="top" class="page_td" style="padding-top: 10px;">
+	                <span class="STYLE31">分页:</span><input name="" id="" readonly="">
+	                <span class="STYLE31">总页:</span><input name="" id="" readonly="">
+                </td>
+	            <td width="400" align="center" valign="middle">
+	                 <div class="STYLE31 title_div">(活页)三栏式明细账</div>
+	            </td>
+	            <td>&nbsp;</td>
+	          </tr>
+	          <tr>
+              
+                <td colspan="3" align="left" valign="bottom" class="word_normal">
+                   <span class="STYLE31">上级科目</span>
+              	   <input name="kjkm" type="text" readonly="" value="库存现金                                                                                            " class="table_space km_input" id="a33" size="12">
+              	   &nbsp;&nbsp;<span class="STYLE31">末级科目</span>
+              	   <input name="kjkm" type="text" readonly="" value="" class="table_space km_input" id="a33" size="12">
+                </td>
+              
+	          </tr>
+   		  </tbody></table>
+      </td>
+    </tr>
+    <tr>
+      <td valign="middle" align="center" style="border:none;">
+          <table id="tab" width="883" class="tab_list" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+          <tbody><tr>
+            <td width="881">
+                <table width="100%" cellpadding="0" cellspacing="0">
+                <tbody><tr class="tab_head">
+                  <td class="drb_lh1" height="30" colspan="3"> 2020 年</td>
+                  <td class="rb_hl" colspan="2">凭证</td>
+                  <td class="drb_hh2" rowspan="2"><div style="width:150px;">摘要</div></td>
+                  <td class="drb_lh2">借方</td>
+                  <td class="drb_lh2">贷方</td>
+                  <td class="drb_hh2" rowspan="2" style="width:30px;">借<br>或 <br>贷<br></td>
+                  <td class="drb_lh2">余额</td>
+                  <td class="b_l">√</td>
+                </tr>
+                <tr class="tab_head">
+                  <td class="rb_hh2" width="0">&nbsp;</td> 
+                  <td class="rb_hh2" width="22">月</td>
+                  <td class="drb_hh1" width="22">日</td> 
+                  <td class="rb_hh2">种类</td>
+                  <td class="rb_hh2">号数</td>
+                  <td class="drb_lh2 je_name">
+                      <input value="亿千百十万千百十元角分" type="text" readonly="">
+                  </td>
+                  <td class="drb_lh2 je_name">
+                      <input value="亿千百十万千百十元角分" type="text" readonly="">
+                  </td>
+                  <td class="drb_lh2 je_name">
+                      <input value="亿千百十万千百十元角分" type="text" readonly="">
+                  </td>
+                  <td class="b_l"><input type="checkbox" onclick="javascript:if (this.checked) selectedAllCheckBox('CHECK_CONFIRM');else deselectAllCheckBox('CHECK_CONFIRM');" name="CHECK_CONFIRM_SelectAll"></td>
+                </tr>
+			
+				
+                <tr class="entry_row">
+                  <td class="rb_hl">&nbsp;</td>
+                  <td class="rb_hl">
+                      <input name="mm" type="text" style="width: 20px;" class="table_input" value="1" maxlength="2" isnull="notnull" datatype="INTEGER(2)">
+                  </td>
+                  <td class="drb_lh1">
+                      <input name="dd" type="text" style="width: 20px;" class="table_input" value="1" maxlength="2" datatype="INTEGER(2)">
+                  </td>
+                  <td class="rb_hl"> 
+               		  <select name="vouchertype" onchange="type_do(this.value,this);">
+                         <option value="记" memo="" rowclass="2" isnormalrec="1">记</option>
+<option value="收" memo="" rowclass="2" isnormalrec="1">收</option>
+<option value="付" memo="" rowclass="2" isnormalrec="1">付</option>
+<option value="汇" memo="" rowclass="2" isnormalrec="1">汇</option>
+<option value="月初" memo="承前页" rowclass="0" isnormalrec="1">月初</option>
+<option selected="" value="年初" memo="上年结转" rowclass="1" isnormalrec="1">年初</option>
+<option value="月汇" memo="本月合计" rowclass="6" isnormalrec="0">月汇</option>
+<option value="年累" memo="本年累计" rowclass="7" isnormalrec="0">年累</option>
+<option value="--" memo="----------------" rowclass="8" isnormalrec="0">--</option>
+<option value="==" memo="================" rowclass="9" isnormalrec="0">==</option>
+<option value="年结" memo="结转下年" rowclass="-1" isnormalrec="0">年结</option>
+ 
+                      </select>
+                  </td>
+                  <td class="rb_hl">
+                      <input name="voucherid" datatype="title" maxlen="20" caption="号数" type="text" class="table_input" value="" style="width:30px;" maxlength="3" readonly="">
+                  </td>
+                  <td class="drb_lh2">
+                  
+                      上年结转
+                      <input name="memo" type="hidden" value="上年结转">
+                  
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="debit" id="debit" datatype="number(20,2)" caption="借方金额" type="text" class="table_space_3" value="" maxlength="11" readonly="">
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="lend" id="lend" datatype="number(20,2)" caption="贷方金额" type="text" class="table_space_3" value="" maxlength="11" readonly="">
+                  </td>
+                  <td class="drb_lh2" align="center">
+                      <select name="in_debit_lend">
+	                      <option value="0">平</option>
+	                      <option value="1" selected="">借</option> 
+	                      <option value="-1">贷</option>
+                  	  </select>
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="balance" type="text" datatype="number(20,2)" caption="余额" class="table_space_3" value="732800" maxlength="11">
+                  </td>
+                  <td align="center" class="b_l">
+                      <input type="checkbox" name="CHECK_CONFIRM" value="10000002544756">
+                      <input type="hidden" name="is_zz" value="0" readonly="">
+                      <input type="hidden" name="ledgerrecordid" value="10000002544756" readonly="">
+                      <input type="hidden" name="isNormalRec" value="1" maxlength="1">
+                      <input type="hidden" name="isadditional" value="" maxlength="1">
+                   </td>
+                </tr>
+			
+				
+                <tr class="entry_row">
+                  <td class="rb_hl">&nbsp;</td>
+                  <td class="rb_hl">
+                      <input name="mm" type="text" style="width: 20px;" class="table_input" value="1" maxlength="2" isnull="notnull" datatype="INTEGER(2)">
+                  </td>
+                  <td class="drb_lh1">
+                      <input name="dd" type="text" style="width: 20px;" class="table_input" value="1" maxlength="2" datatype="INTEGER(2)">
+                  </td>
+                  <td class="rb_hl"> 
+               		  <select name="vouchertype" onchange="type_do(this.value,this);">
+                         <option selected="" value="记" memo="" rowclass="2" isnormalrec="1">记</option>
+<option value="收" memo="" rowclass="2" isnormalrec="1">收</option>
+<option value="付" memo="" rowclass="2" isnormalrec="1">付</option>
+<option value="汇" memo="" rowclass="2" isnormalrec="1">汇</option>
+<option value="月初" memo="承前页" rowclass="0" isnormalrec="1">月初</option>
+<option value="年初" memo="上年结转" rowclass="1" isnormalrec="1">年初</option>
+<option value="月汇" memo="本月合计" rowclass="6" isnormalrec="0">月汇</option>
+<option value="年累" memo="本年累计" rowclass="7" isnormalrec="0">年累</option>
+<option value="--" memo="----------------" rowclass="8" isnormalrec="0">--</option>
+<option value="==" memo="================" rowclass="9" isnormalrec="0">==</option>
+<option value="年结" memo="结转下年" rowclass="-1" isnormalrec="0">年结</option>
+ 
+                      </select>
+                  </td>
+                  <td class="rb_hl">
+                      <input name="voucherid" isnull="notnull" datatype="title" maxlen="20" caption="号数" type="text" class="table_input" value="1" style="width:30px;" maxlength="3">
+                  </td>
+                  <td class="drb_lh2">
+                  
+                      <input name="memo" isnull="notnull" datatype="title" maxlen="100" caption="摘要" type="text" class="table_input" value="核销预借差旅费" maxlength="50">
+                  
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="debit" id="debit" datatype="number(20,2)" caption="借方金额" type="text" class="table_space_3" value="23200" maxlength="11">
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="lend" id="lend" datatype="number(20,2)" caption="贷方金额" type="text" class="table_space_3" value="" maxlength="11">
+                  </td>
+                  <td class="drb_lh2" align="center">
+                      <select name="in_debit_lend">
+	                      <option value="0">平</option>
+	                      <option value="1" selected="">借</option> 
+	                      <option value="-1">贷</option>
+                  	  </select>
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="balance" type="text" datatype="number(20,2)" caption="余额" class="table_space_3" value="" maxlength="11">
+                  </td>
+                  <td align="center" class="b_l">
+                      <input type="checkbox" name="CHECK_CONFIRM" value="10000002544764">
+                      <input type="hidden" name="is_zz" value="0" readonly="">
+                      <input type="hidden" name="ledgerrecordid" value="10000002544764" readonly="">
+                      <input type="hidden" name="isNormalRec" value="1" maxlength="1">
+                      <input type="hidden" name="isadditional" value="" maxlength="1">
+                   </td>
+                </tr>
+			
+				
+                <tr class="entry_row">
+                  <td class="rb_hl">&nbsp;</td>
+                  <td class="rb_hl">
+                      <input name="mm" type="text" style="width: 20px;" class="table_input" value="1" maxlength="2" isnull="notnull" datatype="INTEGER(2)">
+                  </td>
+                  <td class="drb_lh1">
+                      <input name="dd" type="text" style="width: 20px;" class="table_input" value="1" maxlength="2" datatype="INTEGER(2)">
+                  </td>
+                  <td class="rb_hl"> 
+               		  <select name="vouchertype" onchange="type_do(this.value,this);">
+                         <option selected="" value="记" memo="" rowclass="2" isnormalrec="1">记</option>
+<option value="收" memo="" rowclass="2" isnormalrec="1">收</option>
+<option value="付" memo="" rowclass="2" isnormalrec="1">付</option>
+<option value="汇" memo="" rowclass="2" isnormalrec="1">汇</option>
+<option value="月初" memo="承前页" rowclass="0" isnormalrec="1">月初</option>
+<option value="年初" memo="上年结转" rowclass="1" isnormalrec="1">年初</option>
+<option value="月汇" memo="本月合计" rowclass="6" isnormalrec="0">月汇</option>
+<option value="年累" memo="本年累计" rowclass="7" isnormalrec="0">年累</option>
+<option value="--" memo="----------------" rowclass="8" isnormalrec="0">--</option>
+<option value="==" memo="================" rowclass="9" isnormalrec="0">==</option>
+<option value="年结" memo="结转下年" rowclass="-1" isnormalrec="0">年结</option>
+ 
+                      </select>
+                  </td>
+                  <td class="rb_hl">
+                      <input name="voucherid" isnull="notnull" datatype="title" maxlen="20" caption="号数" type="text" class="table_input" value="3" style="width:30px;" maxlength="3">
+                  </td>
+                  <td class="drb_lh2">
+                  
+                      <input name="memo" isnull="notnull" datatype="title" maxlen="100" caption="摘要" type="text" class="table_input" value="提取备用金" maxlength="50">
+                  
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="debit" id="debit" datatype="number(20,2)" caption="借方金额" type="text" class="table_space_3" value="210000" maxlength="11">
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="lend" id="lend" datatype="number(20,2)" caption="贷方金额" type="text" class="table_space_3" value="" maxlength="11">
+                  </td>
+                  <td class="drb_lh2" align="center">
+                      <select name="in_debit_lend">
+	                      <option value="0">平</option>
+	                      <option value="1" selected="">借</option> 
+	                      <option value="-1">贷</option>
+                  	  </select>
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="balance" type="text" datatype="number(20,2)" caption="余额" class="table_space_3" value="" maxlength="11">
+                  </td>
+                  <td align="center" class="b_l">
+                      <input type="checkbox" name="CHECK_CONFIRM" value="10000002544934">
+                      <input type="hidden" name="is_zz" value="0" readonly="">
+                      <input type="hidden" name="ledgerrecordid" value="10000002544934" readonly="">
+                      <input type="hidden" name="isNormalRec" value="1" maxlength="1">
+                      <input type="hidden" name="isadditional" value="" maxlength="1">
+                   </td>
+                </tr>
+			
+				
+                <tr class="entry_row">
+                  <td class="rb_hl">&nbsp;</td>
+                  <td class="rb_hl">
+                      <input name="mm" type="text" style="width: 20px;" class="table_input" value="1" maxlength="2" isnull="notnull" datatype="INTEGER(2)">
+                  </td>
+                  <td class="drb_lh1">
+                      <input name="dd" type="text" style="width: 20px;" class="table_input" value="1" maxlength="2" datatype="INTEGER(2)">
+                  </td>
+                  <td class="rb_hl"> 
+               		  <select name="vouchertype" onchange="type_do(this.value,this);">
+                         <option selected="" value="记" memo="" rowclass="2" isnormalrec="1">记</option>
+<option value="收" memo="" rowclass="2" isnormalrec="1">收</option>
+<option value="付" memo="" rowclass="2" isnormalrec="1">付</option>
+<option value="汇" memo="" rowclass="2" isnormalrec="1">汇</option>
+<option value="月初" memo="承前页" rowclass="0" isnormalrec="1">月初</option>
+<option value="年初" memo="上年结转" rowclass="1" isnormalrec="1">年初</option>
+<option value="月汇" memo="本月合计" rowclass="6" isnormalrec="0">月汇</option>
+<option value="年累" memo="本年累计" rowclass="7" isnormalrec="0">年累</option>
+<option value="--" memo="----------------" rowclass="8" isnormalrec="0">--</option>
+<option value="==" memo="================" rowclass="9" isnormalrec="0">==</option>
+<option value="年结" memo="结转下年" rowclass="-1" isnormalrec="0">年结</option>
+ 
+                      </select>
+                  </td>
+                  <td class="rb_hl">
+                      <input name="voucherid" isnull="notnull" datatype="title" maxlen="20" caption="号数" type="text" class="table_input" value="5" style="width:30px;" maxlength="3">
+                  </td>
+                  <td class="drb_lh2">
+                  
+                      <input name="memo" isnull="notnull" datatype="title" maxlen="100" caption="摘要" type="text" class="table_input" value="报销市内交通费和业务招待费" maxlength="50">
+                  
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="debit" id="debit" datatype="number(20,2)" caption="借方金额" type="text" class="table_space_3" value="" maxlength="11">
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="lend" id="lend" datatype="number(20,2)" caption="贷方金额" type="text" class="table_space_3" value="" maxlength="11">
+                  </td>
+                  <td class="drb_lh2" align="center">
+                      <select name="in_debit_lend">
+	                      <option value="0" selected="">平</option>
+	                      <option value="1">借</option> 
+	                      <option value="-1">贷</option>
+                  	  </select>
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="balance" type="text" datatype="number(20,2)" caption="余额" class="table_space_3" value="" maxlength="11">
+                  </td>
+                  <td align="center" class="b_l">
+                      <input type="checkbox" name="CHECK_CONFIRM" value="10000002544937">
+                      <input type="hidden" name="is_zz" value="0" readonly="">
+                      <input type="hidden" name="ledgerrecordid" value="10000002544937" readonly="">
+                      <input type="hidden" name="isNormalRec" value="1" maxlength="1">
+                      <input type="hidden" name="isadditional" value="" maxlength="1">
+                   </td>
+                </tr>
+			
+				
+                <tr class="entry_row">
+                  <td class="rb_hl">&nbsp;</td>
+                  <td class="rb_hl">
+                      <input name="mm" type="text" style="width: 20px;" class="table_input" value="1" maxlength="2" isnull="notnull" datatype="INTEGER(2)">
+                  </td>
+                  <td class="drb_lh1">
+                      <input name="dd" type="text" style="width: 20px;" class="table_input" value="1" maxlength="2" datatype="INTEGER(2)">
+                  </td>
+                  <td class="rb_hl"> 
+               		  <select name="vouchertype" onchange="type_do(this.value,this);">
+                         <option selected="" value="记" memo="" rowclass="2" isnormalrec="1">记</option>
+<option value="收" memo="" rowclass="2" isnormalrec="1">收</option>
+<option value="付" memo="" rowclass="2" isnormalrec="1">付</option>
+<option value="汇" memo="" rowclass="2" isnormalrec="1">汇</option>
+<option value="月初" memo="承前页" rowclass="0" isnormalrec="1">月初</option>
+<option value="年初" memo="上年结转" rowclass="1" isnormalrec="1">年初</option>
+<option value="月汇" memo="本月合计" rowclass="6" isnormalrec="0">月汇</option>
+<option value="年累" memo="本年累计" rowclass="7" isnormalrec="0">年累</option>
+<option value="--" memo="----------------" rowclass="8" isnormalrec="0">--</option>
+<option value="==" memo="================" rowclass="9" isnormalrec="0">==</option>
+<option value="年结" memo="结转下年" rowclass="-1" isnormalrec="0">年结</option>
+ 
+                      </select>
+                  </td>
+                  <td class="rb_hl">
+                      <input name="voucherid" isnull="notnull" datatype="title" maxlen="20" caption="号数" type="text" class="table_input" value="8" style="width:30px;" maxlength="3">
+                  </td>
+                  <td class="drb_lh2">
+                  
+                      <input name="memo" isnull="notnull" datatype="title" maxlen="100" caption="摘要" type="text" class="table_input" value="报销教育培训费" maxlength="50">
+                  
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="debit" id="debit" datatype="number(20,2)" caption="借方金额" type="text" class="table_space_3" value="" maxlength="11">
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="lend" id="lend" datatype="number(20,2)" caption="贷方金额" type="text" class="table_space_3" value="" maxlength="11">
+                  </td>
+                  <td class="drb_lh2" align="center">
+                      <select name="in_debit_lend">
+	                      <option value="0" selected="">平</option>
+	                      <option value="1">借</option> 
+	                      <option value="-1">贷</option>
+                  	  </select>
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="balance" type="text" datatype="number(20,2)" caption="余额" class="table_space_3" value="" maxlength="11">
+                  </td>
+                  <td align="center" class="b_l">
+                      <input type="checkbox" name="CHECK_CONFIRM" value="10000002544940">
+                      <input type="hidden" name="is_zz" value="0" readonly="">
+                      <input type="hidden" name="ledgerrecordid" value="10000002544940" readonly="">
+                      <input type="hidden" name="isNormalRec" value="1" maxlength="1">
+                      <input type="hidden" name="isadditional" value="" maxlength="1">
+                   </td>
+                </tr>
+			
+				
+                <tr class="entry_row">
+                  <td class="rb_hl">&nbsp;</td>
+                  <td class="rb_hl">
+                      <input name="mm" type="text" style="width: 20px;" class="table_input" value="1" maxlength="2" isnull="notnull" datatype="INTEGER(2)">
+                  </td>
+                  <td class="drb_lh1">
+                      <input name="dd" type="text" style="width: 20px;" class="table_input" value="1" maxlength="2" datatype="INTEGER(2)">
+                  </td>
+                  <td class="rb_hl"> 
+               		  <select name="vouchertype" onchange="type_do(this.value,this);">
+                         <option selected="" value="记" memo="" rowclass="2" isnormalrec="1">记</option>
+<option value="收" memo="" rowclass="2" isnormalrec="1">收</option>
+<option value="付" memo="" rowclass="2" isnormalrec="1">付</option>
+<option value="汇" memo="" rowclass="2" isnormalrec="1">汇</option>
+<option value="月初" memo="承前页" rowclass="0" isnormalrec="1">月初</option>
+<option value="年初" memo="上年结转" rowclass="1" isnormalrec="1">年初</option>
+<option value="月汇" memo="本月合计" rowclass="6" isnormalrec="0">月汇</option>
+<option value="年累" memo="本年累计" rowclass="7" isnormalrec="0">年累</option>
+<option value="--" memo="----------------" rowclass="8" isnormalrec="0">--</option>
+<option value="==" memo="================" rowclass="9" isnormalrec="0">==</option>
+<option value="年结" memo="结转下年" rowclass="-1" isnormalrec="0">年结</option>
+ 
+                      </select>
+                  </td>
+                  <td class="rb_hl">
+                      <input name="voucherid" isnull="notnull" datatype="title" maxlen="20" caption="号数" type="text" class="table_input" value="30" style="width:30px;" maxlength="3">
+                  </td>
+                  <td class="drb_lh2">
+                  
+                      <input name="memo" isnull="notnull" datatype="title" maxlen="100" caption="摘要" type="text" class="table_input" value="借支差旅费" maxlength="50">
+                  
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="debit" id="debit" datatype="number(20,2)" caption="借方金额" type="text" class="table_space_3" value="" maxlength="11">
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="lend" id="lend" datatype="number(20,2)" caption="贷方金额" type="text" class="table_space_3" value="" maxlength="11">
+                  </td>
+                  <td class="drb_lh2" align="center">
+                      <select name="in_debit_lend">
+	                      <option value="0" selected="">平</option>
+	                      <option value="1">借</option> 
+	                      <option value="-1">贷</option>
+                  	  </select>
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="balance" type="text" datatype="number(20,2)" caption="余额" class="table_space_3" value="" maxlength="11">
+                  </td>
+                  <td align="center" class="b_l">
+                      <input type="checkbox" name="CHECK_CONFIRM" value="10000002544945">
+                      <input type="hidden" name="is_zz" value="0" readonly="">
+                      <input type="hidden" name="ledgerrecordid" value="10000002544945" readonly="">
+                      <input type="hidden" name="isNormalRec" value="1" maxlength="1">
+                      <input type="hidden" name="isadditional" value="" maxlength="1">
+                   </td>
+                </tr>
+			
+				
+                <tr class="entry_row">
+                  <td class="rb_hl">&nbsp;</td>
+                  <td class="rb_hl">
+                      <input name="mm" type="text" style="width: 20px;" class="table_input" value="1" maxlength="2" isnull="notnull" datatype="INTEGER(2)">
+                  </td>
+                  <td class="drb_lh1">
+                      <input name="dd" type="text" style="width: 20px;" class="table_input" value="1" maxlength="2" datatype="INTEGER(2)">
+                  </td>
+                  <td class="rb_hl"> 
+               		  <select name="vouchertype" onchange="type_do(this.value,this);">
+                         <option selected="" value="记" memo="" rowclass="2" isnormalrec="1">记</option>
+<option value="收" memo="" rowclass="2" isnormalrec="1">收</option>
+<option value="付" memo="" rowclass="2" isnormalrec="1">付</option>
+<option value="汇" memo="" rowclass="2" isnormalrec="1">汇</option>
+<option value="月初" memo="承前页" rowclass="0" isnormalrec="1">月初</option>
+<option value="年初" memo="上年结转" rowclass="1" isnormalrec="1">年初</option>
+<option value="月汇" memo="本月合计" rowclass="6" isnormalrec="0">月汇</option>
+<option value="年累" memo="本年累计" rowclass="7" isnormalrec="0">年累</option>
+<option value="--" memo="----------------" rowclass="8" isnormalrec="0">--</option>
+<option value="==" memo="================" rowclass="9" isnormalrec="0">==</option>
+<option value="年结" memo="结转下年" rowclass="-1" isnormalrec="0">年结</option>
+ 
+                      </select>
+                  </td>
+                  <td class="rb_hl">
+                      <input name="voucherid" isnull="notnull" datatype="title" maxlen="20" caption="号数" type="text" class="table_input" value="46" style="width:30px;" maxlength="3">
+                  </td>
+                  <td class="drb_lh2">
+                  
+                      <input name="memo" isnull="notnull" datatype="title" maxlen="100" caption="摘要" type="text" class="table_input" value="提现" maxlength="50">
+                  
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="debit" id="debit" datatype="number(20,2)" caption="借方金额" type="text" class="table_space_3" value="" maxlength="11">
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="lend" id="lend" datatype="number(20,2)" caption="贷方金额" type="text" class="table_space_3" value="" maxlength="11">
+                  </td>
+                  <td class="drb_lh2" align="center">
+                      <select name="in_debit_lend">
+	                      <option value="0" selected="">平</option>
+	                      <option value="1">借</option> 
+	                      <option value="-1">贷</option>
+                  	  </select>
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="balance" type="text" datatype="number(20,2)" caption="余额" class="table_space_3" value="" maxlength="11">
+                  </td>
+                  <td align="center" class="b_l">
+                      <input type="checkbox" name="CHECK_CONFIRM" value="10000002544949">
+                      <input type="hidden" name="is_zz" value="0" readonly="">
+                      <input type="hidden" name="ledgerrecordid" value="10000002544949" readonly="">
+                      <input type="hidden" name="isNormalRec" value="1" maxlength="1">
+                      <input type="hidden" name="isadditional" value="" maxlength="1">
+                   </td>
+                </tr>
+			
+				
+                <tr class="entry_row">
+                  <td class="rb_hl">&nbsp;</td>
+                  <td class="rb_hl">
+                      <input name="mm" type="text" style="width: 20px;" class="table_input" value="1" maxlength="2" isnull="notnull" datatype="INTEGER(2)">
+                  </td>
+                  <td class="drb_lh1">
+                      <input name="dd" type="text" style="width: 20px;" class="table_input" value="1" maxlength="2" datatype="INTEGER(2)">
+                  </td>
+                  <td class="rb_hl"> 
+               		  <select name="vouchertype" onchange="type_do(this.value,this);">
+                         <option selected="" value="记" memo="" rowclass="2" isnormalrec="1">记</option>
+<option value="收" memo="" rowclass="2" isnormalrec="1">收</option>
+<option value="付" memo="" rowclass="2" isnormalrec="1">付</option>
+<option value="汇" memo="" rowclass="2" isnormalrec="1">汇</option>
+<option value="月初" memo="承前页" rowclass="0" isnormalrec="1">月初</option>
+<option value="年初" memo="上年结转" rowclass="1" isnormalrec="1">年初</option>
+<option value="月汇" memo="本月合计" rowclass="6" isnormalrec="0">月汇</option>
+<option value="年累" memo="本年累计" rowclass="7" isnormalrec="0">年累</option>
+<option value="--" memo="----------------" rowclass="8" isnormalrec="0">--</option>
+<option value="==" memo="================" rowclass="9" isnormalrec="0">==</option>
+<option value="年结" memo="结转下年" rowclass="-1" isnormalrec="0">年结</option>
+ 
+                      </select>
+                  </td>
+                  <td class="rb_hl">
+                      <input name="voucherid" isnull="notnull" datatype="title" maxlen="20" caption="号数" type="text" class="table_input" value="56" style="width:30px;" maxlength="3">
+                  </td>
+                  <td class="drb_lh2">
+                  
+                      <input name="memo" isnull="notnull" datatype="title" maxlen="100" caption="摘要" type="text" class="table_input" value="核销预借差旅费" maxlength="50">
+                  
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="debit" id="debit" datatype="number(20,2)" caption="借方金额" type="text" class="table_space_3" value="" maxlength="11">
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="lend" id="lend" datatype="number(20,2)" caption="贷方金额" type="text" class="table_space_3" value="" maxlength="11">
+                  </td>
+                  <td class="drb_lh2" align="center">
+                      <select name="in_debit_lend">
+	                      <option value="0" selected="">平</option>
+	                      <option value="1">借</option> 
+	                      <option value="-1">贷</option>
+                  	  </select>
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="balance" type="text" datatype="number(20,2)" caption="余额" class="table_space_3" value="" maxlength="11">
+                  </td>
+                  <td align="center" class="b_l">
+                      <input type="checkbox" name="CHECK_CONFIRM" value="10000002544951">
+                      <input type="hidden" name="is_zz" value="0" readonly="">
+                      <input type="hidden" name="ledgerrecordid" value="10000002544951" readonly="">
+                      <input type="hidden" name="isNormalRec" value="1" maxlength="1">
+                      <input type="hidden" name="isadditional" value="" maxlength="1">
+                   </td>
+                </tr>
+			
+				
+                <tr class="entry_row">
+                  <td class="rb_hl">&nbsp;</td>
+                  <td class="rb_hl">
+                      <input name="mm" type="text" style="width: 20px;" class="table_input" value="1" maxlength="2" isnull="notnull" datatype="INTEGER(2)">
+                  </td>
+                  <td class="drb_lh1">
+                      <input name="dd" type="text" style="width: 20px;" class="table_input" value="1" maxlength="2" datatype="INTEGER(2)">
+                  </td>
+                  <td class="rb_hl"> 
+               		  <select name="vouchertype" onchange="type_do(this.value,this);">
+                         <option selected="" value="记" memo="" rowclass="2" isnormalrec="1">记</option>
+<option value="收" memo="" rowclass="2" isnormalrec="1">收</option>
+<option value="付" memo="" rowclass="2" isnormalrec="1">付</option>
+<option value="汇" memo="" rowclass="2" isnormalrec="1">汇</option>
+<option value="月初" memo="承前页" rowclass="0" isnormalrec="1">月初</option>
+<option value="年初" memo="上年结转" rowclass="1" isnormalrec="1">年初</option>
+<option value="月汇" memo="本月合计" rowclass="6" isnormalrec="0">月汇</option>
+<option value="年累" memo="本年累计" rowclass="7" isnormalrec="0">年累</option>
+<option value="--" memo="----------------" rowclass="8" isnormalrec="0">--</option>
+<option value="==" memo="================" rowclass="9" isnormalrec="0">==</option>
+<option value="年结" memo="结转下年" rowclass="-1" isnormalrec="0">年结</option>
+ 
+                      </select>
+                  </td>
+                  <td class="rb_hl">
+                      <input name="voucherid" isnull="notnull" datatype="title" maxlen="20" caption="号数" type="text" class="table_input" value="61" style="width:30px;" maxlength="3">
+                  </td>
+                  <td class="drb_lh2">
+                  
+                      <input name="memo" isnull="notnull" datatype="title" maxlen="100" caption="摘要" type="text" class="table_input" value="报销差旅费" maxlength="50">
+                  
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="debit" id="debit" datatype="number(20,2)" caption="借方金额" type="text" class="table_space_3" value="" maxlength="11">
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="lend" id="lend" datatype="number(20,2)" caption="贷方金额" type="text" class="table_space_3" value="" maxlength="11">
+                  </td>
+                  <td class="drb_lh2" align="center">
+                      <select name="in_debit_lend">
+	                      <option value="0" selected="">平</option>
+	                      <option value="1">借</option> 
+	                      <option value="-1">贷</option>
+                  	  </select>
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="balance" type="text" datatype="number(20,2)" caption="余额" class="table_space_3" value="" maxlength="11">
+                  </td>
+                  <td align="center" class="b_l">
+                      <input type="checkbox" name="CHECK_CONFIRM" value="10000002544952">
+                      <input type="hidden" name="is_zz" value="0" readonly="">
+                      <input type="hidden" name="ledgerrecordid" value="10000002544952" readonly="">
+                      <input type="hidden" name="isNormalRec" value="1" maxlength="1">
+                      <input type="hidden" name="isadditional" value="" maxlength="1">
+                   </td>
+                </tr>
+			
+				
+                <tr class="entry_row">
+                  <td class="rb_hl">&nbsp;</td>
+                  <td class="rb_hl">
+                      <input name="mm" type="text" style="width: 20px;" class="table_input" value="1" maxlength="2" isnull="notnull" datatype="INTEGER(2)">
+                  </td>
+                  <td class="drb_lh1">
+                      <input name="dd" type="text" style="width: 20px;" class="table_input" value="1" maxlength="2" datatype="INTEGER(2)">
+                  </td>
+                  <td class="rb_hl"> 
+               		  <select name="vouchertype" onchange="type_do(this.value,this);">
+                         <option selected="" value="记" memo="" rowclass="2" isnormalrec="1">记</option>
+<option value="收" memo="" rowclass="2" isnormalrec="1">收</option>
+<option value="付" memo="" rowclass="2" isnormalrec="1">付</option>
+<option value="汇" memo="" rowclass="2" isnormalrec="1">汇</option>
+<option value="月初" memo="承前页" rowclass="0" isnormalrec="1">月初</option>
+<option value="年初" memo="上年结转" rowclass="1" isnormalrec="1">年初</option>
+<option value="月汇" memo="本月合计" rowclass="6" isnormalrec="0">月汇</option>
+<option value="年累" memo="本年累计" rowclass="7" isnormalrec="0">年累</option>
+<option value="--" memo="----------------" rowclass="8" isnormalrec="0">--</option>
+<option value="==" memo="================" rowclass="9" isnormalrec="0">==</option>
+<option value="年结" memo="结转下年" rowclass="-1" isnormalrec="0">年结</option>
+ 
+                      </select>
+                  </td>
+                  <td class="rb_hl">
+                      <input name="voucherid" isnull="notnull" datatype="title" maxlen="20" caption="号数" type="text" class="table_input" value="63" style="width:30px;" maxlength="3">
+                  </td>
+                  <td class="drb_lh2">
+                  
+                      <input name="memo" isnull="notnull" datatype="title" maxlen="100" caption="摘要" type="text" class="table_input" value="提现" maxlength="50">
+                  
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="debit" id="debit" datatype="number(20,2)" caption="借方金额" type="text" class="table_space_3" value="" maxlength="11">
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="lend" id="lend" datatype="number(20,2)" caption="贷方金额" type="text" class="table_space_3" value="" maxlength="11">
+                  </td>
+                  <td class="drb_lh2" align="center">
+                      <select name="in_debit_lend">
+	                      <option value="0" selected="">平</option>
+	                      <option value="1">借</option> 
+	                      <option value="-1">贷</option>
+                  	  </select>
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="balance" type="text" datatype="number(20,2)" caption="余额" class="table_space_3" value="" maxlength="11">
+                  </td>
+                  <td align="center" class="b_l">
+                      <input type="checkbox" name="CHECK_CONFIRM" value="10000002544957">
+                      <input type="hidden" name="is_zz" value="0" readonly="">
+                      <input type="hidden" name="ledgerrecordid" value="10000002544957" readonly="">
+                      <input type="hidden" name="isNormalRec" value="1" maxlength="1">
+                      <input type="hidden" name="isadditional" value="" maxlength="1">
+                   </td>
+                </tr>
+			
+				
+                <tr class="entry_row">
+                  <td class="rb_hl">&nbsp;</td>
+                  <td class="rb_hl">
+                      <input name="mm" type="text" style="width: 20px;" class="table_input" value="1" maxlength="2" isnull="notnull" datatype="INTEGER(2)">
+                  </td>
+                  <td class="drb_lh1">
+                      <input name="dd" type="text" style="width: 20px;" class="table_input" value="30" maxlength="2" datatype="INTEGER(2)">
+                  </td>
+                  <td class="rb_hl"> 
+               		  <select name="vouchertype" onchange="type_do(this.value,this);">
+                         <option value="记" memo="" rowclass="2" isnormalrec="1">记</option>
+<option value="收" memo="" rowclass="2" isnormalrec="1">收</option>
+<option value="付" memo="" rowclass="2" isnormalrec="1">付</option>
+<option value="汇" memo="" rowclass="2" isnormalrec="1">汇</option>
+<option value="月初" memo="承前页" rowclass="0" isnormalrec="1">月初</option>
+<option value="年初" memo="上年结转" rowclass="1" isnormalrec="1">年初</option>
+<option selected="" value="月汇" memo="本月合计" rowclass="6" isnormalrec="0">月汇</option>
+<option value="年累" memo="本年累计" rowclass="7" isnormalrec="0">年累</option>
+<option value="--" memo="----------------" rowclass="8" isnormalrec="0">--</option>
+<option value="==" memo="================" rowclass="9" isnormalrec="0">==</option>
+<option value="年结" memo="结转下年" rowclass="-1" isnormalrec="0">年结</option>
+ 
+                      </select>
+                  </td>
+                  <td class="rb_hl">
+                      <input name="voucherid" datatype="title" maxlen="20" caption="号数" type="text" class="table_input" value="" style="width:30px;" maxlength="3" readonly="">
+                  </td>
+                  <td class="drb_lh2">
+                  
+                      本月合计
+                      <input name="memo" type="hidden" value="本月合计">
+                  
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="debit" id="debit" datatype="number(20,2)" caption="借方金额" type="text" class="table_space_3" value="" maxlength="11">
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="lend" id="lend" datatype="number(20,2)" caption="贷方金额" type="text" class="table_space_3" value="" maxlength="11">
+                  </td>
+                  <td class="drb_lh2" align="center">
+                      <select name="in_debit_lend">
+	                      <option value="0">平</option>
+	                      <option value="1" selected="">借</option> 
+	                      <option value="-1">贷</option>
+                  	  </select>
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="balance" type="text" datatype="number(20,2)" caption="余额" class="table_space_3" value="" maxlength="11">
+                  </td>
+                  <td align="center" class="b_l">
+                      <input type="checkbox" name="CHECK_CONFIRM" value="10000002545006">
+                      <input type="hidden" name="is_zz" value="0" readonly="">
+                      <input type="hidden" name="ledgerrecordid" value="10000002545006" readonly="">
+                      <input type="hidden" name="isNormalRec" value="1" maxlength="1">
+                      <input type="hidden" name="isadditional" value="" maxlength="1">
+                   </td>
+                </tr>
+			
+				
+                <tr class="entry_row" rowid="12" mm="1" rowclass="8" style="display: none;">
+                  <td class="rb_hl">&nbsp;</td>
+                  <td class="rb_hl">
+                      <input name="mm" type="text" style="width: 20px;" class="table_input" value="1" maxlength="2" isnull="notnull" datatype="INTEGER(2)">
+                  </td>
+                  <td class="drb_lh1">
+                      <input name="dd" type="text" style="width: 20px;" class="table_input" value="30" maxlength="2" datatype="INTEGER(2)">
+                  </td>
+                  <td class="rb_hl"> 
+               		  <select name="vouchertype" onchange="type_do(this.value,this);">
+                         <option value="记" memo="" rowclass="2" isnormalrec="1">记</option>
+<option value="收" memo="" rowclass="2" isnormalrec="1">收</option>
+<option value="付" memo="" rowclass="2" isnormalrec="1">付</option>
+<option value="汇" memo="" rowclass="2" isnormalrec="1">汇</option>
+<option value="月初" memo="承前页" rowclass="0" isnormalrec="1">月初</option>
+<option value="年初" memo="上年结转" rowclass="1" isnormalrec="1">年初</option>
+<option value="月汇" memo="本月合计" rowclass="6" isnormalrec="0">月汇</option>
+<option value="年累" memo="本年累计" rowclass="7" isnormalrec="0">年累</option>
+<option selected="" value="--" memo="----------------" rowclass="8" isnormalrec="0">--</option>
+<option value="==" memo="================" rowclass="9" isnormalrec="0">==</option>
+<option value="年结" memo="结转下年" rowclass="-1" isnormalrec="0">年结</option>
+ 
+                      </select>
+                  </td>
+                  <td class="rb_hl">
+                      <input name="voucherid" datatype="title" maxlen="20" caption="号数" type="text" class="table_input" value="" style="width:30px;" maxlength="3" readonly="">
+                  </td>
+                  <td class="drb_lh2" style="color:#FF0000">
+                  
+                      ----------------
+                      <input name="memo" type="hidden" value="----------------">
+                  
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="debit" id="debit" datatype="number(20,2)" caption="借方金额" type="text" class="table_space_3" value="" maxlength="11" readonly="">
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="lend" id="lend" datatype="number(20,2)" caption="贷方金额" type="text" class="table_space_3" value="" maxlength="11" readonly="">
+                  </td>
+                  <td class="drb_lh2" align="center">
+                      <select name="in_debit_lend" style="display:none;">
+	                      <option value="0">平</option>
+	                      <option value="1">借</option> 
+	                      <option value="-1">贷</option>
+                  	  </select>
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="balance" type="text" datatype="number(20,2)" caption="余额" class="table_space_3" value="" maxlength="11" readonly="">
+                  </td>
+                  <td align="center" class="b_l">
+                      <input type="checkbox" name="CHECK_CONFIRM" value="10000002545001">
+                      <input type="hidden" name="is_zz" value="0" readonly="">
+                      <input type="hidden" name="ledgerrecordid" value="10000002545001" readonly="">
+                      <input type="hidden" name="isNormalRec" value="1" maxlength="1">
+                      <input type="hidden" name="isadditional" value="" maxlength="1">
+                   </td>
+                </tr>
+			
+				
+                <tr class="entry_row" rowid="13" mm="1" rowclass="8" style="display: none;">
+                  <td class="rb_hl">&nbsp;</td>
+                  <td class="rb_hl">
+                      <input name="mm" type="text" style="width: 20px;" class="table_input" value="1" maxlength="2" isnull="notnull" datatype="INTEGER(2)">
+                  </td>
+                  <td class="drb_lh1">
+                      <input name="dd" type="text" style="width: 20px;" class="table_input" value="30" maxlength="2" datatype="INTEGER(2)">
+                  </td>
+                  <td class="rb_hl"> 
+               		  <select name="vouchertype" onchange="type_do(this.value,this);">
+                         <option value="记" memo="" rowclass="2" isnormalrec="1">记</option>
+<option value="收" memo="" rowclass="2" isnormalrec="1">收</option>
+<option value="付" memo="" rowclass="2" isnormalrec="1">付</option>
+<option value="汇" memo="" rowclass="2" isnormalrec="1">汇</option>
+<option value="月初" memo="承前页" rowclass="0" isnormalrec="1">月初</option>
+<option value="年初" memo="上年结转" rowclass="1" isnormalrec="1">年初</option>
+<option value="月汇" memo="本月合计" rowclass="6" isnormalrec="0">月汇</option>
+<option value="年累" memo="本年累计" rowclass="7" isnormalrec="0">年累</option>
+<option selected="" value="--" memo="----------------" rowclass="8" isnormalrec="0">--</option>
+<option value="==" memo="================" rowclass="9" isnormalrec="0">==</option>
+<option value="年结" memo="结转下年" rowclass="-1" isnormalrec="0">年结</option>
+ 
+                      </select>
+                  </td>
+                  <td class="rb_hl">
+                      <input name="voucherid" datatype="title" maxlen="20" caption="号数" type="text" class="table_input" value="" style="width:30px;" maxlength="3" readonly="">
+                  </td>
+                  <td class="drb_lh2" style="color:#FF0000">
+                  
+                      ----------------
+                      <input name="memo" type="hidden" value="----------------">
+                  
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="debit" id="debit" datatype="number(20,2)" caption="借方金额" type="text" class="table_space_3" value="" maxlength="11" readonly="">
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="lend" id="lend" datatype="number(20,2)" caption="贷方金额" type="text" class="table_space_3" value="" maxlength="11" readonly="">
+                  </td>
+                  <td class="drb_lh2" align="center">
+                      <select name="in_debit_lend" style="display:none;">
+	                      <option value="0">平</option>
+	                      <option value="1">借</option> 
+	                      <option value="-1">贷</option>
+                  	  </select>
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="balance" type="text" datatype="number(20,2)" caption="余额" class="table_space_3" value="" maxlength="11" readonly="">
+                  </td>
+                  <td align="center" class="b_l">
+                      <input type="checkbox" name="CHECK_CONFIRM" value="10000002545008">
+                      <input type="hidden" name="is_zz" value="0" readonly="">
+                      <input type="hidden" name="ledgerrecordid" value="10000002545008" readonly="">
+                      <input type="hidden" name="isNormalRec" value="1" maxlength="1">
+                      <input type="hidden" name="isadditional" value="" maxlength="1">
+                   </td>
+                </tr>
+			
+				
+                <tr class="entry_row">
+                  <td class="rb_hl">&nbsp;</td>
+                  <td class="rb_hl">
+                      <input name="mm" type="text" style="width: 20px;" class="table_input" value="1" maxlength="2" isnull="notnull" datatype="INTEGER(2)">
+                  </td>
+                  <td class="drb_lh1">
+                      <input name="dd" type="text" style="width: 20px;" class="table_input" value="30" maxlength="2" datatype="INTEGER(2)">
+                  </td>
+                  <td class="rb_hl"> 
+               		  <select name="vouchertype" onchange="type_do(this.value,this);">
+                         <option value="记" memo="" rowclass="2" isnormalrec="1">记</option>
+<option value="收" memo="" rowclass="2" isnormalrec="1">收</option>
+<option value="付" memo="" rowclass="2" isnormalrec="1">付</option>
+<option value="汇" memo="" rowclass="2" isnormalrec="1">汇</option>
+<option value="月初" memo="承前页" rowclass="0" isnormalrec="1">月初</option>
+<option value="年初" memo="上年结转" rowclass="1" isnormalrec="1">年初</option>
+<option value="月汇" memo="本月合计" rowclass="6" isnormalrec="0">月汇</option>
+<option selected="" value="年累" memo="本年累计" rowclass="7" isnormalrec="0">年累</option>
+<option value="--" memo="----------------" rowclass="8" isnormalrec="0">--</option>
+<option value="==" memo="================" rowclass="9" isnormalrec="0">==</option>
+<option value="年结" memo="结转下年" rowclass="-1" isnormalrec="0">年结</option>
+ 
+                      </select>
+                  </td>
+                  <td class="rb_hl">
+                      <input name="voucherid" datatype="title" maxlen="20" caption="号数" type="text" class="table_input" value="" style="width:30px;" maxlength="3" readonly="">
+                  </td>
+                  <td class="drb_lh2">
+                  
+                      本年累计
+                      <input name="memo" type="hidden" value="本年累计">
+                  
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="debit" id="debit" datatype="number(20,2)" caption="借方金额" type="text" class="table_space_3" value="" maxlength="11">
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="lend" id="lend" datatype="number(20,2)" caption="贷方金额" type="text" class="table_space_3" value="" maxlength="11">
+                  </td>
+                  <td class="drb_lh2" align="center">
+                      <select name="in_debit_lend">
+	                      <option value="0">平</option>
+	                      <option value="1" selected="">借</option> 
+	                      <option value="-1">贷</option>
+                  	  </select>
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="balance" type="text" datatype="number(20,2)" caption="余额" class="table_space_3" value="" maxlength="11">
+                  </td>
+                  <td align="center" class="b_l">
+                      <input type="checkbox" name="CHECK_CONFIRM" value="10000002545011">
+                      <input type="hidden" name="is_zz" value="0" readonly="">
+                      <input type="hidden" name="ledgerrecordid" value="10000002545011" readonly="">
+                      <input type="hidden" name="isNormalRec" value="1" maxlength="1">
+                      <input type="hidden" name="isadditional" value="" maxlength="1">
+                   </td>
+                </tr>
+			
+				
+                <tr class="entry_row" rowid="15" mm="1" rowclass="9" style="display: none;">
+                  <td class="rb_hl">&nbsp;</td>
+                  <td class="rb_hl">
+                      <input name="mm" type="text" style="width: 20px;" class="table_input" value="1" maxlength="2" isnull="notnull" datatype="INTEGER(2)">
+                  </td>
+                  <td class="drb_lh1">
+                      <input name="dd" type="text" style="width: 20px;" class="table_input" value="30" maxlength="2" datatype="INTEGER(2)">
+                  </td>
+                  <td class="rb_hl"> 
+               		  <select name="vouchertype" onchange="type_do(this.value,this);">
+                         <option value="记" memo="" rowclass="2" isnormalrec="1">记</option>
+<option value="收" memo="" rowclass="2" isnormalrec="1">收</option>
+<option value="付" memo="" rowclass="2" isnormalrec="1">付</option>
+<option value="汇" memo="" rowclass="2" isnormalrec="1">汇</option>
+<option value="月初" memo="承前页" rowclass="0" isnormalrec="1">月初</option>
+<option value="年初" memo="上年结转" rowclass="1" isnormalrec="1">年初</option>
+<option value="月汇" memo="本月合计" rowclass="6" isnormalrec="0">月汇</option>
+<option value="年累" memo="本年累计" rowclass="7" isnormalrec="0">年累</option>
+<option value="--" memo="----------------" rowclass="8" isnormalrec="0">--</option>
+<option selected="" value="==" memo="================" rowclass="9" isnormalrec="0">==</option>
+<option value="年结" memo="结转下年" rowclass="-1" isnormalrec="0">年结</option>
+ 
+                      </select>
+                  </td>
+                  <td class="rb_hl">
+                      <input name="voucherid" datatype="title" maxlen="20" caption="号数" type="text" class="table_input" value="" style="width:30px;" maxlength="3" readonly="">
+                  </td>
+                  <td class="drb_lh2" style="color:#FF0000">
+                  
+                      ================
+                      <input name="memo" type="hidden" value="================">
+                  
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="debit" id="debit" datatype="number(20,2)" caption="借方金额" type="text" class="table_space_3" value="" maxlength="11" readonly="">
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="lend" id="lend" datatype="number(20,2)" caption="贷方金额" type="text" class="table_space_3" value="" maxlength="11" readonly="">
+                  </td>
+                  <td class="drb_lh2" align="center">
+                      <select name="in_debit_lend" style="display:none;">
+	                      <option value="0">平</option>
+	                      <option value="1">借</option> 
+	                      <option value="-1">贷</option>
+                  	  </select>
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="balance" type="text" datatype="number(20,2)" caption="余额" class="table_space_3" value="" maxlength="11" readonly="">
+                  </td>
+                  <td align="center" class="b_l">
+                      <input type="checkbox" name="CHECK_CONFIRM" value="10000002545005">
+                      <input type="hidden" name="is_zz" value="0" readonly="">
+                      <input type="hidden" name="ledgerrecordid" value="10000002545005" readonly="">
+                      <input type="hidden" name="isNormalRec" value="1" maxlength="1">
+                      <input type="hidden" name="isadditional" value="" maxlength="1">
+                   </td>
+                </tr>
+			
+				
+                <tr class="entry_row" rowid="16" mm="1" rowclass="9" style="display: none;">
+                  <td class="rb_hl">&nbsp;</td>
+                  <td class="rb_hl">
+                      <input name="mm" type="text" style="width: 20px;" class="table_input" value="1" maxlength="2" isnull="notnull" datatype="INTEGER(2)">
+                  </td>
+                  <td class="drb_lh1">
+                      <input name="dd" type="text" style="width: 20px;" class="table_input" value="30" maxlength="2" datatype="INTEGER(2)">
+                  </td>
+                  <td class="rb_hl"> 
+               		  <select name="vouchertype" onchange="type_do(this.value,this);">
+                         <option value="记" memo="" rowclass="2" isnormalrec="1">记</option>
+<option value="收" memo="" rowclass="2" isnormalrec="1">收</option>
+<option value="付" memo="" rowclass="2" isnormalrec="1">付</option>
+<option value="汇" memo="" rowclass="2" isnormalrec="1">汇</option>
+<option value="月初" memo="承前页" rowclass="0" isnormalrec="1">月初</option>
+<option value="年初" memo="上年结转" rowclass="1" isnormalrec="1">年初</option>
+<option value="月汇" memo="本月合计" rowclass="6" isnormalrec="0">月汇</option>
+<option value="年累" memo="本年累计" rowclass="7" isnormalrec="0">年累</option>
+<option value="--" memo="----------------" rowclass="8" isnormalrec="0">--</option>
+<option selected="" value="==" memo="================" rowclass="9" isnormalrec="0">==</option>
+<option value="年结" memo="结转下年" rowclass="-1" isnormalrec="0">年结</option>
+ 
+                      </select>
+                  </td>
+                  <td class="rb_hl">
+                      <input name="voucherid" datatype="title" maxlen="20" caption="号数" type="text" class="table_input" value="" style="width:30px;" maxlength="3" readonly="">
+                  </td>
+                  <td class="drb_lh2" style="color:#FF0000">
+                  
+                      ================
+                      <input name="memo" type="hidden" value="================">
+                  
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="debit" id="debit" datatype="number(20,2)" caption="借方金额" type="text" class="table_space_3" value="" maxlength="11" readonly="">
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="lend" id="lend" datatype="number(20,2)" caption="贷方金额" type="text" class="table_space_3" value="" maxlength="11" readonly="">
+                  </td>
+                  <td class="drb_lh2" align="center">
+                      <select name="in_debit_lend" style="display:none;">
+	                      <option value="0">平</option>
+	                      <option value="1">借</option> 
+	                      <option value="-1">贷</option>
+                  	  </select>
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="balance" type="text" datatype="number(20,2)" caption="余额" class="table_space_3" value="" maxlength="11" readonly="">
+                  </td>
+                  <td align="center" class="b_l">
+                      <input type="checkbox" name="CHECK_CONFIRM" value="10000002545014">
+                      <input type="hidden" name="is_zz" value="0" readonly="">
+                      <input type="hidden" name="ledgerrecordid" value="10000002545014" readonly="">
+                      <input type="hidden" name="isNormalRec" value="1" maxlength="1">
+                      <input type="hidden" name="isadditional" value="" maxlength="1">
+                   </td>
+                </tr>
+			
+			
+                <tr class="entry_row">
+                  <td style="height:28px;" class="rb_hl">
+             	  
+                     <img width="10" height="25" src="zb_image/black_pen.jpg" name="pen" onclick="if (this.src.indexOf('zb_image/black_pen.jpg')&gt;=0) {this.src='zb_image/red_pen.jpg';v_dto6.XSHU_i.value='-1';change_color('-1');} else {this.src='zb_image/black_pen.jpg';v_dto6.XSHU_i.value='1';change_color('1'); }">
+                  
+                     <input type="hidden" name="XSHU_i" value="1">
+                  </td>
+                  <td class="rb_hl">
+                      <input name="mm_i" id="last_mm_id" type="text" isnull="notnull" datatype="number(2)" caption="月" class="table_input" value="1" style="width: 20px;" maxlength="2">
+                  </td>
+                  <td class="drb_lh1">
+                      <input name="dd_i" id="last_dd_id" type="text" isnull="notnull" datatype="number(2)" caption="日" class="table_input" value="30" style="width: 20px;" maxlength="2">
+                  </td>
+                  <td class="rb_hl">
+                  	  <select name="vouchertype_i" onchange="type_do(this.value);">
+                      	<option value="记" memo="" rowclass="2" isnormalrec="1">记</option>
+<option value="收" memo="" rowclass="2" isnormalrec="1">收</option>
+<option value="付" memo="" rowclass="2" isnormalrec="1">付</option>
+<option value="汇" memo="" rowclass="2" isnormalrec="1">汇</option>
+<option value="月初" memo="承前页" rowclass="0" isnormalrec="1">月初</option>
+<option value="年初" memo="上年结转" rowclass="1" isnormalrec="1">年初</option>
+<option value="月汇" memo="本月合计" rowclass="6" isnormalrec="0">月汇</option>
+<option value="年累" memo="本年累计" rowclass="7" isnormalrec="0">年累</option>
+
+
+<option value="年结" memo="结转下年" rowclass="-1" isnormalrec="0">年结</option>
+ 
+                  	  </select>
+                  </td>
+                  <td class="rb_hl">
+                      <input name="voucherid_i" isnull="notnull" id="voucherid_i" datatype="title" maxlen="20" caption="号数" type="text" class="table_input" style="width: 30px;" maxlength="4">
+                  </td>
+                  <td class="drb_lh2">
+                      <input name="memo_i" type="text" isnull="notnull" datatype="title" maxlen="100" caption="摘要" class="table_input" id="memo_i" style="width: 150px;" maxlength="50">
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="debit_i" id="debit_i" type="text" datatype="number(20,2)" caption="借方金额" class="table_space_3" maxlength="11">
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="lend_i" id="lend_i" type="text" datatype="number(20,2)" caption="贷方金额" class="table_space_3" maxlength="11">
+                  </td> 
+                  <td class="drb_lh2" align="center">
+	                  <select name="in_debit_lend_i" id="in_debit_lend_i">
+	                      <option value="0">平</option>
+	                      <option value="1">借</option>
+	                      <option value="-1">贷</option>
+	                  </select>
+                  </td>
+                  <td class="je drb_lh2">
+                      <input name="balance_i" id="balance_i" type="text" datatype="number(20,2)" caption="余额" class="table_space_3" maxlength="11">
+                  </td>
+                  <td align="center" class="b_l">
+                      <input type="hidden" name="isNormalRec_i" value="0" maxlength="1">
+                      <input type="hidden" name="rowclass" id="rowclass" value="2" maxlength="1">
+                      
+                      <input name="button" type="button" onclick="doAddSubmit(this.form)" value="新增" class="blue_btn little_btn add_btn" id="btn_new">
+                      
+                   </td>
+                </tr>
+                
+            </tbody></table></td>
+          </tr>
+      </tbody></table></td>
+    </tr>
+    
+  </tbody></table>
+  </td><td></td></tr>
+</tbody></table>
+
+<div align="center">
+  <table>
+    <tbody><tr>
+      <td>	
+      	 <input class="red_btn little_btn" name="button" type="button" onclick="doDrawLine('8',v_dto6)" value="画月结线">
+         <input class="red_btn little_btn" name="button" type="button" onclick="doDrawLine('9',v_dto6)" value="画年结线">
+         <input class="blue_btn little_btn" type="button" value="修改提交" onclick="if(doCheckSubmit(this.form,'update')){v_dto6.start.value='update_loop';v_dto6.submit();}">
+      </td>
+      <td>
+         <input class="green_btn little_btn" type="button" value="删除提交" onclick="doCheckSubmit(this.form,'delete')">
+      </td>
+      <td>&nbsp;</td>
+    </tr>
+  </tbody></table>
+</div>
+
+</td></tr>
+
+
+<tr>
+  <td>
+    <p><!-- .注：每月第一条记录必须是期初余额或初始余额；月结后本月数据不可更改；必须本月结账后才可增加下一个月的数据 --></p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;提示：冲销记录请选择
+     <img width="10" height="28" src="zb_image/red_pen.jpg">&nbsp;  ;
+    双击画线可删除该画线。</p>
+  </td>
+</tr>
+
+</tbody></table>
+</div>
+</div>
+
+<script language="javascript">
+ $(document).ready(function(){
+	 
+		doZBShowLine();
+	
+})
+function doCheckSubmit(fbox, type){
+	if(!hasOneChecked("CHECK_CONFIRM")){
+		alert("请至少勾选一条记录。");
+		return false;
+	}
+	
+	if("delete" == type && !confirm("确实要删除吗？")){
+		return false;
+	}
+	//启账日期
+	var date="2020- 1- 1";
+	//检查表单的日期不能小于启账日期
+	if("update" == type){
+		if(!checkLagerDate(v_dto6,date)) return false;
+		checkFormIgnoreNames("mm_i;dd_i;voucherid_i;memo_i;debit_i;lend_i;balance_i;", true);
+		return checkForm(fbox);
+	}else{
+		v_dto6.start.value='delete_loop'; 
+		v_dto6.submit();  
+		return;	 
+	}
+}
+
+function checkLagerDate(form,date){//检查表单的日期不能小于启账日期
+	   var f_mm = document.getElementsByName("mm");
+	   var f_dd = document.getElementsByName("dd");
+	   var f_box = document.getElementsByName("CHECK_CONFIRM");
+	   var yyyy = date.split("-")[0];
+	   var mm = date.split("-")[1];
+	   var dd = date.split("-")[2];
+	   for(var i=0;i<f_mm.length;i++){
+	      if(f_box[i].checked){
+	        if(parseInt(f_mm[i].value) < parseInt(mm)) {alert("第"+(i+1)+"行日期"+yyyy+"-"+f_mm[i].value+"-"+f_dd[i].value+"不能早于启账日期;"+date);return false;}
+	        if((parseInt(f_mm[i].value) == parseInt(mm)) && (parseInt(f_dd[i].value) < parseInt(dd))) {alert("第"+(i+1)+"行日期"+yyyy+"-"+f_mm[i].value+"-"+f_dd[i].value+"不能早于启账日期;"+date);return false;}
+	          }
+		   }
+	   return true;
+	}
+
+function doAddSubmit(fbox){//新增
+	fbox.start.value = 'insert_1rec';
+	checkFormIgnoreNames("mm_i;dd_i;voucherid_i;memo_i;debit_i;lend_i;balance_i;", false);
+	if(",-1,0,1,2,6,7,".indexOf(","+fbox.rowclass.value+",") >= 0 && fbox.in_debit_lend_i.value == 0 && fbox.balance_i.value != 0){
+		alert("余额不为0时，借贷方向不能为平。");
+		return false;
+	}
+	if (checkForm(fbox)){
+		var date=2020+"-"+$('#last_mm_id').val()+"-"+$('#last_dd_id').val();
+		if(!checkIsDate(date)){
+			alert('日期不合法!');
+			return;
+		}
+		
+		$("#btn_new").attr("disabled","disabled");
+		fbox.submit();
+	}
+}
+
+function type_do(arg_value,that)
+{
+	with(document.getElementById("voucherid_i")){disabled=true;value="";};
+    with(document.getElementById("memo_i")){readOnly=true;value=""};
+    with(document.getElementById('debit_i')){disabled=true; value="";};
+    with(document.getElementById('lend_i')){disabled=true;  value="";};
+    with(document.getElementById('in_debit_lend_i')){disabled=true;style.display = "none";};  
+    with(document.getElementById('balance_i')){disabled=true;value="";};
+	$("#voucherid_i").removeAttr("isnull");
+	
+	var o;
+	if(that!=undefined){
+		o = $(that).parent().parent().find("input[name='voucherid']")
+		if(o!=undefined){
+	          o.removeAttr("isnull");
+	    }
+    }
+    
+    //------------------------------------------------
+	var fbox = v_dto6;
+	var option = fbox.vouchertype_i.options[fbox.vouchertype_i.options.selectedIndex];
+	fbox.memo_i.value = option.getAttribute("memo");
+	fbox.rowclass.value = option.getAttribute("rowclass");
+	fbox.isNormalRec_i.value = option.getAttribute("isNormalRec");
+	//-----------------------------------------------
+	if (arg_value=='初始' || arg_value=='期初' || arg_value=='月初' || arg_value=='年初') { 
+        with(document.getElementById('in_debit_lend_i')){disabled=false;style.display = "block";};  
+        document.getElementById('balance_i').disabled=false;  
+    }
+    else  if (arg_value=='月汇' || arg_value=='年累') { 
+		document.getElementById('debit_i').disabled=false;  
+		document.getElementById('lend_i').disabled=false;  
+		with(document.getElementById('in_debit_lend_i')){disabled=false;style.display = "block";};  
+		document.getElementById('balance_i').disabled=false;  
+    }
+    else if (arg_value=='--' || arg_value=='==')  { 
+    	;
+    }
+    else if (arg_value=='年结') { 
+		with(document.getElementById('in_debit_lend_i')){disabled=false;style.display = "block";};  
+		document.getElementById('balance_i').disabled=false;  
+    }
+    else{ 
+    
+   	    if(arg_value=='记'||arg_value=='收'||arg_value=='付'){
+           $("#voucherid_i").attr("isnull","notnull");
+           if(o!=undefined){
+           		o.attr("isnull","notnull");
+           }
+        }
+    
+        
+		with(document.getElementById("voucherid_i")){disabled=false;select();};
+		document.getElementById("memo_i").readOnly=false;
+		document.getElementById('debit_i').disabled=false;  
+		document.getElementById('lend_i').disabled=false; 
+		with(document.getElementById('in_debit_lend_i')){disabled=false;style.display = "block";};  
+		document.getElementById('balance_i').disabled=false; 
+    }
+}
+function change_color(arg_value)
+{ //选择 红字（冲销） 或 黑字(=1)
+ color = '#000000';
+ if (arg_value=='1') color = '#000000'; else color = '#FF0000';
+ document.getElementById('debit_i').style.color= color ;  //FFFFFF
+ document.getElementById('lend_i').style.color= color ;  //FFFFFF
+}
+</script>
+
+
+<div id="_my97DP" style="position: absolute; top: -1970px; left: -1970px;"><iframe style="width: 186px; height: 198px;" src="http://10.11.4.69:8090/netinnet_zhsx_v63/javascript/My97DatePicker/My97DatePicker.htm" frameborder="0" border="0" scrolling="no"></iframe></div></body></html>

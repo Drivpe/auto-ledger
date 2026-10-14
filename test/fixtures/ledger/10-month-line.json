@@ -1,0 +1,260 @@
+{
+  "startedAt": "2026-10-13T13:53:09.699Z",
+  "dialogs": [
+    {
+      "type": "alert",
+      "message": "上月未结账，不可输入下月记录！",
+      "at": "2026-10-13T13:53:30.670Z"
+    }
+  ],
+  "error": null,
+  "entry": {
+    "sxid": "SESSION_TOKEN_PLACEHOLDER",
+    "entityID": "110",
+    "cname": "%E6%9C%B1%E8%BD%BD%E8%B0%B1",
+    "entry": "do?action=e_entity&start=entity_main_student_frame&SXID=SESSION_TOKEN_PLACEHOLDER&C_NAME=%E6%9C%B1%E8%BD%BD%E8%B0%B1&EntityID=110",
+    "source": {
+      "frame": "main",
+      "raw": " Javascript:changeOpeRole();parent.location.href='do?action=e_entity&start=entity_main_student_frame&SXID=SESSION_TOKEN_PLACEHOLDER&C_NAME=%E6%9C%B1%E8%BD%BD%E8%B0%B1&EntityID=110'"
+    },
+    "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/do?action=e_entity&start=entity_main_student_frame&SXID=SESSION_TOKEN_PLACEHOLDER&C_NAME=%E6%9C%B1%E8%BD%BD%E8%B0%B1&EntityID=110"
+  },
+  "mineZb": {
+    "text": "2020测绘探针三栏式账簿",
+    "href": "do?action=ts_zb_zy&start=zb_1rec&type_zb=1&zbid=45850&accountID=&SXID=SESSION_TOKEN_PLACEHOLDER&entityID=110&readyOnly=0&page=1&isSimulate=false"
+  },
+  "pageUrl": "http://10.11.4.69:8090/netinnet_zhsx_v63/do?action=ts_ledger&start=query&ZB_zy_ID=1000245524&type_zb=1&readyOnly=0&isSimulate=false",
+  "before": {
+    "rowCount": 1,
+    "rowclassHist": {},
+    "lineDivCount": 0,
+    "formFields": [
+      {
+        "n": "start",
+        "t": "hidden",
+        "v": "query"
+      },
+      {
+        "n": "zb_zy_id",
+        "t": "hidden",
+        "v": "1000245524"
+      },
+      {
+        "n": "type_zb",
+        "t": "hidden",
+        "v": "1"
+      },
+      {
+        "n": "zbid",
+        "t": "hidden",
+        "v": "45850"
+      },
+      {
+        "n": "sxid",
+        "t": "hidden",
+        "v": "SESSION_TOKEN_TAIL_PLACEHOLDER"
+      },
+      {
+        "n": "entityID",
+        "t": "hidden",
+        "v": "110       "
+      },
+      {
+        "n": "isSimulate",
+        "t": "hidden",
+        "v": "false"
+      },
+      {
+        "n": "yyyy",
+        "t": "hidden",
+        "v": "2020"
+      },
+      {
+        "n": "accountID",
+        "t": "hidden",
+        "v": "220201              "
+      },
+      {
+        "n": "is_zz_i",
+        "t": "hidden",
+        "v": "0"
+      },
+      {
+        "n": null,
+        "t": "text",
+        "v": ""
+      },
+      {
+        "n": null,
+        "t": "text",
+        "v": ""
+      },
+      {
+        "n": "kjkm",
+        "t": "text",
+        "v": "应付账款"
+      },
+      {
+        "n": "kjkm",
+        "t": "text",
+        "v": "北京宝申实业有限公司              "
+      },
+      {
+        "n": null,
+        "t": "text",
+        "v": "亿千百十万千百十元角分"
+      },
+      {
+        "n": null,
+        "t": "text",
+        "v": "亿千百十万千百十元角分"
+      },
+      {
+        "n": null,
+        "t": "text",
+        "v": "亿千百十万千百十元角分"
+      },
+      {
+        "n": "CHECK_CONFIRM_SelectAll",
+        "t": "checkbox",
+        "v": "on"
+      },
+      {
+        "n": "XSHU_i",
+        "t": "hidden",
+        "v": "1"
+      },
+      {
+        "n": "mm_i",
+        "t": "text",
+        "v": ""
+      },
+      {
+        "n": "dd_i",
+        "t": "text",
+        "v": ""
+      },
+      {
+        "n": "vouchertype_i",
+        "t": "select-one",
+        "v": "记"
+      },
+      {
+        "n": "voucherid_i",
+        "t": "text",
+        "v": ""
+      },
+      {
+        "n": "memo_i",
+        "t": "text",
+        "v": ""
+      },
+      {
+        "n": "debit_i",
+        "t": "text",
+        "v": ""
+      },
+      {
+        "n": "lend_i",
+        "t": "text",
+        "v": ""
+      },
+      {
+        "n": "in_debit_lend_i",
+        "t": "select-one",
+        "v": "0"
+      },
+      {
+        "n": "balance_i",
+        "t": "text",
+        "v": ""
+      },
+      {
+        "n": "isNormalRec_i",
+        "t": "hidden",
+        "v": "0"
+      },
+      {
+        "n": "rowclass",
+        "t": "hidden",
+        "v": "2"
+      },
+      {
+        "n": "button",
+        "t": "button",
+        "v": "新增"
+      },
+      {
+        "n": "button",
+        "t": "button",
+        "v": "画月结线"
+      },
+      {
+        "n": "button",
+        "t": "button",
+        "v": "画年结线"
+      },
+      {
+        "n": null,
+        "t": "button",
+        "v": "修改提交"
+      },
+      {
+        "n": null,
+        "t": "button",
+        "v": "删除提交"
+      }
+    ]
+  },
+  "monthLinePosts": [
+    {
+      "at": "2026-10-13T13:53:26.184Z",
+      "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/do?action=ts_ledger",
+      "contentType": "application/x-www-form-urlencoded",
+      "body": "start=insert_1rec&zb_zy_id=1000245524&type_zb=1&zbid=45850&sxid=SESSION_TOKEN_PLACEHOLDER&entityID=110+++++++&isSimulate=false&yyyy=2020&accountID=220201++++++++++++++&is_zz_i=0&kjkm=%E5%BA%94%E4%BB%98%E8%B4%A6%E6%AC%BE&kjkm=%E5%8C%97%E4%BA%AC%E5%AE%9D%E7%94%B3%E5%AE%9E%E4%B8%9A%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++&XSHU_i=1&mm_i=1&dd_i=31&vouchertype_i=--&memo_i=----------------&isNormalRec_i=0&rowclass=8"
+    }
+  ],
+  "afterUrl": "http://10.11.4.69:8090/netinnet_zhsx_v63/do?action=ts_ledger&start=query&zb_zy_id=1000245524&type_zb=1&isSimulate=false&page=",
+  "after": {
+    "rowCount": 2,
+    "rowclassHist": {
+      "8": 1
+    },
+    "lineDivCount": 2,
+    "text": "测绘探针三栏式账簿 之 应付账款 - 北京宝申实业有限公司 :北京宝申实业有限公司 返回账本目录 分页: 总页: (活页)三栏式明细账 上级科目 末级科目 2020 年 凭证 摘要 借方 贷方 借 或 贷 余额 √ 月 日 种类 号数 记 收 付 汇 月初 年初 月汇 年累 年结 平 借 贷 提示：冲销记录请选择 ; 双击画线可删除该画线。"
+  },
+  "yearLinePosts": [
+    {
+      "at": "2026-10-13T13:53:30.605Z",
+      "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/do?action=ts_ledger",
+      "contentType": "application/x-www-form-urlencoded",
+      "body": "start=insert_1rec&zb_zy_id=1000245524&type_zb=1&zbid=45850&sxid=SESSION_TOKEN_PLACEHOLDER&entityID=110+++++++&isSimulate=false&yyyy=2020&accountID=220201++++++++++++++&is_zz_i=0&kjkm=%E5%BA%94%E4%BB%98%E8%B4%A6%E6%AC%BE&kjkm=%E5%8C%97%E4%BA%AC%E5%AE%9D%E7%94%B3%E5%AE%9E%E4%B8%9A%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++&mm=1&dd=31&vouchertype=--&voucherid=&memo=----------------&debit=&lend=&in_debit_lend=0&balance=&is_zz=0&ledgerrecordid=10000002545666&isNormalRec=1&isadditional=&XSHU_i=1&mm_i=12&dd_i=31&vouchertype_i=%3D%3D&memo_i=%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D&isNormalRec_i=0&rowclass=9"
+    }
+  ],
+  "afterYear": {
+    "rowclassHist": {
+      "8": 1
+    },
+    "lineDivCount": 2
+  },
+  "allPosts": [
+    {
+      "at": "2026-10-13T13:53:10.837Z",
+      "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/do?action=login",
+      "contentType": "application/x-www-form-urlencoded",
+      "body": "userid=<STUDENT_ID>&Password=<REDACTED>&role=student"
+    },
+    {
+      "at": "2026-10-13T13:53:26.184Z",
+      "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/do?action=ts_ledger",
+      "contentType": "application/x-www-form-urlencoded",
+      "body": "start=insert_1rec&zb_zy_id=1000245524&type_zb=1&zbid=45850&sxid=SESSION_TOKEN_PLACEHOLDER&entityID=110+++++++&isSimulate=false&yyyy=2020&accountID=220201++++++++++++++&is_zz_i=0&kjkm=%E5%BA%94%E4%BB%98%E8%B4%A6%E6%AC%BE&kjkm=%E5%8C%97%E4%BA%AC%E5%AE%9D%E7%94%B3%E5%AE%9E%E4%B8%9A%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++&XSHU_i=1&mm_i=1&dd_i=31&vouchertype_i=--&memo_i=----------------&isNormalRec_i=0&rowclass=8"
+    },
+    {
+      "at": "2026-10-13T13:53:30.605Z",
+      "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/do?action=ts_ledger",
+      "contentType": "application/x-www-form-urlencoded",
+      "body": "start=insert_1rec&zb_zy_id=1000245524&type_zb=1&zbid=45850&sxid=SESSION_TOKEN_PLACEHOLDER&entityID=110+++++++&isSimulate=false&yyyy=2020&accountID=220201++++++++++++++&is_zz_i=0&kjkm=%E5%BA%94%E4%BB%98%E8%B4%A6%E6%AC%BE&kjkm=%E5%8C%97%E4%BA%AC%E5%AE%9D%E7%94%B3%E5%AE%9E%E4%B8%9A%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++&mm=1&dd=31&vouchertype=--&voucherid=&memo=----------------&debit=&lend=&in_debit_lend=0&balance=&is_zz=0&ledgerrecordid=10000002545666&isNormalRec=1&isadditional=&XSHU_i=1&mm_i=12&dd_i=31&vouchertype_i=%3D%3D&memo_i=%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D&isNormalRec_i=0&rowclass=9"
+    }
+  ]
+}

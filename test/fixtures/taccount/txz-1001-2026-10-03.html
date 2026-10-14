@@ -1,0 +1,274 @@
+
+
+
+
+
+
+<!doctype html>
+<html><title>T型账录入</title><head><meta name="renderer" content="webkit" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+<script>
+var __vpn_hostname_data = "webvpn.shufe-zj.edu.cn";
+var __vpn_protocol_data = "https";
+var __vpn_protocol_host = "https://webvpn.shufe-zj.edu.cn";
+var __vpn_app_hostname_data = "77726476706e69737468656265737421a1a70fcd767e3c1e2851";
+var __vpn_app_protocol_data = "http";
+var __vpn_app_port_data = "8090";
+var __vpn_js_file = "/wengine-vpn/js/main.js?ver=20211207";
+var __vpn_worker_mode = 2;
+var __vpn_fast_mode = 0;
+var __vpn_host_crypt = true;
+var __vpn_host_crypt_key = "wrdvpnisthebest!";
+var __vpn_host_crypt_iv = "wrdvpnisthebest!";
+</script>
+<script src="/wengine-vpn/js/main.js?ver=20211207" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="style_v6/css/bootstrap.css?vpn-6">
+<link rel="stylesheet" type="text/css" href="style_v6/css/style.css?vpn-6">
+<link rel="stylesheet" type="text/css" href="style_v6/css/custom.css?vpn-6">
+<script src="javascript/jquery.1.8.js?vpn-7" type="text/jscript"></script>
+<script src="javascript/bootstrap.min.js?vpn-7" type="text/jscript"></script>
+
+<script language="JavaScript" src="javascript/basic.js?vpn-7"></script>
+<script language="JavaScript" src="javascript/operation.js?vpn-7"></script>
+<script language="JavaScript" src="javascript/encoder.js?vpn-7"></script>
+<script language="JavaScript" src="javascript/checkForm.js?vpn-7"></script>
+<script type="text/javascript" src="javascript/multiTags.js?vpn-7"></script>
+<script type="text/javascript" src="javascript/workStatus.js?vpn-7"></script>
+<script language="JavaScript" src="js/softkf_common.js?vpn-7"></script>
+<script language="JavaScript" src="javascript/MyQuickSelect.js?vpn-7"></script>
+<script language="JavaScript" src="javascript/UrlManager.js?vpn-7"></script>
+<script language="JavaScript" src="javascript/loadmask/jquery.loadmask.js?vpn-7"></script>
+<link href="javascript/loadmask/jquery.loadmask.css?vpn-6" rel="stylesheet" type="text/css"/>
+<script language="JavaScript" src="javascript/loadmask.js?vpn-7"></script>
+<script type="text/javascript" src="javascript/My97DatePicker/WdatePicker.js?vpn-7" defer="defer"></script>
+<script language="JavaScript" src="js/report_page_auto_width.js?vpn-7"></script>
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11">
+</head>
+<body style="background-image:none; background-color:#f3f3f3;">
+<div class="center">
+	<div class="inside_list">
+    	<div class="table_tit">
+      		<h3 class="left">T型账</h3>
+      	</div>
+    	<div class="inside_list_cent  tab-content">
+      		<div class="tab-pane active" id="inside_list_cent_4">
+					
+       			<div class="table_search"> 
+					<form name="formSearch" action="do" method="get">	
+						<input type='hidden' name='sxid' value='SESSION_TOKEN_PLACEHOLDER' />
+						<input type='hidden' name='entityid' value='110' />
+						<input type='hidden' name='readyOnly' value='false' />
+						<input type='hidden' name='QueryOnly' value='' />
+						<table class="tableSearch" >
+							<tr>
+								<td>总账科目:</td>
+								<td><select name="accountID" onchange="var vpn_return;eval(vpn_rewrite_js((function () { v_dto6.accountID.value=this.value; }).toString().slice(14, -2), 2));return vpn_return;"><option value="1001" selected >1001                -库存现金</option><option value="1002">1002                -银行存款</option><option value="1003">1003                -存放中央银行款项</option><option value="1011">1011                -存放同业</option><option value="1012">1012                -其他货币资金</option><option value="1021">1021                -结算备付金</option><option value="1031">1031                -存出保证金</option><option value="1101">1101                -交易性金融资产</option><option value="1121">1121                -应收票据</option><option value="1122">1122                -应收账款</option><option value="1123">1123                -预付账款</option><option value="1131">1131                -应收股利</option><option value="1132">1132                -应收利息</option><option value="1201">1201                -应收代位追偿款</option><option value="1211">1211                -应收分保账款</option><option value="1212">1212                -应收分保合同准备金</option><option value="1221">1221                -其他应收款</option><option value="1231">1231                -坏账准备</option><option value="1301">1301                -贴现资产</option><option value="1302">1302                -拆出资金</option><option value="1303">1303                -贷款</option><option value="1304">1304                -贷款损失准备</option><option value="1311">1311                -代理兑付证券</option><option value="1321">1321                -代理业务资产</option><option value="1401">1401                -材料采购</option><option value="1402">1402                -在途物资</option><option value="1403">1403                -原材料</option><option value="1404">1404                -材料成本差异</option><option value="1405">1405                -库存商品</option><option value="1406">1406                -发出商品</option><option value="1407">1407                -商品进销差价</option><option value="1408">1408                -委托加工物资</option><option value="1411">1411                -周转材料</option><option value="1413">1413                -自制半成品</option><option value="1421">1421                -消耗性生物资产</option><option value="1431">1431                -贵金属</option><option value="1441">1441                -抵债资产</option><option value="1451">1451                -损余物资</option><option value="1461">1461                -融资租赁资产</option><option value="1471">1471                -存货跌价准备</option><option value="1481">1481                -持有待售资产</option><option value="1511">1511                -长期股权投资</option><option value="1512">1512                -长期股权投资减值准备</option><option value="1513">1513                -其他权益工具投资</option><option value="1521">1521                -投资性房地产</option><option value="1531">1531                -长期应收账</option><option value="1532">1532                -未实现融资收益</option><option value="1541">1541                -存出资本保证金</option><option value="1601">1601                -固定资产</option><option value="1602">1602                -累计折旧</option><option value="1603">1603                -固定资产减值准备</option><option value="1604">1604                -在建工程</option><option value="1605">1605                -工程物资</option><option value="1606">1606                -固定资产清理</option><option value="1611">1611                -未担保余值</option><option value="1621">1621                -生产性生物资产</option><option value="1622">1622                -生产性生物资产累计折旧</option><option value="1623">1623                -公益性生产资产</option><option value="1631">1631                -油气资产</option><option value="1632">1632                -累计折耗</option><option value="1701">1701                -无形资产</option><option value="1702">1702                -累计摊销</option><option value="1703">1703                -无形资产减值准备</option><option value="1711">1711                -商誉</option><option value="1801">1801                -长期待摊费用</option><option value="1811">1811                -递延所得税资产</option><option value="1821">1821                -独立账户资产</option><option value="1901">1901                -待处理财产损溢</option><option value="2001">2001                -短期借款</option><option value="2002">2002                -存入保证金</option><option value="2003">2003                -拆入资金</option><option value="2004">2004                -向中央银行借款</option><option value="2011">2011                -吸收存款</option><option value="2012">2012                -同业存放</option><option value="2021">2021                -贴现负债</option><option value="2101">2101                -交易性金融负债</option><option value="2111">2111                -卖出回购金融资产款</option><option value="2201">2201                -应付票据</option><option value="2202">2202                -应付账款</option><option value="2203">2203                -预收账款</option><option value="2211">2211                -应付职工薪酬</option><option value="2221">2221                -应交税费</option><option value="2231">2231                -应付利息</option><option value="2232">2232                -应付股利</option><option value="2241">2241                -其他应付款</option><option value="2251">2251                -应付保单红利</option><option value="2261">2261                -应付分保账款</option><option value="2311">2311                -代理买卖证券款</option><option value="2312">2312                -代理承销证券款</option><option value="2313">2313                -代理兑付证券款</option><option value="2314">2314                -代理业务负债</option><option value="2401">2401                -递延收益</option><option value="2501">2501                -长期借款</option><option value="2502">2502                -应付债券</option><option value="2601">2601                -未到期责任准备金</option><option value="2602">2602                -保险责任准备金</option><option value="2611">2611                -保户储金</option><option value="2621">2621                -独立账户负债</option><option value="2701">2701                -长期应付款</option><option value="2702">2702                -未确认融资费用</option><option value="2711">2711                -专项应付款</option><option value="2801">2801                -预计负债</option><option value="2901">2901                -递延所得税负债</option><option value="3101">3101                -衍生工具</option><option value="3201">3201                -套期工具</option><option value="3202">3202                -被套期项目</option><option value="4001">4001                -实收资本</option><option value="4002">4002                -资本公积</option><option value="4003">4003                -其他综合收益</option><option value="4101">4101                -盈余公积</option><option value="4102">4102                -一般风险准备</option><option value="4103">4103                -本年利润</option><option value="4104">4104                -利润分配</option><option value="4201">4201                -库存股</option><option value="5001">5001                -生产成本</option><option value="5101">5101                -制造费用</option><option value="5201">5201                -劳务成本</option><option value="5301">5301                -研发支出</option><option value="5401">5401                -工程施工</option><option value="5402">5402                -工程结算</option><option value="5403">5403                -机械作业</option><option value="6001">6001                -主营业务收入</option><option value="6011">6011                -利息收入</option><option value="6021">6021                -手续费及佣金收入</option><option value="6031">6031                -保费收入</option><option value="6041">6041                -租赁收入</option><option value="6051">6051                -其他业务收入</option><option value="6061">6061                -汇兑损溢</option><option value="6101">6101                -公允价值变动损益</option><option value="6111">6111                -投资收益</option><option value="6115">6115                -资产处置损益</option><option value="6201">6201                -摊回保险责任准备金</option><option value="6202">6202                -摊回赔付支出</option><option value="6203">6203                -摊回分保费用</option><option value="6301">6301                -营业外收入</option><option value="6401">6401                -主营业务成本</option><option value="6402">6402                -其他业务成本</option><option value="6403">6403                -税金及附加</option><option value="6411">6411                -利息支出</option><option value="6421">6421                -手续费及佣金支出</option><option value="6501">6501                -提取未到期责任准备金</option><option value="6502">6502                -提取保险责任准备金</option><option value="6511">6511                -赔付支出</option><option value="6521">6521                -保单红利支出</option><option value="6531">6531                -保退金</option><option value="6541">6541                -分出保费</option><option value="6542">6542                -分保费用</option><option value="6601">6601                -销售费用</option><option value="6602">6602                -管理费用</option><option value="6603">6603                -财务费用</option><option value="6604">6604                -勘探费用</option><option value="6701">6701                -资产减值损失</option><option value="6711">6711                -营业外支出</option><option value="6801">6801                -所得税费用</option><option value="6901">6901                -以前年度损益调整</option></select></td>
+								<td><select name="yyyy" class="input" onchange="var vpn_return;eval(vpn_rewrite_js((function () { v_dto6.yyyy.value=this.value; }).toString().slice(14, -2), 2));return vpn_return;"><option value="2020" selected >2020</option></select>年 </td>
+								<td><select name="mm" class="input" onchange="var vpn_return;eval(vpn_rewrite_js((function () { v_dto6.mm.value=this.value; }).toString().slice(14, -2), 2));return vpn_return;"><option value="1" selected >1</option></select>月</td>
+							    <td> 
+							    	<input type="hidden" name="action" value="ts_txz"/>
+							    	<input type='hidden' name='start' value='query' />
+							    	<button type="submit" class="blue_btn little_btn">查询</button>
+							    </td>
+						    </tr>
+						</table>
+					</form>
+				</div>
+					
+                <div class="table_list table_list_2">
+				 
+					<form name="v_dto6" action="do?action=ts_txz" method="post">
+						<input type='hidden' name='sxid' value='SESSION_TOKEN_PLACEHOLDER' />
+						<input type='hidden' name='accountID' value='1001' />
+						<input type='hidden' name='yyyy' value='2020' />
+						<input type='hidden' name='mm' value='1' />
+						<input type='hidden' name='entityid' value='110' />
+						<input type='hidden' name='start' value='query' />
+						
+						<table cellpadding="0" cellspacing="0" width="100%">
+	                    	<tbody>
+								<tr>
+									<th width="30%">凭证号/备注</th>
+									<th width="30%">借</th>
+									<th width="30%">贷</th>
+									
+									<th width="10%"><input name="CHECK_CON" type="checkbox" onclick="var vpn_return;eval(vpn_rewrite_js((function () { doCheckAll(this) }).toString().slice(14, -2), 2));return vpn_return;" class="checkboxGrid rd_ck_input"></th>
+									
+								</tr>
+								
+								<tr>
+								
+									<td><input type='text' name='pzh_bz' value='记1' dataType="title" isnull="notnull" maxlen='40' caption="凭证号/备注" class="input_t" /></td>
+							 		<td><input type='text' name='debit' value='232.00' dataType="SCRIPT:script_check_debit_lend(#1, 0,'0')" class="input_t" /></td>
+							 		<td><input type='text' name='lend'  value=''  dataType="SCRIPT:script_check_debit_lend(#1, 0,'0')" class="input_t" /></td>
+							 		<td>
+							 			<input type='checkbox' class="rd_ck_input" name='CHECK_CONFIRM' value='174642' />
+							 			<input type='hidden' name='TEMPid' value='174642' class="checkGrid" />
+							 		</td>
+						 		
+	 							</tr>
+								
+								<tr>
+								
+									<td><input type='text' name='pzh_bz' value='记3 提取备用金' dataType="title" isnull="notnull" maxlen='40' caption="凭证号/备注" class="input_t" /></td>
+							 		<td><input type='text' name='debit' value='5000.00' dataType="SCRIPT:script_check_debit_lend(#1, 0,'1')" class="input_t" /></td>
+							 		<td><input type='text' name='lend'  value=''  dataType="SCRIPT:script_check_debit_lend(#1, 0,'1')" class="input_t" /></td>
+							 		<td>
+							 			<input type='checkbox' class="rd_ck_input" name='CHECK_CONFIRM' value='174643' />
+							 			<input type='hidden' name='TEMPid' value='174643' class="checkGrid" />
+							 		</td>
+						 		
+	 							</tr>
+								
+								<tr>
+								
+									<td><input type='text' name='pzh_bz' value='记5' dataType="title" isnull="notnull" maxlen='40' caption="凭证号/备注" class="input_t" /></td>
+							 		<td><input type='text' name='debit' value='' dataType="SCRIPT:script_check_debit_lend(#1, 0,'2')" class="input_t" /></td>
+							 		<td><input type='text' name='lend'  value='2450.00'  dataType="SCRIPT:script_check_debit_lend(#1, 0,'2')" class="input_t" /></td>
+							 		<td>
+							 			<input type='checkbox' class="rd_ck_input" name='CHECK_CONFIRM' value='174644' />
+							 			<input type='hidden' name='TEMPid' value='174644' class="checkGrid" />
+							 		</td>
+						 		
+	 							</tr>
+								
+								<tr>
+								
+									<td><input type='text' name='pzh_bz' value='记8' dataType="title" isnull="notnull" maxlen='40' caption="凭证号/备注" class="input_t" /></td>
+							 		<td><input type='text' name='debit' value='' dataType="SCRIPT:script_check_debit_lend(#1, 0,'3')" class="input_t" /></td>
+							 		<td><input type='text' name='lend'  value='825.00'  dataType="SCRIPT:script_check_debit_lend(#1, 0,'3')" class="input_t" /></td>
+							 		<td>
+							 			<input type='checkbox' class="rd_ck_input" name='CHECK_CONFIRM' value='174645' />
+							 			<input type='hidden' name='TEMPid' value='174645' class="checkGrid" />
+							 		</td>
+						 		
+	 							</tr>
+								
+								<tr>
+								
+									<td><input type='text' name='pzh_bz' value='记30' dataType="title" isnull="notnull" maxlen='40' caption="凭证号/备注" class="input_t" /></td>
+							 		<td><input type='text' name='debit' value='' dataType="SCRIPT:script_check_debit_lend(#1, 0,'4')" class="input_t" /></td>
+							 		<td><input type='text' name='lend'  value='2000.00'  dataType="SCRIPT:script_check_debit_lend(#1, 0,'4')" class="input_t" /></td>
+							 		<td>
+							 			<input type='checkbox' class="rd_ck_input" name='CHECK_CONFIRM' value='174646' />
+							 			<input type='hidden' name='TEMPid' value='174646' class="checkGrid" />
+							 		</td>
+						 		
+	 							</tr>
+								
+								<tr>
+								
+									<td><input type='text' name='pzh_bz' value='记46 提现' dataType="title" isnull="notnull" maxlen='40' caption="凭证号/备注" class="input_t" /></td>
+							 		<td><input type='text' name='debit' value='5000.00' dataType="SCRIPT:script_check_debit_lend(#1, 0,'5')" class="input_t" /></td>
+							 		<td><input type='text' name='lend'  value=''  dataType="SCRIPT:script_check_debit_lend(#1, 0,'5')" class="input_t" /></td>
+							 		<td>
+							 			<input type='checkbox' class="rd_ck_input" name='CHECK_CONFIRM' value='174647' />
+							 			<input type='hidden' name='TEMPid' value='174647' class="checkGrid" />
+							 		</td>
+						 		
+	 							</tr>
+								
+								<tr>
+								
+									<td><input type='text' name='pzh_bz' value='记56' dataType="title" isnull="notnull" maxlen='40' caption="凭证号/备注" class="input_t" /></td>
+							 		<td><input type='text' name='debit' value='' dataType="SCRIPT:script_check_debit_lend(#1, 0,'6')" class="input_t" /></td>
+							 		<td><input type='text' name='lend'  value='403.00'  dataType="SCRIPT:script_check_debit_lend(#1, 0,'6')" class="input_t" /></td>
+							 		<td>
+							 			<input type='checkbox' class="rd_ck_input" name='CHECK_CONFIRM' value='174648' />
+							 			<input type='hidden' name='TEMPid' value='174648' class="checkGrid" />
+							 		</td>
+						 		
+	 							</tr>
+								
+								<tr>
+								
+									<td><input type='text' name='pzh_bz' value='记61' dataType="title" isnull="notnull" maxlen='40' caption="凭证号/备注" class="input_t" /></td>
+							 		<td><input type='text' name='debit' value='' dataType="SCRIPT:script_check_debit_lend(#1, 0,'7')" class="input_t" /></td>
+							 		<td><input type='text' name='lend'  value='2093.00'  dataType="SCRIPT:script_check_debit_lend(#1, 0,'7')" class="input_t" /></td>
+							 		<td>
+							 			<input type='checkbox' class="rd_ck_input" name='CHECK_CONFIRM' value='174649' />
+							 			<input type='hidden' name='TEMPid' value='174649' class="checkGrid" />
+							 		</td>
+						 		
+	 							</tr>
+								
+								<tr>
+								
+									<td><input type='text' name='pzh_bz' value='记63 提现' dataType="title" isnull="notnull" maxlen='40' caption="凭证号/备注" class="input_t" /></td>
+							 		<td><input type='text' name='debit' value='5000.00' dataType="SCRIPT:script_check_debit_lend(#1, 0,'8')" class="input_t" /></td>
+							 		<td><input type='text' name='lend'  value=''  dataType="SCRIPT:script_check_debit_lend(#1, 0,'8')" class="input_t" /></td>
+							 		<td>
+							 			<input type='checkbox' class="rd_ck_input" name='CHECK_CONFIRM' value='174650' />
+							 			<input type='hidden' name='TEMPid' value='174650' class="checkGrid" />
+							 		</td>
+						 		
+	 							</tr>
+								
+								
+						 		<tr>
+							 		<td><input type="text" name="pzh_bz_i" dataType="title" isnull="notnull" maxlen="40" caption="凭证号/备注" class="input_t" /></td>
+							 		<td><input type="text" name="debit_i" dataType="SCRIPT:script_check_debit_lend(#1, 1,'0')" class="input_t" /></td>
+							 		<td><input type="text" name="lend_i"  dataType="SCRIPT:script_check_debit_lend(#1, 1,'0')" class="input_t" /></td>
+							 		<td><button type="button" class="blue_btn little_btn" onclick="var vpn_return;eval(vpn_rewrite_js((function () { checkFormIgnoreNames(&#39;pzh_bz_i;debit_i;lend_i&#39;, false); if(checkForm(this.form)){ v_dto6.start.value=&#39;insert&#39;;v_dto6.submit(); }  }).toString().slice(14, -2), 2));return vpn_return;" class="btnSubmit">新增</button></td>
+						 		</tr>
+								
+						 		<tr>
+							 		<td>本期发生额:</td>
+							 		<td>15232.00</td>
+							 		<td>7771.00</td>
+						 		 
+							 		<td></td>
+						 		
+	 							</tr>
+	 						</tbody>
+						</table>
+						
+						<div class="table_page">
+				            <div class="tabel_f_btn right">
+								<button type="button" class="blue_btn little_btn" onclick="var vpn_return;eval(vpn_rewrite_js((function () { thisDoDelete(this.form,&#39;update_loop&#39;);  }).toString().slice(14, -2), 2));return vpn_return;" class="btnSubmit">修改提交</button>
+								<button type="button" class="red_btn little_btn" onclick="var vpn_return;eval(vpn_rewrite_js((function () { thisDoDelete(this.form,&#39;delete_loop&#39;);  }).toString().slice(14, -2), 2));return vpn_return;" class="btnSubmit">删除提交</button>
+				            </div>
+				            <div class="clear"></div>
+			            </div>
+						
+					</form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<script type="text/javascript">vpn_eval((function(){
+
+function thisDoDelete(form,op){
+	if(!hasOneChecked("CHECK_CONFIRM")){ netinnetAlert("请至少勾选一行");  return false;    }
+	checkFormIgnoreNames('pzh_bz_i;debit_i;lend_i');
+	if(!checkForm(form,"CHECK_CONFIRM")) return false;
+	if( op=="delete_loop" ){ if(netinnetConfirm('删除后将不可恢复记录，是否真要删除？')){ form.start.value=op; form.submit(); }	return;}
+	v_dto6.start.value=op;  v_dto6.submit();	
+}
+
+function script_check_debit_lend(box, flag, index){
+	var box_debit = document.getElementsByName("debit" + (flag==0?"":"_i") )[index];
+	var box_lend  = document.getElementsByName("lend" + (flag==0?"":"_i") )[index];
+	if(!box_debit || !box_lend) return true;
+	if(!__MM_trim(box_debit.value) && !__MM_trim(box_lend.value)){
+		alert("借/贷至少有一项需要录入数据。");
+		return false;
+	}
+	
+	if(__MM_trim(box.value) && !__MM_checkNumber("number(18,2)", __MM_trim(box.value), ((box.name).indexOf("debit")>=0)?"借":"贷", 1)){
+		return false;
+	}
+	
+	
+	return true;
+}
+
+
+}
+).toString().slice(12, -2),"");</script>
+</body></html>
+

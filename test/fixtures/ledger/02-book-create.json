@@ -1,0 +1,457 @@
+{
+  "startedAt": "2026-10-13T11:52:38.168Z",
+  "dialogs": [],
+  "error": null,
+  "entry": {
+    "sxid": "SESSION_TOKEN_PLACEHOLDER",
+    "entityID": "110",
+    "cname": "%E6%9C%B1%E8%BD%BD%E8%B0%B1",
+    "entry": "do?action=e_entity&start=entity_main_student_frame&SXID=SESSION_TOKEN_PLACEHOLDER&C_NAME=%E6%9C%B1%E8%BD%BD%E8%B0%B1&EntityID=110",
+    "source": {
+      "frame": "main",
+      "raw": " Javascript:changeOpeRole();parent.location.href='do?action=e_entity&start=entity_main_student_frame&SXID=SESSION_TOKEN_PLACEHOLDER&C_NAME=%E6%9C%B1%E8%BD%BD%E8%B0%B1&EntityID=110'"
+    },
+    "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/do?action=e_entity&start=entity_main_student_frame&SXID=SESSION_TOKEN_PLACEHOLDER&C_NAME=%E6%9C%B1%E8%BD%BD%E8%B0%B1&EntityID=110"
+  },
+  "newZbUrl": "do?action=ts_zb_zy&start=new_zb&entityID=110&sxid=SESSION_TOKEN_PLACEHOLDER&type_zb=1&isSimulate=false",
+  "framesAfter": [
+    {
+      "name": "",
+      "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/do?action=e_entity&start=entity_main_student_frame&SXID=SESSION_TOKEN_PLACEHOLDER&C_NAME=%E6%9C%B1%E8%BD%BD%E8%B0%B1&EntityID=110"
+    },
+    {
+      "name": "top",
+      "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/do?action=e_entity&start=entity_main_student&entityID=110&isSimulate=&SXID=SESSION_TOKEN_PLACEHOLDER&c_name=%E6%9C%B1%E8%BD%BD%E8%B0%B1"
+    },
+    {
+      "name": "middle",
+      "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/main_middle_frame.jsp"
+    },
+    {
+      "name": "main",
+      "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/do?action=ts_zb_zy&start=new_zb&entityID=110&sxid=SESSION_TOKEN_PLACEHOLDER&type_zb=1&isSimulate=false"
+    },
+    {
+      "name": "",
+      "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/javascript/My97DatePicker/My97DatePicker.htm"
+    },
+    {
+      "name": "",
+      "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/javascript/My97DatePicker/My97DatePicker.htm"
+    }
+  ],
+  "targetFrame": {
+    "name": "main",
+    "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/do?action=ts_zb_zy&start=new_zb&entityID=110&sxid=SESSION_TOKEN_PLACEHOLDER&type_zb=1&isSimulate=false"
+  },
+  "struct": {
+    "title": "开设新账簿",
+    "text": "开设新账簿 返回账簿列表 返回账本管理 账 簿 启 用 及 接 交 表 机构名称 北京同声电子有限公司 印 鉴 账簿类别 (活页)三栏式明细账 (活页)数量金额式明细账 (活页)多栏式明细账 *(输入后不可修改) 账簿名称 * (第 册) 账簿编号 * 账簿页数 本账簿共计 页 ( 本账本页数 ) 检点人盖章 对应的科目 启用日期 (输入后不修改) 经 管 人 员 负责人 主办会计 复核 记账 姓名 盖章 姓名 盖章 姓名 盖章 姓名 盖章 接 交 记 录 经 管 人 员 接 管 交 出 职 别 姓 名 年 月 日 盖章 年 月 日 盖章 备 注 账簿启用确认",
+    "inputs": [
+      {
+        "tag": "INPUT",
+        "type": "hidden",
+        "name": "start",
+        "id": null,
+        "cls": null,
+        "value": "query_1rec",
+        "readonly": false,
+        "disabled": false,
+        "checked": false
+      },
+      {
+        "tag": "INPUT",
+        "type": "hidden",
+        "name": "sxid",
+        "id": null,
+        "cls": null,
+        "value": "SESSION_TOKEN_PLACEHOLDER",
+        "readonly": false,
+        "disabled": false,
+        "checked": false
+      },
+      {
+        "tag": "INPUT",
+        "type": "hidden",
+        "name": "entityid",
+        "id": null,
+        "cls": null,
+        "value": "110",
+        "readonly": false,
+        "disabled": false,
+        "checked": false
+      },
+      {
+        "tag": "INPUT",
+        "type": "hidden",
+        "name": "type_zb",
+        "id": null,
+        "cls": null,
+        "value": "1",
+        "readonly": false,
+        "disabled": false,
+        "checked": false
+      },
+      {
+        "tag": "INPUT",
+        "type": "hidden",
+        "name": "isSimulate",
+        "id": null,
+        "cls": null,
+        "value": "false",
+        "readonly": false,
+        "disabled": false,
+        "checked": false
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "name": "zbnrlb",
+        "id": null,
+        "cls": null,
+        "value": "",
+        "readonly": false,
+        "disabled": false,
+        "checked": null
+      },
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "name": "zbmc",
+        "id": null,
+        "cls": "input_t",
+        "value": "",
+        "readonly": false,
+        "disabled": false,
+        "checked": false
+      },
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "name": "zbbh",
+        "id": null,
+        "cls": "input_t",
+        "value": "3",
+        "readonly": false,
+        "disabled": false,
+        "checked": false
+      },
+      {
+        "tag": "SELECT",
+        "type": "select-one",
+        "name": "accountid",
+        "id": "accountid",
+        "cls": null,
+        "value": "",
+        "readonly": false,
+        "disabled": false,
+        "checked": null
+      },
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "name": "startDate",
+        "id": "startDate",
+        "cls": "input_t ipt_date",
+        "value": "2020-1-1",
+        "readonly": false,
+        "disabled": false,
+        "checked": false
+      },
+      {
+        "tag": "INPUT",
+        "type": "hidden",
+        "name": "yyyy",
+        "id": "yyyy",
+        "cls": null,
+        "value": "2020",
+        "readonly": false,
+        "disabled": false,
+        "checked": false
+      },
+      {
+        "tag": "INPUT",
+        "type": "hidden",
+        "name": "mm",
+        "id": "mm",
+        "cls": null,
+        "value": "1",
+        "readonly": false,
+        "disabled": false,
+        "checked": false
+      },
+      {
+        "tag": "INPUT",
+        "type": "hidden",
+        "name": "dd",
+        "id": "dd",
+        "cls": null,
+        "value": "1",
+        "readonly": false,
+        "disabled": false,
+        "checked": false
+      },
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "name": "fzren0",
+        "id": null,
+        "cls": "input_t",
+        "value": "",
+        "readonly": false,
+        "disabled": false,
+        "checked": false
+      },
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "name": "zbkj00",
+        "id": null,
+        "cls": "input_t",
+        "value": "",
+        "readonly": false,
+        "disabled": false,
+        "checked": false
+      },
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "name": "fhe000",
+        "id": null,
+        "cls": "input_t",
+        "value": "",
+        "readonly": false,
+        "disabled": false,
+        "checked": false
+      },
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "name": "jzhang",
+        "id": null,
+        "cls": "input_t",
+        "value": "",
+        "readonly": false,
+        "disabled": false,
+        "checked": false
+      },
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "name": "bzhu00",
+        "id": null,
+        "cls": "input_t",
+        "value": "",
+        "readonly": false,
+        "disabled": false,
+        "checked": false
+      }
+    ],
+    "inputCount": 18,
+    "forms": [
+      {
+        "name": "v_dto1",
+        "action": "http://10.11.4.69:8090/netinnet_zhsx_v63/do?action=ts_zb_zy",
+        "method": "post",
+        "fields": [
+          "start:hidden",
+          "sxid:hidden",
+          "entityid:hidden",
+          "type_zb:hidden",
+          "isSimulate:hidden",
+          "zbnrlb:select-one",
+          "zbmc:text",
+          "zbbh:text",
+          "accountid:select-one",
+          "startDate:text",
+          "yyyy:hidden",
+          "mm:hidden",
+          "dd:hidden",
+          "fzren0:text",
+          "zbkj00:text",
+          "fhe000:text",
+          "jzhang:text",
+          "bzhu00:text",
+          ":button"
+        ]
+      }
+    ],
+    "clickables": [
+      {
+        "tag": "BUTTON",
+        "text": "返回账簿列表",
+        "onclick": "window.location.href='do?action=ts_zb_zy&start=zb_list&type_zb=1&entityID=110&SXID=SESSION_TOKEN_PLACEHOLDER&isSimulate=false'",
+        "href": null,
+        "name": null,
+        "id": null,
+        "cls": "blue_btn btn_big"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "返回账本管理",
+        "onclick": "window.location.href='do?action=ts_zb_zy&start=query_zb_for_management&type_zb=1&entityID=110&SXID=SESSION_TOKEN_PLACEHOLDER&isSimulate=false'",
+        "href": null,
+        "name": null,
+        "id": null,
+        "cls": "blue_btn btn_big"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "账簿启用确认",
+        "onclick": "doSubmit(this.form)",
+        "href": null,
+        "name": null,
+        "id": null,
+        "cls": "blue_btn little_btn"
+      }
+    ],
+    "tables": [
+      {
+        "idx": 0,
+        "id": null,
+        "cls": null,
+        "rows": 9,
+        "cols": 1,
+        "head": [
+          "账 簿 启 用 及 接 交 表"
+        ]
+      },
+      {
+        "idx": 1,
+        "id": null,
+        "cls": null,
+        "rows": 2,
+        "cols": 4,
+        "head": [
+          "本账簿共计 页",
+          "(",
+          "本账本页数",
+          ")"
+        ]
+      },
+      {
+        "idx": 2,
+        "id": null,
+        "cls": null,
+        "rows": 3,
+        "cols": 5,
+        "head": [
+          "经 管 人 员",
+          "负责人",
+          "主办会计",
+          "复核",
+          "记账"
+        ]
+      },
+      {
+        "idx": 3,
+        "id": null,
+        "cls": null,
+        "rows": 6,
+        "cols": 4,
+        "head": [
+          "接 交 记 录",
+          "经 管 人 员",
+          "接 管",
+          "交 出"
+        ]
+      },
+      {
+        "idx": 4,
+        "id": null,
+        "cls": null,
+        "rows": 1,
+        "cols": 2,
+        "head": [
+          "备 注",
+          ""
+        ]
+      }
+    ],
+    "scripts": [
+      "javascript/jquery.1.8.js",
+      "javascript/bootstrap.min.js",
+      "javascript/basic.js",
+      "javascript/operation.js",
+      "javascript/encoder.js",
+      "javascript/checkForm.js",
+      "javascript/multiTags.js",
+      "javascript/workStatus.js",
+      "js/softkf_common.js",
+      "javascript/MyQuickSelect.js",
+      "javascript/UrlManager.js",
+      "javascript/jquery.js",
+      "javascript/loadmask/jquery.loadmask.js",
+      "javascript/loadmask.js",
+      "javascript/My97DatePicker/WdatePicker.js",
+      "js/report_page_auto_width.js"
+    ]
+  },
+  "selects": [
+    {
+      "name": "zbnrlb",
+      "id": "",
+      "cls": "",
+      "multiple": false,
+      "size": 0,
+      "options": [
+        {
+          "value": "",
+          "text": "",
+          "selected": true
+        },
+        {
+          "value": "5",
+          "text": "(活页)三栏式明细账",
+          "selected": false
+        },
+        {
+          "value": "6",
+          "text": "(活页)数量金额式明细账",
+          "selected": false
+        },
+        {
+          "value": "7",
+          "text": "(活页)多栏式明细账",
+          "selected": false
+        }
+      ],
+      "selectedValue": "",
+      "selectedText": ""
+    },
+    {
+      "name": "accountid",
+      "id": "accountid",
+      "cls": "",
+      "multiple": false,
+      "size": 0,
+      "options": [],
+      "selectedValue": "",
+      "selectedText": null
+    }
+  ],
+  "ledgerTypeTexts": [
+    {
+      "tag": "OPTION",
+      "text": "(活页)三栏式明细账",
+      "html": "<option value=\"5\">(活页)三栏式明细账</option>",
+      "id": null,
+      "cls": null
+    },
+    {
+      "tag": "OPTION",
+      "text": "(活页)数量金额式明细账",
+      "html": "<option value=\"6\">(活页)数量金额式明细账</option>",
+      "id": null,
+      "cls": null
+    },
+    {
+      "tag": "OPTION",
+      "text": "(活页)多栏式明细账",
+      "html": "<option value=\"7\">(活页)多栏式明细账</option>",
+      "id": null,
+      "cls": null
+    }
+  ],
+  "inlineScripts": "\n\n$(document).ready(function(){\n\t$('#startDate').val('2020-1-1');\n});\n\nfunction doSubmit(fbox){\n\tif(!checkForm(fbox)) return;\n\tvar selectDateValue = $('#startDate').val();\n\tvar yyyy = selectDateValue.split(\"-\")[0];\n\tvar mm = selectDateValue.split(\"-\")[1];\n\tvar dd = selectDateValue.split(\"-\")[2];\n\t$('#yyyy').val(yyyy);\n\t$('#mm').val(mm);\n\t$('#dd').val(dd);\n\tfbox.start.value='new_zb_insert_1rec';\n\tfbox.submit();\n}\n\n\nfunction doChgzbnrlb(box)\n{\n    var options = document.getElementById(\"accountid_options_1\").innerHTML;\n    var select_html = \"<select name='accountid'  id='accountid' onkeydown='mySelectBoxKeyPress()'>\"+options+\"</select>\";\n    document.getElementById(\"accountid_span\").innerHTML = select_html;\n\n    if (('4,5,6,7,9').indexOf(box.value) >= 0){\n        box.form.accountid.value='';    \n        box.form.accountid.disabled=true; \n    }   \n    else if (box.value=='1'){\n        box.form.accountid.value='1001';\n        box.form.accountid.disabled=false; \n    }  \n    else if (box.value=='2'){\n        box.form.accountid.value='1002';\n        box.form.accountid.disabled=false; \n    }  \n    else {\n        box.form.accountid.disabled=false;\n    }\n    \n    \n    \n}\n"
+}

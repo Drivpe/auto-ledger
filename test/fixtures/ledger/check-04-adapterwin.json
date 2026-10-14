@@ -1,0 +1,2812 @@
+{
+  "startedAt": "2026-10-13T15:02:38.498Z",
+  "error": null,
+  "steps": [
+    "2026-10-13T15:02:52.036Z 直达查阅记账凭证内容页"
+  ],
+  "pages": [],
+  "entry": {
+    "sxid": "SESSION_TOKEN_PLACEHOLDER",
+    "entityID": "110",
+    "cname": "%E6%9C%B1%E8%BD%BD%E8%B0%B1",
+    "entry": "do?action=e_entity&start=entity_main_student_frame&SXID=SESSION_TOKEN_PLACEHOLDER&C_NAME=%E6%9C%B1%E8%BD%BD%E8%B0%B1&EntityID=110",
+    "source": {
+      "frame": "main",
+      "raw": " Javascript:changeOpeRole();parent.location.href='do?action=e_entity&start=entity_main_student_frame&SXID=SESSION_TOKEN_PLACEHOLDER&C_NAME=%E6%9C%B1%E8%BD%BD%E8%B0%B1&EntityID=110'"
+    },
+    "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/do?action=e_entity&start=entity_main_student_frame&SXID=SESSION_TOKEN_PLACEHOLDER&C_NAME=%E6%9C%B1%E8%BD%BD%E8%B0%B1&EntityID=110"
+  },
+  "links": [
+    {
+      "text": "查阅凭证",
+      "href": "Javascript:openTag(\"记1\", \"do?action=zhsx_common_jzpz&start=jzpz_list_for_chargup_query_1rec_skip&startAction=jzpz_list_for_chargup_query_1rec&accountrecordid=A3BE96FA0A0B044500005092805248&entityID=110&sxid=SESSION_TOKEN_PLACEHOLDER&ny=&page=&businessID=3FB8C4C1C0A800A700002338109947&readyOnly=\", \"A3BE96FA0A0B044500005092805248\");"
+    },
+    {
+      "text": "查阅凭证",
+      "href": "Javascript:openTag(\"记2\", \"do?action=zhsx_common_jzpz&start=jzpz_list_for_chargup_query_1rec_skip&startAction=jzpz_list_for_chargup_query_1rec&accountrecordid=A3E6BB3E0A0B044500005412217574&entityID=110&sxid=SESSION_TOKEN_PLACEHOLDER&ny=&page=&businessID=3FB8C4D0C0A800A700002340401663&readyOnly=\", \"A3E6BB3E0A0B044500005412217574\");"
+    },
+    {
+      "text": "查阅凭证",
+      "href": "Javascript:openTag(\"记3\", \"do?action=zhsx_common_jzpz&start=jzpz_list_for_chargup_query_1rec_skip&startAction=jzpz_list_for_chargup_query_1rec&accountrecordid=A3EA39220A0B044500005456847300&entityID=110&sxid=SESSION_TOKEN_PLACEHOLDER&ny=&page=&businessID=3FB8C4FFC0A800A700002346585707&readyOnly=\", \"A3EA39220A0B044500005456847300\");"
+    },
+    {
+      "text": "查阅凭证",
+      "href": "Javascript:openTag(\"记4\", \"do?action=zhsx_common_jzpz&start=jzpz_list_for_chargup_query_1rec_skip&startAction=jzpz_list_for_chargup_query_1rec&accountrecordid=A3ECA7740A0B044500005493234463&entityID=110&sxid=SESSION_TOKEN_PLACEHOLDER&ny=&page=&businessID=3FB8C4F0C0A800A700002344995710&readyOnly=\", \"A3ECA7740A0B044500005493234463\");"
+    },
+    {
+      "text": "查阅凭证",
+      "href": "Javascript:openTag(\"记5\", \"do?action=zhsx_common_jzpz&start=jzpz_list_for_chargup_query_1rec_skip&startAction=jzpz_list_for_chargup_query_1rec&accountrecordid=A3EEC2F30A0B044500005544655278&entityID=110&sxid=SESSION_TOKEN_PLACEHOLDER&ny=&page=&businessID=3FB8C4E0C0A800A700002342508068&readyOnly=\", \"A3EEC2F30A0B044500005544655278\");"
+    },
+    {
+      "text": "查阅凭证",
+      "href": "Javascript:openTag(\"记6\", \"do?action=zhsx_common_jzpz&start=jzpz_list_for_chargup_query_1rec_skip&startAction=jzpz_list_for_chargup_query_1rec&accountrecordid=A3F153F10A0B044500005608144596&entityID=110&sxid=SESSION_TOKEN_PLACEHOLDER&ny=&page=&businessID=3FB8C4FFC0A800A700002348905300&readyOnly=\", \"A3F153F10A0B044500005608144596\");"
+    }
+  ],
+  "key": "记1",
+  "rawUrl": "do?action=zhsx_common_jzpz&start=jzpz_list_for_chargup_query_1rec_skip&startAction=jzpz_list_for_chargup_query_1rec&accountrecordid=A3BE96FA0A0B044500005092805248&entityID=110&sxid=SESSION_TOKEN_PLACEHOLDER&ny=&page=&businessID=3FB8C4C1C0A800A700002338109947&readyOnly=",
+  "contentUrl": "http://10.11.4.69:8090/netinnet_zhsx_v63/do?action=zhsx_common_jzpz&start=jzpz_list_for_chargup_query_1rec&sxid=SESSION_TOKEN_PLACEHOLDER&entityID=110&page=&NY=&businessID=3FB8C4C1C0A800A700002338109947&accountrecordid=A3BE96FA0A0B044500005092805248&readyOnly=0",
+  "direct": {
+    "title": "填制记账凭证",
+    "text": "  \n记 　账 　凭 　 证\n  \n \n \n \n　　　　    \n  \n2020 年 01 月 01 日\n   记字第 1 号\n\n\n摘　　要 总  账  科  目 明  细  科  目 借　方  金  额 贷   方   金  额 √\n亿 千 百 十 万 千 百 十 元 角 分 亿 千 百 十 万 千 百 十 元 角 分\n核销预借差旅费 管理费用 差旅费 \n \n \n  应交税费 应交增值税(进项税额) \n \n \n  库存现金   \n \n \n  其他应收款 陈新 \n \n \n      \n \n \n合　　　　　　　　　　　　计 \n \n  \n \n附\n单\n据\n  \n张\n\n\n财务主管:    记账:   出纳:    审核: STUDENT_SAMPLESH  制单:STUDENT_SAMPLEZD\n\n\n\n\n\n\n\n\n\n",
+    "forms": [
+      {
+        "name": "v_dto3",
+        "action": "http://10.11.4.69:8090/netinnet_zhsx_v63/do?action=zhsx_common_jzpz",
+        "method": "post",
+        "target": null,
+        "openTag": "<form name=\"v_dto3\" action=\"do?action=zhsx_common_jzpz\" method=\"post\">",
+        "fields": [
+          {
+            "n": "readOnly",
+            "id": null,
+            "t": "hidden",
+            "v": "0",
+            "checked": false,
+            "ro": false,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "XSHU",
+            "id": null,
+            "t": "hidden",
+            "v": "1",
+            "checked": false,
+            "ro": true,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "hasDrawLine",
+            "id": null,
+            "t": "hidden",
+            "v": "1",
+            "checked": false,
+            "ro": true,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "RowNo_forDraw",
+            "id": null,
+            "t": "hidden",
+            "v": "5",
+            "checked": false,
+            "ro": true,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "start",
+            "id": null,
+            "t": "hidden",
+            "v": "dzqkjl",
+            "checked": false,
+            "ro": false,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "current_page",
+            "id": null,
+            "t": "hidden",
+            "v": "1",
+            "checked": false,
+            "ro": false,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "ny",
+            "id": null,
+            "t": "hidden",
+            "v": "2020 1",
+            "checked": false,
+            "ro": false,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "sxid",
+            "id": null,
+            "t": "hidden",
+            "v": "SESSION_TOKEN_PLACEHOLDER",
+            "checked": false,
+            "ro": false,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "entityID",
+            "id": "entityID",
+            "t": "hidden",
+            "v": "110",
+            "checked": false,
+            "ro": false,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "accountrecordid",
+            "id": null,
+            "t": "hidden",
+            "v": "A3BE96FA0A0B044500005092805248",
+            "checked": false,
+            "ro": false,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "r1_tempid",
+            "id": null,
+            "t": "hidden",
+            "v": "1154233",
+            "checked": false,
+            "ro": true,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "r2_tempid",
+            "id": null,
+            "t": "hidden",
+            "v": "1154234",
+            "checked": false,
+            "ro": true,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "r3_tempid",
+            "id": null,
+            "t": "hidden",
+            "v": "1154235",
+            "checked": false,
+            "ro": true,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "r4_tempid",
+            "id": null,
+            "t": "hidden",
+            "v": "1154236",
+            "checked": false,
+            "ro": true,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "r5_tempid",
+            "id": null,
+            "t": "hidden",
+            "v": "1154237",
+            "checked": false,
+            "ro": true,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "r1_accountid_1",
+            "id": "r1_accountid_1",
+            "t": "hidden",
+            "v": "6602",
+            "checked": false,
+            "ro": false,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "r1_accountid_last",
+            "id": "r1_accountid_last",
+            "t": "hidden",
+            "v": "660204",
+            "checked": false,
+            "ro": false,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "r1_origine_amount",
+            "id": "r1_origine_amount",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "ro": false,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "r1_origine_unitprice",
+            "id": "r1_origine_unitprice",
+            "t": "hidden",
+            "v": "0.00",
+            "checked": false,
+            "ro": false,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "r1_debit",
+            "id": "r1_debit",
+            "t": "text",
+            "v": "215620",
+            "checked": false,
+            "ro": true,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "r1_lend",
+            "id": "r1_lend",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "ro": true,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "r1_chargeUp",
+            "id": null,
+            "t": "checkbox",
+            "v": "1",
+            "checked": false,
+            "ro": true,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "r2_accountid_1",
+            "id": "r2_accountid_1",
+            "t": "hidden",
+            "v": "2221",
+            "checked": false,
+            "ro": false,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "r2_accountid_last",
+            "id": "r2_accountid_last",
+            "t": "hidden",
+            "v": "22210101",
+            "checked": false,
+            "ro": false,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "r2_origine_amount",
+            "id": "r2_origine_amount",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "ro": false,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "r2_origine_unitprice",
+            "id": "r2_origine_unitprice",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "ro": false,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "r2_debit",
+            "id": "r2_debit",
+            "t": "text",
+            "v": "11180",
+            "checked": false,
+            "ro": true,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "r2_lend",
+            "id": "r2_lend",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "ro": true,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "r2_chargeUp",
+            "id": null,
+            "t": "checkbox",
+            "v": "1",
+            "checked": false,
+            "ro": true,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "r3_accountid_1",
+            "id": "r3_accountid_1",
+            "t": "hidden",
+            "v": "1001",
+            "checked": false,
+            "ro": false,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "r3_accountid_last",
+            "id": "r3_accountid_last",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "ro": false,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "r3_origine_amount",
+            "id": "r3_origine_amount",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "ro": false,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "r3_origine_unitprice",
+            "id": "r3_origine_unitprice",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "ro": false,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "r3_debit",
+            "id": "r3_debit",
+            "t": "text",
+            "v": "23200",
+            "checked": false,
+            "ro": true,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "r3_lend",
+            "id": "r3_lend",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "ro": true,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "r3_chargeUp",
+            "id": null,
+            "t": "checkbox",
+            "v": "1",
+            "checked": true,
+            "ro": true,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "r4_accountid_1",
+            "id": "r4_accountid_1",
+            "t": "hidden",
+            "v": "1221",
+            "checked": false,
+            "ro": false,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "r4_accountid_last",
+            "id": "r4_accountid_last",
+            "t": "hidden",
+            "v": "122102",
+            "checked": false,
+            "ro": false,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "r4_origine_amount",
+            "id": "r4_origine_amount",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "ro": false,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "r4_origine_unitprice",
+            "id": "r4_origine_unitprice",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "ro": false,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "r4_debit",
+            "id": "r4_debit",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "ro": true,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "r4_lend",
+            "id": "r4_lend",
+            "t": "text",
+            "v": "250000",
+            "checked": false,
+            "ro": true,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "r4_chargeUp",
+            "id": null,
+            "t": "checkbox",
+            "v": "1",
+            "checked": false,
+            "ro": true,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "r5_accountid_1",
+            "id": "r5_accountid_1",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "ro": false,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "r5_accountid_last",
+            "id": "r5_accountid_last",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "ro": false,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "r5_origine_amount",
+            "id": "r5_origine_amount",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "ro": false,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "r5_origine_unitprice",
+            "id": "r5_origine_unitprice",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "ro": false,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "r5_debit",
+            "id": "r5_debit",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "ro": true,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "r5_lend",
+            "id": "r5_lend",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "ro": true,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "r5_chargeUp",
+            "id": null,
+            "t": "checkbox",
+            "v": "1",
+            "checked": false,
+            "ro": true,
+            "dis": true,
+            "caption": null
+          },
+          {
+            "n": "total_debit",
+            "id": null,
+            "t": "text",
+            "v": "￥250000",
+            "checked": false,
+            "ro": true,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "total_lend",
+            "id": null,
+            "t": "text",
+            "v": "￥250000",
+            "checked": false,
+            "ro": true,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "bill_count",
+            "id": "a20",
+            "t": "text",
+            "v": "8",
+            "checked": false,
+            "ro": true,
+            "dis": true,
+            "caption": null
+          },
+          {
+            "n": "person_jz",
+            "id": null,
+            "t": "text",
+            "v": "STUDENT_SAMPLEJZ",
+            "checked": false,
+            "ro": true,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "origine_amount",
+            "id": "origine_amount",
+            "t": "text",
+            "v": "",
+            "checked": false,
+            "ro": true,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "origine_unitprice",
+            "id": "origine_unitprice",
+            "t": "text",
+            "v": "",
+            "checked": false,
+            "ro": true,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "button",
+            "id": null,
+            "t": "button",
+            "v": " 保 存 ",
+            "checked": false,
+            "ro": false,
+            "dis": false,
+            "caption": null
+          },
+          {
+            "n": "readyOnly",
+            "id": null,
+            "t": "hidden",
+            "v": "0",
+            "checked": false,
+            "ro": false,
+            "dis": false,
+            "caption": null
+          }
+        ]
+      }
+    ],
+    "clickables": [
+      {
+        "tag": "INPUT",
+        "text": "保 存",
+        "href": "",
+        "onclick": "v_dto3.start.value='dzqkjl';v_dto3.target='saveWin';v_dto3.submit();",
+        "name": "button"
+      }
+    ],
+    "tables": [
+      {
+        "idx": 0,
+        "id": null,
+        "cls": null,
+        "rows": 1,
+        "head": [
+          "记 账 凭 证 2020 年 01 月 01 日"
+        ],
+        "sample": [
+          [
+            "记 账 凭 证 2020 年 01 月 01 日"
+          ]
+        ]
+      },
+      {
+        "idx": 1,
+        "id": null,
+        "cls": null,
+        "rows": 2,
+        "head": [
+          "记 账 凭 证 2020 年 01 月 01 日"
+        ],
+        "sample": [
+          [
+            "记 账 凭 证 2020 年 01 月 01 日"
+          ],
+          [
+            ""
+          ]
+        ]
+      },
+      {
+        "idx": 2,
+        "id": "main_table_id",
+        "cls": null,
+        "rows": 2,
+        "head": [
+          "记 账 凭 证 2020 年 01 月 01 日"
+        ],
+        "sample": [
+          [
+            "记 账 凭 证 2020 年 01 月 01 日"
+          ],
+          [
+            ""
+          ]
+        ]
+      },
+      {
+        "idx": 3,
+        "id": null,
+        "cls": null,
+        "rows": 4,
+        "head": [
+          "记 账 凭 证 2020 年 01 月 01 日"
+        ],
+        "sample": [
+          [
+            "记 账 凭 证 2020 年 01 月 01 日"
+          ],
+          [
+            "摘 要 总 账 科 目 明 细 科 目 借 方 ",
+            "附 单 据 张"
+          ],
+          [
+            "财务主管: 记账: 出纳: 审核: STUDENT_SAMPLESH "
+          ],
+          [
+            ""
+          ]
+        ]
+      },
+      {
+        "idx": 4,
+        "id": null,
+        "cls": null,
+        "rows": 6,
+        "head": [
+          "",
+          "记 账 凭 证",
+          ""
+        ],
+        "sample": [
+          [
+            "",
+            "记 账 凭 证",
+            ""
+          ],
+          [
+            "",
+            "",
+            ""
+          ],
+          [
+            "",
+            "",
+            ""
+          ],
+          [
+            "",
+            "",
+            ""
+          ],
+          [
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      {
+        "idx": 5,
+        "id": null,
+        "cls": null,
+        "rows": 1,
+        "head": [
+          "摘 要 总 账 科 目 明 细 科 目 借 方 "
+        ],
+        "sample": [
+          [
+            "摘 要 总 账 科 目 明 细 科 目 借 方 "
+          ]
+        ]
+      },
+      {
+        "idx": 6,
+        "id": "data_tb",
+        "cls": null,
+        "rows": 8,
+        "head": [
+          "摘 要",
+          "总 账 科 目",
+          "明 细 科 目",
+          "借 方 金 额",
+          "贷 方 金 额",
+          "√"
+        ],
+        "sample": [
+          [
+            "摘 要",
+            "总 账 科 目",
+            "明 细 科 目",
+            "借 方 金 额",
+            "贷 方 金 额",
+            "√"
+          ],
+          [
+            "亿",
+            "千",
+            "百",
+            "十",
+            "万",
+            "千",
+            "百",
+            "十",
+            "元",
+            "角",
+            "分",
+            "亿",
+            "千",
+            "百",
+            "十",
+            "万",
+            "千",
+            "百",
+            "十",
+            "元",
+            "角",
+            "分"
+          ],
+          [
+            "核销预借差旅费",
+            "管理费用",
+            "差旅费",
+            "",
+            "",
+            ""
+          ],
+          [
+            "",
+            "应交税费",
+            "应交增值税(进项税额)",
+            "",
+            "",
+            ""
+          ],
+          [
+            "",
+            "库存现金",
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      {
+        "idx": 7,
+        "id": null,
+        "cls": null,
+        "rows": 1,
+        "head": [
+          "附 单 据 张"
+        ],
+        "sample": [
+          [
+            "附 单 据 张"
+          ]
+        ]
+      },
+      {
+        "idx": 8,
+        "id": null,
+        "cls": null,
+        "rows": 1,
+        "head": [
+          "财务主管: 记账: 出纳: 审核: STUDENT_SAMPLESH "
+        ],
+        "sample": [
+          [
+            "财务主管: 记账: 出纳: 审核: STUDENT_SAMPLESH "
+          ]
+        ]
+      },
+      {
+        "idx": 9,
+        "id": null,
+        "cls": null,
+        "rows": 1,
+        "head": [
+          "财务主管:",
+          "记账:",
+          "出纳:",
+          "审核: STUDENT_SAMPLESH",
+          "制单:STUDENT_SAMPLEZD"
+        ],
+        "sample": [
+          [
+            "财务主管:",
+            "记账:",
+            "出纳:",
+            "审核: STUDENT_SAMPLESH",
+            "制单:STUDENT_SAMPLEZD"
+          ]
+        ]
+      },
+      {
+        "idx": 10,
+        "id": null,
+        "cls": null,
+        "rows": 1,
+        "head": [
+          ""
+        ],
+        "sample": [
+          [
+            ""
+          ]
+        ]
+      }
+    ],
+    "rows": [
+      {
+        "trAttrs": "",
+        "cells": [
+          "记 账 凭 证 2020 年 01 月 01 日 记字第 1"
+        ],
+        "inputs": [
+          {
+            "n": "r1_accountid_1",
+            "t": "hidden",
+            "v": "6602",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r1_accountid_last",
+            "t": "hidden",
+            "v": "660204",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r1_origine_amount",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r1_origine_unitprice",
+            "t": "hidden",
+            "v": "0.00",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r1_debit",
+            "t": "text",
+            "v": "215620",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r1_lend",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r1_chargeUp",
+            "t": "checkbox",
+            "v": "1",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_accountid_1",
+            "t": "hidden",
+            "v": "2221",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_accountid_last",
+            "t": "hidden",
+            "v": "22210101",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_origine_amount",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_origine_unitprice",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_debit",
+            "t": "text",
+            "v": "11180",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_lend",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_chargeUp",
+            "t": "checkbox",
+            "v": "1",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_accountid_1",
+            "t": "hidden",
+            "v": "1001",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_accountid_last",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_origine_amount",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_origine_unitprice",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_debit",
+            "t": "text",
+            "v": "23200",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_lend",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_chargeUp",
+            "t": "checkbox",
+            "v": "1",
+            "checked": true,
+            "onclick": null
+          },
+          {
+            "n": "r4_accountid_1",
+            "t": "hidden",
+            "v": "1221",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r4_accountid_last",
+            "t": "hidden",
+            "v": "122102",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r4_origine_amount",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r4_origine_unitprice",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r4_debit",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r4_lend",
+            "t": "text",
+            "v": "250000",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r4_chargeUp",
+            "t": "checkbox",
+            "v": "1",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_accountid_1",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_accountid_last",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_origine_amount",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_origine_unitprice",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_debit",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_lend",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_chargeUp",
+            "t": "checkbox",
+            "v": "1",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "total_debit",
+            "t": "text",
+            "v": "￥250000",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "total_lend",
+            "t": "text",
+            "v": "￥250000",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "bill_count",
+            "t": "text",
+            "v": "8",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "person_jz",
+            "t": "text",
+            "v": "STUDENT_SAMPLEJZ",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "origine_amount",
+            "t": "text",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "origine_unitprice",
+            "t": "text",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "button",
+            "t": "button",
+            "v": " 保 存 ",
+            "checked": false,
+            "onclick": "v_dto3.start.value='dzqkjl';v_dto3.target='saveWin';v_dto3.submit();"
+          }
+        ]
+      },
+      {
+        "trAttrs": "",
+        "cells": [
+          "记 账 凭 证 2020 年 01 月 01 日 记字第 1"
+        ],
+        "inputs": [
+          {
+            "n": "r1_accountid_1",
+            "t": "hidden",
+            "v": "6602",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r1_accountid_last",
+            "t": "hidden",
+            "v": "660204",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r1_origine_amount",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r1_origine_unitprice",
+            "t": "hidden",
+            "v": "0.00",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r1_debit",
+            "t": "text",
+            "v": "215620",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r1_lend",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r1_chargeUp",
+            "t": "checkbox",
+            "v": "1",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_accountid_1",
+            "t": "hidden",
+            "v": "2221",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_accountid_last",
+            "t": "hidden",
+            "v": "22210101",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_origine_amount",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_origine_unitprice",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_debit",
+            "t": "text",
+            "v": "11180",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_lend",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_chargeUp",
+            "t": "checkbox",
+            "v": "1",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_accountid_1",
+            "t": "hidden",
+            "v": "1001",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_accountid_last",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_origine_amount",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_origine_unitprice",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_debit",
+            "t": "text",
+            "v": "23200",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_lend",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_chargeUp",
+            "t": "checkbox",
+            "v": "1",
+            "checked": true,
+            "onclick": null
+          },
+          {
+            "n": "r4_accountid_1",
+            "t": "hidden",
+            "v": "1221",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r4_accountid_last",
+            "t": "hidden",
+            "v": "122102",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r4_origine_amount",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r4_origine_unitprice",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r4_debit",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r4_lend",
+            "t": "text",
+            "v": "250000",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r4_chargeUp",
+            "t": "checkbox",
+            "v": "1",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_accountid_1",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_accountid_last",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_origine_amount",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_origine_unitprice",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_debit",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_lend",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_chargeUp",
+            "t": "checkbox",
+            "v": "1",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "total_debit",
+            "t": "text",
+            "v": "￥250000",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "total_lend",
+            "t": "text",
+            "v": "￥250000",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "bill_count",
+            "t": "text",
+            "v": "8",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "person_jz",
+            "t": "text",
+            "v": "STUDENT_SAMPLEJZ",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "origine_amount",
+            "t": "text",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "origine_unitprice",
+            "t": "text",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "button",
+            "t": "button",
+            "v": " 保 存 ",
+            "checked": false,
+            "onclick": "v_dto3.start.value='dzqkjl';v_dto3.target='saveWin';v_dto3.submit();"
+          }
+        ]
+      },
+      {
+        "trAttrs": "",
+        "cells": [
+          "记 账 凭 证 2020 年 01 月 01 日 记字第 1"
+        ],
+        "inputs": [
+          {
+            "n": "r1_accountid_1",
+            "t": "hidden",
+            "v": "6602",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r1_accountid_last",
+            "t": "hidden",
+            "v": "660204",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r1_origine_amount",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r1_origine_unitprice",
+            "t": "hidden",
+            "v": "0.00",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r1_debit",
+            "t": "text",
+            "v": "215620",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r1_lend",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r1_chargeUp",
+            "t": "checkbox",
+            "v": "1",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_accountid_1",
+            "t": "hidden",
+            "v": "2221",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_accountid_last",
+            "t": "hidden",
+            "v": "22210101",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_origine_amount",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_origine_unitprice",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_debit",
+            "t": "text",
+            "v": "11180",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_lend",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_chargeUp",
+            "t": "checkbox",
+            "v": "1",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_accountid_1",
+            "t": "hidden",
+            "v": "1001",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_accountid_last",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_origine_amount",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_origine_unitprice",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_debit",
+            "t": "text",
+            "v": "23200",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_lend",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_chargeUp",
+            "t": "checkbox",
+            "v": "1",
+            "checked": true,
+            "onclick": null
+          },
+          {
+            "n": "r4_accountid_1",
+            "t": "hidden",
+            "v": "1221",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r4_accountid_last",
+            "t": "hidden",
+            "v": "122102",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r4_origine_amount",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r4_origine_unitprice",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r4_debit",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r4_lend",
+            "t": "text",
+            "v": "250000",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r4_chargeUp",
+            "t": "checkbox",
+            "v": "1",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_accountid_1",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_accountid_last",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_origine_amount",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_origine_unitprice",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_debit",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_lend",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_chargeUp",
+            "t": "checkbox",
+            "v": "1",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "total_debit",
+            "t": "text",
+            "v": "￥250000",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "total_lend",
+            "t": "text",
+            "v": "￥250000",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "bill_count",
+            "t": "text",
+            "v": "8",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "person_jz",
+            "t": "text",
+            "v": "STUDENT_SAMPLEJZ",
+            "checked": false,
+            "onclick": null
+          }
+        ]
+      },
+      {
+        "trAttrs": "",
+        "cells": [
+          "摘 要 总 账 科 目 明 细 科 目 借 方 金 额 贷 ",
+          "附 单 据 张"
+        ],
+        "inputs": [
+          {
+            "n": "r1_accountid_1",
+            "t": "hidden",
+            "v": "6602",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r1_accountid_last",
+            "t": "hidden",
+            "v": "660204",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r1_origine_amount",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r1_origine_unitprice",
+            "t": "hidden",
+            "v": "0.00",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r1_debit",
+            "t": "text",
+            "v": "215620",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r1_lend",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r1_chargeUp",
+            "t": "checkbox",
+            "v": "1",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_accountid_1",
+            "t": "hidden",
+            "v": "2221",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_accountid_last",
+            "t": "hidden",
+            "v": "22210101",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_origine_amount",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_origine_unitprice",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_debit",
+            "t": "text",
+            "v": "11180",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_lend",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_chargeUp",
+            "t": "checkbox",
+            "v": "1",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_accountid_1",
+            "t": "hidden",
+            "v": "1001",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_accountid_last",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_origine_amount",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_origine_unitprice",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_debit",
+            "t": "text",
+            "v": "23200",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_lend",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_chargeUp",
+            "t": "checkbox",
+            "v": "1",
+            "checked": true,
+            "onclick": null
+          },
+          {
+            "n": "r4_accountid_1",
+            "t": "hidden",
+            "v": "1221",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r4_accountid_last",
+            "t": "hidden",
+            "v": "122102",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r4_origine_amount",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r4_origine_unitprice",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r4_debit",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r4_lend",
+            "t": "text",
+            "v": "250000",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r4_chargeUp",
+            "t": "checkbox",
+            "v": "1",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_accountid_1",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_accountid_last",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_origine_amount",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_origine_unitprice",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_debit",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_lend",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_chargeUp",
+            "t": "checkbox",
+            "v": "1",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "total_debit",
+            "t": "text",
+            "v": "￥250000",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "total_lend",
+            "t": "text",
+            "v": "￥250000",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "bill_count",
+            "t": "text",
+            "v": "8",
+            "checked": false,
+            "onclick": null
+          }
+        ]
+      },
+      {
+        "trAttrs": "",
+        "cells": [
+          "摘 要 总 账 科 目 明 细 科 目 借 方 金 额 贷 "
+        ],
+        "inputs": [
+          {
+            "n": "r1_accountid_1",
+            "t": "hidden",
+            "v": "6602",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r1_accountid_last",
+            "t": "hidden",
+            "v": "660204",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r1_origine_amount",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r1_origine_unitprice",
+            "t": "hidden",
+            "v": "0.00",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r1_debit",
+            "t": "text",
+            "v": "215620",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r1_lend",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r1_chargeUp",
+            "t": "checkbox",
+            "v": "1",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_accountid_1",
+            "t": "hidden",
+            "v": "2221",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_accountid_last",
+            "t": "hidden",
+            "v": "22210101",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_origine_amount",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_origine_unitprice",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_debit",
+            "t": "text",
+            "v": "11180",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_lend",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_chargeUp",
+            "t": "checkbox",
+            "v": "1",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_accountid_1",
+            "t": "hidden",
+            "v": "1001",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_accountid_last",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_origine_amount",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_origine_unitprice",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_debit",
+            "t": "text",
+            "v": "23200",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_lend",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_chargeUp",
+            "t": "checkbox",
+            "v": "1",
+            "checked": true,
+            "onclick": null
+          },
+          {
+            "n": "r4_accountid_1",
+            "t": "hidden",
+            "v": "1221",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r4_accountid_last",
+            "t": "hidden",
+            "v": "122102",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r4_origine_amount",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r4_origine_unitprice",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r4_debit",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r4_lend",
+            "t": "text",
+            "v": "250000",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r4_chargeUp",
+            "t": "checkbox",
+            "v": "1",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_accountid_1",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_accountid_last",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_origine_amount",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_origine_unitprice",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_debit",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_lend",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_chargeUp",
+            "t": "checkbox",
+            "v": "1",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "total_debit",
+            "t": "text",
+            "v": "￥250000",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "total_lend",
+            "t": "text",
+            "v": "￥250000",
+            "checked": false,
+            "onclick": null
+          }
+        ]
+      },
+      {
+        "trAttrs": "onclick=\"onLineClick(1)\"",
+        "cells": [
+          "核销预借差旅费",
+          "管理费用",
+          "差旅费",
+          "",
+          "",
+          ""
+        ],
+        "inputs": [
+          {
+            "n": "r1_accountid_1",
+            "t": "hidden",
+            "v": "6602",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r1_accountid_last",
+            "t": "hidden",
+            "v": "660204",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r1_origine_amount",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r1_origine_unitprice",
+            "t": "hidden",
+            "v": "0.00",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r1_debit",
+            "t": "text",
+            "v": "215620",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r1_lend",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r1_chargeUp",
+            "t": "checkbox",
+            "v": "1",
+            "checked": false,
+            "onclick": null
+          }
+        ]
+      },
+      {
+        "trAttrs": "onclick=\"onLineClick(2)\"",
+        "cells": [
+          "",
+          "应交税费",
+          "应交增值税(进项税额)",
+          "",
+          "",
+          ""
+        ],
+        "inputs": [
+          {
+            "n": "r2_accountid_1",
+            "t": "hidden",
+            "v": "2221",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_accountid_last",
+            "t": "hidden",
+            "v": "22210101",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_origine_amount",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_origine_unitprice",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_debit",
+            "t": "text",
+            "v": "11180",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_lend",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r2_chargeUp",
+            "t": "checkbox",
+            "v": "1",
+            "checked": false,
+            "onclick": null
+          }
+        ]
+      },
+      {
+        "trAttrs": "onclick=\"onLineClick(3)\"",
+        "cells": [
+          "",
+          "库存现金",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "inputs": [
+          {
+            "n": "r3_accountid_1",
+            "t": "hidden",
+            "v": "1001",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_accountid_last",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_origine_amount",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_origine_unitprice",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_debit",
+            "t": "text",
+            "v": "23200",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_lend",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r3_chargeUp",
+            "t": "checkbox",
+            "v": "1",
+            "checked": true,
+            "onclick": null
+          }
+        ]
+      },
+      {
+        "trAttrs": "onclick=\"onLineClick(4)\"",
+        "cells": [
+          "",
+          "其他应收款",
+          "陈新",
+          "",
+          "",
+          ""
+        ],
+        "inputs": [
+          {
+            "n": "r4_accountid_1",
+            "t": "hidden",
+            "v": "1221",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r4_accountid_last",
+            "t": "hidden",
+            "v": "122102",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r4_origine_amount",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r4_origine_unitprice",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r4_debit",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r4_lend",
+            "t": "text",
+            "v": "250000",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r4_chargeUp",
+            "t": "checkbox",
+            "v": "1",
+            "checked": false,
+            "onclick": null
+          }
+        ]
+      },
+      {
+        "trAttrs": "onclick=\"onLineClick(5)\"",
+        "cells": [
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "inputs": [
+          {
+            "n": "r5_accountid_1",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_accountid_last",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_origine_amount",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_origine_unitprice",
+            "t": "hidden",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_debit",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_lend",
+            "t": "text",
+            "v": " ",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "r5_chargeUp",
+            "t": "checkbox",
+            "v": "1",
+            "checked": false,
+            "onclick": null
+          }
+        ]
+      },
+      {
+        "trAttrs": "",
+        "cells": [
+          "合 计",
+          "",
+          "",
+          ""
+        ],
+        "inputs": [
+          {
+            "n": "total_debit",
+            "t": "text",
+            "v": "￥250000",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "total_lend",
+            "t": "text",
+            "v": "￥250000",
+            "checked": false,
+            "onclick": null
+          }
+        ]
+      },
+      {
+        "trAttrs": "",
+        "cells": [
+          "附 单 据 张"
+        ],
+        "inputs": [
+          {
+            "n": "bill_count",
+            "t": "text",
+            "v": "8",
+            "checked": false,
+            "onclick": null
+          }
+        ]
+      },
+      {
+        "trAttrs": "",
+        "cells": [
+          "财务主管: 记账: 出纳: 审核: STUDENT_SAMPLESH 制单:STUDENT_SAMPLE"
+        ],
+        "inputs": [
+          {
+            "n": "person_jz",
+            "t": "text",
+            "v": "STUDENT_SAMPLEJZ",
+            "checked": false,
+            "onclick": null
+          }
+        ]
+      },
+      {
+        "trAttrs": "",
+        "cells": [
+          "财务主管: 记账: 出纳: 审核: STUDENT_SAMPLESH 制单:STUDENT_SAMPLE"
+        ],
+        "inputs": [
+          {
+            "n": "person_jz",
+            "t": "text",
+            "v": "STUDENT_SAMPLEJZ",
+            "checked": false,
+            "onclick": null
+          }
+        ]
+      },
+      {
+        "trAttrs": "",
+        "cells": [
+          "财务主管:",
+          "记账:",
+          "出纳:",
+          "审核: STUDENT_SAMPLESH",
+          "制单:STUDENT_SAMPLEZD"
+        ],
+        "inputs": [
+          {
+            "n": "person_jz",
+            "t": "text",
+            "v": "STUDENT_SAMPLEJZ",
+            "checked": false,
+            "onclick": null
+          }
+        ]
+      },
+      {
+        "trAttrs": "",
+        "cells": [
+          ""
+        ],
+        "inputs": [
+          {
+            "n": "origine_amount",
+            "t": "text",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          },
+          {
+            "n": "origine_unitprice",
+            "t": "text",
+            "v": "",
+            "checked": false,
+            "onclick": null
+          }
+        ]
+      }
+    ],
+    "checkboxes": [
+      {
+        "name": "r1_chargeUp",
+        "value": "1",
+        "checked": false,
+        "onclick": null
+      },
+      {
+        "name": "r2_chargeUp",
+        "value": "1",
+        "checked": false,
+        "onclick": null
+      },
+      {
+        "name": "r3_chargeUp",
+        "value": "1",
+        "checked": true,
+        "onclick": null
+      },
+      {
+        "name": "r4_chargeUp",
+        "value": "1",
+        "checked": false,
+        "onclick": null
+      },
+      {
+        "name": "r5_chargeUp",
+        "value": "1",
+        "checked": false,
+        "onclick": null
+      }
+    ],
+    "jiZhangNodes": [
+      {
+        "tag": "TITLE",
+        "cls": null,
+        "text": "填制记账凭证",
+        "outer": "<title>填制记账凭证</title>"
+      },
+      {
+        "tag": "SPAN",
+        "cls": "word_green",
+        "text": "记账:",
+        "outer": "<span class=\"word_green\">记账:</span>"
+      }
+    ],
+    "inlineScripts": "\n{\n   var J_OBJ_ACCOUNT= new ENCODER2();\n\nJ_OBJ_ACCOUNT.addOneRow3Col('1002','100201','中国农业银行北京工体路支行（人民币户）');J_OBJ_ACCOUNT.addOneRow3Col('1002','100202','中国建设银行北京朝阳支行');J_OBJ_ACCOUNT.addOneRow3Col('1002','100203','中国农业银行北京工体路支行（保证金户）');J_OBJ_ACCOUNT.addOneRow3Col('1002','100204','美元户');J_OBJ_ACCOUNT.addOneRow3Col('1012','101201','外埠存款');J_OBJ_ACCOUNT.addOneRow3Col('1012','101202','银行本票存款');J_OBJ_ACCOUNT.addOneRow3Col('1012','101203','银行汇票存款');J_OBJ_ACCOUNT.addOneRow3Col('1012','101204','信用卡存款');J_OBJ_ACCOUNT.addOneRow3Col('1012','101205','保证金存款');J_OBJ_ACCOUNT.addOneRow3Col('1012','101206','存出投资款');J_OBJ_ACCOUNT.addOneRow3Col('1101','110101','成本');J_OBJ_ACCOUNT.addOneRow3Col('1101','110102','公允价值变动');J_OBJ_ACCOUNT.addOneRow3Col('1121','112101','北京三花实业有限公司');J_OBJ_ACCOUNT.addOneRow3Col('1121','112102','北京惠普科技有限公司');J_OBJ_ACCOUNT.addOneRow3Col('1121','112103','北京东方电子有限公司');J_OBJ_ACCOUNT.addOneRow3Col('1121','112104','北京昌达元件有限公司');J_OBJ_ACCOUNT.addOneRow3Col('1121','112105','上海东方百货有限公司');J_OBJ_ACCOUNT.addOneRow3Col('1122','112201','北京智能科技有限公司');J_OBJ_ACCOUNT.addOneRow3Col('1122','112202','北京华普电子有限公司');J_OBJ_ACCOUNT.addOneRow3Col('1122','112203','北京东方电子有限公司');J_OBJ_ACCOUNT.addOneRow3Col('1122','112204','北京家华实业有限公司');J_OBJ_ACCOUNT.addOneRow3Col('1122','112205','北京安天机械有限公司');J_OBJ_ACCOUNT.addOneRow3Col('1122','112206','北京惠普科技有限公司');J_OBJ_ACCOUNT.addOneRow3Col('1122','112207','北京三花实业有限公司');J_OBJ_ACCOUNT.addOneRow3Col('1123','112301','北京志邦实业有限公司');J_OBJ_ACCOUNT.addOneRow3Col('1123','112302','北京朝阳工具有限公司');J_OBJ_ACCOUNT.addOneRow3Col('1123','112303','中国人民财产保险股份有限公司北京分公司');J_OBJ_ACCOUNT.addOneRow3Col('1131','113101','北京恒顺印务有限公司');J_OBJ_ACCOUNT.addOneRow3Col('1131','113102','北京永泰食品有限公司');J_OBJ_ACCOUNT.addOneRow3Col('1221','122101','销售部备用金');J_OBJ_ACCOUNT.addOneRow3Col('1221','122102','陈新');J_OBJ_ACCOUNT.addOneRow3Col('1221','122103','朱建军');J_OBJ_ACCOUNT.addOneRow3Col('1221','122104','吴韧');J_OBJ_ACCOUNT.addOneRow3Col('1221','122105','社会保险费个人部分');J_OBJ_ACCOUNT.addOneRow3Col('1221','122106','住房公积金个人部分');J_OBJ_ACCOUNT.addOneRow3Col('1221','122107','中国人民财产保险股份有限公司北京分公司');J_OBJ_ACCOUNT.addOneRow3Col('1402','140201','高频器');J_OBJ_ACCOUNT.addOneRow3Col('1402','140202','电感');J_OBJ_ACCOUNT.addOneRow3Col('1402','140203','电阻');J_OBJ_ACCOUNT.addOneRow3Col('1403','140301','1#芯片');J_OBJ_ACCOUNT.addOneRow3Col('1403','140302','2#芯片');J_OBJ_ACCOUNT.addOneRow3Col('1403','140303','3#芯片');J_OBJ_ACCOUNT.addOneRow3Col('1403','140304','4#芯片');J_OBJ_ACCOUNT.addOneRow3Col('1403','140305','5#芯片');J_OBJ_ACCOUNT.addOneRow3Col('1403','140306','6#芯片');J_OBJ_ACCOUNT.addOneRow3Col('1403','140307','高频器');J_OBJ_ACCOUNT.addOneRow3Col('1403','140308','电感');J_OBJ_ACCOUNT.addOneRow3Col('1403','140309','电阻');J_OBJ_ACCOUNT.addOneRow3Col('1403','140310','机箱');J_OBJ_ACCOUNT.addOneRow3Col('1403','140311','线路板');J_OBJ_ACCOUNT.addOneRow3Col('1403','140312','铜丝');J_OBJ_ACCOUNT.addOneRow3Col('1403','140313','电焊条');J_OBJ_ACCOUNT.addOneRow3Col('1403','140314','钢材');J_OBJ_ACCOUNT.addOneRow3Col('1403','140315','自制半成品（CPU）');J_OBJ_ACCOUNT.addOneRow3Col('1403','140316','自制半成品（中频处理器）');J_OBJ_ACCOUNT.addOneRow3Col('1403','140317','自制半成品（耦合器）');J_OBJ_ACCOUNT.addOneRow3Col('1403','140318','自制半成品（放大模块）');J_OBJ_ACCOUNT.addOneRow3Col('1405','140501','接收机');J_OBJ_ACCOUNT.addOneRow3Col('1405','140502','混合器');J_OBJ_ACCOUNT.addOneRow3Col('1408','140801','铜丝');J_OBJ_ACCOUNT.addOneRow3Col('1411','141101','生产工具1#');J_OBJ_ACCOUNT.addOneRow3Col('1411','141102','生产工具2#');J_OBJ_ACCOUNT.addOneRow3Col('1411','141103','修理工具1#');J_OBJ_ACCOUNT.addOneRow3Col('1411','141104','修理工具2#');J_OBJ_ACCOUNT.addOneRow3Col('1481','148101','三刀耦合器制造设备');J_OBJ_ACCOUNT.addOneRow3Col('1511','15110101','北京恒顺印务有限公司（成本）');J_OBJ_ACCOUNT.addOneRow3Col('1511','15110102','北京恒顺印务有限公司（损益调整）');J_OBJ_ACCOUNT.addOneRow3Col('1511','15110103','北京恒顺印务有限公司（其他综合收益）');J_OBJ_ACCOUNT.addOneRow3Col('1511','151102','北京永泰食品有限公司');J_OBJ_ACCOUNT.addOneRow3Col('1513','151301','北京永泰食品有限公司');J_OBJ_ACCOUNT.addOneRow3Col('1521','152101','成本');J_OBJ_ACCOUNT.addOneRow3Col('1521','152102','公允价值变动');J_OBJ_ACCOUNT.addOneRow3Col('1601','160101','房屋建筑物');J_OBJ_ACCOUNT.addOneRow3Col('1601','160102','机器设备');J_OBJ_ACCOUNT.addOneRow3Col('1601','160103','电子设备');J_OBJ_ACCOUNT.addOneRow3Col('1601','160104','管理设备');J_OBJ_ACCOUNT.addOneRow3Col('1601','160105','运输设备');J_OBJ_ACCOUNT.addOneRow3Col('1601','160106','生产经营用工具');J_OBJ_ACCOUNT.addOneRow3Col('1602','160201','房屋建筑物');J_OBJ_ACCOUNT.addOneRow3Col('1602','160202','机器设备');J_OBJ_ACCOUNT.addOneRow3Col('1602','160203','电子设备');J_OBJ_ACCOUNT.addOneRow3Col('1602','160204','管理设备');J_OBJ_ACCOUNT.addOneRow3Col('1602','160205','运输设备');J_OBJ_ACCOUNT.addOneRow3Col('1602','160206','生产经营用工具');J_OBJ_ACCOUNT.addOneRow3Col('1604','160401','一车间扩建工程');J_OBJ_ACCOUNT.addOneRow3Col('1701','170101','非专利技术');J_OBJ_ACCOUNT.addOneRow3Col('1701','170102','专利权');J_OBJ_ACCOUNT.addOneRow3Col('1801','180101','经营租入固定资产改良支出');J_OBJ_ACCOUNT.addOneRow3Col('1901','190101','待处理流动资产损溢');J_OBJ_ACCOUNT.addOneRow3Col('2001','200101','中国农业银行北京工体路支行');J_OBJ_ACCOUNT.addOneRow3Col('2201','220101','北京通用机械有限公司');J_OBJ_ACCOUNT.addOneRow3Col('2201','220102','北京钢构制造有限公司');J_OBJ_ACCOUNT.addOneRow3Col('2202','220201','北京宝申实业有限公司');J_OBJ_ACCOUNT.addOneRow3Col('2202','220202','北京钢构制造有限公司');J_OBJ_ACCOUNT.addOneRow3Col('2202','220203','北京合力有限责任公司');J_OBJ_ACCOUNT.addOneRow3Col('2202','220204','美国汤姆');J_OBJ_ACCOUNT.addOneRow3Col('2203','220301','北京嘉乐电子有限公司');J_OBJ_ACCOUNT.addOneRow3Col('2211','221101','短期薪酬（工资）');J_OBJ_ACCOUNT.addOneRow3Col('2211','221102','累积带薪缺勤');J_OBJ_ACCOUNT.addOneRow3Col('2211','221103','短期薪酬（非货币性福利）');J_OBJ_ACCOUNT.addOneRow3Col('2211','221104','辞退福利');J_OBJ_ACCOUNT.addOneRow3Col('2211','221105','离职后福利（养老保险）');J_OBJ_ACCOUNT.addOneRow3Col('2211','221106','短期薪酬（住房公积金）');J_OBJ_ACCOUNT.addOneRow3Col('2211','221107','短期薪酬（工会经费）');J_OBJ_ACCOUNT.addOneRow3Col('2211','221108','短期薪酬（职工教育经费）');J_OBJ_ACCOUNT.addOneRow3Col('2211','221109','短期薪酬（医疗（生育）保险）');J_OBJ_ACCOUNT.addOneRow3Col('2211','221110','离职后福利（失业保险）');J_OBJ_ACCOUNT.addOneRow3Col('2211','221111','短期薪酬（工伤保险）');J_OBJ_ACCOUNT.addOneRow3Col('2221','22210101','应交增值税(进项税额)');J_OBJ_ACCOUNT.addOneRow3Col('2221','22210102','应交增值税(已交税金)');J_OBJ_ACCOUNT.addOneRow3Col('2221','22210103','应交增值税(减免税款)');J_OBJ_ACCOUNT.addOneRow3Col('2221','22210104','应交增值税(出口抵减内销产品应纳税额)');J_OBJ_ACCOUNT.addOneRow3Col('2221','22210105','应交增值税(转出未交增值税)');J_OBJ_ACCOUNT.addOneRow3Col('2221','22210106','应交增值税(销项税额)');J_OBJ_ACCOUNT.addOneRow3Col('2221','22210107','应交增值税(出口退税)');J_OBJ_ACCOUNT.addOneRow3Col('2221','22210108','应交增值税(进项税额转出)');J_OBJ_ACCOUNT.addOneRow3Col('2221','22210109','应交增值税(转出多交增值税)');J_OBJ_ACCOUNT.addOneRow3Col('2221','222102','未交增值税');J_OBJ_ACCOUNT.addOneRow3Col('2221','222104','应交消费税');J_OBJ_ACCOUNT.addOneRow3Col('2221','222105','应交资源税');J_OBJ_ACCOUNT.addOneRow3Col('2221','222106','应交所得税');J_OBJ_ACCOUNT.addOneRow3Col('2221','222107','应交土地增值税');J_OBJ_ACCOUNT.addOneRow3Col('2221','222108','应交城市维护建设税');J_OBJ_ACCOUNT.addOneRow3Col('2221','222109','应交房产税');J_OBJ_ACCOUNT.addOneRow3Col('2221','222110','应交土地使用税');J_OBJ_ACCOUNT.addOneRow3Col('2221','222111','应交车船税');J_OBJ_ACCOUNT.addOneRow3Col('2221','222112','应交个人所得税');J_OBJ_ACCOUNT.addOneRow3Col('2221','222113','应交教育费附加');J_OBJ_ACCOUNT.addOneRow3Col('2221','222114','应交地方教育附加');J_OBJ_ACCOUNT.addOneRow3Col('2221','222115','应交印花税');J_OBJ_ACCOUNT.addOneRow3Col('2221','222116','待抵扣进项税额');J_OBJ_ACCOUNT.addOneRow3Col('2231','223101','中国农业银行北京工体路支行');J_OBJ_ACCOUNT.addOneRow3Col('2231','223102','中国建设银行北京朝阳支行');J_OBJ_ACCOUNT.addOneRow3Col('2232','223201','北京市科技所');J_OBJ_ACCOUNT.addOneRow3Col('2232','223202','景方圆');J_OBJ_ACCOUNT.addOneRow3Col('2501','250101','中国农业银行北京工体路支行');J_OBJ_ACCOUNT.addOneRow3Col('2501','250102','中国建设银行北京朝阳支行');J_OBJ_ACCOUNT.addOneRow3Col('2801','280101','产品质量保证');J_OBJ_ACCOUNT.addOneRow3Col('2801','280102','弃置费用');J_OBJ_ACCOUNT.addOneRow3Col('4001','400101','国家资本金');J_OBJ_ACCOUNT.addOneRow3Col('4001','400102','法人资本金');J_OBJ_ACCOUNT.addOneRow3Col('4002','400201','资本溢价');J_OBJ_ACCOUNT.addOneRow3Col('4002','400202','其他资本公积');J_OBJ_ACCOUNT.addOneRow3Col('4101','410101','法定盈余公积');J_OBJ_ACCOUNT.addOneRow3Col('4101','410102','任意盈余公积');J_OBJ_ACCOUNT.addOneRow3Col('4101','410103','法定公益金');J_OBJ_ACCOUNT.addOneRow3Col('4104','410401','未分配利润');J_OBJ_ACCOUNT.addOneRow3Col('4104','410402','提取法定盈余公积');J_OBJ_ACCOUNT.addOneRow3Col('4104','410403','应付股利');J_OBJ_ACCOUNT.addOneRow3Col('5001','500101','基本生产成本（一车间CPU）');J_OBJ_ACCOUNT.addOneRow3Col('5001','500102','基本生产成本（一车间中频处理器）');J_OBJ_ACCOUNT.addOneRow3Col('5001','500103','基本生产成本（二车间耦合器）');J_OBJ_ACCOUNT.addOneRow3Col('5001','500104','基本生产成本（二车间放大模块）');J_OBJ_ACCOUNT.addOneRow3Col('5001','500105','基本生产成本（装配车间接收机）');J_OBJ_ACCOUNT.addOneRow3Col('5001','500106','基本生产成本（装配车间混合器）');J_OBJ_ACCOUNT.addOneRow3Col('5001','500107','辅助生产成本（机修车间）');J_OBJ_ACCOUNT.addOneRow3Col('5101','510101','一车间');J_OBJ_ACCOUNT.addOneRow3Col('5101','510102','二车间');J_OBJ_ACCOUNT.addOneRow3Col('5101','510103','装配车间');J_OBJ_ACCOUNT.addOneRow3Col('5301','530101','资本化支出');J_OBJ_ACCOUNT.addOneRow3Col('6001','600101','接收机');J_OBJ_ACCOUNT.addOneRow3Col('6001','600102','混合器');J_OBJ_ACCOUNT.addOneRow3Col('6051','605101','房租');J_OBJ_ACCOUNT.addOneRow3Col('6301','630101','订金收入');J_OBJ_ACCOUNT.addOneRow3Col('6401','640101','接收机');J_OBJ_ACCOUNT.addOneRow3Col('6401','640102','混合器');J_OBJ_ACCOUNT.addOneRow3Col('6601','660101','职工薪酬');J_OBJ_ACCOUNT.addOneRow3Col('6601','660102','办公费');J_OBJ_ACCOUNT.addOneRow3Col('6601','660103','折旧费');J_OBJ_ACCOUNT.addOneRow3Col('6601','660104','差旅费');J_OBJ_ACCOUNT.addOneRow3Col('6601','660105','市内交通费');J_OBJ_ACCOUNT.addOneRow3Col('6601','660106','水电费');J_OBJ_ACCOUNT.addOneRow3Col('6601','660107','产品质量保证');J_OBJ_ACCOUNT.addOneRow3Col('6601','660108','运输费');J_OBJ_ACCOUNT.addOneRow3Col('6601','660109','广告宣传费');J_OBJ_ACCOUNT.addOneRow3Col('6601','660110','展销费');J_OBJ_ACCOUNT.addOneRow3Col('6601','660111','通讯费');J_OBJ_ACCOUNT.addOneRow3Col('6602','660201','职工薪酬');J_OBJ_ACCOUNT.addOneRow3Col('6602','660202','办公费');J_OBJ_ACCOUNT.addOneRow3Col('6602','660203','折旧费');J_OBJ_ACCOUNT.addOneRow3Col('6602','660204','差旅费');J_OBJ_ACCOUNT.addOneRow3Col('6602','660205','业务招待费');J_OBJ_ACCOUNT.addOneRow3Col('6602','660206','水电费');J_OBJ_ACCOUNT.addOneRow3Col('6602','660207','汽车费用');J_OBJ_ACCOUNT.addOneRow3Col('6602','660208','税费');J_OBJ_ACCOUNT.addOneRow3Col('6602','660209','审计费');J_OBJ_ACCOUNT.addOneRow3Col('6602','660210','通讯费');J_OBJ_ACCOUNT.addOneRow3Col('6602','660211','财产保险费');J_OBJ_ACCOUNT.addOneRow3Col('6602','660212','市内交通费');J_OBJ_ACCOUNT.addOneRow3Col('6602','660213','物料消耗');J_OBJ_ACCOUNT.addOneRow3Col('6602','660214','无形资产摊销');J_OBJ_ACCOUNT.addOneRow3Col('6602','660215','其他');J_OBJ_ACCOUNT.addOneRow3Col('6603','660301','利息支出');J_OBJ_ACCOUNT.addOneRow3Col('6603','660302','手续费');J_OBJ_ACCOUNT.addOneRow3Col('6603','660303','汇兑损益');J_OBJ_ACCOUNT.addOneRow3Col('6603','660304','利息收入');J_OBJ_ACCOUNT.addOneRow3Col('6711','671101','债务重组损失');J_OBJ_ACCOUNT.addOneRow3Col('6711','671102','处置固定资产净损失');J_OBJ_ACCOUNT.addOneRow3Col('6711','671103','捐赠支出');\n}\n\n/* --- */\n\n\n$(function(){\n  drawonly();\n});\n\n\n\n$(function(){\n\n\tvar sxid = $(\"input[name='sxid']\").val();\n\tif(sxid==\"0\"){\n\t\t$(\"#data_tb tr\").each(function(){\n\t\t\tvar zz = $(this).find(\"input[name$='_accountid_1']\").val();\n\t\t\tvar chargeUpObj = $(this).find(\"input[name$='_chargeUp']\");\n\t\t\tif(zz!=\"\"){\n\t\t\t\tchargeUpObj.attr(\"checked\",\"checked\");\n\t\t\t\tchargeUpObj.attr(\"disabled\",\"disabled\");\n\t\t\t}\n\n\t\t\n\t\t})\n\t}\n\t\n})\n\n//当前凭证的总账科目集合\nvar zzkmArr=[];\n\n    zzkmArr[1-1]=\"6602\"; \n\n    zzkmArr[2-1]=\"2221\"; \n\n    zzkmArr[3-1]=\"1001\"; \n\n    zzkmArr[4-1]=\"1221\"; \n \n//验证是否存在银行存款、库存现金、其它货币的总账科目\nfunction validCashSubject(){\n   //是否存在\n   var isExist=false;\n   //循环当前凭证数据的总账科目\n   for(var cs=0;cs<zzkmArr.length;cs++){\n     //总账科目\n     var km=zzkmArr[cs];\n     if(km!=\"\"&&(\"1001,1002,1012\").indexOf($.trim(km))!=-1){\n        //存在\n        isExist=true;\n        break;\n     }\n   }\n   if(!isExist){\n      $(\"#person_cn\").html(\"\");\n      \n   }\n}\nwindow.onload = function(){\n\tvalidCashSubject();\n}\nvar index = 0;\nfunction checkInputEdit(num){\n\tindex = num;\n\tvar accountID=\"\";\n\tif($(\"#r\" + num + \"_accountid_last\").val() == ''){\n\t\taccountID = $(\"#r\" + num + \"_accountid_1\").val();\n\t}else{\n\t\taccountID = $(\"#r\" + num + \"_accountid_last\").val();\n\t}\n\tif(accountID == \"\"){\n\t\t$(\"#origine_amount\").val(\"\");\n\t\t$(\"#origine_unitprice\").val(\"\");\n\t}\n\t$.post(\"do?action=zhsx_common_jzpz&start=checkInputEdit&entityID=\" + $('#entityID').val() + \"&accountID=\"+ accountID , null,\n\t\tfunction(data) {\n\t\taccountID= \"\";\n\t\t\tif (data == 1) {\n\t\t\t\t$('#num_price_div_id').show();\n\t\t\t} else{\n\t\t\t\t$('#num_price_div_id').hide();\n\t\t\t\t$(\"#origine_amount\").val(\"\");\n\t\t\t\t$(\"#origine_unitprice\").val(\"\");\n\t\t\t}\n\t\t});\n}\nfunction onLineClick(num){\n\tindex = num;\n\tvar amount = $(\"#r\"+num+\"_origine_amount\").val();\n\tvar price = $(\"#r\"+num+\"_origine_unitprice\").val();\n\tcheckInputEdit(num);\n\t$(\"#origine_amount\").val(amount);\n\t$(\"#origine_unitprice\").val(price);\n}\n\n  function openwin(url,width,height)\n{\n   newwindow=window.open(url,\"\",\"toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=yes,width=\"+width+\",height=\"+height+\"\");\n if (document.all)\n  {\n   newwindow.moveTo((window.screen.width-width)/2,(window.screen.height-height)/2)\n \n  }\n  \n  return false;//必需\n \n}\nfunction openwindow(url)\n{\n  newwindow=window.open(url,\"\",\"toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=yes\");\n  if (document.all)\n  {\n    newwindow.moveTo(0,0);\n     newwindow.resizeTo(screen.width,screen.height-27);\n   }\n\n   return false;//必需\n \n}\nfunction drawonly()\n{\n      var color =\"BLACK\"; if (v_dto3.XSHU.value=='-1') color=\"RED\"; \n      if (  isblank('                    ') && '1'=='1')  \n      {\n               if (v_dto3.RowNo_forDraw.value=='1') {   draw_line(color, 'r5_debit', \"r1_lend\" );} \n         else if (v_dto3.RowNo_forDraw.value=='2')  {  draw_line(color, 'r5_debit', \"r2_lend\" );} \n         else if (v_dto3.RowNo_forDraw.value=='3')  {  draw_line(color, 'r5_debit', \"r3_lend\"  );} \n         else if (v_dto3.RowNo_forDraw.value=='4')  {  draw_line(color, 'r5_debit', \"r4_lend\"  );} \n         else if (v_dto3.RowNo_forDraw.value=='5')  {   draw_line(color, 'r5_debit', \"r5_lend\"  );} \n       }\n      $('#main_table_id').find('input').each(function(i){\n          if(this.type != 'hidden')\n\t\t\t$(this).attr(\"readonly\",\"readonly\");\n     });\n}\n\nfunction draw_line(arg_color,debit_obj_name,lend_obj_name )\n{ //参数： div_id_str，形状_str, 内容文本_str，宽度_int，高度_int，字体_str，色彩_str\n   \n    var jg = new jsGraphics(\"div_for_drawLine_only\");\n    jg.setColor(arg_color); //\"RED\");// else jg.setColor(\"BLACK\");\n    \n    obj_debit = GetAbsoluteLocation( document.getElementById(debit_obj_name));\n    obj_lend = GetAbsoluteLocation( document.getElementById(lend_obj_name));\n    \n    x1=obj_debit.absoluteLeft;\n    y1=obj_debit.absoluteTop + obj_debit.offsetHeight;\n    x2=obj_lend.absoluteLeft + obj_lend.offsetWidth;\n    y2=obj_lend.absoluteTop;\n    jg.drawLine(x1,y1,x2,y2);\n    jg.paint();\n}\nfunction AbsolutePos()\n{ //保存绝对位置的 对象 \n     this.absoluteTop = 0;\n     this.absoluteLeft = 0;\n     this.offsetWidth = 0;\n     this.offsetHeight = 0;\n}\nfunction GetAbsoluteLocation(element) \n{   //计算绝对位置，返回对象 AbsolutePos ,  20080312 test ok \n    var obj = new AbsolutePos();\n    if ( arguments.length != 1 || element == null ) \n    { \n        return obj; \n    } \n    var elmt = element; \n    obj.absoluteTop    = elmt.offsetTop; \n    obj.absoluteLeft   = elmt.offsetLeft; \n    obj.offsetWidth    = elmt.offsetWidth; \n    obj.offsetHeight   = elmt.offsetHeight; \n    while( elmt = elmt.offsetParent ) \n    { \n          // add this judge \n        if ( elmt.style.position == 'absolute' || elmt.style.position == 'relative'  \n            || ( elmt.style.overflow != 'visible' && elmt.style.overflow != '' ) ) \n        { \n            break; \n        }  \n        obj.absoluteTop  += elmt.offsetTop; \n        obj.absoluteLeft += elmt.offsetLeft; \n    } \n    return obj;\n}\n"
+  },
+  "dialogs": []
+}

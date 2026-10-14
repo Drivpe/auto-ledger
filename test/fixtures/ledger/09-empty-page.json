@@ -1,0 +1,320 @@
+{
+  "startedAt": "2026-10-13T13:13:30.797Z",
+  "dialogs": [],
+  "error": null,
+  "entry": {
+    "sxid": "SESSION_TOKEN_PLACEHOLDER",
+    "entityID": "110",
+    "cname": "%E6%9C%B1%E8%BD%BD%E8%B0%B1",
+    "entry": "do?action=e_entity&start=entity_main_student_frame&SXID=SESSION_TOKEN_PLACEHOLDER&C_NAME=%E6%9C%B1%E8%BD%BD%E8%B0%B1&EntityID=110",
+    "source": {
+      "frame": "main",
+      "raw": " Javascript:changeOpeRole();parent.location.href='do?action=e_entity&start=entity_main_student_frame&SXID=SESSION_TOKEN_PLACEHOLDER&C_NAME=%E6%9C%B1%E8%BD%BD%E8%B0%B1&EntityID=110'"
+    },
+    "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/do?action=e_entity&start=entity_main_student_frame&SXID=SESSION_TOKEN_PLACEHOLDER&C_NAME=%E6%9C%B1%E8%BD%BD%E8%B0%B1&EntityID=110"
+  },
+  "pageContentUrl": "do?action=ts_ledger&start=query&ZB_zy_ID=1000245524&type_zb=1&readyOnly=0&isSimulate=false",
+  "targetUrl": "http://10.11.4.69:8090/netinnet_zhsx_v63/do?action=ts_ledger&start=query&ZB_zy_ID=1000245524&type_zb=1&readyOnly=0&isSimulate=false",
+  "tableInfo": {
+    "tablesWithVoucherType": [],
+    "allTables": [
+      {
+        "idx": 0,
+        "id": null,
+        "cls": null,
+        "rows": 2
+      },
+      {
+        "idx": 1,
+        "id": null,
+        "cls": null,
+        "rows": 1
+      },
+      {
+        "idx": 2,
+        "id": null,
+        "cls": "wc_tab",
+        "rows": 2
+      },
+      {
+        "idx": 3,
+        "id": null,
+        "cls": null,
+        "rows": 2
+      },
+      {
+        "idx": 4,
+        "id": "tab",
+        "cls": "tab_list",
+        "rows": 1
+      },
+      {
+        "idx": 5,
+        "id": null,
+        "cls": null,
+        "rows": 3
+      },
+      {
+        "idx": 6,
+        "id": null,
+        "cls": null,
+        "rows": 1
+      }
+    ]
+  },
+  "rows": [],
+  "header": [
+    [
+      {
+        "text": "分页: 总页: (活页)三栏式明细账 上",
+        "colspan": 1,
+        "rowspan": 1
+      }
+    ],
+    [
+      {
+        "text": "2020 年 凭证 摘要 借方 贷方 借",
+        "colspan": 1,
+        "rowspan": 1
+      }
+    ]
+  ],
+  "lines": {
+    "found": true,
+    "childCount": 0,
+    "html": "<div id=\"div_for_drawLine_only\">\n</div>",
+    "canvases": [],
+    "rowClassRows": []
+  },
+  "newRowFields": [
+    {
+      "name": "is_zz_i",
+      "type": "hidden",
+      "id": null,
+      "value": "0",
+      "dis": false,
+      "options": null
+    },
+    {
+      "name": "XSHU_i",
+      "type": "hidden",
+      "id": null,
+      "value": "1",
+      "dis": false,
+      "options": null
+    },
+    {
+      "name": "mm_i",
+      "type": "text",
+      "id": "last_mm_id",
+      "value": "",
+      "dis": false,
+      "options": null
+    },
+    {
+      "name": "dd_i",
+      "type": "text",
+      "id": "last_dd_id",
+      "value": "",
+      "dis": false,
+      "options": null
+    },
+    {
+      "name": "vouchertype_i",
+      "type": "select-one",
+      "id": null,
+      "value": "记",
+      "dis": false,
+      "options": [
+        {
+          "v": "记",
+          "t": "记",
+          "rc": "2",
+          "memo": "",
+          "isnr": "1"
+        },
+        {
+          "v": "收",
+          "t": "收",
+          "rc": "2",
+          "memo": "",
+          "isnr": "1"
+        },
+        {
+          "v": "付",
+          "t": "付",
+          "rc": "2",
+          "memo": "",
+          "isnr": "1"
+        },
+        {
+          "v": "汇",
+          "t": "汇",
+          "rc": "2",
+          "memo": "",
+          "isnr": "1"
+        },
+        {
+          "v": "月初",
+          "t": "月初",
+          "rc": "0",
+          "memo": "承前页",
+          "isnr": "1"
+        },
+        {
+          "v": "年初",
+          "t": "年初",
+          "rc": "1",
+          "memo": "上年结转",
+          "isnr": "1"
+        },
+        {
+          "v": "月汇",
+          "t": "月汇",
+          "rc": "6",
+          "memo": "本月合计",
+          "isnr": "0"
+        },
+        {
+          "v": "年累",
+          "t": "年累",
+          "rc": "7",
+          "memo": "本年累计",
+          "isnr": "0"
+        },
+        {
+          "v": "年结",
+          "t": "年结",
+          "rc": "-1",
+          "memo": "结转下年",
+          "isnr": "0"
+        }
+      ]
+    },
+    {
+      "name": "voucherid_i",
+      "type": "text",
+      "id": "voucherid_i",
+      "value": "",
+      "dis": false,
+      "options": null
+    },
+    {
+      "name": "memo_i",
+      "type": "text",
+      "id": "memo_i",
+      "value": "",
+      "dis": false,
+      "options": null
+    },
+    {
+      "name": "debit_i",
+      "type": "text",
+      "id": "debit_i",
+      "value": "",
+      "dis": false,
+      "options": null
+    },
+    {
+      "name": "lend_i",
+      "type": "text",
+      "id": "lend_i",
+      "value": "",
+      "dis": false,
+      "options": null
+    },
+    {
+      "name": "in_debit_lend_i",
+      "type": "select-one",
+      "id": "in_debit_lend_i",
+      "value": "0",
+      "dis": false,
+      "options": [
+        {
+          "v": "0",
+          "t": "平",
+          "rc": null,
+          "memo": null,
+          "isnr": null
+        },
+        {
+          "v": "1",
+          "t": "借",
+          "rc": null,
+          "memo": null,
+          "isnr": null
+        },
+        {
+          "v": "-1",
+          "t": "贷",
+          "rc": null,
+          "memo": null,
+          "isnr": null
+        }
+      ]
+    },
+    {
+      "name": "balance_i",
+      "type": "text",
+      "id": "balance_i",
+      "value": "",
+      "dis": false,
+      "options": null
+    },
+    {
+      "name": "isNormalRec_i",
+      "type": "hidden",
+      "id": null,
+      "value": "0",
+      "dis": false,
+      "options": null
+    },
+    {
+      "name": "rowclass",
+      "type": "hidden",
+      "id": "rowclass",
+      "value": "2",
+      "dis": false,
+      "options": null
+    }
+  ],
+  "buttons": [
+    {
+      "text": "返回账本目录",
+      "onclick": "window.location.href='do?action=ts_zb_zy&start=ts_zy_list&type_zb=1&readyOnly=0&zbid=45850&entityID=110       &SXID=SESSION_TOKEN_PLACEHOLDER&isSimulate=false'",
+      "id": null,
+      "name": null
+    },
+    {
+      "text": "新增",
+      "onclick": "doAddSubmit(this.form)",
+      "id": "btn_new",
+      "name": "button"
+    },
+    {
+      "text": "画月结线",
+      "onclick": "doDrawLine('8',v_dto6)",
+      "id": null,
+      "name": "button"
+    },
+    {
+      "text": "画年结线",
+      "onclick": "doDrawLine('9',v_dto6)",
+      "id": null,
+      "name": "button"
+    },
+    {
+      "text": "修改提交",
+      "onclick": "if(doCheckSubmit(this.form,'update')){v_dto6.start.value='update_loop';v_dto6.submit();}",
+      "id": null,
+      "name": null
+    },
+    {
+      "text": "删除提交",
+      "onclick": "doCheckSubmit(this.form,'delete')",
+      "id": null,
+      "name": null
+    }
+  ],
+  "text": "测绘探针三栏式账簿 之 应付账款 - 北京宝申实业有限公司 :北京宝申实业有限公司\n返回账本目录\n分页: 总页: \n(活页)三栏式明细账\n  \n上级科目   末级科目 \n\n\n2020 年 凭证 \n摘要\n 借方 贷方 借\n或\n贷\n 余额 √\n  月 日 种类 号数 \n \n记\n收\n付\n汇\n月初\n年初\n月汇\n年累\n年结\n \n平\n借\n贷\n \n \n  \n\n\n\n         提示：冲销记录请选择   ; 双击画线可删除该画线。"
+}

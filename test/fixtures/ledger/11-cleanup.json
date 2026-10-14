@@ -1,0 +1,56 @@
+{
+  "startedAt": "2026-10-13T14:06:51.964Z",
+  "dialogs": [
+    {
+      "type": "confirm",
+      "message": "是否真要删除账簿？"
+    },
+    {
+      "type": "alert",
+      "message": "操作成功"
+    }
+  ],
+  "posts": [],
+  "error": null,
+  "entry": {
+    "sxid": "SESSION_TOKEN_PLACEHOLDER",
+    "entityID": "110",
+    "cname": "%E6%9C%B1%E8%BD%BD%E8%B0%B1",
+    "entry": "do?action=e_entity&start=entity_main_student_frame&SXID=SESSION_TOKEN_PLACEHOLDER&C_NAME=%E6%9C%B1%E8%BD%BD%E8%B0%B1&EntityID=110",
+    "source": {
+      "frame": "main",
+      "raw": " Javascript:changeOpeRole();parent.location.href='do?action=e_entity&start=entity_main_student_frame&SXID=SESSION_TOKEN_PLACEHOLDER&C_NAME=%E6%9C%B1%E8%BD%BD%E8%B0%B1&EntityID=110'"
+    },
+    "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/do?action=e_entity&start=entity_main_student_frame&SXID=SESSION_TOKEN_PLACEHOLDER&C_NAME=%E6%9C%B1%E8%BD%BD%E8%B0%B1&EntityID=110"
+  },
+  "zbsBefore": [
+    {
+      "text": "2020库存现金",
+      "href": "do?action=ts_zb_zy&start=zb_1rec&type_zb=1&zbid=45833&accountID=&SXID=SESSION_TOKEN_PLACEHOLDER&entityID=110&readyOnly=0&page=1&isSimulate=false"
+    },
+    {
+      "text": "2020测绘探针三栏式账簿",
+      "href": "do?action=ts_zb_zy&start=zb_1rec&type_zb=1&zbid=45850&accountID=&SXID=SESSION_TOKEN_PLACEHOLDER&entityID=110&readyOnly=0&page=1&isSimulate=false"
+    }
+  ],
+  "probeZbid": "45850",
+  "checkbox": {
+    "found": true,
+    "label": "2 (活页)三栏式明细账 2020年1月1日 1",
+    "value": "45850"
+  },
+  "deletePosts": [
+    {
+      "at": "2026-10-13T14:07:05.022Z",
+      "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/do?action=ts_zb_zy",
+      "body": "start=zb_delete&sxid=SESSION_TOKEN_PLACEHOLDER&entityID=110&type_zb=1&isSimulate=false&zbid=45833&zbbh=2&zbmc=%E5%BA%93%E5%AD%98%E7%8E%B0%E9%87%91&fzren0=&zbkj00=&fhe000=&jzhang=&zbid=45850&CHECK_CONFIRM=45850&zbbh=9&zbmc=%E6%B5%8B%E7%BB%98%E6%8E%A2%E9%92%88%E4%B8%89%E6%A0%8F%E5%BC%8F%E8%B4%A6%E7%B0%BF&fzren0=&zbkj00=&fhe000=&jzhang="
+    }
+  ],
+  "afterText": "账簿管理 开设新账簿 返回账簿列表 序号 编号 账簿名称 类别 科目 负责人 主办会计 复核 记账 启用日期 页数 1 (活页)三栏式明细账 2020年1月1日 1 修改提交 删除提交 第1页/共1页 共1行/每页20行 [首页] [前一页] [后一页] [尾页] 第1页",
+  "zbsAfter": [
+    {
+      "text": "2020库存现金",
+      "href": "do?action=ts_zb_zy&start=zb_1rec&type_zb=1&zbid=45833&accountID=&SXID=SESSION_TOKEN_PLACEHOLDER&entityID=110&readyOnly=0&page=1&isSimulate=false"
+    }
+  ]
+}

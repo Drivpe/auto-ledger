@@ -1,0 +1,458 @@
+{
+  "vouchertypeOptions": [
+    {
+      "v": "记",
+      "t": "记",
+      "rc": "2",
+      "memo": "",
+      "isnr": "1"
+    },
+    {
+      "v": "收",
+      "t": "收",
+      "rc": "2",
+      "memo": "",
+      "isnr": "1"
+    },
+    {
+      "v": "付",
+      "t": "付",
+      "rc": "2",
+      "memo": "",
+      "isnr": "1"
+    },
+    {
+      "v": "汇",
+      "t": "汇",
+      "rc": "2",
+      "memo": "",
+      "isnr": "1"
+    },
+    {
+      "v": "月初",
+      "t": "月初",
+      "rc": "0",
+      "memo": "承前页",
+      "isnr": "1"
+    },
+    {
+      "v": "年初",
+      "t": "年初",
+      "rc": "1",
+      "memo": "上年结转",
+      "isnr": "1"
+    },
+    {
+      "v": "月汇",
+      "t": "月汇",
+      "rc": "6",
+      "memo": "本月合计",
+      "isnr": "0"
+    },
+    {
+      "v": "年累",
+      "t": "年累",
+      "rc": "7",
+      "memo": "本年累计",
+      "isnr": "0"
+    },
+    {
+      "v": "年结",
+      "t": "年结",
+      "rc": "-1",
+      "memo": "结转下年",
+      "isnr": "0"
+    }
+  ],
+  "rowclassMap": [
+    {
+      "value": "记",
+      "memo": "",
+      "rowclass": "2",
+      "isNormalRec": "1"
+    },
+    {
+      "value": "收",
+      "memo": "",
+      "rowclass": "2",
+      "isNormalRec": "1"
+    },
+    {
+      "value": "付",
+      "memo": "",
+      "rowclass": "2",
+      "isNormalRec": "1"
+    },
+    {
+      "value": "汇",
+      "memo": "",
+      "rowclass": "2",
+      "isNormalRec": "1"
+    },
+    {
+      "value": "月初",
+      "memo": "承前页",
+      "rowclass": "0",
+      "isNormalRec": "1"
+    },
+    {
+      "value": "年初",
+      "memo": "上年结转",
+      "rowclass": "1",
+      "isNormalRec": "1"
+    },
+    {
+      "value": "月汇",
+      "memo": "本月合计",
+      "rowclass": "6",
+      "isNormalRec": "0"
+    },
+    {
+      "value": "年累",
+      "memo": "本年累计",
+      "rowclass": "7",
+      "isNormalRec": "0"
+    },
+    {
+      "value": "年结",
+      "memo": "结转下年",
+      "rowclass": "-1",
+      "isNormalRec": "0"
+    }
+  ],
+  "inDebitLendOptions": [
+    {
+      "v": "0",
+      "t": "平",
+      "rc": null,
+      "memo": null,
+      "isnr": null
+    },
+    {
+      "v": "1",
+      "t": "借",
+      "rc": null,
+      "memo": null,
+      "isnr": null
+    },
+    {
+      "v": "-1",
+      "t": "贷",
+      "rc": null,
+      "memo": null,
+      "isnr": null
+    }
+  ],
+  "lines": {
+    "found": true,
+    "childCount": 0,
+    "html": "<div id=\"div_for_drawLine_only\">\n</div>",
+    "canvases": [],
+    "rowClassRows": []
+  },
+  "rowClassRows": [],
+  "note": "月结线 = 平台插入的 rowclass=8 (--)/9 (==) 真实数据行，非纯样式",
+  "realPageEvidence": {
+    "sourceFile": "05-page-content.html",
+    "zb_zy_id": "1000245326",
+    "zbid": "45833",
+    "accountID": "1001",
+    "ledgerRowCount": 16,
+    "drawLineDom": "",
+    "drawLineDivs": [
+      [
+        "del_line16",
+        "9",
+        "10000002545014"
+      ],
+      [
+        "del_line15",
+        "9",
+        "10000002545005"
+      ],
+      [
+        "del_line13",
+        "8",
+        "10000002545008"
+      ],
+      [
+        "del_line12",
+        "8",
+        "10000002545001"
+      ]
+    ],
+    "rowclassAttrHistogram": {
+      "8": 2,
+      "9": 2
+    },
+    "note": "line* / del_line* 由 doZBShowLine() 依 tr[rowclass] 位置动态生成；rowclass 8=月结线 9=年结线"
+  },
+  "observedVoucherTypeValues": {
+    "年初": 1,
+    "记": 9,
+    "月汇": 1,
+    "--": 2,
+    "年累": 1,
+    "==": 2
+  },
+  "drawLineButtons": [
+    {
+      "text": "画月结线",
+      "onclick": "doDrawLine('8',v_dto6)",
+      "effect": "prepend option value=\"--\" memo=\"----------------\" rowclass=\"8\" isNormalRec=\"0\" 到 vouchertype_i，然后 doAddSubmit → start=insert_1rec"
+    },
+    {
+      "text": "画年结线",
+      "onclick": "doDrawLine('9',v_dto6)",
+      "effect": "prepend option value=\"==\" memo=\"================\" rowclass=\"9\" isNormalRec=\"0\" 到 vouchertype_i，然后 doAddSubmit → start=insert_1rec"
+    }
+  ],
+  "monthLineEmpirical": {
+    "probeZbid": "45850",
+    "pageUrl": "http://10.11.4.69:8090/netinnet_zhsx_v63/do?action=ts_ledger&start=query&ZB_zy_ID=1000245524&type_zb=1&readyOnly=0&isSimulate=false",
+    "button": "画月结线 (onclick=doDrawLine(8,v_dto6))",
+    "post": [
+      {
+        "at": "2026-10-13T13:53:26.184Z",
+        "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/do?action=ts_ledger",
+        "contentType": "application/x-www-form-urlencoded",
+        "body": "start=insert_1rec&zb_zy_id=1000245524&type_zb=1&zbid=45850&sxid=SESSION_TOKEN_PLACEHOLDER&entityID=110+++++++&isSimulate=false&yyyy=2020&accountID=220201++++++++++++++&is_zz_i=0&kjkm=%E5%BA%94%E4%BB%98%E8%B4%A6%E6%AC%BE&kjkm=%E5%8C%97%E4%BA%AC%E5%AE%9D%E7%94%B3%E5%AE%9E%E4%B8%9A%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++&XSHU_i=1&mm_i=1&dd_i=31&vouchertype_i=--&memo_i=----------------&isNormalRec_i=0&rowclass=8"
+      }
+    ],
+    "before": {
+      "rowCount": 1,
+      "rowclassHist": {},
+      "lineDivCount": 0,
+      "formFields": [
+        {
+          "n": "start",
+          "t": "hidden",
+          "v": "query"
+        },
+        {
+          "n": "zb_zy_id",
+          "t": "hidden",
+          "v": "1000245524"
+        },
+        {
+          "n": "type_zb",
+          "t": "hidden",
+          "v": "1"
+        },
+        {
+          "n": "zbid",
+          "t": "hidden",
+          "v": "45850"
+        },
+        {
+          "n": "sxid",
+          "t": "hidden",
+          "v": "SESSION_TOKEN_TAIL_PLACEHOLDER"
+        },
+        {
+          "n": "entityID",
+          "t": "hidden",
+          "v": "110       "
+        },
+        {
+          "n": "isSimulate",
+          "t": "hidden",
+          "v": "false"
+        },
+        {
+          "n": "yyyy",
+          "t": "hidden",
+          "v": "2020"
+        },
+        {
+          "n": "accountID",
+          "t": "hidden",
+          "v": "220201              "
+        },
+        {
+          "n": "is_zz_i",
+          "t": "hidden",
+          "v": "0"
+        },
+        {
+          "n": null,
+          "t": "text",
+          "v": ""
+        },
+        {
+          "n": null,
+          "t": "text",
+          "v": ""
+        },
+        {
+          "n": "kjkm",
+          "t": "text",
+          "v": "应付账款"
+        },
+        {
+          "n": "kjkm",
+          "t": "text",
+          "v": "北京宝申实业有限公司              "
+        },
+        {
+          "n": null,
+          "t": "text",
+          "v": "亿千百十万千百十元角分"
+        },
+        {
+          "n": null,
+          "t": "text",
+          "v": "亿千百十万千百十元角分"
+        },
+        {
+          "n": null,
+          "t": "text",
+          "v": "亿千百十万千百十元角分"
+        },
+        {
+          "n": "CHECK_CONFIRM_SelectAll",
+          "t": "checkbox",
+          "v": "on"
+        },
+        {
+          "n": "XSHU_i",
+          "t": "hidden",
+          "v": "1"
+        },
+        {
+          "n": "mm_i",
+          "t": "text",
+          "v": ""
+        },
+        {
+          "n": "dd_i",
+          "t": "text",
+          "v": ""
+        },
+        {
+          "n": "vouchertype_i",
+          "t": "select-one",
+          "v": "记"
+        },
+        {
+          "n": "voucherid_i",
+          "t": "text",
+          "v": ""
+        },
+        {
+          "n": "memo_i",
+          "t": "text",
+          "v": ""
+        },
+        {
+          "n": "debit_i",
+          "t": "text",
+          "v": ""
+        },
+        {
+          "n": "lend_i",
+          "t": "text",
+          "v": ""
+        },
+        {
+          "n": "in_debit_lend_i",
+          "t": "select-one",
+          "v": "0"
+        },
+        {
+          "n": "balance_i",
+          "t": "text",
+          "v": ""
+        },
+        {
+          "n": "isNormalRec_i",
+          "t": "hidden",
+          "v": "0"
+        },
+        {
+          "n": "rowclass",
+          "t": "hidden",
+          "v": "2"
+        },
+        {
+          "n": "button",
+          "t": "button",
+          "v": "新增"
+        },
+        {
+          "n": "button",
+          "t": "button",
+          "v": "画月结线"
+        },
+        {
+          "n": "button",
+          "t": "button",
+          "v": "画年结线"
+        },
+        {
+          "n": null,
+          "t": "button",
+          "v": "修改提交"
+        },
+        {
+          "n": null,
+          "t": "button",
+          "v": "删除提交"
+        }
+      ]
+    },
+    "after": {
+      "rowCount": 2,
+      "rowclassHist": {
+        "8": 1
+      },
+      "lineDivCount": 2,
+      "text": "测绘探针三栏式账簿 之 应付账款 - 北京宝申实业有限公司 :北京宝申实业有限公司 返回账本目录 分页: 总页: (活页)三栏式明细账 上级科目 末级科目 2020 年 凭证 摘要 借方 贷方 借 或 贷 余额 √ 月 日 种类 号数 记 收 付 汇 月初 年初 月汇 年累 年结 平 借 贷 提示：冲销记录请选择 ; 双击画线可删除该画线。"
+    },
+    "dialogs": [
+      {
+        "type": "alert",
+        "message": "上月未结账，不可输入下月记录！",
+        "at": "2026-10-13T13:53:30.670Z"
+      }
+    ],
+    "interpretation": "月结线 = 向账页 insert 一条 type=-- / rowclass=8 的标记行；成功后 tr[rowclass=8] +1，div_for_drawLine_only 内生成 line*/del_line* 两个 div"
+  },
+  "yearLineEmpirical": {
+    "button": "画年结线 (onclick=doDrawLine(9,v_dto6))",
+    "post": [
+      {
+        "at": "2026-10-13T13:53:30.605Z",
+        "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/do?action=ts_ledger",
+        "contentType": "application/x-www-form-urlencoded",
+        "body": "start=insert_1rec&zb_zy_id=1000245524&type_zb=1&zbid=45850&sxid=SESSION_TOKEN_PLACEHOLDER&entityID=110+++++++&isSimulate=false&yyyy=2020&accountID=220201++++++++++++++&is_zz_i=0&kjkm=%E5%BA%94%E4%BB%98%E8%B4%A6%E6%AC%BE&kjkm=%E5%8C%97%E4%BA%AC%E5%AE%9D%E7%94%B3%E5%AE%9E%E4%B8%9A%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++&mm=1&dd=31&vouchertype=--&voucherid=&memo=----------------&debit=&lend=&in_debit_lend=0&balance=&is_zz=0&ledgerrecordid=10000002545666&isNormalRec=1&isadditional=&XSHU_i=1&mm_i=12&dd_i=31&vouchertype_i=%3D%3D&memo_i=%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D&isNormalRec_i=0&rowclass=9"
+      }
+    ],
+    "after": {
+      "rowclassHist": {
+        "8": 1
+      },
+      "lineDivCount": 2
+    },
+    "dialogs": [
+      {
+        "type": "alert",
+        "message": "上月未结账，不可输入下月记录！",
+        "at": "2026-10-13T13:53:30.670Z"
+      }
+    ],
+    "blockedBy": "上月未结账，不可输入下月记录！ —— 平台业务前置条件，实测被拒，年结线未写入"
+  },
+  "failureEvidence": {
+    "emptyMonthAlert": {
+      "trigger": "画月结线 未填 mm_i/dd_i",
+      "message": "\"月\"输入不能为空!",
+      "source": "run-10.log"
+    },
+    "yearLineBlocked": {
+      "trigger": "画年结线 mm_i=12",
+      "message": "上月未结账，不可输入下月记录！",
+      "source": "run-10b.log"
+    }
+  }
+}

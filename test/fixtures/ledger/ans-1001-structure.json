@@ -1,0 +1,4117 @@
+{
+  "tableOuterHtml": "<table id=\"tab\" align=\"center\" border=\"1\" cellpadding=\"0\" cellspacing=\"0\" bordercolor=\"#25724B\" bgcolor=\"#FFFFFF\" style=\"border-collapse:collapse\">\n\t\t\t\t    <thead>\n\t\t\t\t    <tr>\n\t\t\t\t        <td height=\"25\" colspan=\"48\"><div align=\"center\" class=\"title_black STYLE1 STYLE2\">明细账</div></td>\n\t\t\t\t    </tr>\n\t\t\t\t    <tr>\n\t\t\t\t        <td height=\"25\" colspan=\"48\"><span class=\"STYLE1\">&nbsp;科目:</span>库存现金                                                                                            </td>\n\t\t\t\t    </tr>\n\t\t\t        <tr>\n\t\t\t          \t<td height=\"30\" colspan=\"2\" nowrap=\"nowrap\" class=\"word_normal\"><div align=\"center\">  <span class=\"STYLE1\">年</span></div></td>\n\t\t\t          \t<td colspan=\"2\" class=\"word_normal\">\n\t\t\t        \t\t<input name=\"title_1\" readonly=\"\" type=\"text\" class=\"table_space_3\" style=\"width:60px; text-align:center; letter-spacing:3px;color:#006600; border: #ffffff 0px solid;background-color: transparent;\" value=\"凭证\">\n\t\t\t        \t</td>\n\t\t\t         \t<td rowspan=\"3\" class=\"word_normal double\" style=\"width:200px;\"><div align=\"center\" class=\"STYLE1\" style=\"width:150px;\">摘要</div></td>\n\t\t\t          \t<td class=\"word_normal double col_154\"><div align=\"center\" class=\"STYLE1\">借方</div></td>\n\t\t\t          \t<td class=\"word_normal double col_154\"><div align=\"center\" class=\"STYLE1\">贷方</div></td>\n\t\t\t          \t<td width=\"28\" rowspan=\"3\" class=\"word_normal double\"><div align=\"center\"><span class=\"STYLE1\">借<br> 或 <br>贷</span><br></div></td>\n\t\t\t        \t<td rowspan=\"2\" class=\"word_normal col_154\"><div align=\"center\" class=\"STYLE1\">余额</div></td>\n\t\t\t     \t</tr>\n\t\t\t      \t<tr>\n\t\t\t        \t<td width=\"22\" rowspan=\"2\" class=\"word_normal\"><div align=\"center\" class=\"STYLE1\">月</div></td>\n\t\t\t        \t<td width=\"22\" rowspan=\"2\" class=\"word_normal\"><div align=\"center\" class=\"STYLE1\">日</div></td>\n\t\t\t        \t<td rowspan=\"2\" class=\"word_normal STYLE31\"><div align=\"center\" class=\"STYLE1\">种类</div></td>\n\t\t\t        \t<td rowspan=\"2\" class=\"word_normal STYLE31\"><div align=\"center\" class=\"STYLE1\">号数</div></td>\n\t\t\t        \t<td height=\"30\" class=\"word_normal double col_154\"><div align=\"center\" class=\"STYLE1\">金　　　　　　　额</div></td>\n\t\t\t        \t<td height=\"30\" class=\"word_normal double col_154\"><div align=\"center\" class=\"STYLE1\">金　　　　　　　额</div></td>\n\t\t\t      \t</tr>\n\t\t\t      \t<tr>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal double col_154\">\n\t\t\t            \t<input name=\"title_debit\" readonly=\"\" type=\"text\" class=\"table_space_3\" style=\"width:153px;letter-spacing:2px;color:#006600;\" value=\"亿千百十万千百十元角分\">\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal double col_154\">\n\t\t\t            \t<input name=\"title_lend\" readonly=\"\" type=\"text\" class=\"table_space_3\" style=\"width:153px;letter-spacing:2px;color:#006600;\" value=\"亿千百十万千百十元角分\">\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal col_154\">\n\t\t\t           \t\t<input name=\"title_balance\" readonly=\"\" type=\"text\" class=\"table_space_3\" style=\"width:153px;letter-spacing:2px;color:#006600;\" value=\"亿千百十万千百十元角分\">\n\t\t\t        \t</td>\n\t\t\t      \t</tr>\n\t\t\t      \t</thead>\n\t\t\t      \t<tbody>\n\t\t\t      \t\n\t\t\t      \t<tr>\n\t\t\t        \t<td height=\"30\">1</td>\n\t\t\t        \t<td height=\"30\">1</td> \n\t\t\t        \t<td height=\"30\">年初        \n\t\t\t        \t</td><td height=\"30\">&nbsp;</td>\n\t\t\t        \t<td height=\"30\" class=\"double\">\n\t\t\t        \t\t<input name=\"memo\" id=\"memo\" type=\"text\" value=\"上年结转\" readonly=\"readonly\">\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal double col_154\">\n\t\t\t\t        \t\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal double col_154\">\n\t\t\t        \t\t\n\t\t\t        \t\t\n\t\t\t        \t</td>\n\t\t\t        \t<td class=\"word_normal double\">\n\t\t\t          \t\t<div align=\"center\">\n\t\t\t            \t借\n\t\t\t          \t\t</div>\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal  col_154\">\n\t\t\t        \t\t732800\n\t\t\t        \t</td>\n\t\t\t      \t</tr>\n\t\t\t      \t\n\t\t\t      \t<tr>\n\t\t\t        \t<td height=\"30\">1</td>\n\t\t\t        \t<td height=\"30\">1</td> \n\t\t\t        \t<td height=\"30\">记        \n\t\t\t        \t</td><td height=\"30\">1</td>\n\t\t\t        \t<td height=\"30\" class=\"double\">\n\t\t\t        \t\t<input name=\"memo\" id=\"memo\" type=\"text\" value=\"核销预借差旅费\" readonly=\"readonly\">\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal double col_154\">\n\t\t\t\t        \t23200\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal double col_154\">\n\t\t\t        \t\t\n\t\t\t        \t\t\n\t\t\t        \t</td>\n\t\t\t        \t<td class=\"word_normal double\">\n\t\t\t          \t\t<div align=\"center\">\n\t\t\t            \t借\n\t\t\t          \t\t</div>\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal  col_154\">\n\t\t\t        \t\t756000\n\t\t\t        \t</td>\n\t\t\t      \t</tr>\n\t\t\t      \t\n\t\t\t      \t<tr>\n\t\t\t        \t<td height=\"30\">1</td>\n\t\t\t        \t<td height=\"30\">1</td> \n\t\t\t        \t<td height=\"30\">记        \n\t\t\t        \t</td><td height=\"30\">3</td>\n\t\t\t        \t<td height=\"30\" class=\"double\">\n\t\t\t        \t\t<input name=\"memo\" id=\"memo\" type=\"text\" value=\"提现\" readonly=\"readonly\">\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal double col_154\">\n\t\t\t\t        \t500000\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal double col_154\">\n\t\t\t        \t\t\n\t\t\t        \t\t\n\t\t\t        \t</td>\n\t\t\t        \t<td class=\"word_normal double\">\n\t\t\t          \t\t<div align=\"center\">\n\t\t\t            \t借\n\t\t\t          \t\t</div>\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal  col_154\">\n\t\t\t        \t\t1256000\n\t\t\t        \t</td>\n\t\t\t      \t</tr>\n\t\t\t      \t\n\t\t\t      \t<tr>\n\t\t\t        \t<td height=\"30\">1</td>\n\t\t\t        \t<td height=\"30\">2</td> \n\t\t\t        \t<td height=\"30\">记        \n\t\t\t        \t</td><td height=\"30\">5</td>\n\t\t\t        \t<td height=\"30\" class=\"double\">\n\t\t\t        \t\t<input name=\"memo\" id=\"memo\" type=\"text\" value=\"报销市内交通费和业务招待费\" readonly=\"readonly\">\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal double col_154\">\n\t\t\t\t        \t\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal double col_154\">\n\t\t\t        \t\t245000\n\t\t\t        \t\t\n\t\t\t        \t</td>\n\t\t\t        \t<td class=\"word_normal double\">\n\t\t\t          \t\t<div align=\"center\">\n\t\t\t            \t借\n\t\t\t          \t\t</div>\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal  col_154\">\n\t\t\t        \t\t1011000\n\t\t\t        \t</td>\n\t\t\t      \t</tr>\n\t\t\t      \t\n\t\t\t      \t<tr>\n\t\t\t        \t<td height=\"30\">1</td>\n\t\t\t        \t<td height=\"30\">3</td> \n\t\t\t        \t<td height=\"30\">记        \n\t\t\t        \t</td><td height=\"30\">8</td>\n\t\t\t        \t<td height=\"30\" class=\"double\">\n\t\t\t        \t\t<input name=\"memo\" id=\"memo\" type=\"text\" value=\"报销教育培训费\" readonly=\"readonly\">\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal double col_154\">\n\t\t\t\t        \t\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal double col_154\">\n\t\t\t        \t\t82500\n\t\t\t        \t\t\n\t\t\t        \t</td>\n\t\t\t        \t<td class=\"word_normal double\">\n\t\t\t          \t\t<div align=\"center\">\n\t\t\t            \t借\n\t\t\t          \t\t</div>\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal  col_154\">\n\t\t\t        \t\t928500\n\t\t\t        \t</td>\n\t\t\t      \t</tr>\n\t\t\t      \t\n\t\t\t      \t<tr>\n\t\t\t        \t<td height=\"30\">1</td>\n\t\t\t        \t<td height=\"30\">15</td> \n\t\t\t        \t<td height=\"30\">记        \n\t\t\t        \t</td><td height=\"30\">30</td>\n\t\t\t        \t<td height=\"30\" class=\"double\">\n\t\t\t        \t\t<input name=\"memo\" id=\"memo\" type=\"text\" value=\"借支差旅费\" readonly=\"readonly\">\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal double col_154\">\n\t\t\t\t        \t\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal double col_154\">\n\t\t\t        \t\t200000\n\t\t\t        \t\t\n\t\t\t        \t</td>\n\t\t\t        \t<td class=\"word_normal double\">\n\t\t\t          \t\t<div align=\"center\">\n\t\t\t            \t借\n\t\t\t          \t\t</div>\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal  col_154\">\n\t\t\t        \t\t728500\n\t\t\t        \t</td>\n\t\t\t      \t</tr>\n\t\t\t      \t\n\t\t\t      \t<tr>\n\t\t\t        \t<td height=\"30\">1</td>\n\t\t\t        \t<td height=\"30\">19</td> \n\t\t\t        \t<td height=\"30\">记        \n\t\t\t        \t</td><td height=\"30\">46</td>\n\t\t\t        \t<td height=\"30\" class=\"double\">\n\t\t\t        \t\t<input name=\"memo\" id=\"memo\" type=\"text\" value=\"提现\" readonly=\"readonly\">\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal double col_154\">\n\t\t\t\t        \t500000\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal double col_154\">\n\t\t\t        \t\t\n\t\t\t        \t\t\n\t\t\t        \t</td>\n\t\t\t        \t<td class=\"word_normal double\">\n\t\t\t          \t\t<div align=\"center\">\n\t\t\t            \t借\n\t\t\t          \t\t</div>\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal  col_154\">\n\t\t\t        \t\t1228500\n\t\t\t        \t</td>\n\t\t\t      \t</tr>\n\t\t\t      \t\n\t\t\t      \t<tr>\n\t\t\t        \t<td height=\"30\">1</td>\n\t\t\t        \t<td height=\"30\">23</td> \n\t\t\t        \t<td height=\"30\">记        \n\t\t\t        \t</td><td height=\"30\">56</td>\n\t\t\t        \t<td height=\"30\" class=\"double\">\n\t\t\t        \t\t<input name=\"memo\" id=\"memo\" type=\"text\" value=\"核销预借差旅费\" readonly=\"readonly\">\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal double col_154\">\n\t\t\t\t        \t\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal double col_154\">\n\t\t\t        \t\t40300\n\t\t\t        \t\t\n\t\t\t        \t</td>\n\t\t\t        \t<td class=\"word_normal double\">\n\t\t\t          \t\t<div align=\"center\">\n\t\t\t            \t借\n\t\t\t          \t\t</div>\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal  col_154\">\n\t\t\t        \t\t1188200\n\t\t\t        \t</td>\n\t\t\t      \t</tr>\n\t\t\t      \t\n\t\t\t      \t<tr>\n\t\t\t        \t<td height=\"30\">1</td>\n\t\t\t        \t<td height=\"30\">24</td> \n\t\t\t        \t<td height=\"30\">记        \n\t\t\t        \t</td><td height=\"30\">61</td>\n\t\t\t        \t<td height=\"30\" class=\"double\">\n\t\t\t        \t\t<input name=\"memo\" id=\"memo\" type=\"text\" value=\"报销差旅费\" readonly=\"readonly\">\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal double col_154\">\n\t\t\t\t        \t\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal double col_154\">\n\t\t\t        \t\t209300\n\t\t\t        \t\t\n\t\t\t        \t</td>\n\t\t\t        \t<td class=\"word_normal double\">\n\t\t\t          \t\t<div align=\"center\">\n\t\t\t            \t借\n\t\t\t          \t\t</div>\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal  col_154\">\n\t\t\t        \t\t978900\n\t\t\t        \t</td>\n\t\t\t      \t</tr>\n\t\t\t      \t\n\t\t\t      \t<tr>\n\t\t\t        \t<td height=\"30\">1</td>\n\t\t\t        \t<td height=\"30\">24</td> \n\t\t\t        \t<td height=\"30\">记        \n\t\t\t        \t</td><td height=\"30\">62</td>\n\t\t\t        \t<td height=\"30\" class=\"double\">\n\t\t\t        \t\t<input name=\"memo\" id=\"memo\" type=\"text\" value=\"提现\" readonly=\"readonly\">\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal double col_154\">\n\t\t\t\t        \t500000\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal double col_154\">\n\t\t\t        \t\t\n\t\t\t        \t\t\n\t\t\t        \t</td>\n\t\t\t        \t<td class=\"word_normal double\">\n\t\t\t          \t\t<div align=\"center\">\n\t\t\t            \t借\n\t\t\t          \t\t</div>\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal  col_154\">\n\t\t\t        \t\t1478900\n\t\t\t        \t</td>\n\t\t\t      \t</tr>\n\t\t\t      \t\n\t\t\t      \t<tr>\n\t\t\t        \t<td height=\"30\">1</td>\n\t\t\t        \t<td height=\"30\">31</td> \n\t\t\t        \t<td height=\"30\">月汇        \n\t\t\t        \t</td><td height=\"30\">&nbsp;</td>\n\t\t\t        \t<td height=\"30\" class=\"double\">\n\t\t\t        \t\t<input name=\"memo\" id=\"memo\" type=\"text\" value=\"本月合计\" readonly=\"readonly\">\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal double col_154\">\n\t\t\t\t        \t1523200\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal double col_154\">\n\t\t\t        \t\t777100\n\t\t\t        \t\t\n\t\t\t        \t</td>\n\t\t\t        \t<td class=\"word_normal double\">\n\t\t\t          \t\t<div align=\"center\">\n\t\t\t            \t借\n\t\t\t          \t\t</div>\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal  col_154\">\n\t\t\t        \t\t1478900\n\t\t\t        \t</td>\n\t\t\t      \t</tr>\n\t\t\t      \t\n\t\t\t      \t<tr rowid=\"12\" mm=\"1\" rowclass=\"8\" style=\"display: none;\">\n\t\t\t        \t<td height=\"30\">1</td>\n\t\t\t        \t<td height=\"30\">31</td> \n\t\t\t        \t<td height=\"30\">--        \n\t\t\t        \t</td><td height=\"30\">&nbsp;</td>\n\t\t\t        \t<td height=\"30\" class=\"double\" style=\"color:#FF0000\">\n\t\t\t        \t\t<input name=\"memo\" id=\"memo\" type=\"text\" value=\"----------------\" readonly=\"readonly\">\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal double col_154\">\n\t\t\t\t        \t\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal double col_154\">\n\t\t\t        \t\t\n\t\t\t        \t\t\n\t\t\t        \t</td>\n\t\t\t        \t<td class=\"word_normal double\">\n\t\t\t          \t\t<div align=\"center\">\n\t\t\t            \t\n\t\t\t          \t\t</div>\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal  col_154\">\n\t\t\t        \t\t\n\t\t\t        \t</td>\n\t\t\t      \t</tr>\n\t\t\t      \t\n\t\t\t      \t<tr>\n\t\t\t        \t<td height=\"30\">1</td>\n\t\t\t        \t<td height=\"30\">31</td> \n\t\t\t        \t<td height=\"30\">年累        \n\t\t\t        \t</td><td height=\"30\">&nbsp;</td>\n\t\t\t        \t<td height=\"30\" class=\"double\">\n\t\t\t        \t\t<input name=\"memo\" id=\"memo\" type=\"text\" value=\"本年累计\" readonly=\"readonly\">\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal double col_154\">\n\t\t\t\t        \t1523200\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal double col_154\">\n\t\t\t        \t\t777100\n\t\t\t        \t\t\n\t\t\t        \t</td>\n\t\t\t        \t<td class=\"word_normal double\">\n\t\t\t          \t\t<div align=\"center\">\n\t\t\t            \t借\n\t\t\t          \t\t</div>\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal  col_154\">\n\t\t\t        \t\t1478900\n\t\t\t        \t</td>\n\t\t\t      \t</tr>\n\t\t\t      \t\n\t\t\t      \t<tr rowid=\"14\" mm=\"1\" rowclass=\"9\" style=\"display: none;\">\n\t\t\t        \t<td height=\"30\">1</td>\n\t\t\t        \t<td height=\"30\">31</td> \n\t\t\t        \t<td height=\"30\">==        \n\t\t\t        \t</td><td height=\"30\">&nbsp;</td>\n\t\t\t        \t<td height=\"30\" class=\"double\" style=\"color:#FF0000\">\n\t\t\t        \t\t<input name=\"memo\" id=\"memo\" type=\"text\" value=\"================\" readonly=\"readonly\">\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal double col_154\">\n\t\t\t\t        \t\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal double col_154\">\n\t\t\t        \t\t\n\t\t\t        \t\t\n\t\t\t        \t</td>\n\t\t\t        \t<td class=\"word_normal double\">\n\t\t\t          \t\t<div align=\"center\">\n\t\t\t            \t\n\t\t\t          \t\t</div>\n\t\t\t        \t</td>\n\t\t\t        \t<td height=\"30\" background=\"images/teacher/zz1_5_bg.BMP\" class=\"word_normal  col_154\">\n\t\t\t        \t\t\n\t\t\t        \t</td>\n\t\t\t      \t</tr>\n\t\t\t      \t\n\t\t\t      \t\n\t\t\t      \t</tbody>\n    \t\t\t</table>",
+  "tableInnerLen": 16202,
+  "rowCount": 19,
+  "raw": [
+    {
+      "ri": 0,
+      "cls": null,
+      "cells": [
+        {
+          "ci": 0,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 48,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "<div align=\"center\" class=\"title_black STYLE1 STYLE2\">明细账</div>",
+          "text": "明细账",
+          "inputs": []
+        }
+      ]
+    },
+    {
+      "ri": 1,
+      "cls": null,
+      "cells": [
+        {
+          "ci": 0,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 48,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "<span class=\"STYLE1\">&nbsp;科目:</span>库存现金",
+          "text": "科目:库存现金",
+          "inputs": []
+        }
+      ]
+    },
+    {
+      "ri": 2,
+      "cls": null,
+      "cells": [
+        {
+          "ci": 0,
+          "tag": "TD",
+          "cls": "word_normal",
+          "colSpan": 2,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "<div align=\"center\"> <span class=\"STYLE1\">年</span></div>",
+          "text": "年",
+          "inputs": []
+        },
+        {
+          "ci": 1,
+          "tag": "TD",
+          "cls": "word_normal",
+          "colSpan": 2,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "<input name=\"title_1\" readonly=\"\" type=\"text\" class=\"table_space_3\" style=\"width:60px; text-align:center; letter-spacing:3px;color:#006600; border: #ffffff 0px solid;background-color: transparent;\" value=\"凭证\">",
+          "text": "",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "type": "text",
+              "name": "title_1",
+              "id": null,
+              "value": "凭证",
+              "readonly": true,
+              "selected": null,
+              "optionCount": null
+            }
+          ]
+        },
+        {
+          "ci": 2,
+          "tag": "TD",
+          "cls": "word_normal double",
+          "colSpan": 1,
+          "rowSpan": 3,
+          "align": null,
+          "width": null,
+          "html": "<div align=\"center\" class=\"STYLE1\" style=\"width:150px;\">摘要</div>",
+          "text": "摘要",
+          "inputs": []
+        },
+        {
+          "ci": 3,
+          "tag": "TD",
+          "cls": "word_normal double col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "<div align=\"center\" class=\"STYLE1\">借方</div>",
+          "text": "借方",
+          "inputs": []
+        },
+        {
+          "ci": 4,
+          "tag": "TD",
+          "cls": "word_normal double col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "<div align=\"center\" class=\"STYLE1\">贷方</div>",
+          "text": "贷方",
+          "inputs": []
+        },
+        {
+          "ci": 5,
+          "tag": "TD",
+          "cls": "word_normal double",
+          "colSpan": 1,
+          "rowSpan": 3,
+          "align": null,
+          "width": "28",
+          "html": "<div align=\"center\"><span class=\"STYLE1\">借<br> 或 <br>贷</span><br></div>",
+          "text": "借 或 贷",
+          "inputs": []
+        },
+        {
+          "ci": 6,
+          "tag": "TD",
+          "cls": "word_normal col_154",
+          "colSpan": 1,
+          "rowSpan": 2,
+          "align": null,
+          "width": null,
+          "html": "<div align=\"center\" class=\"STYLE1\">余额</div>",
+          "text": "余额",
+          "inputs": []
+        }
+      ]
+    },
+    {
+      "ri": 3,
+      "cls": null,
+      "cells": [
+        {
+          "ci": 0,
+          "tag": "TD",
+          "cls": "word_normal",
+          "colSpan": 1,
+          "rowSpan": 2,
+          "align": null,
+          "width": "22",
+          "html": "<div align=\"center\" class=\"STYLE1\">月</div>",
+          "text": "月",
+          "inputs": []
+        },
+        {
+          "ci": 1,
+          "tag": "TD",
+          "cls": "word_normal",
+          "colSpan": 1,
+          "rowSpan": 2,
+          "align": null,
+          "width": "22",
+          "html": "<div align=\"center\" class=\"STYLE1\">日</div>",
+          "text": "日",
+          "inputs": []
+        },
+        {
+          "ci": 2,
+          "tag": "TD",
+          "cls": "word_normal STYLE31",
+          "colSpan": 1,
+          "rowSpan": 2,
+          "align": null,
+          "width": null,
+          "html": "<div align=\"center\" class=\"STYLE1\">种类</div>",
+          "text": "种类",
+          "inputs": []
+        },
+        {
+          "ci": 3,
+          "tag": "TD",
+          "cls": "word_normal STYLE31",
+          "colSpan": 1,
+          "rowSpan": 2,
+          "align": null,
+          "width": null,
+          "html": "<div align=\"center\" class=\"STYLE1\">号数</div>",
+          "text": "号数",
+          "inputs": []
+        },
+        {
+          "ci": 4,
+          "tag": "TD",
+          "cls": "word_normal double col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "<div align=\"center\" class=\"STYLE1\">金 额</div>",
+          "text": "金 额",
+          "inputs": []
+        },
+        {
+          "ci": 5,
+          "tag": "TD",
+          "cls": "word_normal double col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "<div align=\"center\" class=\"STYLE1\">金 额</div>",
+          "text": "金 额",
+          "inputs": []
+        }
+      ]
+    },
+    {
+      "ri": 4,
+      "cls": null,
+      "cells": [
+        {
+          "ci": 0,
+          "tag": "TD",
+          "cls": "word_normal double col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "<input name=\"title_debit\" readonly=\"\" type=\"text\" class=\"table_space_3\" style=\"width:153px;letter-spacing:2px;color:#006600;\" value=\"亿千百十万千百十元角分\">",
+          "text": "",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "type": "text",
+              "name": "title_debit",
+              "id": null,
+              "value": "亿千百十万千百十元角分",
+              "readonly": true,
+              "selected": null,
+              "optionCount": null
+            }
+          ]
+        },
+        {
+          "ci": 1,
+          "tag": "TD",
+          "cls": "word_normal double col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "<input name=\"title_lend\" readonly=\"\" type=\"text\" class=\"table_space_3\" style=\"width:153px;letter-spacing:2px;color:#006600;\" value=\"亿千百十万千百十元角分\">",
+          "text": "",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "type": "text",
+              "name": "title_lend",
+              "id": null,
+              "value": "亿千百十万千百十元角分",
+              "readonly": true,
+              "selected": null,
+              "optionCount": null
+            }
+          ]
+        },
+        {
+          "ci": 2,
+          "tag": "TD",
+          "cls": "word_normal col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "<input name=\"title_balance\" readonly=\"\" type=\"text\" class=\"table_space_3\" style=\"width:153px;letter-spacing:2px;color:#006600;\" value=\"亿千百十万千百十元角分\">",
+          "text": "",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "type": "text",
+              "name": "title_balance",
+              "id": null,
+              "value": "亿千百十万千百十元角分",
+              "readonly": true,
+              "selected": null,
+              "optionCount": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ri": 5,
+      "cls": null,
+      "cells": [
+        {
+          "ci": 0,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "1",
+          "text": "1",
+          "inputs": []
+        },
+        {
+          "ci": 1,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "1",
+          "text": "1",
+          "inputs": []
+        },
+        {
+          "ci": 2,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "年初",
+          "text": "年初",
+          "inputs": []
+        },
+        {
+          "ci": 3,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "&nbsp;",
+          "text": "",
+          "inputs": []
+        },
+        {
+          "ci": 4,
+          "tag": "TD",
+          "cls": "double",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "<input name=\"memo\" id=\"memo\" type=\"text\" value=\"上年结转\" readonly=\"readonly\">",
+          "text": "",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "type": "text",
+              "name": "memo",
+              "id": "memo",
+              "value": "上年结转",
+              "readonly": true,
+              "selected": null,
+              "optionCount": null
+            }
+          ]
+        },
+        {
+          "ci": 5,
+          "tag": "TD",
+          "cls": "word_normal double col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "",
+          "text": "",
+          "inputs": []
+        },
+        {
+          "ci": 6,
+          "tag": "TD",
+          "cls": "word_normal double col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "",
+          "text": "",
+          "inputs": []
+        },
+        {
+          "ci": 7,
+          "tag": "TD",
+          "cls": "word_normal double",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "<div align=\"center\"> 借 </div>",
+          "text": "借",
+          "inputs": []
+        },
+        {
+          "ci": 8,
+          "tag": "TD",
+          "cls": "word_normal  col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "732800",
+          "text": "732800",
+          "inputs": []
+        }
+      ]
+    },
+    {
+      "ri": 6,
+      "cls": null,
+      "cells": [
+        {
+          "ci": 0,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "1",
+          "text": "1",
+          "inputs": []
+        },
+        {
+          "ci": 1,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "1",
+          "text": "1",
+          "inputs": []
+        },
+        {
+          "ci": 2,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "记",
+          "text": "记",
+          "inputs": []
+        },
+        {
+          "ci": 3,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "1",
+          "text": "1",
+          "inputs": []
+        },
+        {
+          "ci": 4,
+          "tag": "TD",
+          "cls": "double",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "<input name=\"memo\" id=\"memo\" type=\"text\" value=\"核销预借差旅费\" readonly=\"readonly\">",
+          "text": "",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "type": "text",
+              "name": "memo",
+              "id": "memo",
+              "value": "核销预借差旅费",
+              "readonly": true,
+              "selected": null,
+              "optionCount": null
+            }
+          ]
+        },
+        {
+          "ci": 5,
+          "tag": "TD",
+          "cls": "word_normal double col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "23200",
+          "text": "23200",
+          "inputs": []
+        },
+        {
+          "ci": 6,
+          "tag": "TD",
+          "cls": "word_normal double col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "",
+          "text": "",
+          "inputs": []
+        },
+        {
+          "ci": 7,
+          "tag": "TD",
+          "cls": "word_normal double",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "<div align=\"center\"> 借 </div>",
+          "text": "借",
+          "inputs": []
+        },
+        {
+          "ci": 8,
+          "tag": "TD",
+          "cls": "word_normal  col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "756000",
+          "text": "756000",
+          "inputs": []
+        }
+      ]
+    },
+    {
+      "ri": 7,
+      "cls": null,
+      "cells": [
+        {
+          "ci": 0,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "1",
+          "text": "1",
+          "inputs": []
+        },
+        {
+          "ci": 1,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "1",
+          "text": "1",
+          "inputs": []
+        },
+        {
+          "ci": 2,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "记",
+          "text": "记",
+          "inputs": []
+        },
+        {
+          "ci": 3,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "3",
+          "text": "3",
+          "inputs": []
+        },
+        {
+          "ci": 4,
+          "tag": "TD",
+          "cls": "double",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "<input name=\"memo\" id=\"memo\" type=\"text\" value=\"提现\" readonly=\"readonly\">",
+          "text": "",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "type": "text",
+              "name": "memo",
+              "id": "memo",
+              "value": "提现",
+              "readonly": true,
+              "selected": null,
+              "optionCount": null
+            }
+          ]
+        },
+        {
+          "ci": 5,
+          "tag": "TD",
+          "cls": "word_normal double col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "500000",
+          "text": "500000",
+          "inputs": []
+        },
+        {
+          "ci": 6,
+          "tag": "TD",
+          "cls": "word_normal double col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "",
+          "text": "",
+          "inputs": []
+        },
+        {
+          "ci": 7,
+          "tag": "TD",
+          "cls": "word_normal double",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "<div align=\"center\"> 借 </div>",
+          "text": "借",
+          "inputs": []
+        },
+        {
+          "ci": 8,
+          "tag": "TD",
+          "cls": "word_normal  col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "1256000",
+          "text": "1256000",
+          "inputs": []
+        }
+      ]
+    },
+    {
+      "ri": 8,
+      "cls": null,
+      "cells": [
+        {
+          "ci": 0,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "1",
+          "text": "1",
+          "inputs": []
+        },
+        {
+          "ci": 1,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "2",
+          "text": "2",
+          "inputs": []
+        },
+        {
+          "ci": 2,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "记",
+          "text": "记",
+          "inputs": []
+        },
+        {
+          "ci": 3,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "5",
+          "text": "5",
+          "inputs": []
+        },
+        {
+          "ci": 4,
+          "tag": "TD",
+          "cls": "double",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "<input name=\"memo\" id=\"memo\" type=\"text\" value=\"报销市内交通费和业务招待费\" readonly=\"readonly\">",
+          "text": "",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "type": "text",
+              "name": "memo",
+              "id": "memo",
+              "value": "报销市内交通费和业务招待费",
+              "readonly": true,
+              "selected": null,
+              "optionCount": null
+            }
+          ]
+        },
+        {
+          "ci": 5,
+          "tag": "TD",
+          "cls": "word_normal double col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "",
+          "text": "",
+          "inputs": []
+        },
+        {
+          "ci": 6,
+          "tag": "TD",
+          "cls": "word_normal double col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "245000",
+          "text": "245000",
+          "inputs": []
+        },
+        {
+          "ci": 7,
+          "tag": "TD",
+          "cls": "word_normal double",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "<div align=\"center\"> 借 </div>",
+          "text": "借",
+          "inputs": []
+        },
+        {
+          "ci": 8,
+          "tag": "TD",
+          "cls": "word_normal  col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "1011000",
+          "text": "1011000",
+          "inputs": []
+        }
+      ]
+    },
+    {
+      "ri": 9,
+      "cls": null,
+      "cells": [
+        {
+          "ci": 0,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "1",
+          "text": "1",
+          "inputs": []
+        },
+        {
+          "ci": 1,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "3",
+          "text": "3",
+          "inputs": []
+        },
+        {
+          "ci": 2,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "记",
+          "text": "记",
+          "inputs": []
+        },
+        {
+          "ci": 3,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "8",
+          "text": "8",
+          "inputs": []
+        },
+        {
+          "ci": 4,
+          "tag": "TD",
+          "cls": "double",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "<input name=\"memo\" id=\"memo\" type=\"text\" value=\"报销教育培训费\" readonly=\"readonly\">",
+          "text": "",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "type": "text",
+              "name": "memo",
+              "id": "memo",
+              "value": "报销教育培训费",
+              "readonly": true,
+              "selected": null,
+              "optionCount": null
+            }
+          ]
+        },
+        {
+          "ci": 5,
+          "tag": "TD",
+          "cls": "word_normal double col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "",
+          "text": "",
+          "inputs": []
+        },
+        {
+          "ci": 6,
+          "tag": "TD",
+          "cls": "word_normal double col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "82500",
+          "text": "82500",
+          "inputs": []
+        },
+        {
+          "ci": 7,
+          "tag": "TD",
+          "cls": "word_normal double",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "<div align=\"center\"> 借 </div>",
+          "text": "借",
+          "inputs": []
+        },
+        {
+          "ci": 8,
+          "tag": "TD",
+          "cls": "word_normal  col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "928500",
+          "text": "928500",
+          "inputs": []
+        }
+      ]
+    },
+    {
+      "ri": 10,
+      "cls": null,
+      "cells": [
+        {
+          "ci": 0,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "1",
+          "text": "1",
+          "inputs": []
+        },
+        {
+          "ci": 1,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "15",
+          "text": "15",
+          "inputs": []
+        },
+        {
+          "ci": 2,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "记",
+          "text": "记",
+          "inputs": []
+        },
+        {
+          "ci": 3,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "30",
+          "text": "30",
+          "inputs": []
+        },
+        {
+          "ci": 4,
+          "tag": "TD",
+          "cls": "double",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "<input name=\"memo\" id=\"memo\" type=\"text\" value=\"借支差旅费\" readonly=\"readonly\">",
+          "text": "",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "type": "text",
+              "name": "memo",
+              "id": "memo",
+              "value": "借支差旅费",
+              "readonly": true,
+              "selected": null,
+              "optionCount": null
+            }
+          ]
+        },
+        {
+          "ci": 5,
+          "tag": "TD",
+          "cls": "word_normal double col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "",
+          "text": "",
+          "inputs": []
+        },
+        {
+          "ci": 6,
+          "tag": "TD",
+          "cls": "word_normal double col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "200000",
+          "text": "200000",
+          "inputs": []
+        },
+        {
+          "ci": 7,
+          "tag": "TD",
+          "cls": "word_normal double",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "<div align=\"center\"> 借 </div>",
+          "text": "借",
+          "inputs": []
+        },
+        {
+          "ci": 8,
+          "tag": "TD",
+          "cls": "word_normal  col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "728500",
+          "text": "728500",
+          "inputs": []
+        }
+      ]
+    },
+    {
+      "ri": 11,
+      "cls": null,
+      "cells": [
+        {
+          "ci": 0,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "1",
+          "text": "1",
+          "inputs": []
+        },
+        {
+          "ci": 1,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "19",
+          "text": "19",
+          "inputs": []
+        },
+        {
+          "ci": 2,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "记",
+          "text": "记",
+          "inputs": []
+        },
+        {
+          "ci": 3,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "46",
+          "text": "46",
+          "inputs": []
+        },
+        {
+          "ci": 4,
+          "tag": "TD",
+          "cls": "double",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "<input name=\"memo\" id=\"memo\" type=\"text\" value=\"提现\" readonly=\"readonly\">",
+          "text": "",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "type": "text",
+              "name": "memo",
+              "id": "memo",
+              "value": "提现",
+              "readonly": true,
+              "selected": null,
+              "optionCount": null
+            }
+          ]
+        },
+        {
+          "ci": 5,
+          "tag": "TD",
+          "cls": "word_normal double col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "500000",
+          "text": "500000",
+          "inputs": []
+        },
+        {
+          "ci": 6,
+          "tag": "TD",
+          "cls": "word_normal double col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "",
+          "text": "",
+          "inputs": []
+        },
+        {
+          "ci": 7,
+          "tag": "TD",
+          "cls": "word_normal double",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "<div align=\"center\"> 借 </div>",
+          "text": "借",
+          "inputs": []
+        },
+        {
+          "ci": 8,
+          "tag": "TD",
+          "cls": "word_normal  col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "1228500",
+          "text": "1228500",
+          "inputs": []
+        }
+      ]
+    },
+    {
+      "ri": 12,
+      "cls": null,
+      "cells": [
+        {
+          "ci": 0,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "1",
+          "text": "1",
+          "inputs": []
+        },
+        {
+          "ci": 1,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "23",
+          "text": "23",
+          "inputs": []
+        },
+        {
+          "ci": 2,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "记",
+          "text": "记",
+          "inputs": []
+        },
+        {
+          "ci": 3,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "56",
+          "text": "56",
+          "inputs": []
+        },
+        {
+          "ci": 4,
+          "tag": "TD",
+          "cls": "double",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "<input name=\"memo\" id=\"memo\" type=\"text\" value=\"核销预借差旅费\" readonly=\"readonly\">",
+          "text": "",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "type": "text",
+              "name": "memo",
+              "id": "memo",
+              "value": "核销预借差旅费",
+              "readonly": true,
+              "selected": null,
+              "optionCount": null
+            }
+          ]
+        },
+        {
+          "ci": 5,
+          "tag": "TD",
+          "cls": "word_normal double col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "",
+          "text": "",
+          "inputs": []
+        },
+        {
+          "ci": 6,
+          "tag": "TD",
+          "cls": "word_normal double col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "40300",
+          "text": "40300",
+          "inputs": []
+        },
+        {
+          "ci": 7,
+          "tag": "TD",
+          "cls": "word_normal double",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "<div align=\"center\"> 借 </div>",
+          "text": "借",
+          "inputs": []
+        },
+        {
+          "ci": 8,
+          "tag": "TD",
+          "cls": "word_normal  col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "1188200",
+          "text": "1188200",
+          "inputs": []
+        }
+      ]
+    },
+    {
+      "ri": 13,
+      "cls": null,
+      "cells": [
+        {
+          "ci": 0,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "1",
+          "text": "1",
+          "inputs": []
+        },
+        {
+          "ci": 1,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "24",
+          "text": "24",
+          "inputs": []
+        },
+        {
+          "ci": 2,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "记",
+          "text": "记",
+          "inputs": []
+        },
+        {
+          "ci": 3,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "61",
+          "text": "61",
+          "inputs": []
+        },
+        {
+          "ci": 4,
+          "tag": "TD",
+          "cls": "double",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "<input name=\"memo\" id=\"memo\" type=\"text\" value=\"报销差旅费\" readonly=\"readonly\">",
+          "text": "",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "type": "text",
+              "name": "memo",
+              "id": "memo",
+              "value": "报销差旅费",
+              "readonly": true,
+              "selected": null,
+              "optionCount": null
+            }
+          ]
+        },
+        {
+          "ci": 5,
+          "tag": "TD",
+          "cls": "word_normal double col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "",
+          "text": "",
+          "inputs": []
+        },
+        {
+          "ci": 6,
+          "tag": "TD",
+          "cls": "word_normal double col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "209300",
+          "text": "209300",
+          "inputs": []
+        },
+        {
+          "ci": 7,
+          "tag": "TD",
+          "cls": "word_normal double",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "<div align=\"center\"> 借 </div>",
+          "text": "借",
+          "inputs": []
+        },
+        {
+          "ci": 8,
+          "tag": "TD",
+          "cls": "word_normal  col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "978900",
+          "text": "978900",
+          "inputs": []
+        }
+      ]
+    },
+    {
+      "ri": 14,
+      "cls": null,
+      "cells": [
+        {
+          "ci": 0,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "1",
+          "text": "1",
+          "inputs": []
+        },
+        {
+          "ci": 1,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "24",
+          "text": "24",
+          "inputs": []
+        },
+        {
+          "ci": 2,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "记",
+          "text": "记",
+          "inputs": []
+        },
+        {
+          "ci": 3,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "62",
+          "text": "62",
+          "inputs": []
+        },
+        {
+          "ci": 4,
+          "tag": "TD",
+          "cls": "double",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "<input name=\"memo\" id=\"memo\" type=\"text\" value=\"提现\" readonly=\"readonly\">",
+          "text": "",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "type": "text",
+              "name": "memo",
+              "id": "memo",
+              "value": "提现",
+              "readonly": true,
+              "selected": null,
+              "optionCount": null
+            }
+          ]
+        },
+        {
+          "ci": 5,
+          "tag": "TD",
+          "cls": "word_normal double col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "500000",
+          "text": "500000",
+          "inputs": []
+        },
+        {
+          "ci": 6,
+          "tag": "TD",
+          "cls": "word_normal double col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "",
+          "text": "",
+          "inputs": []
+        },
+        {
+          "ci": 7,
+          "tag": "TD",
+          "cls": "word_normal double",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "<div align=\"center\"> 借 </div>",
+          "text": "借",
+          "inputs": []
+        },
+        {
+          "ci": 8,
+          "tag": "TD",
+          "cls": "word_normal  col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "1478900",
+          "text": "1478900",
+          "inputs": []
+        }
+      ]
+    },
+    {
+      "ri": 15,
+      "cls": null,
+      "cells": [
+        {
+          "ci": 0,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "1",
+          "text": "1",
+          "inputs": []
+        },
+        {
+          "ci": 1,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "31",
+          "text": "31",
+          "inputs": []
+        },
+        {
+          "ci": 2,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "月汇",
+          "text": "月汇",
+          "inputs": []
+        },
+        {
+          "ci": 3,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "&nbsp;",
+          "text": "",
+          "inputs": []
+        },
+        {
+          "ci": 4,
+          "tag": "TD",
+          "cls": "double",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "<input name=\"memo\" id=\"memo\" type=\"text\" value=\"本月合计\" readonly=\"readonly\">",
+          "text": "",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "type": "text",
+              "name": "memo",
+              "id": "memo",
+              "value": "本月合计",
+              "readonly": true,
+              "selected": null,
+              "optionCount": null
+            }
+          ]
+        },
+        {
+          "ci": 5,
+          "tag": "TD",
+          "cls": "word_normal double col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "1523200",
+          "text": "1523200",
+          "inputs": []
+        },
+        {
+          "ci": 6,
+          "tag": "TD",
+          "cls": "word_normal double col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "777100",
+          "text": "777100",
+          "inputs": []
+        },
+        {
+          "ci": 7,
+          "tag": "TD",
+          "cls": "word_normal double",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "<div align=\"center\"> 借 </div>",
+          "text": "借",
+          "inputs": []
+        },
+        {
+          "ci": 8,
+          "tag": "TD",
+          "cls": "word_normal  col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "1478900",
+          "text": "1478900",
+          "inputs": []
+        }
+      ]
+    },
+    {
+      "ri": 16,
+      "cls": null,
+      "cells": [
+        {
+          "ci": 0,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "1",
+          "text": "1",
+          "inputs": []
+        },
+        {
+          "ci": 1,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "31",
+          "text": "31",
+          "inputs": []
+        },
+        {
+          "ci": 2,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "--",
+          "text": "--",
+          "inputs": []
+        },
+        {
+          "ci": 3,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "&nbsp;",
+          "text": "",
+          "inputs": []
+        },
+        {
+          "ci": 4,
+          "tag": "TD",
+          "cls": "double",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "<input name=\"memo\" id=\"memo\" type=\"text\" value=\"----------------\" readonly=\"readonly\">",
+          "text": "",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "type": "text",
+              "name": "memo",
+              "id": "memo",
+              "value": "----------------",
+              "readonly": true,
+              "selected": null,
+              "optionCount": null
+            }
+          ]
+        },
+        {
+          "ci": 5,
+          "tag": "TD",
+          "cls": "word_normal double col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "",
+          "text": "",
+          "inputs": []
+        },
+        {
+          "ci": 6,
+          "tag": "TD",
+          "cls": "word_normal double col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "",
+          "text": "",
+          "inputs": []
+        },
+        {
+          "ci": 7,
+          "tag": "TD",
+          "cls": "word_normal double",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "<div align=\"center\"> </div>",
+          "text": "",
+          "inputs": []
+        },
+        {
+          "ci": 8,
+          "tag": "TD",
+          "cls": "word_normal  col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "",
+          "text": "",
+          "inputs": []
+        }
+      ]
+    },
+    {
+      "ri": 17,
+      "cls": null,
+      "cells": [
+        {
+          "ci": 0,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "1",
+          "text": "1",
+          "inputs": []
+        },
+        {
+          "ci": 1,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "31",
+          "text": "31",
+          "inputs": []
+        },
+        {
+          "ci": 2,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "年累",
+          "text": "年累",
+          "inputs": []
+        },
+        {
+          "ci": 3,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "&nbsp;",
+          "text": "",
+          "inputs": []
+        },
+        {
+          "ci": 4,
+          "tag": "TD",
+          "cls": "double",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "<input name=\"memo\" id=\"memo\" type=\"text\" value=\"本年累计\" readonly=\"readonly\">",
+          "text": "",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "type": "text",
+              "name": "memo",
+              "id": "memo",
+              "value": "本年累计",
+              "readonly": true,
+              "selected": null,
+              "optionCount": null
+            }
+          ]
+        },
+        {
+          "ci": 5,
+          "tag": "TD",
+          "cls": "word_normal double col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "1523200",
+          "text": "1523200",
+          "inputs": []
+        },
+        {
+          "ci": 6,
+          "tag": "TD",
+          "cls": "word_normal double col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "777100",
+          "text": "777100",
+          "inputs": []
+        },
+        {
+          "ci": 7,
+          "tag": "TD",
+          "cls": "word_normal double",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "<div align=\"center\"> 借 </div>",
+          "text": "借",
+          "inputs": []
+        },
+        {
+          "ci": 8,
+          "tag": "TD",
+          "cls": "word_normal  col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "1478900",
+          "text": "1478900",
+          "inputs": []
+        }
+      ]
+    },
+    {
+      "ri": 18,
+      "cls": null,
+      "cells": [
+        {
+          "ci": 0,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "1",
+          "text": "1",
+          "inputs": []
+        },
+        {
+          "ci": 1,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "31",
+          "text": "31",
+          "inputs": []
+        },
+        {
+          "ci": 2,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "==",
+          "text": "==",
+          "inputs": []
+        },
+        {
+          "ci": 3,
+          "tag": "TD",
+          "cls": null,
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "&nbsp;",
+          "text": "",
+          "inputs": []
+        },
+        {
+          "ci": 4,
+          "tag": "TD",
+          "cls": "double",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "<input name=\"memo\" id=\"memo\" type=\"text\" value=\"================\" readonly=\"readonly\">",
+          "text": "",
+          "inputs": [
+            {
+              "tag": "INPUT",
+              "type": "text",
+              "name": "memo",
+              "id": "memo",
+              "value": "================",
+              "readonly": true,
+              "selected": null,
+              "optionCount": null
+            }
+          ]
+        },
+        {
+          "ci": 5,
+          "tag": "TD",
+          "cls": "word_normal double col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "",
+          "text": "",
+          "inputs": []
+        },
+        {
+          "ci": 6,
+          "tag": "TD",
+          "cls": "word_normal double col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "",
+          "text": "",
+          "inputs": []
+        },
+        {
+          "ci": 7,
+          "tag": "TD",
+          "cls": "word_normal double",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "<div align=\"center\"> </div>",
+          "text": "",
+          "inputs": []
+        },
+        {
+          "ci": 8,
+          "tag": "TD",
+          "cls": "word_normal  col_154",
+          "colSpan": 1,
+          "rowSpan": 1,
+          "align": null,
+          "width": null,
+          "html": "",
+          "text": "",
+          "inputs": []
+        }
+      ]
+    }
+  ],
+  "grid": [
+    [
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "明细账",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      }
+    ],
+    [
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "科目:库存现金",
+        "cs": 48,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      }
+    ],
+    [
+      {
+        "t": "年",
+        "cs": 2,
+        "rs": 1,
+        "cls": "word_normal",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "年",
+        "cs": 2,
+        "rs": 1,
+        "cls": "word_normal",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 2,
+        "rs": 1,
+        "cls": "word_normal",
+        "n": [
+          "title_1"
+        ],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 2,
+        "rs": 1,
+        "cls": "word_normal",
+        "n": [
+          "title_1"
+        ],
+        "cov": false
+      },
+      {
+        "t": "摘要",
+        "cs": 1,
+        "rs": 3,
+        "cls": "word_normal double",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "借方",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double col_154",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "贷方",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double col_154",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "借 或 贷",
+        "cs": 1,
+        "rs": 3,
+        "cls": "word_normal double",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "余额",
+        "cs": 1,
+        "rs": 2,
+        "cls": "word_normal col_154",
+        "n": [],
+        "cov": false
+      }
+    ],
+    [
+      {
+        "t": "月",
+        "cs": 1,
+        "rs": 2,
+        "cls": "word_normal",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "日",
+        "cs": 1,
+        "rs": 2,
+        "cls": "word_normal",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "种类",
+        "cs": 1,
+        "rs": 2,
+        "cls": "word_normal STYLE31",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "号数",
+        "cs": 1,
+        "rs": 2,
+        "cls": "word_normal STYLE31",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "摘要",
+        "cs": 1,
+        "rs": 3,
+        "cls": "word_normal double",
+        "n": [],
+        "cov": true
+      },
+      {
+        "t": "金 额",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double col_154",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "金 额",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double col_154",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "借 或 贷",
+        "cs": 1,
+        "rs": 3,
+        "cls": "word_normal double",
+        "n": [],
+        "cov": true
+      },
+      {
+        "t": "余额",
+        "cs": 1,
+        "rs": 2,
+        "cls": "word_normal col_154",
+        "n": [],
+        "cov": true
+      }
+    ],
+    [
+      {
+        "t": "月",
+        "cs": 1,
+        "rs": 2,
+        "cls": "word_normal",
+        "n": [],
+        "cov": true
+      },
+      {
+        "t": "日",
+        "cs": 1,
+        "rs": 2,
+        "cls": "word_normal",
+        "n": [],
+        "cov": true
+      },
+      {
+        "t": "种类",
+        "cs": 1,
+        "rs": 2,
+        "cls": "word_normal STYLE31",
+        "n": [],
+        "cov": true
+      },
+      {
+        "t": "号数",
+        "cs": 1,
+        "rs": 2,
+        "cls": "word_normal STYLE31",
+        "n": [],
+        "cov": true
+      },
+      {
+        "t": "摘要",
+        "cs": 1,
+        "rs": 3,
+        "cls": "word_normal double",
+        "n": [],
+        "cov": true
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double col_154",
+        "n": [
+          "title_debit"
+        ],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double col_154",
+        "n": [
+          "title_lend"
+        ],
+        "cov": false
+      },
+      {
+        "t": "借 或 贷",
+        "cs": 1,
+        "rs": 3,
+        "cls": "word_normal double",
+        "n": [],
+        "cov": true
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal col_154",
+        "n": [
+          "title_balance"
+        ],
+        "cov": false
+      }
+    ],
+    [
+      {
+        "t": "1",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "1",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "年初",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": "double",
+        "n": [
+          "memo"
+        ],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double col_154",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double col_154",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "借",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "732800",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal  col_154",
+        "n": [],
+        "cov": false
+      }
+    ],
+    [
+      {
+        "t": "1",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "1",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "记",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "1",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": "double",
+        "n": [
+          "memo"
+        ],
+        "cov": false
+      },
+      {
+        "t": "23200",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double col_154",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double col_154",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "借",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "756000",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal  col_154",
+        "n": [],
+        "cov": false
+      }
+    ],
+    [
+      {
+        "t": "1",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "1",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "记",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "3",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": "double",
+        "n": [
+          "memo"
+        ],
+        "cov": false
+      },
+      {
+        "t": "500000",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double col_154",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double col_154",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "借",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "1256000",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal  col_154",
+        "n": [],
+        "cov": false
+      }
+    ],
+    [
+      {
+        "t": "1",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "2",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "记",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "5",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": "double",
+        "n": [
+          "memo"
+        ],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double col_154",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "245000",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double col_154",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "借",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "1011000",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal  col_154",
+        "n": [],
+        "cov": false
+      }
+    ],
+    [
+      {
+        "t": "1",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "3",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "记",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "8",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": "double",
+        "n": [
+          "memo"
+        ],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double col_154",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "82500",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double col_154",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "借",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "928500",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal  col_154",
+        "n": [],
+        "cov": false
+      }
+    ],
+    [
+      {
+        "t": "1",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "15",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "记",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "30",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": "double",
+        "n": [
+          "memo"
+        ],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double col_154",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "200000",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double col_154",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "借",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "728500",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal  col_154",
+        "n": [],
+        "cov": false
+      }
+    ],
+    [
+      {
+        "t": "1",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "19",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "记",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "46",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": "double",
+        "n": [
+          "memo"
+        ],
+        "cov": false
+      },
+      {
+        "t": "500000",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double col_154",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double col_154",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "借",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "1228500",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal  col_154",
+        "n": [],
+        "cov": false
+      }
+    ],
+    [
+      {
+        "t": "1",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "23",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "记",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "56",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": "double",
+        "n": [
+          "memo"
+        ],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double col_154",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "40300",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double col_154",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "借",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "1188200",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal  col_154",
+        "n": [],
+        "cov": false
+      }
+    ],
+    [
+      {
+        "t": "1",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "24",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "记",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "61",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": "double",
+        "n": [
+          "memo"
+        ],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double col_154",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "209300",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double col_154",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "借",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "978900",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal  col_154",
+        "n": [],
+        "cov": false
+      }
+    ],
+    [
+      {
+        "t": "1",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "24",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "记",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "62",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": "double",
+        "n": [
+          "memo"
+        ],
+        "cov": false
+      },
+      {
+        "t": "500000",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double col_154",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double col_154",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "借",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "1478900",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal  col_154",
+        "n": [],
+        "cov": false
+      }
+    ],
+    [
+      {
+        "t": "1",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "31",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "月汇",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": "double",
+        "n": [
+          "memo"
+        ],
+        "cov": false
+      },
+      {
+        "t": "1523200",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double col_154",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "777100",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double col_154",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "借",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "1478900",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal  col_154",
+        "n": [],
+        "cov": false
+      }
+    ],
+    [
+      {
+        "t": "1",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "31",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "--",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": "double",
+        "n": [
+          "memo"
+        ],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double col_154",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double col_154",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal  col_154",
+        "n": [],
+        "cov": false
+      }
+    ],
+    [
+      {
+        "t": "1",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "31",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "年累",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": "double",
+        "n": [
+          "memo"
+        ],
+        "cov": false
+      },
+      {
+        "t": "1523200",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double col_154",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "777100",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double col_154",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "借",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "1478900",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal  col_154",
+        "n": [],
+        "cov": false
+      }
+    ],
+    [
+      {
+        "t": "1",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "31",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "==",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": null,
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": "double",
+        "n": [
+          "memo"
+        ],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double col_154",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double col_154",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal double",
+        "n": [],
+        "cov": false
+      },
+      {
+        "t": "",
+        "cs": 1,
+        "rs": 1,
+        "cls": "word_normal  col_154",
+        "n": [],
+        "cov": false
+      }
+    ]
+  ]
+}

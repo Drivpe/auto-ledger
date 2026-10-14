@@ -1,0 +1,92 @@
+{
+  "_title": "画月结线 / 画年结线 / 删线 实测",
+  "按钮原文": [
+    {
+      "text": "画月结线",
+      "onclick": "doDrawLine('8',v_dto6)"
+    },
+    {
+      "text": "画年结线",
+      "onclick": "doDrawLine('9',v_dto6)"
+    }
+  ],
+  "函数源码来源": "http://10.11.4.69:8090/netinnet_zhsx_v63/js/softkf_common.js（第 53 行）",
+  "doDrawLine": "function doDrawLine(type,fbox){ $('select[name=vouchertype_i]').prepend($('<option value=\"--\" memo=\"----------------\" rowclass=\"8\" isNormalRec=\"0\">--</option>')); $('select[name=vouchertype_i]').prepend($('<option value=\"==\" memo=\"================\" rowclass=\"9\" isNormalRec=\"0\">==</option>')); $('select[name=vouchertype_i]>option[rowclass='+type+']').attr('selected','selected'); type_do($('select[name=vouchertype_i]').val()); doAddSubmit(fbox); }",
+  "关键要点": "画线**不是**独立接口：它把一个 rowclass=8(--) 或 9(==) 的 option 动态 prepend 进新增区下拉 vouchertype_i，选中它，然后走 doAddSubmit → start=insert_1rec。",
+  "实测_画月结线": {
+    "页面": "1001 库存现金账页 ts_ledger ZB_zy_ID=1000245326",
+    "POST": {
+      "url": "do?action=ts_ledger",
+      "start": "insert_1rec",
+      "新增关键字段": "XSHU_i=1&mm_i=1&dd_i=30&vouchertype_i=--&memo_i=----------------&isNormalRec_i=0&rowclass=8",
+      "rawBody": "start=insert_1rec&zb_zy_id=1000245326&type_zb=1&zbid=45833&sxid=SESSION_TOKEN_PLACEHOLDER&entityID=110+++++++&isSimulate=false&yyyy=2020&accountID=1001++++++++++++++++&is_zz_i=0&kjkm=%E5%BA%93%E5%AD%98%E7%8E%B0%E9%87%91++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++&kjkm=&mm=1&dd=1&vouchertype=%E5%B9%B4%E5%88%9D&voucherid=&memo=%E4%B8%8A%E5%B9%B4%E7%BB%93%E8%BD%AC&debit=&lend=&in_debit_lend=1&balance=732800&is_zz=0&ledgerrecordid=10000002544756&isNormalRec=1&isadditional=&mm=1&dd=1&vouchertype=%E8%AE%B0&voucherid=1&memo=%E6%A0%B8%E9%94%80%E9%A2%84%E5%80%9F%E5%B7%AE%E6%97%85%E8%B4%B9&debit=23200&lend=&in_debit_lend=1&balance=&is_zz=0&ledgerrecordid=10000002544764&isNormalRec=1&isadditional=&mm=1&dd=1&vouchertype=%E8%AE%B0&voucherid=3&memo=%E6%8F%90%E5%8F%96%E5%A4%87%E7%94%A8%E9%87%91&debit=210000&lend=&in_debit_lend=1&balance=&is_zz=0&ledgerrecordid=10000002544934&isNormalRec=1&isadditional=&mm=1&dd=1&vouchertype=%E8%AE%B0&voucherid=5&memo=%E6%8A%A5%E9%94%80%E5%B8%82%E5%86%85%E4%BA%A4%E9%80%9A%E8%B4%B9%E5%92%8C%E4%B8%9A%E5%8A%A1%E6%8B%9B%E5%BE%85%E8%B4%B9&debit=&lend=&in_debit_lend=0&balance=&is_zz=0&ledgerrecordid=10000002544937&isNormalRec=1&isadditional=&mm=1&dd=1&vouchertype=%E8%AE%B0&voucherid=8&memo=%E6%8A%A5%E9%94%80%E6%95%99%E8%82%B2%E5%9F%B9%E8%AE%AD%E8%B4%B9&debit=&lend=&in_debit_lend=0&balance=&is_zz=0&ledgerrecordid=10000002544940&isNormalRec=1&isadditional=&mm=1&dd=1&vouchertype=%E8%AE%B0&voucherid=30&memo=%E5%80%9F%E6%94%AF%E5%B7%AE%E6%97%85%E8%B4%B9&debit=&lend=&in_debit_lend=0&balance=&is_zz=0&ledgerrecordid=10000002544945&isNormalRec=1&isadditional=&mm=1&dd=1&vouchertype=%E8%AE%B0&voucherid=46&memo=%E6%8F%90%E7%8E%B0&debit=&lend=&in_debit_lend=0&balance=&is_zz=0&ledgerrecordid=10000002544949&isNormalRec=1&isadditional=&mm=1&dd=1&vouchertype=%E8%AE%B0&voucherid=56&memo=%E6%A0%B8%E9%94%80%E9%A2%84%E5%80%9F%E5%B7%AE%E6%97%85%E8%B4%B9&debit=&lend=&in_debit_lend=0&balance=&is_zz=0&ledgerrecordid=10000002544951&isNormalRec=1&isadditional=&mm=1&dd=1&vouchertype=%E8%AE%B0&voucherid=61&memo=%E6%8A%A5%E9%94%80%E5%B7%AE%E6%97%85%E8%B4%B9&debit=&lend=&in_debit_lend=0&balance=&is_zz=0&ledgerrecordid=10000002544952&isNormalRec=1&isadditional=&mm=1&dd=1&vouchertype=%E8%AE%B0&voucherid=63&memo=%E6%8F%90%E7%8E%B0&debit=&lend=&in_debit_lend=0&balance=&is_zz=0&ledgerrecordid=10000002544957&isNormalRec=1&isadditional=&mm=1&dd=30&vouchertype=%E6%9C%88%E6%B1%87&voucherid=&memo=%E6%9C%AC%E6%9C%88%E5%90%88%E8%AE%A1&debit=&lend=&in_debit_lend=1&balance=&is_zz=0&ledgerrecordid=10000002545006&isNormalRec=1&isadditional=&mm=1&dd=30&vouchertype=--&voucherid=&memo=----------------&debit=&lend=&in_debit_lend=0&balance=&is_zz=0&ledgerrecordid=10000002545001&isNormalRec=1&isadditional=&mm=1&dd=30&vouchertype=--&voucherid=&memo=----------------&debit=&lend=&in_debit_lend=0&balance=&is_zz=0&ledgerrecordid=10000002545008&isNormalRec=1&isadditional=&mm=1&dd=30&vouchertype=%E5%B9%B4%E7%B4%AF&voucherid=&memo=%E6%9C%AC%E5%B9%B4%E7%B4%AF%E8%AE%A1&debit=&lend=&in_debit_lend=1&balance=&is_zz=0&ledgerrecordid=10000002545011&isNormalRec=1&isadditional=&mm=1&dd=30&vouchertype=%3D%3D&voucherid=&memo=%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D&debit=&lend=&in_debit_lend=0&balance=&is_zz=0&ledgerrecordid=10000002545005&isNormalRec=1&isadditional=&mm=1&dd=30&vouchertype=%3D%3D&voucherid=&memo=%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D&debit=&lend=&in_debit_lend=0&balance=&is_zz=0&ledgerrecordid=10000002545014&isNormalRec=1&isadditional=&XSHU_i=1&mm_i=1&dd_i=30&vouchertype_i=--&memo_i=----------------&isNormalRec_i=0&rowclass=8"
+    },
+    "前": {
+      "行数": 17,
+      "rowclass行": [
+        "12:8:10000002545001",
+        "13:8:10000002545008",
+        "15:9:10000002545005",
+        "16:9:10000002545014"
+      ]
+    },
+    "后": {
+      "行数": 18,
+      "新增行": {
+        "rowid": "14",
+        "rowclass": "8",
+        "type": "--",
+        "memo": "----------------",
+        "led": "10000002545667"
+      },
+      "rowclass行": [
+        "12:8:10000002545001",
+        "13:8:10000002545008",
+        "14:8:10000002545667",
+        "16:9:10000002545005",
+        "17:9:10000002545014"
+      ]
+    },
+    "结论": "『画月结线』= 在账页插入一条 vouchertype='--'、memo='----------------'、rowclass=8 的**真实数据行**；不是纯前端样式。该行 DOM 中 display:none，靠 doZBShowLine() 依 tr[rowclass] 位置用 wz_jsgraphics 画出红色横线呈现。"
+  },
+  "划线渲染机制": {
+    "doZBShowLine": "$(document).ready 时调用；遍历 tr[rowclass]，为每行创建 #line{rowid} 与 #del_line{rowid}，用 billDrawline 画线。rowclass=9 且 mm=12 → 双线，否则单线。",
+    "实测lineIds": [
+      "line12",
+      "line13",
+      "line15",
+      "line16"
+    ],
+    "实测delLineIds": [
+      "del_line12",
+      "del_line13",
+      "del_line15",
+      "del_line16"
+    ],
+    "双击删线": "#del_line{rowid} 绑定 click → doRemove(keyid,rowclass) 或 fallback $.post('do?action=ts_ledger&start=delete_line&type_zb=1', {sxid, ledgerrecordid})"
+  },
+  "实测_删线": {
+    "confirm文案": "确定要删除该画线?（doRemove 不存在时）/ 确实要删除吗？（删除提交路径）",
+    "官方路径": "$.post(do?action=ts_ledger&start=delete_line&type_zb=1, {sxid, ledgerrecordid})",
+    "本次实操": "勾选该行 CHECK_CONFIRM + 【删除提交】→ v_dto6.start='delete_loop'",
+    "POST": {
+      "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/do?action=ts_ledger",
+      "body": "start=delete_loop&zb_zy_id=1000245326&type_zb=1&zbid=45833&sxid=SESSION_TOKEN_PLACEHOLDER&entityID=110+++++++&isSimulate=false&yyyy=2020&accountID=1001++++++++++++++++&is_zz_i=0&kjkm=%E5%BA%93%E5%AD%98%E7%8E%B0%E9%87%91++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++&kjkm=&mm=1&dd=1&vouchertype=%E5%B9%B4%E5%88%9D&voucherid=&memo=%E4%B8%8A%E5%B9%B4%E7%BB%93%E8%BD%AC&debit=&lend=&in_debit_lend=1&balance=732800&is_zz=0&ledgerrecordid=10000002544756&isNormalRec=1&isadditional=&mm=1&dd=1&vouchertype=%E8%AE%B0&voucherid=1&memo=%E6%A0%B8%E9%94%80%E9%A2%84%E5%80%9F%E5%B7%AE%E6%97%85%E8%B4%B9&debit=23200&lend=&in_debit_lend=1&balance=&is_zz=0&ledgerrecordid=10000002544764&isNormalRec=1&isadditional=&mm=1&dd=1&vouchertype=%E8%AE%B0&voucherid=3&memo=%E6%8F%90%E5%8F%96%E5%A4%87%E7%94%A8%E9%87%91&debit=210000&lend=&in_debit_lend=1&balance=&is_zz=0&ledgerrecordid=10000002544934&isNormalRec=1&isadditional=&mm=1&dd=1&vouchertype=%E8%AE%B0&voucherid=5&memo=%E6%8A%A5%E9%94%80%E5%B8%82%E5%86%85%E4%BA%A4%E9%80%9A%E8%B4%B9%E5%92%8C%E4%B8%9A%E5%8A%A1%E6%8B%9B%E5%BE%85%E8%B4%B9&debit=&lend=&in_debit_lend=0&balance=&is_zz=0&ledgerrecordid=10000002544937&isNormalRec=1&isadditional=&mm=1&dd=1&vouchertype=%E8%AE%B0&voucherid=8&memo=%E6%8A%A5%E9%94%80%E6%95%99%E8%82%B2%E5%9F%B9%E8%AE%AD%E8%B4%B9&debit=&lend=&in_debit_lend=0&balance=&is_zz=0&ledgerrecordid=10000002544940&isNormalRec=1&isadditional=&mm=1&dd=1&vouchertype=%E8%AE%B0&voucherid=30&memo=%E5%80%9F%E6%94%AF%E5%B7%AE%E6%97%85%E8%B4%B9&debit=&lend=&in_debit_lend=0&balance=&is_zz=0&ledgerrecordid=10000002544945&isNormalRec=1&isadditional=&mm=1&dd=1&vouchertype=%E8%AE%B0&voucherid=46&memo=%E6%8F%90%E7%8E%B0&debit=&lend=&in_debit_lend=0&balance=&is_zz=0&ledgerrecordid=10000002544949&isNormalRec=1&isadditional=&mm=1&dd=1&vouchertype=%E8%AE%B0&voucherid=56&memo=%E6%A0%B8%E9%94%80%E9%A2%84%E5%80%9F%E5%B7%AE%E6%97%85%E8%B4%B9&debit=&lend=&in_debit_lend=0&balance=&is_zz=0&ledgerrecordid=10000002544951&isNormalRec=1&isadditional=&mm=1&dd=1&vouchertype=%E8%AE%B0&voucherid=61&memo=%E6%8A%A5%E9%94%80%E5%B7%AE%E6%97%85%E8%B4%B9&debit=&lend=&in_debit_lend=0&balance=&is_zz=0&ledgerrecordid=10000002544952&isNormalRec=1&isadditional=&mm=1&dd=1&vouchertype=%E8%AE%B0&voucherid=63&memo=%E6%8F%90%E7%8E%B0&debit=&lend=&in_debit_lend=0&balance=&is_zz=0&ledgerrecordid=10000002544957&isNormalRec=1&isadditional=&mm=1&dd=30&vouchertype=%E6%9C%88%E6%B1%87&voucherid=&memo=%E6%9C%AC%E6%9C%88%E5%90%88%E8%AE%A1&debit=&lend=&in_debit_lend=1&balance=&is_zz=0&ledgerrecordid=10000002545006&isNormalRec=1&isadditional=&mm=1&dd=30&vouchertype=--&voucherid=&memo=----------------&debit=&lend=&in_debit_lend=0&balance=&is_zz=0&ledgerrecordid=10000002545001&isNormalRec=1&isadditional=&mm=1&dd=30&vouchertype=--&voucherid=&memo=----------------&debit=&lend=&in_debit_lend=0&balance=&is_zz=0&ledgerrecordid=10000002545008&isNormalRec=1&isadditional=&mm=1&dd=30&vouchertype=--&voucherid=&memo=----------------&debit=&lend=&in_debit_lend=0&balance=&CHECK_CONFIRM=10000002545667&is_zz=0&ledgerrecordid=10000002545667&isNormalRec=1&isadditional=&mm=1&dd=30&vouchertype=%E5%B9%B4%E7%B4%AF&voucherid=&memo=%E6%9C%AC%E5%B9%B4%E7%B4%AF%E8%AE%A1&debit=&lend=&in_debit_lend=1&balance=&is_zz=0&ledgerrecordid=10000002545011&isNormalRec=1&isadditional=&mm=1&dd=30&vouchertype=%3D%3D&voucherid=&memo=%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D&debit=&lend=&in_debit_lend=0&balance=&is_zz=0&ledgerrecordid=10000002545005&isNormalRec=1&isadditional=&mm=1&dd=30&vouchertype=%3D%3D&voucherid=&memo=%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D&debit=&lend=&in_debit_lend=0&balance=&is_zz=0&ledgerrecordid=10000002545014&isNormalRec=1&isadditional=&XSHU_i=1&mm_i=1&dd_i=30&vouchertype_i=%E8%AE%B0&voucherid_i=&memo_i=&debit_i=&lend_i=&in_debit_lend_i=0&balance_i=&isNormalRec_i=0&rowclass=2"
+    },
+    "前": {
+      "rowCount": 18
+    },
+    "后": {
+      "rowCount": 17,
+      "rowclass行": [
+        "12:8",
+        "13:8",
+        "15:9",
+        "16:9"
+      ]
+    },
+    "结论": "删除成功，账页恢复到实测前的 17 行状态（led=10000002545667 已删除）"
+  },
+  "回答原问题": "★ `--` 行与 `==` 行**就是**画线产生的：vouchertype='--' rowclass=8 = 月结线；vouchertype='==' rowclass=9 = 年结线。它们既是真实数据行，也是前端划红线的锚点。",
+  "画线失败情形": "新增区校验不通过时平台 alert（例：'上月未结账，不可输入下月记录！'，见 evidence/10-month-line.json）"
+}

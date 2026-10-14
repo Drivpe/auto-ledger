@@ -1,0 +1,146 @@
+{
+  "startedAt": "2026-10-13T12:56:33.969Z",
+  "dialogs": [],
+  "posts": [
+    {
+      "at": "2026-10-13T12:56:47.842Z",
+      "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/do?action=ts_zb_zy",
+      "contentType": "application/x-www-form-urlencoded",
+      "body": "start=new_zb_insert_1rec&sxid=SESSION_TOKEN_PLACEHOLDER&entityid=110&type_zb=1&isSimulate=false&zbnrlb=5&zbmc=%E6%B5%8B%E7%BB%98%E6%8E%A2%E9%92%88%E4%B8%89%E6%A0%8F%E5%BC%8F%E8%B4%A6%E7%B0%BF&zbbh=9&startDate=2020-1-1&yyyy=2020&mm=1&dd=1&fzren0=&zbkj00=&fhe000=&jzhang=&bzhu00="
+    }
+  ],
+  "error": null,
+  "entry": {
+    "sxid": "SESSION_TOKEN_PLACEHOLDER",
+    "entityID": "110",
+    "cname": "%E6%9C%B1%E8%BD%BD%E8%B0%B1",
+    "entry": "do?action=e_entity&start=entity_main_student_frame&SXID=SESSION_TOKEN_PLACEHOLDER&C_NAME=%E6%9C%B1%E8%BD%BD%E8%B0%B1&EntityID=110",
+    "source": {
+      "frame": "main",
+      "raw": " Javascript:changeOpeRole();parent.location.href='do?action=e_entity&start=entity_main_student_frame&SXID=SESSION_TOKEN_PLACEHOLDER&C_NAME=%E6%9C%B1%E8%BD%BD%E8%B0%B1&EntityID=110'"
+    },
+    "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/do?action=e_entity&start=entity_main_student_frame&SXID=SESSION_TOKEN_PLACEHOLDER&C_NAME=%E6%9C%B1%E8%BD%BD%E8%B0%B1&EntityID=110"
+  },
+  "before": {
+    "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/do?action=ts_zb_zy&start=zb_list&type_zb=1&entityID=110&SXID=SESSION_TOKEN_PLACEHOLDER&isSimulate=false",
+    "text": "明细账 日记账 总账 自动建账簿 开设新账簿 账簿管理 科目分布提示 2020库存现金",
+    "zbLinks": [
+      "do?action=ts_zb_zy&start=zb_1rec&type_zb=1&zbid=45833&accountID=&SXID=SESSION_TOKEN_PLACEHOLDER&entityID=110&readyOnly=0&page=1&isSimulate=false"
+    ]
+  },
+  "filled": {
+    "zbnrlb": "5",
+    "zbmc": "测绘探针三栏式账簿",
+    "zbbh": "9",
+    "startDate": "2020-1-1",
+    "accountidDisabled": true,
+    "accountidValue": ""
+  },
+  "responses": [
+    {
+      "at": "2026-10-13T12:56:47.859Z",
+      "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/do?action=ts_zb_zy",
+      "status": 200,
+      "location": null
+    }
+  ],
+  "framesAfter": [
+    {
+      "name": "",
+      "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/do?action=e_entity&start=entity_main_student_frame&SXID=SESSION_TOKEN_PLACEHOLDER&C_NAME=%E6%9C%B1%E8%BD%BD%E8%B0%B1&EntityID=110"
+    },
+    {
+      "name": "top",
+      "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/do?action=e_entity&start=entity_main_student&entityID=110&isSimulate=&SXID=SESSION_TOKEN_PLACEHOLDER&c_name=%E6%9C%B1%E8%BD%BD%E8%B0%B1"
+    },
+    {
+      "name": "middle",
+      "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/main_middle_frame.jsp"
+    },
+    {
+      "name": "main",
+      "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/do?action=zhsx_common_jzpz&start=dz&type_zb=1&entityID=110&SXID=SESSION_TOKEN_PLACEHOLDER&isSimulate=false"
+    },
+    {
+      "name": "",
+      "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/javascript/My97DatePicker/My97DatePicker.htm"
+    },
+    {
+      "name": "MainWin",
+      "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/do?action=ts_zb_zy&start=zb_list&entityID=110&SXID=SESSION_TOKEN_PLACEHOLDER&type_zb=1&isSimulate=false"
+    },
+    {
+      "name": "AdapterWin",
+      "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/dojsp?jsp=common/common_multiTags.jsp&srcTagUrl=do%3Faction=zhsx_common%26start=kjkmcx%26entityID=110%26SXID=SESSION_TOKEN_PLACEHOLDER&srcTagName=%E6%9C%9F%E5%88%9D%E4%BD%99%E9%A2%9D%E8%A1%A8&srcTagUid=qcyeb&srcTagSize=&srcTagUrl=do%3Faction=zhsx_common%26start=jzpz_list%26entityID=110%26SXID=SESSION_TOKEN_PLACEHOLDER&srcTagName=%E8%AE%B0%E8%B4%A6%E5%87%AD%E8%AF%81&srcTagUid=jzpz&srcTagSize=&srcTagUrl=do%3Faction=ts_txz%26start=first%26entityID=110%26SXID=SESSION_TOKEN_PLACEHOLDER%26readyOnly=true&srcTagName=T%E5%9E%8B%E8%B4%A6&srcTagUid=txz&srcTagSize=&styleName="
+    },
+    {
+      "name": "",
+      "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/javascript/My97DatePicker/My97DatePicker.htm"
+    },
+    {
+      "name": "node_bar",
+      "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/dojsp?jsp=common/common_multiTags_tag.jsp?styleName="
+    },
+    {
+      "name": "node_mainWin_uid_qcyeb",
+      "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/do?action=zhsx_common&start=kjkmcx&entityID=110&SXID=SESSION_TOKEN_PLACEHOLDER"
+    },
+    {
+      "name": "node_mainWin_uid_jzpz",
+      "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/do?action=zhsx_common&start=jzpz_list&entityID=110&SXID=SESSION_TOKEN_PLACEHOLDER"
+    },
+    {
+      "name": "node_mainWin_uid_txz",
+      "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/do?action=ts_txz&start=first&entityID=110&SXID=SESSION_TOKEN_PLACEHOLDER&readyOnly=true"
+    },
+    {
+      "name": "",
+      "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/javascript/My97DatePicker/My97DatePicker.htm"
+    },
+    {
+      "name": "",
+      "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/javascript/My97DatePicker/My97DatePicker.htm"
+    },
+    {
+      "name": "",
+      "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/javascript/My97DatePicker/My97DatePicker.htm"
+    },
+    {
+      "name": "",
+      "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/javascript/My97DatePicker/My97DatePicker.htm"
+    }
+  ],
+  "afterText": "明细账 日记账 总账 自动建账簿 开设新账簿 账簿管理 科目分布提示 2020库存现金 2020测绘探针三栏式账簿",
+  "afterZbLinks": [
+    "do?action=ts_zb_zy&start=zb_1rec&type_zb=1&zbid=45833&accountID=&SXID=SESSION_TOKEN_PLACEHOLDER&entityID=110&readyOnly=0&page=1&isSimulate=false",
+    "do?action=ts_zb_zy&start=zb_1rec&type_zb=1&zbid=45850&accountID=&SXID=SESSION_TOKEN_PLACEHOLDER&entityID=110&readyOnly=0&page=1&isSimulate=false"
+  ],
+  "allPosts": [
+    {
+      "at": "2026-10-13T12:56:35.078Z",
+      "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/do?action=login",
+      "contentType": "application/x-www-form-urlencoded",
+      "body": "userid=<STUDENT_ID>&Password=<REDACTED>&role=student"
+    },
+    {
+      "at": "2026-10-13T12:56:47.842Z",
+      "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/do?action=ts_zb_zy",
+      "contentType": "application/x-www-form-urlencoded",
+      "body": "start=new_zb_insert_1rec&sxid=SESSION_TOKEN_PLACEHOLDER&entityid=110&type_zb=1&isSimulate=false&zbnrlb=5&zbmc=%E6%B5%8B%E7%BB%98%E6%8E%A2%E9%92%88%E4%B8%89%E6%A0%8F%E5%BC%8F%E8%B4%A6%E7%B0%BF&zbbh=9&startDate=2020-1-1&yyyy=2020&mm=1&dd=1&fzren0=&zbkj00=&fhe000=&jzhang=&bzhu00="
+    }
+  ],
+  "allResponses": [
+    {
+      "at": "2026-10-13T12:56:35.134Z",
+      "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/do?action=login",
+      "status": 200,
+      "location": null
+    },
+    {
+      "at": "2026-10-13T12:56:47.859Z",
+      "url": "http://10.11.4.69:8090/netinnet_zhsx_v63/do?action=ts_zb_zy",
+      "status": 200,
+      "location": null
+    }
+  ]
+}
